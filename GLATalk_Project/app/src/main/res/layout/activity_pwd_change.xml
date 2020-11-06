@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+  <!--  <com.example.glatalk.core.custom.view.CommonTitleView
+        android:id="@+id/common_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"/>-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/pwd_change_current_cl"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="@dimen/layout_margin"
+        android:layout_marginRight="@dimen/layout_margin"
+        android:paddingLeft="@dimen/layout_margin"
+        android:paddingRight="@dimen/layout_margin"
+        android:background="@drawable/edit_selector"
+        app:layout_constraintTop_toTopOf="parent">
+        <!--app:layout_constraintTop_toBottomOf="@id/common_title"-->
+        <TextView
+            android:id="@+id/pwd_change_current_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/current_pwd"
+            android:textSize="10sp"
+            android:textColor="@color/black5050"
+            android:layout_marginTop="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <EditText
+            android:id="@+id/pwd_change_current_et"
+            android:layout_width="0dp"
+            android:layout_height="22dp"
+            android:background="@null"
+            android:hint="현재 비밀번호를 입력해주세요."
+            android:inputType="textPassword"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="8dp"
+            android:singleLine="true"
+            android:lines="1"
+            app:layout_constraintTop_toBottomOf="@id/pwd_change_current_tv"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/pwd_change_new_cl"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="@dimen/layout_margin"
+        android:layout_marginRight="@dimen/layout_margin"
+        android:paddingLeft="@dimen/layout_margin"
+        android:paddingRight="@dimen/layout_margin"
+        android:background="@drawable/edit_selector"
+        app:layout_constraintTop_toBottomOf="@id/pwd_change_current_cl">
+        <TextView
+            android:id="@+id/pwd_change_new_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/new_pwd"
+            android:textSize="10sp"
+            android:textColor="@color/black5050"
+            android:layout_marginTop="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <EditText
+            android:id="@+id/pwd_change_new_et"
+            android:layout_width="0dp"
+            android:layout_height="22dp"
+            android:background="@null"
+            android:hint="영문, 숫자를 포함하여 8자 이상 입력해주세요."
+            android:inputType="textPassword"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="8dp"
+            android:singleLine="true"
+            android:lines="1"
+            app:layout_constraintTop_toBottomOf="@id/pwd_change_new_tv"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/pwd_change_check_cl"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="@dimen/layout_margin"
+        android:layout_marginRight="@dimen/layout_margin"
+        android:paddingLeft="@dimen/layout_margin"
+        android:paddingRight="@dimen/layout_margin"
+        android:background="@drawable/edit_selector"
+        app:layout_constraintTop_toBottomOf="@id/pwd_change_new_cl">
+        <TextView
+            android:id="@+id/pwd_change_check_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pwd_check"
+            android:textSize="10sp"
+            android:textColor="@color/black5050"
+            android:layout_marginTop="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <EditText
+            android:id="@+id/pwd_change_check_et"
+            android:layout_width="0dp"
+            android:layout_height="22dp"
+            android:background="@null"
+            android:hint="새로운 비밀번호를 다시 입력해주세요."
+            android:inputType="textPassword"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="8dp"
+            android:singleLine="true"
+            android:lines="1"
+            app:layout_constraintTop_toBottomOf="@id/pwd_change_check_tv"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <Button
+        android:id="@+id/pwd_change_ok"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:text="@string/change"
+        android:textSize="16sp"
+        android:textColor="@color/white_text_color"
+        android:background="@color/primary_color"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
