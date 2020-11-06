@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="233f6d94-362a-4f45-9937-899ab5c03fca" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/glatalk_project/base/BaseChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/glatalk_project/base/BaseChat.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/glatalk_project/base/BaseFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/glatalk_project/base/BaseFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/glatalk_project/base/BaseView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/glatalk_project/base/BaseView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/glatalk_project/base/BaseView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/glatalk_project/base/BaseView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/glatalk_project/base/BaseView.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/glatalk_project/base/BaseViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/glatalk_project/base/BaseViewModel.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,7 +22,12 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <projects_view />
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
       </state>
     </system>
   </component>
