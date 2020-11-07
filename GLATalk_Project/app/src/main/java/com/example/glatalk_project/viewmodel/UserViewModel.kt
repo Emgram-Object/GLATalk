@@ -1,11 +1,15 @@
 package com.example.glatalk_project.viewmodel
 
+import androidx.lifecycle.MutableLiveData
 import com.example.glatalk_project.base.BaseViewModel
 import com.example.glatalk_project.model.UserModel
+import com.example.glatalk_project.network.data.request.UserRequest
 
 class UserViewModel (private val model: UserModel):BaseViewModel(){
 
-    fun add(userRequest:UserResponse){
+    val userRegist = MutableLiveData<Boolean>(false)
 
+    fun add(userRequest:UserRequest){
+    addDisposalble(pro)
     }
 }
