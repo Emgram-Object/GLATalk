@@ -55,16 +55,6 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava2:2.5.0"
     implementation "com.squareup.retrofit2:retrofit-mock:2.4.0"
 
-
-}
-buildscript {
-    ext.kotlin_version = '1.4.20-RC'
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
 }
 repositories {
     mavenCentral()

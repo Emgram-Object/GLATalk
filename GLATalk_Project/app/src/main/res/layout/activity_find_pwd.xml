@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/default_bg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bg_height"
+        android:background="@drawable/login_bg"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/logo"
+        app:layout_constraintBottom_toTopOf="@id/default_app_name"
+        app:layout_constraintLeft_toLeftOf="@id/default_bg"
+        app:layout_constraintRight_toRightOf="@id/default_bg" />
+
+    <TextView
+        android:id="@+id/default_app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="46dp"
+        android:text="GLA Talk"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/default_bg"
+        app:layout_constraintLeft_toLeftOf="@id/default_bg"
+        app:layout_constraintRight_toRightOf="@id/default_bg" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/layout_margin"
+        android:layout_marginRight="@dimen/layout_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/default_bg">
+
+        <TextView
+            android:id="@+id/find_pwd_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:text="@string/find_pwd"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/find_pwd_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            android:gravity="center"
+            android:text="@string/find_pwd_info"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/find_pwd_title" />
+
+        <EditText
+            android:id="@+id/find_pwd_id_et"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="68dp"
+            android:background="@drawable/white_rounded_square"
+            android:drawableLeft="@drawable/icon_id_nor"
+            android:drawablePadding="@dimen/layout_margin"
+            android:hint="@string/id"
+            android:paddingLeft="@dimen/layout_margin"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintTop_toBottomOf="@id/find_pwd_info" />
+
+        <Button
+            android:id="@+id/find_pwd_send"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/rounded_square"
+            android:text="@string/tmp_pwd_send"
+            android:textColor="@color/white_text_color"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/find_pwd_id_et" />
+
+        <Button
+            android:id="@+id/back_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/white_rounded_square"
+            android:text="@string/go_back"
+            android:textColor="@color/primary_color"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/find_pwd_send" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+
+    <color name="primary_color">#2788f3</color>
+    <color name="primary_alpha">#1A2788f3</color>
+    <color name="primary_dark_color">#3a559f</color>
+    <color name="white_text_color">#fefefe</color>
+    <color name="edit_round_color">#dbdbdb</color>
+    <color name="black2222">#222222</color>
+    <color name="black5050">#505055</color>
+    <color name="gray9999">#999999</color>
+    <color name="gray7f7f">#7f7f7f</color>
+    <color name="grayc1c1">#c1c1c1</color>
+    <color name="gray6061">#606162</color>
+    <color name="graye4e4">#e4e4e5</color>
+    <color name="grayf9f9">#f9f9f9</color>
+    <color name="gray868c">#868c9a</color>
+    <color name="grayf2f2">#f2f2f6</color>
+    <color name="gray9b9b">#9b9b9b</color>
+    <color name="grayfafa">#fafafa</color>
+    <color name="grayf4f7">#f4f7fb</color>
+    <color name="grayd8d8d9">#d8d8d9</color>
+    <color name="line_gray_color">#f0f0f0</color>
+
+    <color name="warning_color">#f54949</color>
+
+    <color name="square_dim_color">#b8d8f1</color>
+    <color name="main_tab_line">#a8a8a8</color>
 </resources>
