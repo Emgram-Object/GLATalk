@@ -8,7 +8,7 @@ import com.example.glatalk_project.network.data.request.UserRequest
 class UserViewModel (private val model: UserModel):BaseViewModel(){
 
     val userRegist = MutableLiveData<Boolean>(false)
-
+//pro 뭐임??
     fun add(userRequest:UserRequest){
     addDisposalble(pro)
     }
