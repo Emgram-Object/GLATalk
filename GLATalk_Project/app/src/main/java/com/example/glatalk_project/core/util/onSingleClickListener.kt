@@ -13,4 +13,5 @@ class OnSingleClickListenger(private val clickListenger: (View)-> Unit):View.OnC
             
         }
     }
+
 }

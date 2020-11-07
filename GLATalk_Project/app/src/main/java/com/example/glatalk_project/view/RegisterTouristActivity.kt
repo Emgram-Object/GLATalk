@@ -12,7 +12,15 @@ class RegisterTouristActivity : BaseView<ActivityRegistBinding,UserViewModel>(){
 
     override lateinit var viewModel: UserViewModel
 
-    override fun initView(){}
-    override fun initDataBinding(){}
-    override fun initListener(){}
+    override fun initView(){
+
+    }
+    override fun initDataBinding(){
+
+    }
+    override fun initListener(){
+
+    }
+
+
 }
