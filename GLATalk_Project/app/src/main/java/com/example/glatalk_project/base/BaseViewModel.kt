@@ -1,4 +1,7 @@
 package com.example.glatalk_project.base;
 
-public class BaseViewModel{
+import androidx.lifecycle.ViewModel
+
+public class BaseViewModel: ViewModel(){
+
 }
