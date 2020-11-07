@@ -8,7 +8,11 @@ import com.example.glatalk_project.viewmodel.UserViewModel
 class RegisterTouristActivity : BaseView<ActivityRegistBinding,UserViewModel>(){
 
     override val layoutResourceId: Int
-
         get() = R.layout.activity_regist
+
     override lateinit var viewModel: UserViewModel
+
+    override fun initView(){}
+    override fun initDataBinding(){}
+    override fun initListener(){}
 }
