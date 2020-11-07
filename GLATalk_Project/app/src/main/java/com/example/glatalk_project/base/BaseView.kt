@@ -6,7 +6,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 
 abstract class BaseView<T: ViewDataBinding, U: BaseViewModel>: AppCompatActivity(){
-
+    companion object{
+        var clickable = true
+    }
     lateinit var viewDataBinding: T
     abstract val layoutResourceId: Int
     abstract val viewModel: U
