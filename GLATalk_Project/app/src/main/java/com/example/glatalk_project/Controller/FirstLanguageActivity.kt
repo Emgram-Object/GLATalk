@@ -16,12 +16,33 @@ class FirstLanguageActivity: AppCompatActivity(){
             startActivity(intent)
         }
 
-        lang_korea.setOnClickListener {  }
+        lang_korea.setOnClickListener {
+            lang_korea.setSelected(!lang_korea.isSelected())
+            lang_english.isSelected = false
+            lang_china.isSelected = false
+            lang_japan.isSelected = false
 
-        lang_english.setOnClickListener {  }
+        }
 
-        lang_japan.setOnClickListener {  }
+        lang_english.setOnClickListener {
+            lang_english.setSelected(!lang_korea.isSelected())
+            lang_korea.isSelected = false
+            lang_china.isSelected = false
+            lang_japan.isSelected = false
+        }
 
-        lang_china.setOnClickListener {  }
+        lang_japan.setOnClickListener {
+            lang_japan.setSelected(!lang_korea.isSelected())
+            lang_english.isSelected = false
+            lang_china.isSelected = false
+            lang_korea.isSelected = false
+        }
+
+        lang_china.setOnClickListener {
+            lang_china.setSelected(!lang_korea.isSelected())
+            lang_english.isSelected = false
+            lang_korea.isSelected = false
+            lang_japan.isSelected = false
+        }
     }
 }
