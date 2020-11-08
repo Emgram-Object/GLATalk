@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.glatalk_project.R
+import kotlinx.android.synthetic.main.activity_regist.*
 
 
 class RegistActivity:AppCompatActivity() {
@@ -16,15 +17,18 @@ class RegistActivity:AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_regist)
-        changeUser()
-    }
-    inner class changeUser:View.OnClickListener{
-        override fun onClick(v: View?) {
-            when(v?.id){
-                R.id.reg_tour_radio_bnt -> changeTouristFragment()
-                R.id.reg_guide_radio_bnt -> changeGuideFragement()
-            }
-        }
+
+        touristFragment = registTouristFragment()
+        guideFragment = registGuideFragment()
+
+        reg_tour_radio_bnt.setOnClickListener(View.OnClickListener {
+            reg_guide_radio_bnt.isChecked = false
+            changeTouristFragment()
+        })
+        reg_guide_radio_bnt.setOnClickListener(View.OnClickListener {
+            reg_tour_radio_bnt.isChecked = false
+            changeGuideFragement()
+        } )
     }
 
     fun changeTouristFragment(){
