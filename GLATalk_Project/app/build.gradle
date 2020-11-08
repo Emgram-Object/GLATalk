@@ -44,7 +44,6 @@ dependencies {
     implementation "androidx.legacy:legacy-support-v4:1.0.0"
     implementation "com.google.android.material:material:1.1.0"
 
-
     // rxjava
     implementation "io.reactivex.rxjava2:rxjava:2.2.0"
     implementation "io.reactivex.rxjava2:rxandroid:2.0.2"
@@ -54,18 +53,4 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:2.5.0"
     implementation "com.squareup.retrofit2:adapter-rxjava2:2.5.0"
     implementation "com.squareup.retrofit2:retrofit-mock:2.4.0"
-
-
-}
-buildscript {
-    ext.kotlin_version = '1.4.20-RC'
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
-}
-repositories {
-    mavenCentral()
 }
