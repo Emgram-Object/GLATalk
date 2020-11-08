@@ -3,7 +3,7 @@
     <string name="app_name">GLA Talk</string>
     <string name="preference">GLA Talk</string>
 
-    <string name="welcome_select_lang">환영합니다!\n사용하실 언어를 선택해주세요.</string>
+    <string name="welcome_select_lang">Welcome!\n Please select a language.</string>
     <string name="permission_title">[GLA Talk] 접근권한 안내</string>
     <string name="permission_info">GLA Talk에서는 다음과 같은 권한이 필요합니다. 원활한 서비스 이용을 위해 권한을 허용해주시길 바랍니다.</string>
     <string name="permission_info_sub">접근 권한은 동의하지 않아도 서비스 이용이 가능하나, 해당 권한이 필요한 기능은 서비스 이용이 제한 될 수 있습니다.</string>
