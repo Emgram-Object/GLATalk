@@ -59,6 +59,7 @@
                 android:layout_marginBottom="8dp"
                 android:singleLine="true"
                 android:lines="1"
+                android:inputType="text"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/my_info_name"
@@ -96,6 +97,7 @@
                 android:layout_marginBottom="8dp"
                 android:singleLine="true"
                 android:lines="1"
+                android:inputType="text"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/my_info_english_name"
@@ -145,6 +147,7 @@
                 android:layout_marginBottom="8dp"
                 android:singleLine="true"
                 android:lines="1"
+                android:inputType="text"s
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/my_info_phone"
