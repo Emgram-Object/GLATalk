@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/2063968418/GLATalk_Project.iml" filepath="$PROJECT_DIR$/.idea/modules/2063968418/GLATalk_Project.iml" group="GLATalk_Project" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-397333689/GLATalk_Project-GLATalk_Project.iml" filepath="$PROJECT_DIR$/.idea/modules/-397333689/GLATalk_Project-GLATalk_Project.iml" group="GLATalk_Project" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/GLATalk_Project-app.iml" filepath="$PROJECT_DIR$/.idea/modules/GLATalk_Project-app.iml" group="GLATalk_Project/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/GLATalk_Project.app.iml" filepath="$PROJECT_DIR$/.idea/modules/GLATalk_Project.app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app.iml" group="GLATalk_Project/app" />
-
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1058266426/project.GLATalk_Project.iml" filepath="$PROJECT_DIR$/.idea/modules/-1058266426/project.GLATalk_Project.iml" />
     </modules>
   </component>
 </project>
