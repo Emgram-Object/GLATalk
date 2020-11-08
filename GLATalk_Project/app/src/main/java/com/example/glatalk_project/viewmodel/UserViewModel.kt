@@ -9,6 +9,7 @@ import com.example.glatalk_project.network.data.request.UserRequest
 class UserViewModel (private val model: UserModel):BaseViewModel(){
 
     val userRegist = MutableLiveData<Boolean>(false)
+    val isCheckedPwd = MutableLiveData<Boolean>(false)
 
     private val userModelImpl = UserModelImpl()
 }

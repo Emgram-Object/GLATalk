@@ -11,22 +11,19 @@ import com.example.glatalk_project.databinding.ActivityRegistBinding
 import com.example.glatalk_project.viewmodel.UserViewModel
 
 class RegisterActivity : BaseFragment<ActivityRegistBinding,UserViewModel>(){
-    
+
 
     override val layoutResourceId: Int
         get() = R.layout.activity_regist
 
     override lateinit var viewModel: UserViewModel
 
-    private var isCheckedAd: Boolean = false
     private lateinit var countryAdapter: CountryAdapter
     private var selectedCountry: Con.NationalCode? = null
 
     override fun initView(){
         viewModel = ViewModelProvider(this, VMFactory()).get(UserViewModel::class.java)
 
-
-        isCheckedAd = intent.getBooleanExtra("",false)
 
 //        countryAdapter = CountryAdapter()
 //        country_rv.adapter = countryAdapter
@@ -35,7 +32,7 @@ class RegisterActivity : BaseFragment<ActivityRegistBinding,UserViewModel>(){
 
     }
     override fun initListener(){
-        reg_guide_radio_bnt.
+
     }
 
 
