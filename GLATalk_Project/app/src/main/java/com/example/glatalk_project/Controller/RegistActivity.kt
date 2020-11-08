@@ -16,9 +16,9 @@ class RegistActivity:AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_regist)
-        R.id.reg_tour_radio_bnt
+        changeUser()
     }
-    inner class changeGuide:View.OnClickListener{
+    inner class changeUser:View.OnClickListener{
         override fun onClick(v: View?) {
             when(v?.id){
                 R.id.reg_tour_radio_bnt -> changeTouristFragment()
