@@ -1,4 +1,8 @@
 package com.example.glatalk_project.Controller
 
-class RegistActivity {
+import androidx.fragment.app.Fragment
+
+
+class RegistActivity:Fragment() {
+
 }
