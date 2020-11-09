@@ -11,7 +11,7 @@ class TouristInfoChangeActivity:AppCompatActivity(){
 
     override fun onCreate(savedInstanceState:Bundle?){
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_my_info)
+        setContentView(R.layout.activity_my_info_change)
 
         //기존 정보 서버에서 받아와서 표시
 
@@ -20,11 +20,6 @@ class TouristInfoChangeActivity:AppCompatActivity(){
         val user_email = findViewById<EditText>(R.id.my_info_email_et).text.toString()
 
        // user_name.setText("")
-        /*
-        val user_name = my_info_name_et.text.toString()
-        val mobile_num = Phone.text.toString()
-        val user_email = Email.text
-        */
         val btn_Scene = findViewById<Button>(R.id.my_info_pwd_change_btn)
 
         //패스워드 바꾸는 Activity로 넘어가기
