@@ -5,35 +5,35 @@
     android:id="@+id/my_info_parent_cl"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <!--<com.emgram.kr.tmaas.jejutestguideapp.core.custom.view.CommonTitleView
+   <!-- <com.emgram.kr.tmaas.jejutestguideapp.core.custom.view.CommonTitleView
         android:id="@+id/common_title_my_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"/>
-    <com.emgram.kr.tmaas.jejutestguideapp.core.custom.view.TMImageView
+        app:layout_constraintTop_toTopOf="parent"/>-->
+    <ImageView
         android:id="@+id/my_info_profile_iv"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginTop="30dp"
-        app:bind_circle_image="@{profileData.profile_url}"
+        android:src="@drawable/icon_profile_l"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/common_title_my_info"/>-->
+        app:layout_constraintTop_toBottomOf="@id/common_title_my_info"/>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/my_info_cl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/layout_margin"
         android:layout_marginRight="@dimen/layout_margin"
-        app:layout_constraintTop_toTopOf="parent">
-       <!-- app:layout_constraintTop_toBottomOf="@id/my_info_profile_iv"-->
+        app:layout_constraintTop_toBottomOf="@id/my_info_profile_iv">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/my_info_name_cl"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="30dp"
             android:paddingLeft="17dp"
             android:paddingRight="17dp"
             android:background="@drawable/edit_selector"
@@ -213,15 +213,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <Button
-        android:id="@+id/modify_ok_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/primary_color"
-        android:text="@string/btn_modified"
-        android:textSize="16sp"
-        android:textColor="@color/white_text_color"
-        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
