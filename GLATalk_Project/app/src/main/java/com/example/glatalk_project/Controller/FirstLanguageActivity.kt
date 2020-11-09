@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.activity_language.*
 
 class FirstLanguageActivity : AppCompatActivity() {
 
+    //나중에 data class에 넣어주세요
     private val korLanguageCode: String = "ko"
     private val engLanguageCode: String = "en"
     private val jpnLanguageCode: String = "ja"
@@ -23,6 +24,7 @@ class FirstLanguageActivity : AppCompatActivity() {
         next_btn.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
+            recreate()
         }
 
         lang_korea.setOnClickListener {
@@ -32,7 +34,6 @@ class FirstLanguageActivity : AppCompatActivity() {
             lang_japan.isSelected = false
 
             LocaleHelper.setLocale(this, korLanguageCode)
-            recreate()
 
         }
 
@@ -43,7 +44,6 @@ class FirstLanguageActivity : AppCompatActivity() {
             lang_japan.isSelected = false
 
             LocaleHelper.setLocale(this, engLanguageCode)
-            recreate()
         }
 
         lang_japan.setOnClickListener {
@@ -53,7 +53,6 @@ class FirstLanguageActivity : AppCompatActivity() {
             lang_korea.isSelected = false
 
             LocaleHelper.setLocale(this, jpnLanguageCode)
-            recreate()
         }
 
         lang_china.setOnClickListener {
@@ -63,7 +62,6 @@ class FirstLanguageActivity : AppCompatActivity() {
             lang_japan.isSelected = false
 
             LocaleHelper.setLocale(this, chLanguageCode)
-            recreate()
         }
     }
 
