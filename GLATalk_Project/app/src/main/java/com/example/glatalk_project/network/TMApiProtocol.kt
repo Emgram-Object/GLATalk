@@ -1,8 +1,9 @@
 package com.example.glatalk_project.network
 
-<<<<<<< Updated upstream:GLATalk_Project/app/src/main/java/com/example/glatalk_project/network/TMApiProtocol.kt
+import retrofit2.Retrofit
+
 interface TMApiProtocol {
-=======
+
 import com.example.glatalk_project.BuildConfig
 import com.example.glatalk_project.R
 import okhttp3.OkHttpClient
@@ -12,7 +13,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class MainApiServer : BaseNetwork (){
+class MainApiServer : BaseNetwork () {
     override fun createRetrofit(): Retrofit {
         val interceptor = HttpLoggingInterceptor()  //okhttp3 로그 출력용 인터셉터
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -45,5 +46,4 @@ class MainApiServer : BaseNetwork (){
                 return _api!!
             }
     }
->>>>>>> Stashed changes:GLATalk_Project/app/src/main/java/com/example/glatalk_project/network/MainApiServer.kt
 }
