@@ -20,6 +20,8 @@
         </activity>
         <!--<activity android:name=".PwdChangeActivity"/>-->
         <!--패스워드 바꾸는 액티비티 넣어주기-->
+        <!--<activity android:name=".Controller.InfoChangeActivity"/>-->
+        <activity android:name=".Controller.MyInfoActivity"/>
     </application>
 
 </manifest>

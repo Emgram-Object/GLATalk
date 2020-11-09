@@ -7,7 +7,7 @@ import com.example.glatalk_project.R
 import android.widget.EditText
 import android.widget.Button
 
-class TouristInfoChangeActivity:AppCompatActivity(){
+class InfoChangeActivity:AppCompatActivity(){
 
     override fun onCreate(savedInstanceState:Bundle?){
         super.onCreate(savedInstanceState)
@@ -20,13 +20,9 @@ class TouristInfoChangeActivity:AppCompatActivity(){
         val user_email = findViewById<EditText>(R.id.my_info_email_et).text.toString()
 
        // user_name.setText("")
-        val btn_Scene = findViewById<Button>(R.id.my_info_pwd_change_btn)
+        val btn_SaveInfo = findViewById<Button>(R.id.modify_ok_btn)
+        btn_SaveInfo.setOnClickListener{
 
-        //패스워드 바꾸는 Activity로 넘어가기
-        btn_Scene.setOnClickListener{
-            //startActivity(Intent(this, PwdChangeActivity::class.java))
-            //비밀번호 변경 액티비티 만들면 넣어주기
-            finish()
         }
     }
 
