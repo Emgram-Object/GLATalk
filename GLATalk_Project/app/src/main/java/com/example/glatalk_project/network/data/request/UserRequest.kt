@@ -10,4 +10,4 @@ data class UserRequest (
         val guide_info:String,
         val guide_time:String,
         val ad_agree:Boolean
-)
+)//VO (userRequest를 위한)
