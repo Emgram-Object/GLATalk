@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b3c30f52-7f28-4370-8f56-c7432a871d89" name="Default Changelist" comment="" />
+    <list default="true" id="b3c30f52-7f28-4370-8f56-c7432a871d89" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/glatalk_project/constant/C.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/glatalk_project/network/BaseNetwork.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/glatalk_project/network/BaseResponse.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/glatalk_project/network/TMApiInterceptor.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/glatalk_project/network/TMApiProtocol.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/glatalk_project/network/data/networkManager.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/glatalk_project/network/data/request/UserRequest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/glatalk_project/network/error/AppError.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/glatalk_project/util/PreferenceUtil.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_XL_API_29" />
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
