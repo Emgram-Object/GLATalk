@@ -1,11 +1,13 @@
 package com.example.galtalk_project.Controller
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.R
 import android.widget.EditText
 import android.widget.Button
+import android.widget.Toast
 
 class InfoChangeActivity:AppCompatActivity(){
 
@@ -15,6 +17,7 @@ class InfoChangeActivity:AppCompatActivity(){
 
         //기존 정보 서버에서 받아와서 표시
         //usermodel 머지 후
+
         val user_name = findViewById<EditText>(R.id.my_info_name_et).text.toString()
         val mobile_num = findViewById<EditText>(R.id.my_info_phone_et).text.toString()
         val user_email = findViewById<EditText>(R.id.my_info_email_et).text.toString()
@@ -22,6 +25,23 @@ class InfoChangeActivity:AppCompatActivity(){
        // user_name.setText("")
         val btn_SaveInfo = findViewById<Button>(R.id.modify_ok_btn)
         btn_SaveInfo.setOnClickListener{
+
+        }
+
+        //입력 비어있으면 toast? 다른 방법 없나
+        fun ButtonDisable(modify_ok_btn:Button){
+            if(TextUtils.isEmpty(user_name)){
+                modify_ok_btn?.isEnabled = false
+                Toast.makeText(this, "이름이 비어있습니다.", Toast.LENGTH_SHORT).show()
+            }
+            if(TextUtils.isEmpty(mobile_num)){
+                modify_ok_btn?.isEnabled = false
+                Toast.makeText(this, "전화번호가 비어있습니다.", Toast.LENGTH_SHORT).show()
+            }
+            if(TextUtils.isEmpty(user_email)){
+                modify_ok_btn?.isEnabled = false
+                Toast.makeText(this, "이메일이 비어있습니다.", Toast.LENGTH_SHORT).show()
+            }
 
         }
     }
