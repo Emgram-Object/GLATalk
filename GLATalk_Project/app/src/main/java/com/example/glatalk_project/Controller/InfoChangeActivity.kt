@@ -14,7 +14,7 @@ class InfoChangeActivity:AppCompatActivity(){
         setContentView(R.layout.activity_my_info_change)
 
         //기존 정보 서버에서 받아와서 표시
-
+        //usermodel 머지 후
         val user_name = findViewById<EditText>(R.id.my_info_name_et).text.toString()
         val mobile_num = findViewById<EditText>(R.id.my_info_phone_et).text.toString()
         val user_email = findViewById<EditText>(R.id.my_info_email_et).text.toString()
@@ -25,7 +25,6 @@ class InfoChangeActivity:AppCompatActivity(){
 
         }
     }
-
 
 
     //후에 버튼 누르면 서버로 넘겨주기

@@ -14,6 +14,7 @@ class MyInfoActivity:AppCompatActivity() {
 
         //common title 수정버튼 누르면 넘어감
 
+
         //기존 서버에서 받아와서 editText에 표시
 
        //비밀번호 변경
