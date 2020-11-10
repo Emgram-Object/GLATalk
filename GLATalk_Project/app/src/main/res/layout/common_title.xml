@@ -31,14 +31,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
+        <!--이거 common title 코드에서 기본적으로 숨겨놓고 info 창에서만 visible 하기
+                그리고 누르면 넘어오도록 -->
         <TextView
-            android:id="@+id/modify"
+            android:id="@+id/modify_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:textColor="@color/primary_color"
             android:background="@android:color/transparent"
             android:layout_marginRight="19dp"
+            android:text="수정"
             android:gravity="center"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
