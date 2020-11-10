@@ -15,4 +15,4 @@ open class BaseResponse(
     override fun errorMessage(): String? {
         return desc
     }
-}
+}  // BaseNetwork의 interface를 상속받은 클래스 -> 오버라이딩

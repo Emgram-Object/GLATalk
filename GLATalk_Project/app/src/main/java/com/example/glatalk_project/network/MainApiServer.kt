@@ -23,15 +23,15 @@ class MainApiServer : BaseNetwork () {
         }.build()
 
         return Retrofit.Builder()
-//             .baseUrl("http://211.215.19.76:1013/api")
+                .baseUrl("http://211.215.19.76:1013/api")
                 .client(client)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-    }
+    }//retrofit을 호출하기 위한 부분 정의
 
     companion object {
-        private var _api: TMApiProtocol? = null
+        private var _api: TMApiProtocol? = null  //_api는 TMApiProtocol을 상속받음, _api는 null이 가능한 타입임
 
         val API: TMApiProtocol
             get() {
@@ -41,6 +41,8 @@ class MainApiServer : BaseNetwork () {
                             TMApiProtocol::class.java)
                 }
                 return _api!!
-            }
-    }
+            } //
+    }//companion object: 정적 변수,함수 를 선언
 }
+
+
