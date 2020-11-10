@@ -3,49 +3,29 @@
     <string name="app_name">GLA Talk</string>
     <string name="preference">GLA Talk</string>
 
-    <string name="welcome_select_lang">Welcome!\n Please select a language.</string>
-    <string name="permission_title">[GLA Talk] 접근권한 안내</string>
-    <string name="permission_info">GLA Talk에서는 다음과 같은 권한이 필요합니다. 원활한 서비스 이용을 위해 권한을 허용해주시길 바랍니다.</string>
-    <string name="permission_info_sub">접근 권한은 동의하지 않아도 서비스 이용이 가능하나, 해당 권한이 필요한 기능은 서비스 이용이 제한 될 수 있습니다.</string>
-    <string name="popup_alarm">알림</string>
-    <string name="popup_alarm_info">여정 및 예약 푸시 알림, 오디오 서비스 알림, 나의 문의 내역 푸시알림</string>
-    <string name="popup_location">위치정보</string>
-    <string name="popup_location_info">사용자 위치 확인, 목적지 검색, 여정 관련 컨텐츠 입력</string>
-    <string name="popup_camera">카메라</string>
-    <string name="popup_camera_info">여정 등록, 프로필 사진 등록 및 변경</string>
-    <string name="popup_gallery">갤러리</string>
-    <string name="popup_gallery_info">프로필 사진 등록 및 변경</string>
+    <string name="welcome_select_lang">Welcome!\nPlease select a language.</string>
     <string name="find_pwd">비밀번호 찾기</string>
     <string name="find_pwd_info">가입하신 Email 주소를 입력해주세요.\n입력하신 메일로 임시 비밀번호를 보내드립니다.</string>
-    <string name="terms_apply">이용약관 동의</string>
-    <string name="permission_item">접근권한 항목</string>
-    <string name="terms_all_apply">전체 약관 및 유의사항에 동의합니다.</string>
-    <string name="terms_14years_apply">(필수) 만 14세 이상 이용</string>
-    <string name="terms_service_apply">(필수) 서비스 이용약관</string>
-    <string name="terms_location_apply">(필수) 위치 기반 서비스 이용약관</string>
-    <string name="terms_personal_apply">(필수) 개인정보 처리 방침</string>
-    <string name="terms_advertise_apply">(선택) 광고성 정보 수신 동의</string>
-    <string name="terms_regist_title">약관 동의</string>
 
-    <string name="id">아이디(E-mail)</string>
-    <string name="pwd">비밀번호</string>
-    <string name="pwd_auto">로그인 상태 유지</string>
-    <string name="login">로그인</string>
-    <string name="forgot_pwd">비밀번호가 기억나지 않으세요?</string>
-    <string name="not_yet_user">아직 회원이 아니신가요?</string>
-    <string name="regist">회원가입</string>
-    <string name="tmp_pwd_send">임시 비밀번호 발송</string>
-    <string name="tmp_pwd_dialog_title">임시비밀번호</string>
+    <string name="id">ID(E-mail)</string>
+    <string name="pwd">Password</string>
+    <string name="pwd_auto">Keep me logged in</string>
+    <string name="login">Log in</string>
+    <string name="forgot_pwd">Forgot your password?</string>
+    <string name="not_yet_user">Not a member yet?</string>
+    <string name="regist">Sign up</string>
+    <string name="tmp_pwd_send">Send a temporary password</string>
+    <string name="tmp_pwd_dialog_title">Temporary password</string>
     <string name="tmp_pwd_dialog_msg">가입하신 E-mail로 임시비밀번호가 발송되었습니다.\n임시비밀번호로 로그인 후,\n비밀번호 변경하시길 바랍니다.</string>
     <string name="mail_cert">메일 인증을 완료해주세요!</string>
-    <string name="mail_cert_send">인증 메일을 보내드렸습니다.\n메일인증하고 Mobilpack을 시작해보세요!</string>
+    <string name="mail_cert_send">인증 메일을 보내드렸습니다.\n메일인증하고 GLA Talk을 시작해보세요!</string>
     <string name="go_back_login">로그인화면으로 돌아가기</string>
-    <string name="go_back">이전 화면으로 가기</string>
+    <string name="go_back">Go to previous screen</string>
     <string name="country">국가</string>
-    <string name="email_input">E-mail을 입력해주세요.</string>
-    <string name="pwd_input_more">비밀번호를 한 번 더 입력해주세요.</string>
-    <string name="welcome_register">환영합니다!</string>
-    <string name="welcome_register_complete">회원가입이 완료되었습니다.</string>
+    <string name="email_input">Insert E-mail.</string>
+    <string name="pwd_input_more">Please enter the password again.</string>
+    <string name="welcome_register">Welcome!</string>
+    <string name="welcome_register_complete">You\'ve signed up.</string>
     <string name="do_login">로그인 하기</string>
     <string name="login_first">로그인 후 이용해주세요.</string>
     <string name="regist_title">사용자 정보</string>
@@ -57,27 +37,20 @@
     <string name="country_japan">일본</string>
     <string name="country_select_title">국가를 선택해주세요.</string>
 
-    <string name="popup_deal_terms">거래약관 동의</string>
-    <string name="popup_photo_add">사진 등록</string>
-    <string name="popup_leave">계정 탈퇴</string>
-    <string name="popup_do_leave">계정 탈퇴하기</string>
-
-    <string name="btn_ok">확인</string>
-    <string name="btn_cancel">취소</string>
+    <string name="btn_ok">Ok</string>
+    <string name="btn_cancel">Cancel</string>
     <string name="btn_apply">허용</string>
     <string name="btn_not_apply">허용안함</string>
     <string name="btn_close">닫기</string>
     <string name="btn_setting">설정</string>
     <string name="btn_delete">삭제</string>
-    <string name="btn_next">다음</string>
+    <string name="btn_next">Next</string>
     <string name="btn_modify">수정하기</string>
-    <string name="btn_modified">변경완료</string>
+    <string name="btn_modified">변경하기</string>
     <string name="btn_write">작성완료</string>
     <string name="btn_send">보내기</string>
     <string name="btn_regist">등록하기</string>
-    <string name="btn_pwd_change">비밀번호 변경하기</string>
-
-    <string name="alert_push_setting_msg_title">알림항목</string>
+    <string name="btn_pwd_change">Change password</string>
 
     <string name="home">홈</string>
     <string name="my">MY</string>
@@ -87,19 +60,15 @@
 
     <string name="usage">이용안내</string>
     <string name="detail_info">상세정보</string>
-    <string name="journey_calendar_start">시작</string>
-    <string name="journey_calendar_end">종료</string>
-    <string name="go_back_page">이전화면</string>
-
-    <string name="reserve_after_service_info_6">- 기타 문의 사항은 [MY>문의하기]메뉴를 이용해주세요.</string>
+    <string name="go_back_page">Go to previous screen</string>
 
     <string name="my_account_manage">계정관리</string>
-    <string name="my_account_name">이름</string>
+    <string name="my_account_name">Name</string>
     <string name="name_hint">홍길동</string>
     <string name="phone_hint">휴대폰번호를 입력해주세요.</string>
     <string name="guide_info_hint">한라산, 제주시 관광 정보 제공 가능</string>
     <string name="time_hint">12:00~1:00, 15:00~17:00</string>
-    <string name="my_account_phone">휴대폰번호</string>
+    <string name="my_account_phone">Mobile phone number</string>
     <string name="my_account_guide_info">가이드 정보 (주요 관광 제공 정보)</string>
     <string name="my_account_time">대화 가능 시간</string>
     <string name="my_account_invalidate">[%s] 항목이 잘못 입력 되었습니다.\n확인 후 다시 입력 바랍니다.</string>
@@ -109,64 +78,27 @@
     <string name="contact_message">메세지보내기</string>
     <string name="leave_account">계정을 탈퇴하시겠습니까?\n삭제된 계정은 복구가 불가능합니다.</string>
 
-    <string name="btn_close_journey">비공개</string>
-
-    <string name="terms_title">약관 및 정책</string>
-    <string name="terms_service">서비스 이용약관</string>
-    <string name="terms_personal">개인정보 처리방침</string>
-    <string name="terms_location">위치기반 서비스 이용약관</string>
-
-    <string name="app_version">앱 버전</string>
-    <string name="logout">로그아웃</string>
-    <string name="service_intro">서비스 소개</string>
-    <string name="business_info">사업자 정보 확인</string>
+    <string name="app_version">App version</string>
+    <string name="logout">Log out</string>
 
     <string name="version_title">버전 정보</string>
     <string name="version_latest">현재 최신 버전 사용중</string>
     <string name="version_update_latest">최신 버전으로 업데이트 하세요.</string>
-    <string name="notice">공지사항</string>
-    <string name="importance">중요</string>
-    <string name="notice_last_modify_dt">최종 수정일</string>
-    <string name="notice_create_dt">최초 등록일</string>
-    <string name="notice_regist">등록 </string>
-    <string name="notice_views">/ 조회수</string>
-    <string name="notice_detail_attachment">첨부파일 %s건</string>
-    <string name="notice_detail_file_size">(%dMB)</string>
+
     <string name="pwd_change">비밀번호 변경</string>
     <string name="pwd_change_verify">영문, 숫자를 포함 8자 이상으로 입력해주세요.</string>
     <string name="pwd_change_new_diff">새로운 비밀번호와 일치하지 않습니다.\n확인 후 다시 입력해주세요.</string>
     <string name="regist_pwd_new_diff">비밀번호가 서로 일치하지 않습니다.\n확인 후 다시 입력해주세요.</string>
-
     <string name="current_pwd">현재 비밀번호</string>
-    <string name="new_pwd">새 비밀번호</string>
+    <string name="new_pwd">New password</string>
     <string name="pwd_check">비밀번호 확인</string>
     <string name="change">변경하기</string>
 
-    <string name="category">카테고리</string>
-    <string name="question">문의하기</string>
-    <string name="category_select">카테고리를 선택해주세요.</string>
-    <string name="question_title">문의 제목</string>
-    <string name="question_title_input">제목을 입력해주세요.</string>
-    <string name="question_body">문의 내용</string>
-    <string name="question_body_input">문의하실 내용을 입력해주세요.</string>
-    <string name="question_regist">문의 등록</string>
-    <string name="question_my_list">나의 문의 내역</string>
-    <string name="question_detail">문의 상세</string>
-    <string name="question_delete_all">전체 문의를 삭제하시겠습니까?</string>
-    <string name="question_delete_one">선택한 문의를 삭제하시겠습니까?</string>
-    <string name="question_add">추가 문의 내용</string>
-    <string name="question_add_input">추가 문의하실 내용을 입력해주세요.</string>
-    <string name="question_add_btn">추가 문의하기</string>
-    <string name="my_setting_title">환경설정</string>
+    <string name="my_setting_title">Environment setting</string>
     <string name="my_setting_lang">선택한 언어로 설정 변경하시겠습니까?\n언어 설정 적용을 위해 앱이 재실행됩니다.</string>
-    <string name="my_setting_lang_title">언어설정</string>
+    <string name="my_setting_lang_title">Language setting</string>
     <string name="version_update">업데이트</string>
     <string name="my_setting_alarm">알림 설정</string>
-    <string name="my_setting_question_alarm">문의 알림</string>
-    <string name="my_setting_question_info">문의에 대한 답변 등록 시 안내해드립니다.</string>
-    <string name="my_setting_advertise_alarm">광고성 정보 알림 수신</string>
-    <string name="my_setting_advertise_info">여행 일정에 도움이 될 정보(광고성 포함)를 알려드립니다.</string>
-
 
     <string name="country_select">국가를 선택해주세요.</string>
 
