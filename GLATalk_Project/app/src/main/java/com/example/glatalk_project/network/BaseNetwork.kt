@@ -1,6 +1,4 @@
 package com.example.glatalk_project.network
-
-import com.example.glatalk_project.Model.UserDAO
 import com.example.glatalk_project.network.error.AppError
 import io.reactivex.Single
 import io.reactivex.subjects.SingleSubject

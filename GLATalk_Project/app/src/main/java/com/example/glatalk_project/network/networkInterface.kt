@@ -1,8 +1,10 @@
 package com.example.glatalk_project.network
 
+import android.app.DownloadManager
 import com.example.glatalk_project.network.data.request.LangRequest
 import com.example.glatalk_project.network.data.request.LoginRequest
 import com.example.glatalk_project.network.data.response.LoginResponse
+import okhttp3.Request
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.http.Body
@@ -10,7 +12,7 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
 
-interface TMApiProtocol {
+interface networkInterface {
     /**
      * 언어설정
      */
@@ -27,9 +29,9 @@ interface TMApiProtocol {
 
     /**
      * 로그아웃 ..로그아웃은 프로토콜이 없나..?
-     */
-    @GET("/v1/user/logout")
-    fun logout(@Body  )
+//     */
+//    @GET("/v1/user/logout")
+//    fun logout(@Body request: LangRequest  )
 
 
     /**

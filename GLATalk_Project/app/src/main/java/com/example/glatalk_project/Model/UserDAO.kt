@@ -1,57 +1,61 @@
 package com.example.glatalk_project.Model
 
 import android.util.Log
-import com.example.glatalk_project.constant.C
+import com.example.glatalk_project.network.ApiServer
 import com.example.glatalk_project.network.BaseResponse
-import com.example.glatalk_project.network.MainApiServer
 import com.example.glatalk_project.network.data.request.LangRequest
 import com.example.glatalk_project.network.data.request.LoginRequest
 import com.example.glatalk_project.network.data.request.PwdFindRequest
 import com.example.glatalk_project.network.data.request.UserRequest
 import com.example.glatalk_project.network.data.response.LoginResponse
 import com.example.glatalk_project.network.data.response.ProfileResponse
-import com.example.glatalk_project.network.error.AppError
-import com.example.glatalk_project.util.PreferenceUtil
 import io.reactivex.Single
 import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 interface UserIntDAO{
-    fun login(loginRequest: LoginRequest):Single<LoginResponse>
-    fun findPwd(findRequest: PwdFindRequest):Single<BaseResponse>
-    fun add(userRequest: UserRequest):Single<BaseResponse>
-    fun userLanguage(request: LangRequest):Single<BaseResponse>
-    fun userDetail():Single<ProfileResponse>
+    fun login(loginRequest: LoginRequest):Call<LoginResponse>
+    fun findPwd(findRequest: PwdFindRequest):Call<BaseResponse>
+    fun add(userRequest: UserRequest):Call<BaseResponse>
+    fun userLanguage(request: LangRequest):Call<BaseResponse>
+    fun userDetail():Call<ProfileResponse>
 }
 
 
-class UserDAO:UserIntDAO {
-    override fun login(loginRequest: LoginRequest): Single<LoginResponse> {
-        return MainApiServer.API.login(loginRequest).
+object UserDAO {
+    var apiServer:UserIntDAO
+    init {
+       apiServer =  ApiServer.retrofit.create(UserIntDAO::class.java)
     }
-}
-//    var accessToken: String? =""
-//    var user_id:String?=""
-//    var country_cd:String =""
-//    var language_code:String =""
-//    set(lang) {
-//        PreferenceUtil.putStringSync(C.Preference.SELECTED_LANGUAGE,lang)
-//        field = lang
-//        Log.d("UserDAO","lang: "+lang)
-//    }
-//    init {
-//        load()
-//    }
-//    private fun load(){
-//        language_code = PreferenceUtil.getString(C.Preference.SELECTED_LANGUAGE)
+
+    fun login(loginRequest: LoginRequest, callback: Callback<LoginResponse>){
+        apiServer.login(loginRequest).enqueue(callback)
+        apiServer.login(loginRequest).enqueue(object : Callback<LoginResponse>{
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
+
+//    override fun findPwd(findRequest: PwdFindRequest): Single<BaseResponse> {
+//        TODO("Not yet implemented")
 //    }
 //
-//    companion object{
-//        private var _instance:UserDAO?=null
-//        val instance:UserDAO
-//        get() {
-//            if (_instance==null){
-//                _instance = UserDAO()
-//            }
-//            return _instance!!
-//        }
+//    override fun add(userRequest: UserRequest): Single<BaseResponse> {
+//        TODO("Not yet implemented")
 //    }
+//
+//    override fun userLanguage(request: LangRequest): Single<BaseResponse> {
+//        TODO("Not yet implemented")
+//    }
+//
+//    override fun userDetail(): Single<ProfileResponse> {
+//        TODO("Not yet implemented")
+//    }
+}

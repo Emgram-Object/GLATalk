@@ -2,7 +2,6 @@ package com.example.glatalk_project.network
 
 
 import com.example.glatalk_project.BuildConfig
-import com.example.glatalk_project.R
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -23,7 +22,7 @@ class MainApiServer : BaseNetwork () {
         }.build()
 
         return Retrofit.Builder()
-                .baseUrl("http://211.215.19.76:1013/api")
+                .baseUrl("http://211.215.19.77:1102/")
                 .client(client)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
@@ -31,14 +30,14 @@ class MainApiServer : BaseNetwork () {
     }//retrofit을 호출하기 위한 부분 정의
 
     companion object {
-        private var _api: TMApiProtocol? = null  //_api는 TMApiProtocol을 상속받음, _api는 null이 가능한 타입임
+        private var _api: networkInterface? = null  //_api는 TMApiProtocol을 상속받음, _api는 null이 가능한 타입임
 
-        val API: TMApiProtocol
+        val API: networkInterface
             get() {
                 if (_api == null) {
                     val network = MainApiServer()
                     _api = network.retrofit.create(
-                            TMApiProtocol::class.java)
+                            networkInterface::class.java)
                 }
                 return _api!!
             } //
