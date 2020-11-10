@@ -15,14 +15,15 @@ class TMApiInterceptor : Interceptor {
 //        MainApplication.application?.let {
 //            if (!request.url().host().contains(it.getString(R.string.base_url))) {
 //                return chain.proceed(request)
-//            } else {
-        val token = UserDAO.instance.accessToken
-        Log.d("App Token", token ?: "")
-        if (token != null && token.isNotEmpty()) {
-            builder.addHeader("Authorization", token)
-        }
-        builder.addHeader("Accept-Language", UserDAO.instance.language_code)
+////            } else {
+//        val token = UserDAO.instance.accessToken
+//        Log.d("App Token", token ?: "")
+//        if (token != null && token.isNotEmpty()) {
+//            builder.addHeader("Authorization", token)
+//        }
+//        builder.addHeader("Accept-Language", UserDAO.instance.language_code)
 
         return chain.proceed(builder.build())
+
     }
 }

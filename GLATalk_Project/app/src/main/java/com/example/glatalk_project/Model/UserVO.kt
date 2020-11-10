@@ -1,7 +1,7 @@
 package com.example.glatalk_project.Model
 
 data class UserVO(var user_email : String = "", var user_pwd: String = "", var pwd_check: String ="", var user_type: String = "", var user_name : String ="",
-                  var mobile_num : String = "", var country_cd: String = "", var guide_info: String = "", var guide_time: String = "", var ad_agree: Boolean = false){
+                  var mobile_num : String = "", var country_cd: String = "", var guide_info: String = "", var guide_time: String = ""){
     init{
         this.user_email = user_email
         this.user_pwd = user_pwd
@@ -12,7 +12,7 @@ data class UserVO(var user_email : String = "", var user_pwd: String = "", var p
         this.country_cd = country_cd
         this.guide_info = guide_info
         this.guide_time = guide_time
-        this.ad_agree = ad_agree
+
     }
 }
 

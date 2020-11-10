@@ -31,7 +31,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/reg_name_et"
+            android:id="@+id/reg_tourist_name_et"
             android:layout_width="match_parent"
             android:layout_height="22dp"
             android:layout_marginTop="3dp"
@@ -69,7 +69,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/reg_phone_et"
+            android:id="@+id/reg_tourist_phone_et"
             android:layout_width="match_parent"
             android:layout_height="22dp"
             android:layout_marginTop="3dp"
@@ -106,7 +106,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/reg_country_select_tv"
+            android:id="@+id/reg_tourist_country_select_tv"
             android:layout_width="match_parent"
             android:layout_height="22dp"
             android:layout_marginTop="1dp"

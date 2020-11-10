@@ -24,6 +24,9 @@ interface UserIntDAO{
 
 
 object UserDAO {
+    var userVO = UserVO(user_email = String(),user_pwd = String(),pwd_check = String(),user_type = String()
+            ,user_name = String(),mobile_num = String(),country_cd = String(),guide_info = String()
+            ,guide_time = String())
     var apiServer:UserIntDAO
     init {
        apiServer =  ApiServer.retrofit.create(UserIntDAO::class.java)

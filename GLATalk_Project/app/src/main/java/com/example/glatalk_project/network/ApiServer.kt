@@ -11,7 +11,7 @@ class ApiServer {
     var login:networkInterface= retrofit.create(networkInterface::class.java)
 
     companion object{
-        var retrofit = Retrofit.Builder()
+        var retrofit: Retrofit = Retrofit.Builder()
                 .baseUrl("")
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
