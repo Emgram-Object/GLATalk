@@ -19,7 +19,7 @@ class MyInfoActivity:AppCompatActivity() {
 
        //비밀번호 변경
         val btn_ChangePw = findViewById<Button>(R.id.my_info_pwd_change_btn)
-        btn_ChangePw.setOnClickListener(){
+        btn_ChangePw.setOnClickListener{
             //startActivity(Intent(this, PwdChangeActivity::class.java))
         }
 
