@@ -43,6 +43,7 @@ class RegistActivity : AppCompatActivity() {
             if (reg_guide_radio_bnt.isChecked) {
                 getGuideData()
                 print(getGuideData())
+                Log.d("d", "onCreate: dd")
             }else if(reg_tour_radio_bnt.isChecked){
                 getTouristData()
                 print(getTouristData())
@@ -86,4 +87,6 @@ class RegistActivity : AppCompatActivity() {
         userDAO.userVO.mobile_num = reg_tourist_phone_et.text.toString()
 
     }
+    // 빌드시 오류남 이거 DAO 잘못 연결한 듯
+    // VO도 잘못 연결한 듯
 }

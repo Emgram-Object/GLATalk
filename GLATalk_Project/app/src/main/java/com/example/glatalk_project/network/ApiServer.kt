@@ -12,7 +12,7 @@ class ApiServer {
 
     companion object{
         var retrofit: Retrofit = Retrofit.Builder()
-                .baseUrl("")
+                .baseUrl("http://211.215.19.76:1102/")
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
