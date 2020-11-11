@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_home_guide.view.*
 class HomeFragment: Fragment(){
 
     //암시 테스트용
-    val chatroomList: List<ChatRoom> = listOf(
+    val chatroomList: MutableList<ChatRoom> = mutableListOf(
             ChatRoom("중국어", "2020-05-08(금) 16:40", "rkskedk"),
             ChatRoom("일본어", "2020-05-08(금) 12:30","qnjopbnokavl"),
             ChatRoom("영어", "2020-05-08(금) 11:10","qwjrbopa;sndkl"),
@@ -44,6 +44,16 @@ class HomeFragment: Fragment(){
                 adapter.notifyDataSetChanged()
             }
         })
+
+        adapter.setItemLongClickListener(object: ChatRoomListAdapter.OnItemLongClickListener {
+            override fun onLongClick(v: View, position: Int): Boolean {
+                val result = chatroomList.remove(chatroomList[position])
+                adapter.notifyDataSetChanged()
+
+                return result
+            }
+        })
+
         view.home_guide_rv.adapter = adapter
         //이후 코드 구현
         return  view
