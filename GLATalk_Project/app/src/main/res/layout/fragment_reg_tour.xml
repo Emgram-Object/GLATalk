@@ -31,7 +31,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/reg_name_et"
+            android:id="@+id/reg_tourist_name_et"
             android:layout_width="match_parent"
             android:layout_height="22dp"
             android:layout_marginTop="3dp"
@@ -68,13 +68,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/reg_phone_et"
+            android:id="@+id/reg_tourist_phone_et"
             android:layout_width="match_parent"
             android:layout_height="22dp"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="8dp"
             android:background="@null"
             android:hint="@string/phone_hint"
+            android:inputType="number"
             android:lines="1"
             android:singleLine="true"
             android:textColor="@color/black"
@@ -105,7 +106,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/reg_country_select_tv"
+            android:id="@+id/reg_tourist_country_select_tv"
             android:layout_width="match_parent"
             android:layout_height="22dp"
             android:layout_marginTop="1dp"
@@ -133,20 +134,19 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/country_selector_cl"
+        android:id="@+id/country_tour_selector_cl"
         android:layout_width="match_parent"
-        android:layout_height="164dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        android:visibility="gone"
         android:background="@drawable/white_rounded_square"
         android:padding="6dp"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/reg_country_cl">
+        app:layout_constraintTop_toBottomOf="@+id/reg_country_cl">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/country_rv"
+        <Spinner
+            android:id="@+id/country_tour_sp"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,6 +30,7 @@
 
     <color name="warning_color">#f54949</color>
 
+    <color name="selected_col">#e7f2fa</color>
     <color name="square_dim_color">#b8d8f1</color>
     <color name="main_tab_line">#a8a8a8</color>
 </resources>

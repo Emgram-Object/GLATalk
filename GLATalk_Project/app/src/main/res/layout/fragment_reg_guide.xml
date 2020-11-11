@@ -79,6 +79,7 @@
             android:singleLine="true"
             android:textColor="@color/black"
             android:textSize="15sp"
+            android:inputType="number"
             app:layout_constraintTop_toBottomOf="@id/reg_phone_tv" />
         <!--android:onTextChanged="@{activity::onTextChanged}"-->
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -133,20 +134,19 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/country_selector_cl"
+        android:id="@+id/country_guide_selector_cl"
         android:layout_width="match_parent"
-        android:layout_height="164dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        android:visibility="gone"
         android:background="@drawable/white_rounded_square"
         android:padding="6dp"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/reg_country_cl">
+        app:layout_constraintTop_toBottomOf="@+id/reg_country_cl">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/country_rv"
+        <Spinner
+            android:id="@+id/country_guide_sp"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

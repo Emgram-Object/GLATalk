@@ -5,6 +5,7 @@
 
     <string name="welcome_select_lang">환영합니다!\n사용하실 언어를 선택해주세요.</string>
 
+
     <string name="find_pwd">비밀번호 찾기</string>
     <string name="find_pwd_info">가입하신 Email 주소를 입력해주세요.\n입력하신 메일로 임시 비밀번호를 보내드립니다.</string>
 
@@ -54,6 +55,7 @@
     <string name="btn_regist">등록하기</string>
     <string name="btn_pwd_change">비밀번호 변경하기</string>
 
+
     <string name="home">홈</string>
     <string name="my">MY</string>
 
@@ -62,7 +64,9 @@
 
     <string name="usage">이용안내</string>
     <string name="detail_info">상세정보</string>
+
     <string name="go_back_page">이전화면</string>
+
 
     <string name="my_account_manage">계정관리</string>
     <string name="my_account_name">이름</string>
@@ -80,12 +84,15 @@
     <string name="contact_message">메세지보내기</string>
     <string name="leave_account">계정을 탈퇴하시겠습니까?\n삭제된 계정은 복구가 불가능합니다.</string>
 
+
     <string name="app_version">앱 버전</string>
     <string name="logout">로그아웃</string>
+
 
     <string name="version_title">버전 정보</string>
     <string name="version_latest">현재 최신 버전 사용중</string>
     <string name="version_update_latest">최신 버전으로 업데이트 하세요.</string>
+
     <string name="pwd_change">비밀번호 변경</string>
     <string name="pwd_change_verify">영문, 숫자를 포함 8자 이상으로 입력해주세요.</string>
     <string name="pwd_change_new_diff">새로운 비밀번호와 일치하지 않습니다.\n확인 후 다시 입력해주세요.</string>
@@ -95,6 +102,7 @@
     <string name="new_pwd">새 비밀번호</string>
     <string name="pwd_check">비밀번호 확인</string>
     <string name="change">변경하기</string>
+
 
     <string name="my_setting_title">환경설정</string>
     <string name="my_setting_lang">선택한 언어로 설정 변경하시겠습니까?\n언어 설정 적용을 위해 앱이 재실행됩니다.</string>
