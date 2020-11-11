@@ -9,9 +9,16 @@ import androidx.fragment.app.FragmentTransaction
 import com.example.glatalk_project.Model.UserDAO
 import com.example.glatalk_project.Model.UserVO
 import com.example.glatalk_project.R
+import com.example.glatalk_project.network.BaseResponse
+import com.example.glatalk_project.network.data.request.LoginRequest
+import com.example.glatalk_project.network.data.request.UserRequest
+import com.example.glatalk_project.network.data.response.LoginResponse
 import kotlinx.android.synthetic.main.activity_regist.*
 import kotlinx.android.synthetic.main.fragment_reg_guide.*
 import kotlinx.android.synthetic.main.fragment_reg_tour.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class RegistActivity : AppCompatActivity() {
@@ -29,6 +36,8 @@ class RegistActivity : AppCompatActivity() {
         guideFragment = registGuideFragment()
 
 
+
+
         reg_tour_radio_bnt.setOnClickListener(View.OnClickListener {
             reg_guide_radio_bnt.isChecked = false
             changeTouristFragment()
@@ -43,10 +52,12 @@ class RegistActivity : AppCompatActivity() {
             if (reg_guide_radio_bnt.isChecked) {
                 getGuideData()
                 Log.d("log", userDAO.userVO.toString())
+                network()
+
             }else if(reg_tour_radio_bnt.isChecked){
                 getTouristData()
                 Log.d("log", userDAO.userVO.toString())
-
+                network()
             }
         })
     }
@@ -86,6 +97,19 @@ class RegistActivity : AppCompatActivity() {
         // userDAO.userVO.country_cd = reg_tourist_country_select_tv.text.toString()  -> 스피너 값 받는거 함수만들어서 따로 처리 해서 추가.
         userDAO.userVO.mobile_num = reg_tourist_phone_et.text.toString()
 
+    }
+    fun network(){
+        UserDAO.add( userRequest = UserRequest("","","","","","","","")
+                , callback = object : Callback<BaseResponse> {
+            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+                Log.d("add", "fail")
+            }
+
+            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
+                Log.d("add", "success")
+            }
+
+        })
     }
     // 빌드시 오류남 이거 DAO 잘못 연결한 듯
     // VO도 잘못 연결한 듯

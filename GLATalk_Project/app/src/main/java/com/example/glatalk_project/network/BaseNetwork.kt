@@ -9,7 +9,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 
 abstract class BaseNetwork {
-    protected var retrofit: Retrofit
+    private var retrofit: Retrofit
 
     init {
         retrofit = createRetrofit()
@@ -25,8 +25,5 @@ interface ServerResult {
     fun errorMessage(): String?
 } //interface를 선 (interface는 추상클래스와 달리 상태 저장 불가)
 
-interface CheckValidate{
-    fun errorCause(error:AppError)
-}
 
 

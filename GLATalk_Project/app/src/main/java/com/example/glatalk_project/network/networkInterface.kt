@@ -3,6 +3,7 @@ package com.example.glatalk_project.network
 import android.app.DownloadManager
 import com.example.glatalk_project.network.data.request.LangRequest
 import com.example.glatalk_project.network.data.request.LoginRequest
+import com.example.glatalk_project.network.data.request.UserRequest
 import com.example.glatalk_project.network.data.response.LoginResponse
 import okhttp3.Request
 import retrofit2.Call
@@ -37,6 +38,8 @@ interface networkInterface {
     /**
      * 회원가입
      */
+    @POST("api/v1/user/add")
+    fun add(@Body userRequest: UserRequest):Call<BaseResponse>
 
 
 
