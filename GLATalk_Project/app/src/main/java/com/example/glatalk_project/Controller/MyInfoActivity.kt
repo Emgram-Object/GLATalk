@@ -1,11 +1,13 @@
 package com.example.glatalk_project.Controller
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.R
 import android.widget.EditText
 import android.widget.Button
+import kotlinx.android.synthetic.main.activity_my_info.*
 
 class MyInfoActivity:AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,10 +20,12 @@ class MyInfoActivity:AppCompatActivity() {
         //기존 서버에서 받아와서 editText에 표시
 
        //비밀번호 변경
-        val btn_ChangePw = findViewById<Button>(R.id.my_info_pwd_change_btn)
-        btn_ChangePw.setOnClickListener{
-            //startActivity(Intent(this, PwdChangeActivity::class.java))
+        my_info_pwd_change_btn.setOnClickListener{
         }
+    }
 
+    private fun Pwd_Change(){
+        val intent = Intent(this, PwdChangeActivity::class.java)
+        startActivity(intent)
     }
 }
