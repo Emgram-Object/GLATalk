@@ -21,7 +21,7 @@ class InfoChangeActivity:AppCompatActivity(){
 
 
         modify_ok_btn.setOnClickListener{
-
+            ButtonDisable(modify_ok_btn)
         }
 
     }
@@ -34,7 +34,7 @@ class InfoChangeActivity:AppCompatActivity(){
     //팝업창 띄우기
     fun ButtonDisable(modify_ok_btn:Button){
         if(user_name.isBlank()||mobile_num.isBlank()||user_EngName.isBlank()){
-
+            setBackgroundResurce(R.drawable.)
         }
 
     }
