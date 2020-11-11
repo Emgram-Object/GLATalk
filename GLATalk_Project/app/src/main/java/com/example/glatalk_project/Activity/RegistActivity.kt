@@ -1,5 +1,6 @@
 package com.example.glatalk_project.Activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -38,6 +39,8 @@ class RegistActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_regist)
 
+        val gotologin = Intent(this, LoginActivity::class.java)
+
         touristFragment = registTouristFragment()
         guideFragment = registGuideFragment()
 
@@ -58,11 +61,13 @@ class RegistActivity : AppCompatActivity() {
                 getGuideData()
                 Log.d("log", userDAO.userVO.toString())
                 addNetworking()
+                startActivity(gotologin)
 
             } else if (reg_tour_radio_bnt.isChecked) {
                 getTouristData()
                 Log.d("log", userDAO.userVO.toString())
                 addNetworking()
+                startActivity(gotologin)
             }
         })
 
