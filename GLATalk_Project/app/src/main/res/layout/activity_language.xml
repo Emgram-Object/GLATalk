@@ -1,170 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-   <!-- <data>
-        <variable
-            name="myViewModel"
-            type="com.example.kotlintest.viewmodel.MyViewModel" />
-    </data>-->
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ImageView
+        android:id="@+id/default_bg"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="@dimen/bg_height"
+        android:background="@drawable/login_bg"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/default_bg"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/bg_height"
-            android:background="@drawable/login_bg"
-            app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/logo"
+        app:layout_constraintBottom_toTopOf="@id/default_app_name"
+        app:layout_constraintLeft_toLeftOf="@id/default_bg"
+        app:layout_constraintRight_toRightOf="@id/default_bg" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/logo"
-            app:layout_constraintBottom_toTopOf="@id/default_app_name"
-            app:layout_constraintLeft_toLeftOf="@id/default_bg"
-            app:layout_constraintRight_toRightOf="@id/default_bg" />
+    <TextView
+        android:id="@+id/default_app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="46dp"
+        android:text="GLA Talk"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/default_bg"
+        app:layout_constraintLeft_toLeftOf="@id/default_bg"
+        app:layout_constraintRight_toRightOf="@id/default_bg" />
 
-        <TextView
-            android:id="@+id/default_app_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="46dp"
-            android:text="GLA Talk"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/default_bg"
-            app:layout_constraintLeft_toLeftOf="@id/default_bg"
-            app:layout_constraintRight_toRightOf="@id/default_bg" />
+    <TextView
+        android:id="@+id/lang_select_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/welcome_select_lang"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/lang_korea"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/default_bg" />
 
-        <TextView
-            android:id="@+id/lang_select_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/welcome_select_lang"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/lang_korea"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/default_bg" />
+    <ImageView
+        android:id="@+id/lang_korea"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="@dimen/lang_title_bottom"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/lang_selector"
+        android:padding="13dp"
+        android:src="@drawable/icon_korea_nor"
+        app:layout_constraintBottom_toTopOf="@+id/lang_china"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/lang_english" />
 
-        <ImageView
-            android:id="@+id/lang_korea"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="@dimen/lang_title_bottom"
-            android:layout_marginBottom="30dp"
-            android:background="@drawable/lang_selector"
-            android:padding="13dp"
-            android:src="@drawable/icon_korea_nor"
-            app:layout_constraintBottom_toTopOf="@+id/lang_china"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/lang_english" />
+    <TextView
+        android:id="@+id/korean_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lineHeight="19sp"
+        android:text="한국어"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/lang_korea"
+        app:layout_constraintStart_toStartOf="@id/lang_korea"
+        app:layout_constraintTop_toBottomOf="@id/lang_korea" />
 
-        <TextView
-            android:id="@+id/korean_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:lineHeight="19sp"
-            android:text="한국어"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="@id/lang_korea"
-            app:layout_constraintStart_toStartOf="@id/lang_korea"
-            app:layout_constraintTop_toBottomOf="@id/lang_korea" />
+    <ImageView
+        android:id="@+id/lang_english"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/lang_selector"
+        android:padding="13dp"
+        android:src="@drawable/icon_english_nor"
+        app:layout_constraintBottom_toTopOf="@+id/lang_japan"
+        app:layout_constraintLeft_toRightOf="@id/lang_korea"
+        app:layout_constraintRight_toRightOf="parent" />
 
-        <ImageView
-            android:id="@+id/lang_english"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginBottom="30dp"
-            android:background="@drawable/lang_selector"
-            android:padding="13dp"
-            android:src="@drawable/icon_english_nor"
-            app:layout_constraintBottom_toTopOf="@+id/lang_japan"
-            app:layout_constraintLeft_toRightOf="@id/lang_korea"
-            app:layout_constraintRight_toRightOf="parent" />
+    <TextView
+        android:id="@+id/english_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lineHeight="19sp"
+        android:text="English"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/lang_english"
+        app:layout_constraintStart_toStartOf="@id/lang_english"
+        app:layout_constraintTop_toBottomOf="@id/lang_english" />
 
-        <TextView
-            android:id="@+id/english_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:lineHeight="19sp"
-            android:text="English"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="@id/lang_english"
-            app:layout_constraintStart_toStartOf="@id/lang_english"
-            app:layout_constraintTop_toBottomOf="@id/lang_english" />
+    <ImageView
+        android:id="@+id/lang_china"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/lang_selector"
+        android:padding="13dp"
+        android:src="@drawable/icon_china_nor"
+        app:layout_constraintBottom_toTopOf="@+id/next_btn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/lang_japan"
+        app:layout_constraintTop_toBottomOf="@id/default_bg"
+        app:layout_constraintVertical_bias="0.8" />
 
-        <ImageView
-            android:id="@+id/lang_china"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/lang_selector"
-            android:padding="13dp"
-            android:src="@drawable/icon_china_nor"
-            app:layout_constraintBottom_toTopOf="@+id/next_btn"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/lang_japan"
-            app:layout_constraintTop_toBottomOf="@id/default_bg"
-            app:layout_constraintVertical_bias="0.8" />
+    <TextView
+        android:id="@+id/chinese_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lineHeight="19sp"
+        android:text="中文(简体)"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/lang_china"
+        app:layout_constraintStart_toStartOf="@id/lang_china"
+        app:layout_constraintTop_toBottomOf="@id/lang_china" />
 
-        <TextView
-            android:id="@+id/chinese_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:lineHeight="19sp"
-            android:text="中文(简体)"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="@id/lang_china"
-            app:layout_constraintStart_toStartOf="@id/lang_china"
-            app:layout_constraintTop_toBottomOf="@id/lang_china" />
+    <ImageView
+        android:id="@+id/lang_japan"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/lang_selector"
+        android:padding="13dp"
+        android:src="@drawable/icon_japan_nor"
+        app:layout_constraintBottom_toTopOf="@+id/next_btn"
+        app:layout_constraintLeft_toRightOf="@id/lang_china"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/default_bg"
+        app:layout_constraintVertical_bias="0.8" />
 
-        <ImageView
-            android:id="@+id/lang_japan"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/lang_selector"
-            android:padding="13dp"
-            android:src="@drawable/icon_japan_nor"
-            app:layout_constraintBottom_toTopOf="@+id/next_btn"
-            app:layout_constraintLeft_toRightOf="@id/lang_china"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/default_bg"
-            app:layout_constraintVertical_bias="0.8" />
+    <TextView
+        android:id="@+id/japanese_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lineHeight="19sp"
+        android:text="日本語"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/lang_japan"
+        app:layout_constraintStart_toStartOf="@id/lang_japan"
+        app:layout_constraintTop_toBottomOf="@id/lang_japan" />
 
-        <TextView
-            android:id="@+id/japanese_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:lineHeight="19sp"
-            android:text="日本語"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="@id/lang_japan"
-            app:layout_constraintStart_toStartOf="@id/lang_japan"
-            app:layout_constraintTop_toBottomOf="@id/lang_japan" />
-
-        <Button
-            android:id="@+id/next_btn"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:background="@color/primary_color"
-            android:text="@string/btn_next"
-            android:textColor="@color/white_text_color"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+    <Button
+        android:id="@+id/next_btn"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:background="@color/primary_color"
+        android:text="@string/btn_next"
+        android:textColor="@color/white_text_color"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

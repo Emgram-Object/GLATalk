@@ -65,7 +65,9 @@
     <string name="usage">이용안내</string>
     <string name="detail_info">상세정보</string>
 
+
     <string name="go_back_page">이전화면</string>
+
 
 
     <string name="my_account_manage">계정관리</string>
@@ -91,6 +93,7 @@
     <string name="version_title">버전 정보</string>
     <string name="version_latest">현재 최신 버전 사용중</string>
     <string name="version_update_latest">최신 버전으로 업데이트 하세요.</string>
+
 
     <string name="pwd_change">비밀번호 변경</string>
     <string name="pwd_change_verify">영문, 숫자를 포함 8자 이상으로 입력해주세요.</string>
