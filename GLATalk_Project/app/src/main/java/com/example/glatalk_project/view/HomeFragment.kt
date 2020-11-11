@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.glatalk_project.Controller.LoginActivity
 import com.example.glatalk_project.R
 import com.example.glatalk_project.core.adapter.ChatRoomListAdapter
 import com.example.glatalk_project.core.data.ChatRoom
@@ -39,7 +38,6 @@ class HomeFragment: Fragment(){
         adapter.setItemClickListener(object: ChatRoomListAdapter.OnItemClickListener{
             override fun onClick(v: View, position: Int) {
                 val item = chatroomList[position]
-
                 goToChat()
                 adapter.notifyDataSetChanged()
             }

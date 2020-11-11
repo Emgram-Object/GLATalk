@@ -14,7 +14,7 @@ class ChatRoomListAdapter(private val itemList: MutableList<ChatRoom>): Recycler
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RoomVIewHolder {
-        val inflatedView = LayoutInflater.from(parent.context).inflate(R.layout.guide_room_custom, parent, false)
+        val inflatedView = LayoutInflater.from(parent.context).inflate(R.layout.ui_guide_room_custom, parent, false)
         return RoomVIewHolder(inflatedView)
     }
 

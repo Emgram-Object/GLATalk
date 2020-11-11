@@ -8,7 +8,7 @@ import android.view.View
 import com.example.glatalk_project.R
 import com.example.glatalk_project.core.adapter.PageAdapter
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.custom_tab.view.*
+import kotlinx.android.synthetic.main.ui_custom_tab.view.*
 
 class MainActivity : AppCompatActivity(){
     private lateinit var mContext: Context
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity(){
     }
 
     private fun creatView(tabName: String): View {
-        var tabView = LayoutInflater.from(mContext).inflate(R.layout.custom_tab,null)
+        var tabView = LayoutInflater.from(mContext).inflate(R.layout.ui_custom_tab,null)
 
         tabView.custom_tab_tv.text = tabName
         when (tabName) {

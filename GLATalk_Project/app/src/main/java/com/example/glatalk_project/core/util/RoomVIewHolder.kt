@@ -3,7 +3,7 @@ package com.example.glatalk_project.core.util
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.example.glatalk_project.core.data.ChatRoom
-import kotlinx.android.synthetic.main.guide_room_custom.view.*
+import kotlinx.android.synthetic.main.ui_guide_room_custom.view.*
 
 class RoomVIewHolder(v: View): RecyclerView.ViewHolder(v) {
     var view = v

@@ -14,7 +14,7 @@ class ErrorFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
 
-        val view = inflater.inflate(R.layout.popup_custom, container, false)
+        val view = inflater.inflate(R.layout.ui_popup_custom, container, false)
 
         return  view
     }
