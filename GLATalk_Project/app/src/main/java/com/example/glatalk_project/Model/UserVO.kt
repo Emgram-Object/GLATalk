@@ -14,6 +14,10 @@ data class UserVO(var user_email : String = "", var user_pwd: String = "", var p
         this.guide_time = guide_time
 
     }
+
+    override fun toString(): String {
+        return "UserVO(user_email='$user_email', user_pwd='$user_pwd', pwd_check='$pwd_check', user_type='$user_type', user_name='$user_name', mobile_num='$mobile_num', country_cd='$country_cd', guide_info='$guide_info', guide_time='$guide_time')"
+    }
 }
 
 //    //data 클래스로 바꿔주기 (Model은 데이터 클래스)

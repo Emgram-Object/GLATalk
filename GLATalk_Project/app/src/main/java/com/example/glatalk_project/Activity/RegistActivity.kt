@@ -18,7 +18,7 @@ class RegistActivity : AppCompatActivity() {
 
     lateinit var guideFragment: registGuideFragment
     lateinit var touristFragment: registTouristFragment
-    var userDAO = UserDAO
+    private var userDAO = UserDAO
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,11 +42,11 @@ class RegistActivity : AppCompatActivity() {
         reg_next_btn.setOnClickListener(View.OnClickListener {
             if (reg_guide_radio_bnt.isChecked) {
                 getGuideData()
-                print(getGuideData())
-                Log.d("d", "onCreate: dd")
+                Log.d("log", userDAO.userVO.toString())
             }else if(reg_tour_radio_bnt.isChecked){
                 getTouristData()
-                print(getTouristData())
+                Log.d("log", userDAO.userVO.toString())
+
             }
         })
     }
