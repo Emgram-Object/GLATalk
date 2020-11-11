@@ -1,22 +1,23 @@
 package com.example.glatalk_project.Model
 
 data class UserVO(var user_email : String = "", var user_pwd: String = "", var pwd_check: String ="", var user_type: String = "", var user_name : String ="",
-                  var mobile_num : String = "", var country_cd: String = "", var guide_info: String = "", var guide_time: String = ""){
+                  var phone_number : String = "", var country_cd: String = "", var guide_info: String = "", var guide_time: String = "",var ad_agree:Boolean=true){
     init{
         this.user_email = user_email
         this.user_pwd = user_pwd
         this.pwd_check = pwd_check
         this.user_type = user_type
         this.user_name = user_name
-        this.mobile_num = mobile_num
+        this.phone_number = phone_number
         this.country_cd = country_cd
         this.guide_info = guide_info
         this.guide_time = guide_time
+        this.ad_agree = ad_agree
 
     }
 
     override fun toString(): String {
-        return "UserVO(user_email='$user_email', user_pwd='$user_pwd', pwd_check='$pwd_check', user_type='$user_type', user_name='$user_name', mobile_num='$mobile_num', country_cd='$country_cd', guide_info='$guide_info', guide_time='$guide_time')"
+        return "UserVO(user_email='$user_email', user_pwd='$user_pwd', pwd_check='$pwd_check', user_type='$user_type', user_name='$user_name', mobile_num='$phone_number', country_cd='$country_cd', guide_info='$guide_info', guide_time='$guide_time',ad_agree='$ad_agree')"
     }
 }
 

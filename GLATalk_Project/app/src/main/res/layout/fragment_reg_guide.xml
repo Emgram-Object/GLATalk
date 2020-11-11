@@ -134,22 +134,23 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/country_selector_cl"
+        android:id="@+id/country_guide_selector_cl"
         android:layout_width="match_parent"
         android:layout_height="164dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/white_rounded_square"
         android:padding="6dp"
+        android:layout_marginTop="4dp"
         android:visibility="gone"
+        android:background="@drawable/white_rounded_square"
         app:layout_constraintTop_toBottomOf="@id/reg_country_cl">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/country_rv"
+            android:id="@+id/country_guide_rv"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -36,8 +36,6 @@ class RegistActivity : AppCompatActivity() {
         guideFragment = registGuideFragment()
 
 
-
-
         reg_tour_radio_bnt.setOnClickListener(View.OnClickListener {
             reg_guide_radio_bnt.isChecked = false
             changeTouristFragment()
@@ -52,12 +50,12 @@ class RegistActivity : AppCompatActivity() {
             if (reg_guide_radio_bnt.isChecked) {
                 getGuideData()
                 Log.d("log", userDAO.userVO.toString())
-                network()
+                addNetworking()
 
             }else if(reg_tour_radio_bnt.isChecked){
                 getTouristData()
                 Log.d("log", userDAO.userVO.toString())
-                network()
+                addNetworking()
             }
         })
     }
@@ -84,9 +82,11 @@ class RegistActivity : AppCompatActivity() {
         userDAO.userVO.user_type = "guide"
         userDAO.userVO.user_name = reg_name_et.text.toString()
         // userDAO.userVO.country_cd = reg_country_select_tv.text.toString()  -> 스피너 값 받는거 함수만들어서 따로 처리 해서 추가.
-        userDAO.userVO.mobile_num = reg_phone_et.text.toString()
+        userDAO.userVO.country_cd ="ko"
+        userDAO.userVO.phone_number = reg_phone_et.text.toString()
         userDAO.userVO.guide_info = reg_guide_info_et.text.toString()
         userDAO.userVO.guide_time = reg_time_et.text.toString()
+        userDAO.userVO.ad_agree =true
     }
     fun getTouristData(){
         userDAO.userVO.user_email = reg_email_et.text.toString()
@@ -94,15 +94,19 @@ class RegistActivity : AppCompatActivity() {
         userDAO.userVO.pwd_check = reg_pwd_check_et.text.toString()
         userDAO.userVO.user_type = "tourist"
         userDAO.userVO.user_name = reg_tourist_name_et.text.toString()
+        userDAO.userVO.country_cd ="ko"
         // userDAO.userVO.country_cd = reg_tourist_country_select_tv.text.toString()  -> 스피너 값 받는거 함수만들어서 따로 처리 해서 추가.
-        userDAO.userVO.mobile_num = reg_tourist_phone_et.text.toString()
+        userDAO.userVO.phone_number = reg_tourist_phone_et.text.toString()
+        userDAO.userVO.ad_agree = true
 
     }
-    fun network(){
-        UserDAO.add( userRequest = UserRequest("","","","","","","","")
+    fun addNetworking(){
+        UserDAO.add( userRequest = UserRequest("","","","","","","","",true)
                 , callback = object : Callback<BaseResponse> {
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
                 Log.d("add", "fail")
+//                Log.d("add", "onFailure: ${execute.code()} ${execute.message()}")
+                t.printStackTrace()
             }
 
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
@@ -111,6 +115,4 @@ class RegistActivity : AppCompatActivity() {
 
         })
     }
-    // 빌드시 오류남 이거 DAO 잘못 연결한 듯
-    // VO도 잘못 연결한 듯
 }
