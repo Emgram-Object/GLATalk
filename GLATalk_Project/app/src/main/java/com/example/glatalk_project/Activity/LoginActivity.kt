@@ -1,4 +1,4 @@
-package com.example.glatalk_project
+package com.example.glatalk_project.Activity
 
 import android.os.Bundle
 import android.util.Log
