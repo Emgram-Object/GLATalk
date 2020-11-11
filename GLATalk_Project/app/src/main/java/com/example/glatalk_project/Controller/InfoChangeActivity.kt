@@ -19,33 +19,25 @@ class InfoChangeActivity:AppCompatActivity(){
         //기존 정보 서버에서 받아와서 표시
         //usermodel 머지 후
 
-        val user_name = my_info_name_et.text.toString()
-        val mobile_num = my_info_phone_et.text.toString()
-        val user_EngName = my_info_english_name_et.text.toString()
 
         modify_ok_btn.setOnClickListener{
 
         }
 
-        //입력 비어있으면 toast? 다른 방법 없나
-        fun ButtonDisable(modify_ok_btn:Button){
-            if(TextUtils.isEmpty(user_name)){
-                modify_ok_btn?.isEnabled = false
-                Toast.makeText(this, "이름이 비어있습니다.", Toast.LENGTH_SHORT).show()
-            }
-            if(TextUtils.isEmpty(mobile_num)){
-                modify_ok_btn?.isEnabled = false
-                Toast.makeText(this, "전화번호가 비어있습니다.", Toast.LENGTH_SHORT).show()
-            }
-            if(TextUtils.isEmpty(user_EngName)){
-                modify_ok_btn?.isEnabled = false
-                Toast.makeText(this, "이메일이 비어있습니다.", Toast.LENGTH_SHORT).show()
-            }
-
-        }
     }
 
 
-    //후에 버튼 누르면 서버로 넘겨주기
+    val user_name = my_info_name_et.text.toString()
+    val mobile_num = my_info_phone_et.text.toString()
+    val user_EngName = my_info_english_name_et.text.toString()
+
+    //팝업창 띄우기
+    fun ButtonDisable(modify_ok_btn:Button){
+        if(user_name.isBlank()||mobile_num.isBlank()||user_EngName.isBlank()){
+
+        }
+
+    }
+
 
 }
