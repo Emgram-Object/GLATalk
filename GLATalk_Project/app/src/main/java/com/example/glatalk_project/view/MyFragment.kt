@@ -33,6 +33,7 @@ class MyFragment: Fragment(){
         my_logout_btn.setOnClickListener{ goToLogin() }
     }
 
+    //임시로 LoginActivity로 연결해놓음 다른 액티비티들 만들어지면 수정 ㄱㄱ
     private fun goToLogin(){
         val intent = Intent(context, LoginActivity::class.java)
         startActivity(intent)
