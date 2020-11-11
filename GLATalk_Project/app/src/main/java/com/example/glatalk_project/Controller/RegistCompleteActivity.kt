@@ -3,6 +3,7 @@ package com.example.glatalk_project.Controller
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.glatalk_project.Activity.LoginActivity
 import com.example.glatalk_project.R
 import kotlinx.android.synthetic.main.activity_regist_complete.*
 
