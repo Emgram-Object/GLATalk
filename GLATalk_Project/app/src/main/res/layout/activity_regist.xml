@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/regist_parent_cl"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+>
 
     <!--        <com.example.glatalk_project.core.custom.view.CommonTitleView-->
     <!--            android:id="@+id/common_title"-->

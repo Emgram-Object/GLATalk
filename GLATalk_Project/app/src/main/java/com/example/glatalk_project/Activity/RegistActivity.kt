@@ -3,6 +3,7 @@ package com.example.glatalk_project.Activity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
@@ -28,13 +29,17 @@ class RegistActivity : AppCompatActivity() {
     private var userDAO = UserDAO
 
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_regist)
 
         touristFragment = registTouristFragment()
         guideFragment = registGuideFragment()
 
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         reg_tour_radio_bnt.setOnClickListener(View.OnClickListener {
             reg_guide_radio_bnt.isChecked = false
