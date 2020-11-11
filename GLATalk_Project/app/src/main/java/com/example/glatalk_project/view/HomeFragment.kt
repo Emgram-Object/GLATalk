@@ -1,10 +1,12 @@
 package com.example.glatalk_project.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.glatalk_project.Controller.LoginActivity
 import com.example.glatalk_project.R
 import com.example.glatalk_project.core.adapter.ChatRoomListAdapter
 import com.example.glatalk_project.core.data.ChatRoom
@@ -34,8 +36,21 @@ class HomeFragment: Fragment(){
         val view = inflater.inflate(R.layout.fragment_home_guide, container, false)
 
         val adapter = ChatRoomListAdapter(chatroomList)
+        adapter.setItemClickListener(object: ChatRoomListAdapter.OnItemClickListener{
+            override fun onClick(v: View, position: Int) {
+                val item = chatroomList[position]
+
+                goToChat()
+                adapter.notifyDataSetChanged()
+            }
+        })
         view.home_guide_rv.adapter = adapter
         //이후 코드 구현
         return  view
+    }
+
+    private fun goToChat(){
+        val intent = Intent(getActivity(), LoginActivity::class.java)
+        startActivity(intent)
     }
 }

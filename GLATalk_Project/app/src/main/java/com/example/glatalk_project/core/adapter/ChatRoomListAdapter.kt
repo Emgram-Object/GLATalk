@@ -1,6 +1,7 @@
 package com.example.glatalk_project.core.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.glatalk_project.R
@@ -19,8 +20,21 @@ class ChatRoomListAdapter(private val itemList: List<ChatRoom>): RecyclerView.Ad
 
     override fun onBindViewHolder(holder: RoomVIewHolder, position: Int) {
         val item = itemList[position]
+
+        holder.itemView.setOnClickListener {
+            itemClickListener.onClick(it, position)
+        }
         holder.apply {
             bind(item)
         }
+    }
+
+    interface OnItemClickListener {
+        fun onClick(v: View, position: Int)
+    }
+    private lateinit var itemClickListener : OnItemClickListener
+
+    fun setItemClickListener(itemClickListener: OnItemClickListener) {
+        this.itemClickListener = itemClickListener
     }
 }
