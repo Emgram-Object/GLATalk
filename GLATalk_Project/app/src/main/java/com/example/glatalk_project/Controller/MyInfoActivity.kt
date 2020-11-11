@@ -21,6 +21,7 @@ class MyInfoActivity:AppCompatActivity() {
 
        //비밀번호 변경
         my_info_pwd_change_btn.setOnClickListener{
+            Pwd_Change()
         }
     }
 
