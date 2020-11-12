@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.R
 import com.example.glatalk_project.core.helper.LocaleHelper
 import kotlinx.android.synthetic.main.activity_language.*
+import java.util.*
+
 
 class FirstLanguageActivity : AppCompatActivity() {
 
@@ -18,8 +20,14 @@ class FirstLanguageActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val lang = LocaleHelper.getLanguage(this)
+        val locale = Locale.getDefault().getLanguage()
+        println(lang+"김범준 ㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗ")
+        println(locale+"김범준호로로롤롤롤롤로ㅗ로ㅗ롤로로로")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_language)
+
+        defaultSelection(locale)
 
         next_btn.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
@@ -34,6 +42,9 @@ class FirstLanguageActivity : AppCompatActivity() {
             lang_japan.isSelected = false
 
             LocaleHelper.setLocale(this, korLanguageCode)
+            recreate()
+            println(lang+"킹범준")
+            println(locale+"갓범준")
 
         }
 
@@ -44,6 +55,9 @@ class FirstLanguageActivity : AppCompatActivity() {
             lang_japan.isSelected = false
 
             LocaleHelper.setLocale(this, engLanguageCode)
+            recreate()
+            println(lang+"킹범준")
+            println(locale+"갓범준")
         }
 
         lang_japan.setOnClickListener {
@@ -53,6 +67,9 @@ class FirstLanguageActivity : AppCompatActivity() {
             lang_korea.isSelected = false
 
             LocaleHelper.setLocale(this, jpnLanguageCode)
+            recreate()
+            println(lang+"킹범준")
+            println(locale+"갓범준")
         }
 
         lang_china.setOnClickListener {
@@ -62,10 +79,23 @@ class FirstLanguageActivity : AppCompatActivity() {
             lang_japan.isSelected = false
 
             LocaleHelper.setLocale(this, chLanguageCode)
+            recreate()
+            println(lang+"킹범준")
+            println(locale+"갓범준")
         }
     }
 
     override fun attachBaseContext(newBase: Context?) {
         super.attachBaseContext(LocaleHelper.onAttach(newBase!!))
+    }
+
+    fun defaultSelection(lang: String){
+        when (lang){
+            "ko" -> lang_korea.isSelected = true
+            "en" -> lang_english.isSelected = true
+            "zh" -> lang_china.isSelected = true
+            "ja" -> lang_japan.isSelected =true
+            else -> null
+        }
     }
 }
