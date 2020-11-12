@@ -27,6 +27,7 @@
     <color name="grayf4f7">#f4f7fb</color>
     <color name="grayd8d8d9">#d8d8d9</color>
     <color name="line_gray_color">#f0f0f0</color>
+    <color name="answer_color">#efeded</color>
 
     <color name="warning_color">#f54949</color>
 
