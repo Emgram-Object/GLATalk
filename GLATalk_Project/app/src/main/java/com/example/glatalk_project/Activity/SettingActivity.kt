@@ -19,7 +19,6 @@ class SettingActivity: AppCompatActivity(){
         setContentView(R.layout.activity_setting)
 
         val lang = LocaleHelper.getLanguage(this)
-        println(lang+"킹갓범준")
 
         defaultSelection(lang)
 
