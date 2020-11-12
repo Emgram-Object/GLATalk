@@ -12,3 +12,4 @@ data class UserRequest (
         val ad_agree:Boolean,
 )//VO (userRequest를 위한)
 
+

@@ -24,7 +24,7 @@ interface networkInterface {
     /**
      * 로그인
      */
-    @POST("api/v1/user/login")
+    @POST("v1/user/login")
     fun login(@Body loginRequest: LoginRequest):Call<LoginResponse>
 
 
@@ -38,7 +38,8 @@ interface networkInterface {
     /**
      * 회원가입
      */
-    @POST("api/v1/user/add")
+
+    @POST("v1/user/add")
     fun add(@Body userRequest: UserRequest):Call<BaseResponse>
 
 
