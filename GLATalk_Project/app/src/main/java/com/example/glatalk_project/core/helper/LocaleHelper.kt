@@ -6,11 +6,12 @@ import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Build
 import android.preference.PreferenceManager
+import com.example.glatalk_project.constant.C.Preference.SELECTED_LANGUAGE
 import java.util.*
 
 object LocaleHelper {
 
-    private var SELECTED_LANGUAGE: String = "Locale.Helper.Selected.Language"
+//    private var SELECTED_LANGUAGE: String = "Locale.Helper.Selected.Language"
 
     fun onAttach(context: Context): Context{
         var lang:String = getPersistedData(context, Locale.getDefault().getLanguage())
