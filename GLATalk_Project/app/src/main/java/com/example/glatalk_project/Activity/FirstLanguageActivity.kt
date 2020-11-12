@@ -22,8 +22,6 @@ class FirstLanguageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         val lang = LocaleHelper.getLanguage(this)
         val locale = Locale.getDefault().getLanguage()
-        println(lang+"김범준 ㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗ")
-        println(locale+"김범준호로로롤롤롤롤로ㅗ로ㅗ롤로로로")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_language)
 
@@ -32,7 +30,7 @@ class FirstLanguageActivity : AppCompatActivity() {
         next_btn.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
-            recreate()
+//            recreate()
         }
 
         lang_korea.setOnClickListener {
@@ -43,8 +41,6 @@ class FirstLanguageActivity : AppCompatActivity() {
 
             LocaleHelper.setLocale(this, korLanguageCode)
             recreate()
-            println(lang+"킹범준")
-            println(locale+"갓범준")
 
         }
 
@@ -56,8 +52,6 @@ class FirstLanguageActivity : AppCompatActivity() {
 
             LocaleHelper.setLocale(this, engLanguageCode)
             recreate()
-            println(lang+"킹범준")
-            println(locale+"갓범준")
         }
 
         lang_japan.setOnClickListener {
@@ -68,8 +62,6 @@ class FirstLanguageActivity : AppCompatActivity() {
 
             LocaleHelper.setLocale(this, jpnLanguageCode)
             recreate()
-            println(lang+"킹범준")
-            println(locale+"갓범준")
         }
 
         lang_china.setOnClickListener {
@@ -80,8 +72,6 @@ class FirstLanguageActivity : AppCompatActivity() {
 
             LocaleHelper.setLocale(this, chLanguageCode)
             recreate()
-            println(lang+"킹범준")
-            println(locale+"갓범준")
         }
     }
 
