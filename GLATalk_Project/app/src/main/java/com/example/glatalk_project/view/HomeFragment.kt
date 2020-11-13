@@ -58,7 +58,7 @@ class HomeFragment: Fragment(){
     }
 
     private fun goToChat(){
-        val intent = Intent(getActivity(), LoginActivity::class.java)
+        val intent = Intent(getActivity(), LoginActivty::class.java)
         startActivity(intent)
     }
 }
