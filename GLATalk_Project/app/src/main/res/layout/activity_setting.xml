@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-  <!--  <com.eample.glatalk.core.custom.view.CommonTitleView
-        android:id="@+id/common_title"
+    <com.example.glatalk_project.TitleView
+        android:id="@+id/common_title_setting"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"/>-->
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/lang_cl"
@@ -16,8 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/layout_margin"
         android:layout_marginRight="@dimen/layout_margin"
-        app:layout_constraintTop_toTopOf="parent">
-        <!--app:layout_constraintTop_toBottomOf="@+id/common_title"-->
+        app:layout_constraintTop_toBottomOf="@+id/common_title_setting">
 
         <TextView
             android:id="@+id/lang_setting"

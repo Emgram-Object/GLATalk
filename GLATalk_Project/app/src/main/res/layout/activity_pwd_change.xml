@@ -4,11 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-  <!--  <com.example.glatalk.core.custom.view.CommonTitleView
+
+    <com.example.glatalk_project.TitleView
         android:id="@+id/common_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"/>-->
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/pwd_change_current_cl"
         android:layout_width="match_parent"
@@ -19,8 +21,8 @@
         android:paddingLeft="@dimen/layout_margin"
         android:paddingRight="@dimen/layout_margin"
         android:background="@drawable/edit_selector"
-        app:layout_constraintTop_toTopOf="parent">
-        <!--app:layout_constraintTop_toBottomOf="@id/common_title"-->
+        app:layout_constraintTop_toBottomOf="@id/common_title">
+
         <TextView
             android:id="@+id/pwd_change_current_tv"
             android:layout_width="wrap_content"
