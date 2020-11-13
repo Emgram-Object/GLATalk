@@ -20,7 +20,6 @@ class FirstLanguageActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val lang = LocaleHelper.getLanguage(this)
         val locale = Locale.getDefault().getLanguage()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_language)
@@ -29,49 +28,49 @@ class FirstLanguageActivity : AppCompatActivity() {
 
         next_btn.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
+            recreate()
             startActivity(intent)
-//            recreate()
         }
 
         lang_korea.setOnClickListener {
-            lang_korea.setSelected(!lang_korea.isSelected())
+            lang_korea.isSelected = true
             lang_english.isSelected = false
             lang_china.isSelected = false
             lang_japan.isSelected = false
 
             LocaleHelper.setLocale(this, korLanguageCode)
-            recreate()
+//            recreate()
 
         }
 
         lang_english.setOnClickListener {
-            lang_english.setSelected(!lang_korea.isSelected())
+            lang_english.isSelected = true
             lang_korea.isSelected = false
             lang_china.isSelected = false
             lang_japan.isSelected = false
 
             LocaleHelper.setLocale(this, engLanguageCode)
-            recreate()
+//            recreate()
         }
 
         lang_japan.setOnClickListener {
-            lang_japan.setSelected(!lang_korea.isSelected())
+            lang_japan.isSelected = true
             lang_english.isSelected = false
             lang_china.isSelected = false
             lang_korea.isSelected = false
 
             LocaleHelper.setLocale(this, jpnLanguageCode)
-            recreate()
+//            recreate()
         }
 
         lang_china.setOnClickListener {
-            lang_china.setSelected(!lang_korea.isSelected())
+            lang_china.isSelected = true
             lang_english.isSelected = false
             lang_korea.isSelected = false
             lang_japan.isSelected = false
 
             LocaleHelper.setLocale(this, chLanguageCode)
-            recreate()
+//            recreate()
         }
     }
 
