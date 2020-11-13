@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    
     <com.example.glatalk_project.TitleView
         android:id="@+id/common_title_setting"
         android:layout_width="match_parent"
@@ -49,7 +49,6 @@
             android:button="@drawable/radio_selector"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/lang_setting" />
-        <!--android:checked="@{myViewModel.selectedLocale.equals(Locale.KOREA.getLanguage())}"-->
 
         <View
             android:id="@+id/korea_line"
@@ -63,7 +62,7 @@
             android:id="@+id/lang_english_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="15dp"
             android:text="English"
             android:textColor="@color/black2222"
             android:textSize="15sp"
@@ -74,11 +73,10 @@
             android:id="@+id/lang_english_rb"
             android:layout_width="26dp"
             android:layout_height="26dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="11dp"
             android:button="@drawable/radio_selector"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/korea_line" />
-        <!--android:checked="@{myViewModel.selectedLocale.equals(Locale.ENGLISH.getLanguage())}"-->
 
         <View
             android:id="@+id/english_line"
@@ -104,11 +102,10 @@
             android:id="@+id/lang_china_rb"
             android:layout_width="26dp"
             android:layout_height="26dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="11dp"
             android:button="@drawable/radio_selector"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/english_line" />
-        <!--android:checked="@{myViewModel.selectedLocale.equals(Locale.CHINA.getLanguage())}"-->
 
         <View
             android:id="@+id/china_line"
@@ -133,18 +130,59 @@
             android:id="@+id/lang_japan_rb"
             android:layout_width="26dp"
             android:layout_height="26dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="11dp"
             android:button="@drawable/radio_selector"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/china_line" />
-        <!--android:checked="@{myViewModel.selectedLocale.equals(Locale.JAPAN.getLanguage())}"-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="14dp"
-            android:background="@color/line_gray_color"
-            app:layout_constraintTop_toBottomOf="@id/lang_japan_tv" />
+    <View
+        android:id="@+id/setting_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="14dp"
+        android:background="@color/line_gray_color"
+        app:layout_constraintTop_toBottomOf="@id/lang_cl" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/guide_chat_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/layout_margin"
+        android:layout_marginRight="@dimen/layout_margin"
+        app:layout_constraintTop_toBottomOf="@id/setting_line">
+
+        <TextView
+            android:id="@+id/chat_switch_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_margin"
+            android:text="가이드 활성화"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/chat_switch_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="23dp"
+            android:text="채팅 받기 활성화"
+            android:textColor="@color/black2222"
+            android:textSize="15sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chat_switch_title_tv" />
+
+        <CheckBox
+            android:id="@+id/chat_switch_cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            android:button="@drawable/switch_selector"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chat_switch_title_tv" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

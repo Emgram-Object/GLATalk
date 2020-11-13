@@ -10,6 +10,5 @@ object C {
         const val SELECTED_LANGUAGE = "Locale.Helper.Selected.Language"
         const val SEARCH_PREF = "SEARCH_PREF"
         const val USER_NO = "USER_NO"
-        const val FIRST_JOURNEY_CREATED = "FIRST_JOURNEY_CREATED"
     } //Preference를 위한 객체 (싱글톤) , 객체 접근 시점에 객체가 생성
 }
