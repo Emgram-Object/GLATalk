@@ -1,5 +1,7 @@
 package com.example.glatalk_project.Model
 
+import com.example.glatalk_project.network.data.response.ChatResponse
+import com.example.glatalk_project.network.data.response.PapagoResponse
 import io.reactivex.Single
 
 class ChatModel {

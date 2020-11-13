@@ -79,7 +79,7 @@ class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 inner class ChatMineViewHolder(v: View): RecyclerView.ViewHolder(v) {
     var view = v
     fun onBind(chat: ChatData) {
-        view.
+        //파일 따로 만들기?
     }
 
     fun dateVisible(position: Int) {
@@ -112,21 +112,23 @@ inner class ChatMineViewHolder(v: View): RecyclerView.ViewHolder(v) {
     }
 }
 
-    inner class ChatOtherViewHolder(val binding: ChatOthersRowBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class ChatOtherViewHolder(v:View): RecyclerView.ViewHolder(v) {
+        var view = v
         fun onBind(chat: ChatData) {
-            binding.chatData = chat
+           // binding.chatData = chat
+
         }
 
         fun dateVisible(position: Int) {
             if(position == 0) {
-                binding.root.chat_other_date.visibility = View.VISIBLE
+                view.chat_time.visibility = View.VISIBLE
             } else {
                 val prev = dateParser(chatList[position-1].msg_dt)
                 val current = dateParser(chatList[position].msg_dt)
                 if(prev.equals(current)) {
-                    binding.root.chat_other_date.visibility = View.GONE
+                    view.chat_time.visibility = View.GONE
                 } else {
-                    binding.root.chat_other_date.visibility = View.VISIBLE
+                   view.chat_time.visibility = View.VISIBLE
                 }
             }
         }
