@@ -61,13 +61,11 @@ class LoginActivity : AppCompatActivity() {
 //            val request = LoginRequest(
 //                    user_email,user_pwd
 //            )
-            UserDAO.login(loginRequest = LoginRequest("", ""), callback = object : Callback<LoginResponse> {
+            UserDAO.login(loginRequest = LoginRequest(user_email, user_pwd), callback = object : Callback<LoginResponse> {
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+
                     Log.d("login", "onFailure: fail")
-
-
                 }
-
                 override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                     Log.d("login", "onResponse: 성공  ")
                     goHome()

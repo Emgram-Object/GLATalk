@@ -1,5 +1,6 @@
 package com.example.glatalk_project.Model
 
+import android.util.JsonToken
 import android.util.Log
 import com.example.glatalk_project.constant.C
 import com.example.glatalk_project.network.ApiServer
@@ -57,4 +58,7 @@ object UserDAO {
 //    fun setUserId(user_email: String) {
 //        PreferenceUtil.putString(C.Preference.KEY_USER_ID, user_email)
 //    }
+    fun setAccessToken(token: String){
+
+    }
 }

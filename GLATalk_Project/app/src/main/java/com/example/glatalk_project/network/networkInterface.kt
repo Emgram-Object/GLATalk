@@ -17,7 +17,7 @@ interface networkInterface {
     /**
      * 언어설정
      */
-    @PUT("api/v1/common/user_language")
+    @PUT("v1/common/user_language")
     fun user_language(@Body langRequest: LangRequest):Call<BaseResponse>
 
 
