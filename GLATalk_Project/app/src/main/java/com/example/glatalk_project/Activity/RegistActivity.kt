@@ -38,6 +38,8 @@ class RegistActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_regist)
 
+        common_title_regist.setTitle("사용자 정보")
+
         touristFragment = registTouristFragment()
         guideFragment = registGuideFragment()
 
