@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="country_cd_list">
-        <item> 한국 </item>
-        <item> 미국 </item>
-        <item> 중국 </item>
-        <item> 일본 </item>
+        <item id ="ko"> 한국 </item>
+        <item id ="en"> 미국 </item>
+        <item id ="zh"> 중국 </item>
+        <item id ="ja"> 일본 </item>
     </string-array>
 </resources>

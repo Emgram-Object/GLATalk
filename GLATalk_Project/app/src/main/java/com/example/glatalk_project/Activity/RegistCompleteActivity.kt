@@ -1,4 +1,4 @@
-package com.example.glatalk_project.Controller
+package com.example.glatalk_project.Activity
 
 import android.content.Intent
 import android.os.Bundle

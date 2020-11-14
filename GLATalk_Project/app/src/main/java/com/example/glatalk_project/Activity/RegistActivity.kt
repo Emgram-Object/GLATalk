@@ -1,5 +1,6 @@
 package com.example.glatalk_project.Activity
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,6 +11,7 @@ import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import com.example.glatalk_project.Model.UserDAO
+import com.example.glatalk_project.Model.UserDAO.userVO
 import com.example.glatalk_project.R
 import com.example.glatalk_project.R.array.country_cd_list
 import com.example.glatalk_project.network.BaseResponse
@@ -83,7 +85,7 @@ class RegistActivity : AppCompatActivity() {
 //                }
 //            }
 //
-//        }
+//        }스피너 만들다가 귀찮아서 일단 스탑
 //
 //    }
 
@@ -103,19 +105,20 @@ class RegistActivity : AppCompatActivity() {
     }
 
     fun addNetworking() {
-        UserDAO.add(userRequest = UserRequest("", "", "", "", "", "", "", "", true)
-                , callback = object : Callback<BaseResponse> {
+
+        UserDAO.add(userRequest = UserRequest(userDAO.userVO.user_name,userDAO.userVO.user_email,userDAO.userVO.user_type,userDAO.userVO.user_pwd,
+        userDAO.userVO.phone_number,userDAO.userVO.country_cd,userDAO.userVO.guide_info,userDAO.userVO.guide_time,userDAO.userVO.ad_agree),callback = object : Callback<BaseResponse> {
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
                 Log.d("add", "fail")
-//                Log.d("add", "onFailure: ${execute.code()} ${execute.message()}")
-                t.printStackTrace()
             }
 
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
                 Log.d("add", "success")
+                //잘 보내졌는지 확인하고 싶음..
             }
-
         })
+
+
     }
 
     fun getGuideData() {
@@ -125,7 +128,7 @@ class RegistActivity : AppCompatActivity() {
         userDAO.userVO.user_type = "guide"
         userDAO.userVO.user_name = reg_name_et.text.toString()
         // userDAO.userVO.country_cd = reg_country_select_tv.text.toString()  -> 스피너 값 받는거 함수만들어서 따로 처리 해서 추가.
-        userDAO.userVO.country_cd = "ko"
+        userDAO.userVO.country_cd = "Kr"
         userDAO.userVO.phone_number = reg_phone_et.text.toString()
         userDAO.userVO.guide_info = reg_guide_info_et.text.toString()
         userDAO.userVO.guide_time = reg_time_et.text.toString()
@@ -138,7 +141,7 @@ class RegistActivity : AppCompatActivity() {
         userDAO.userVO.pwd_check = reg_pwd_check_et.text.toString()
         userDAO.userVO.user_type = "tourist"
         userDAO.userVO.user_name = reg_tourist_name_et.text.toString()
-        userDAO.userVO.country_cd = "ko"
+        userDAO.userVO.country_cd = "Kr"
         // userDAO.userVO.country_cd = reg_tourist_country_select_tv.text.toString()  -> 스피너 값 받는거 함수만들어서 따로 처리 해서 추가.
         userDAO.userVO.phone_number = reg_tourist_phone_et.text.toString()
         userDAO.userVO.ad_agree = true
