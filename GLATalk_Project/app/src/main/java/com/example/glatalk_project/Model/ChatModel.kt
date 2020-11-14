@@ -13,6 +13,11 @@ class ChatModel {
         return ApiServer.API.chat_list(room_id).toSingle()
     }
 
+
+
+    fun chatList(room_id: String){
+
+    }
 }
 
 class ChatData {
@@ -46,3 +51,6 @@ data class TransData(
         val target_lang: String,
         val target_text: String
 )
+fun translation(chatData: ChatData){
+
+}

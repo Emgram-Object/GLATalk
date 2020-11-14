@@ -17,11 +17,11 @@ class ChatActivity:AppCompatActivity(){
         get()= R.layout.activity_chat
      //var viewModel: ChatViewModel
      private lateinit var chatAdapter: ChatAdapter
-    lateinit var view: ChatView
 
+    lateinit var Model: ChatModel
     private var UserVO = UserVO()
 
-    private var roomname=""
+    private var roomName=""
     private var receiver_id = ""
     private var target = ""
     private var user_type=""
@@ -31,18 +31,22 @@ class ChatActivity:AppCompatActivity(){
     private var chatData: ChatData? = null
 
     fun initView(){
-        roomname = intent.getStringExtra("reserve_id")?:""
+        roomName = intent.getStringExtra("reserve_id")?:""
         receiver_id = intent.getStringExtra("receiver_id")?:""
         user_type = toStringGson(intent.getStringExtra("user_type")) //?????모르갯음
 
-        if(roomname.isEmpty()||receiver_id.isEmpty()){
+        if(roomName.isEmpty()||receiver_id.isEmpty()){
             finish()
         }
 
         chatAdapter = ChatAdapter()
         chat_rv.adapter = chatAdapter
 
+        Model.chatList(roomName)
+
         //viewModel.chatList(roomname)
+
+        ChatManager.instace.init(UserVO.user_name?: "", receiver_id, roomName)
 
         fun initListener(){
             chat_send_iv.setOnClickListener{
@@ -55,7 +59,7 @@ class ChatActivity:AppCompatActivity(){
                 chatData.receiver_id = receiver_id
                 chatData.sender_user_type = ""
                 chatData.receiver_user_type = ""
-                chatData.room_id = roomname
+                chatData.room_id = roomName
                 chatData.msg_dt = df.format(Date(System.currentTimeMillis()))
                 this.chatData = chatData
 
