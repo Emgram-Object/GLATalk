@@ -18,7 +18,9 @@ class ChatActivity:AppCompatActivity(){
     private var isConnected = false
     private var chatData: ChatData? = null
 
-    override fun initView(){
+    fun initView(){
+        roomname = intent.getStringExtra("reserve_id")?:""
+        receiver = intent.getStringExtra("receiver_id")?:""
 
     }
 }

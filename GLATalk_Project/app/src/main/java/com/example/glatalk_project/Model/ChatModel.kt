@@ -6,12 +6,12 @@ import io.reactivex.Single
 
 class ChatModel {
     fun translation(chatData:ChatData): Single<PapagoResponse>{
-        return MainApiServer.API.translation(chatData).toStirng()
+        return ApiServer.API.translation(chatData).toStirng()
     }
     fun chat_list(room_id: String): Single<ChatResponse> {
         return MainApiServer.API.chat_list(room_id).toSingle()
     }
-    //MainApiServer: 추가필요..
+
 }
 
 class ChatData {
