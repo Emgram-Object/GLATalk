@@ -14,6 +14,7 @@ import com.example.glatalk_project.Model.UserDAO
 import com.example.glatalk_project.Model.UserDAO.userVO
 import com.example.glatalk_project.R
 import com.example.glatalk_project.R.array.country_cd_list
+import com.example.glatalk_project.R.layout.activity_regist
 import com.example.glatalk_project.network.BaseResponse
 import com.example.glatalk_project.network.data.request.UserRequest
 import kotlinx.android.synthetic.main.activity_regist.*
@@ -36,11 +37,10 @@ class RegistActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_regist)
+        setContentView(activity_regist)
 
-        common_title_regist.setTitle("사용자 정보")
+        //common_title_regist.setTitle("사용자 정보")
 
         touristFragment = registTouristFragment()
         guideFragment = registGuideFragment()
@@ -114,7 +114,6 @@ class RegistActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
                 Log.d("add", "success")
-                //잘 보내졌는지 확인하고 싶음..
             }
         })
 
@@ -128,7 +127,7 @@ class RegistActivity : AppCompatActivity() {
         userDAO.userVO.user_type = "guide"
         userDAO.userVO.user_name = reg_name_et.text.toString()
         // userDAO.userVO.country_cd = reg_country_select_tv.text.toString()  -> 스피너 값 받는거 함수만들어서 따로 처리 해서 추가.
-        userDAO.userVO.country_cd = "Kr"
+        userDAO.userVO.country_cd = "ko"
         userDAO.userVO.phone_number = reg_phone_et.text.toString()
         userDAO.userVO.guide_info = reg_guide_info_et.text.toString()
         userDAO.userVO.guide_time = reg_time_et.text.toString()
@@ -141,7 +140,7 @@ class RegistActivity : AppCompatActivity() {
         userDAO.userVO.pwd_check = reg_pwd_check_et.text.toString()
         userDAO.userVO.user_type = "tourist"
         userDAO.userVO.user_name = reg_tourist_name_et.text.toString()
-        userDAO.userVO.country_cd = "Kr"
+        userDAO.userVO.country_cd = "ko"
         // userDAO.userVO.country_cd = reg_tourist_country_select_tv.text.toString()  -> 스피너 값 받는거 함수만들어서 따로 처리 해서 추가.
         userDAO.userVO.phone_number = reg_tourist_phone_et.text.toString()
         userDAO.userVO.ad_agree = true

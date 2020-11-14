@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.glatalk_project.Activity.LoginActivity
 import com.example.glatalk_project.BuildConfig
 import com.example.glatalk_project.R
 import kotlinx.android.synthetic.main.fragment_my.*
@@ -38,21 +39,21 @@ class MyFragment: Fragment(){
 
     //임시로 LoginActivity로 연결해놓음 다른 액티비티들 만들어지면 수정 ㄱㄱ
     private fun goToLogin(){
-        val intent = Intent(context, LoginActivty::class.java)
+        val intent = Intent(context, LoginActivity::class.java)
         startActivity(intent)
     }
     private fun goToMyInfo(){
-        val intent = Intent(context, LoginActivty::class.java)
+        val intent = Intent(context, LoginActivity::class.java)
         startActivity(intent)
     }
 
     private fun goToSetting(){
-        val intent = Intent(context, LoginActivty::class.java)
+        val intent = Intent(context, LoginActivity::class.java)
         startActivity(intent)
     }
 
     private fun goToTerm(){
-        val intent = Intent(context, LoginActivty::class.java)
+        val intent = Intent(context, LoginActivity::class.java)
         startActivity(intent)
     }
 }
