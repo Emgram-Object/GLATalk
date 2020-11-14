@@ -25,6 +25,7 @@ class FirstLanguageActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             recreate()
+            finish()
         }
 
         lang_korea.setOnClickListener {

@@ -2,7 +2,9 @@ package com.example.glatalk_project.network
 
 open class BaseResponse(
         var resultCode: Int = -1,
-        var desc: String? = null
+        var desc: String? = null,
+        var body: String ?= null
+
 ) : ServerResult {
     override fun isSuccess(): Boolean {
         return resultCode == 0
@@ -14,5 +16,9 @@ open class BaseResponse(
 
     override fun errorMessage(): String? {
         return desc
+    }
+
+    override fun token(): String? {
+        return body
     }
 }  // BaseNetwork의 interface를 상속받은 클래스 -> 오버라이딩

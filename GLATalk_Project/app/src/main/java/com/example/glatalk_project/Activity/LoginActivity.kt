@@ -2,115 +2,130 @@ package com.example.glatalk_project.Activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
+import androidx.core.widget.addTextChangedListener
+import androidx.databinding.adapters.TextViewBindingAdapter
 import com.example.glatalk_project.Model.UserDAO
 import com.example.glatalk_project.R
+import com.example.glatalk_project.LoginData
+import com.example.glatalk_project.network.BaseResponse
 import com.example.glatalk_project.network.data.request.LoginRequest
-import com.example.glatalk_project.network.data.response.LoginResponse
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.http.Body
-
+import org.json.JSONObject
+import kotlin.system.exitProcess
 
 class LoginActivity : AppCompatActivity() {
 
     private var userDAO = UserDAO
+    var input_user_email: String = ""
+    var input_user_pwd: String = ""
+    var loginData = LoginData()
+    var loginResult: String = ""
+    lateinit var input: EditText
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+
+//        if (login_email_et.text.toString().isNotBlank() && login_pwd_et.text.toString().isNotBlank()) {
+//            Btn_Enable()
+//           //addTextChangeListener 사용
+//        }
+
         login_regist_tv.setOnClickListener {
-            val intent = Intent(this, RegistActivity::class.java)
-            startActivity(intent)
+            toRegist()
         }
-        //넘겨주기 //request
-        //하고 나서 홈화면으로 가기
-//            goHome()
+        login_find_pwd.setOnClickListener {
+            toPwdFind()
+        }
+        close_btn.setOnClickListener {
+            exitProcess(0)
+        } // 누르면 팝업창 떠서 앱을 종료하겠냐고 물어본다음 확인 누르면 프로세스 종료하는 걸로 할 예정임
+
 //            EmptyCheck()
 //            if (login_auto_cb.isChecked) {
 //                AutoLogin()
 //            }
 
-//
-//        login_find_pwd.setOnClickListener {
-//            pwd_find()
-//        }
-//
-//        login_regist_tv.setOnClickListener {
-//            toregist()
-//        }
-//        if (login_email_et.isNotBlank() && user_pwd.isNotBlank()) {
-//            //로그인 버튼 활성화
-//            Btn_Enable()
-//
-//        }
-
-        val user_email = login_email_et.text.toString()
-        val user_pwd = login_pwd_et.text.toString()
 
         Btn_Enable()
         login_btn.setOnClickListener(View.OnClickListener {
-//            val request = LoginRequest(
-//                    user_email,user_pwd
+
 //            )
-            UserDAO.login(loginRequest = LoginRequest("", ""), callback = object : Callback<LoginResponse> {
-                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                    Log.d("login", "onFailure: fail")
+            input_user_email = login_email_et.text.toString()
+            input_user_pwd = login_pwd_et.text.toString()
 
-
+            UserDAO.login(loginRequest = LoginRequest(input_user_email, input_user_pwd), callback = object : Callback<BaseResponse> {
+                override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+                    TODO("Not yet implemented")
                 }
 
-                override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                    Log.d("login", "onResponse: 성공  ")
-                    goHome()
+                override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
+                    var result = response.body()!!
+                    loginResult = result.toString()
+                    loginData.resultCode = result.resultCode.toString()
+                    loginData.desc = result.desc.toString()
+                    Log.d("result", "$loginResult")
+                    if (response.isSuccessful) {
+                        loginData.loginToken = result.body.toString()
+                        if (loginData.resultCode == "0") {
+                            goHome()
+                        } else {
+                            Log.d("result", "${loginData.resultCode}")
+                            Log.d("result", "${loginData.desc}")
+                        }
+                    }
                 }
             })
         })
 
     }
+
+
     private fun Btn_Enable() {
         if (login_btn.isEnabled) {
             //색 바꾸기
             login_btn.setBackgroundResource(R.drawable.rounded_square)
         }
     }
+
     private fun goHome() {
-        val intentAct= Intent(this,MainActivity::class.java)
+        val intentAct = Intent(this, MainActivity::class.java)
         startActivity(intentAct)
+        finish()
         //로그인한 계정 정보에 따라서 가이드 홈화면/관광객 홈화면 구분해서 넘어가기
+    }
+
+    private fun toRegist() {
+        val intentAct = Intent(this, RegistActivity::class.java)
+        startActivity(intentAct)
+    }
+
+    private fun toPwdFind() {
+        val intentAct = Intent(this, PwdFindActivity::class.java)
+        startActivity(intentAct)
+    }
+
+    //    fun EmptyCheck() {
+//        if (input_user_email.isBlank() || input_user_pwd.isBlank()) {
+//            //팝업창 띄우기
+//        }
+//      }
+    private fun AutoLogin() {
+            //sharedPreferences 연결하기 //토큰 저장
+
     }
 }
 
-//private fun pwd_find() {
-//    val intentAct = Intent(this, PwdFindActivity::class.java)
-//    startActivity(intentAct)
-//}
-//
-//private fun toregist() {
-//    val intentAct = Intent(this, RegistActivity::class.java)
-//    startActivity(intentAct)
-//}
-//
 
-//
-//private fun AutoLogin() {
-//    //sharedPreferences 연결하기
-//
-//}
-//
-//fun EmptyCheck() {
-//    if (user_email.isBlank() || user_pwd.isBlank()) {
-//        //팝업창 띄우기
-//    }
-//}
-//
 
-//}

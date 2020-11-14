@@ -5,6 +5,7 @@ import com.example.glatalk_project.network.data.request.LangRequest
 import com.example.glatalk_project.network.data.request.LoginRequest
 import com.example.glatalk_project.network.data.request.UserRequest
 import com.example.glatalk_project.network.data.response.LoginResponse
+import com.example.glatalk_project.network.error.AppError
 import okhttp3.Request
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -17,7 +18,7 @@ interface networkInterface {
     /**
      * 언어설정
      */
-    @PUT("api/v1/common/user_language")
+    @PUT("v1/common/user_language")
     fun user_language(@Body langRequest: LangRequest):Call<BaseResponse>
 
 
@@ -25,7 +26,7 @@ interface networkInterface {
      * 로그인
      */
     @POST("v1/user/login")
-    fun login(@Body loginRequest: LoginRequest):Call<LoginResponse>
+    fun login(@Body loginRequest: LoginRequest):Call<BaseResponse>
 
 
     /**
@@ -47,6 +48,7 @@ interface networkInterface {
     /**
      * 비밀번호찾기
      */
+
 
 
 
