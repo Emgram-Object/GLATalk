@@ -63,11 +63,20 @@ class ChatActivity:AppCompatActivity(){
                 chatData.msg_dt = df.format(Date(System.currentTimeMillis()))
                 this.chatData = chatData
 
+                //viewModel.translation(chatData)
+                runOnUiThread{
+                    chatAdapter.addChat(chatData)
+
+                    chat_input_et.setText("")
+                    chat_rv.scrollToPosition(chatAdapter.getChatSize()-1)
+                }
             }
         }
+//        ChatManager.instance.setChatListener(chatListener)
 
 
     }
+
 }
 //
 //class ChatViewModel(private val model: ChatModel){
