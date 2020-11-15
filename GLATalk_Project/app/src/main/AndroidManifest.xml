@@ -27,6 +27,7 @@
         <activity android:name=".Activity.MainActivity"></activity>
         <activity android:name=".Activity.RegistActivity"></activity>
         <activity android:name=".Activity.PwdFindActivity"></activity>
+        <activity android:name=".Activity.PwdChangeActivity"></activity>
         <activity android:name=".Activity.FirstLanguageActivity"></activity>
         <!--<activity android:name=".PwdChangeActivity"/>-->
         <!--패스워드 바꾸는 액티비티 넣어주기-->
