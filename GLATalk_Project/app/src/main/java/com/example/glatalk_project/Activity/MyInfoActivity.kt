@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.Model.UserDAO
+import com.example.glatalk_project.Model.UserVO
 import com.example.glatalk_project.R
 import com.example.glatalk_project.TokenData
 import com.example.glatalk_project.network.BaseResponse
@@ -17,7 +18,7 @@ class MyInfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_info)
         var userDao = UserDAO
-
+        var userVo = UserVO()
         //common title 수정버튼 누르면 넘어감
 
 
@@ -45,7 +46,16 @@ class MyInfoActivity : AppCompatActivity() {
 
         Log.d("result", "ddddddd")
 
+<<<<<<< Updated upstream
         my_info_name_et.setText(UserD)
+=======
+        my_info_name_et.setText(userVo.user_name)
+        my_info_phone_et.setText(userVo.phone_number)
+        my_info_email_et.setText(userVo.user_email)
+        my_info_country_select_tv.setText(userVo.country_cd)
+
+
+>>>>>>> Stashed changes
     }
 
 
