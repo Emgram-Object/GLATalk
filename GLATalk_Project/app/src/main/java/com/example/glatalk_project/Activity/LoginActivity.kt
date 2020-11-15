@@ -2,24 +2,20 @@ package com.example.glatalk_project.Activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.addTextChangedListener
-import androidx.databinding.adapters.TextViewBindingAdapter
 import com.example.glatalk_project.Model.UserDAO
 import com.example.glatalk_project.R
-import com.example.glatalk_project.LoginData
+import com.example.glatalk_project.TokenData
+import com.example.glatalk_project.UserData
 import com.example.glatalk_project.network.BaseResponse
 import com.example.glatalk_project.network.data.request.LoginRequest
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import org.json.JSONObject
 import kotlin.system.exitProcess
 
 class LoginActivity : AppCompatActivity() {
@@ -27,8 +23,9 @@ class LoginActivity : AppCompatActivity() {
     private var userDAO = UserDAO
     var input_user_email: String = ""
     var input_user_pwd: String = ""
-    var loginData = LoginData()
-    var loginResult: String = ""
+    var userData = UserData()
+    var tokenData = TokenData()
+//    var loginResult: String = ""
     lateinit var input: EditText
 
 
@@ -57,40 +54,43 @@ class LoginActivity : AppCompatActivity() {
 //                AutoLogin()
 //            }
 
-
         Btn_Enable()
         login_btn.setOnClickListener(View.OnClickListener {
-
-//            )
             input_user_email = login_email_et.text.toString()
             input_user_pwd = login_pwd_et.text.toString()
-
-            UserDAO.login(loginRequest = LoginRequest(input_user_email, input_user_pwd), callback = object : Callback<BaseResponse> {
-                override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
-                    var result = response.body()!!
-                    loginResult = result.toString()
-                    loginData.resultCode = result.resultCode.toString()
-                    loginData.desc = result.desc.toString()
-                    Log.d("result", "$loginResult")
-                    if (response.isSuccessful) {
-                        loginData.loginToken = result.body.toString()
-                        if (loginData.resultCode == "0") {
-                            goHome()
-                        } else {
-                            Log.d("result", "${loginData.resultCode}")
-                            Log.d("result", "${loginData.desc}")
-                        }
-                    }
-                }
-            })
+            loginNetworking()
         })
-
     }
 
+
+
+
+
+    private fun loginNetworking() {
+
+        userDAO.login(loginRequest = LoginRequest(input_user_email, input_user_pwd), callback = object : Callback<BaseResponse> {
+            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
+                var result = response.body()!!
+//                loginResult = result.toString()
+                userData.resultCode = result.resultCode.toString()
+                userData.desc = result.desc.toString()
+//                Log.d("result", "$loginResult")
+                if (response.isSuccessful) {
+                    tokenData.loginToken = result.body.toString()
+                    if (userData.resultCode == "0") {
+                        goHome()
+                    } else {
+                        Log.d("result", "${userData.resultCode}")
+                        Log.d("result", "${userData.desc}")
+                    }
+                }
+            }
+        })
+    }
 
     private fun Btn_Enable() {
         if (login_btn.isEnabled) {
@@ -122,7 +122,7 @@ class LoginActivity : AppCompatActivity() {
 //        }
 //      }
     private fun AutoLogin() {
-            //sharedPreferences 연결하기 //토큰 저장
+        //sharedPreferences 연결하기 //토큰 저장
 
     }
 }
