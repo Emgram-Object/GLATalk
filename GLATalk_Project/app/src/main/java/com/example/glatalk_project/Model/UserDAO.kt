@@ -46,17 +46,8 @@ object UserDAO {
 //    }
 //
     fun userDetail(callback: Callback<BaseResponse>) {
-<<<<<<< Updated upstream
         apiServer.detail_info(TokenData.loginToken).enqueue(callback)
-<<<<<<< Updated upstream
-=======
-       apiServer.detail_info(TokenData.loginToken).enqueue(callback)
->>>>>>> Stashed changes
     }
-=======
-    }//????
-
->>>>>>> Stashed changes
 //    fun setUserId(user_email: String) {
 //        PreferenceUtil.putString(C.Preference.KEY_USER_ID, user_email)
 //    }

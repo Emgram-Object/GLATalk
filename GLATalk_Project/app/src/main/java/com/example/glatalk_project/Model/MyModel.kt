@@ -5,6 +5,7 @@
 //import com.example.glatalk_project.network.data.request.LangRequest
 //import com.example.glatalk_project.network.data.request.ProfileRequest
 //import com.example.glatalk_project.network.data.response.ProfileResponse
+//import com.example.glatalk_project.network.networkInterface
 //import io.reactivex.Single
 //
 //class MyModel {
@@ -16,7 +17,7 @@
 //
 //class MyModelImpl: MyModel {
 //    override fun detail_info(): Single<ProfileResponse> {
-//        return .API.detail_info().toSingle()
+//        return ApiServer.API.detail_info().toSingle()
 //    }
 //
 //    override fun info_modify(profileRequest: ProfileRequest): Single<BaseResponse> {

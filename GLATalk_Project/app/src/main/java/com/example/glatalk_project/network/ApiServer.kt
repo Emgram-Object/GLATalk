@@ -3,6 +3,7 @@ package com.example.glatalk_project.network
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.menu.BaseMenuPresenter
 import com.example.glatalk_project.Model.UserDAO
+import com.example.glatalk_project.network.ApiServer.Companion.retrofit
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -17,24 +18,25 @@ class ApiServer {
                 .build()
 
         var login: networkInterface = retrofit.create(networkInterface::class.java)
+
+
+        private var _api: networkInterface?=null
+
+        val API: networkInterface
+            get(){
+                if(_api ==null){
+                   // val network = ApiServer()
+                    _api = retrofit.create(
+                            networkInterface::class.java
+                    )
+
+                }
+                return _api!!
+            }
+
     }
 }
 
 
-
-//    companion object{
-//        private var _api: networkInterface?=null
-//
-//        val API: networkInterface
-//            get(){
-//                if(_api ==null){
-//                    val network = BaseNetwork()
-//                    _api = network.retrofit.create(
-//                            networkInterface::class.java
-//                    )
-//                    return _api!!
-//                }
-//            }
-//    }
 
 

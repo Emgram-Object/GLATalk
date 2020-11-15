@@ -19,11 +19,6 @@ class MyInfoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_my_info)
         var userDao = UserDAO
         var userVo = UserVO()
-        //common title 수정버튼 누르면 넘어감
-
-
-        //기존 서버에서 받아와서 editText에 표시
-
 
         //비밀번호 변경
 //        my_info_pwd_change_btn.setOnClickListener{
@@ -46,18 +41,12 @@ class MyInfoActivity : AppCompatActivity() {
 
         Log.d("result", "ddddddd")
 
-<<<<<<< Updated upstream
-        my_info_name_et.setText(UserD)
-=======
         my_info_name_et.setText(userVo.user_name)
         my_info_phone_et.setText(userVo.phone_number)
         my_info_email_et.setText(userVo.user_email)
         my_info_country_select_tv.setText(userVo.country_cd)
 
-
->>>>>>> Stashed changes
     }
-
 
 //    private fun Pwd_Change(){
 //        val intent = Intent(this, PwdChangeActivity::class.java)

@@ -8,37 +8,41 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.R
 import android.widget.EditText
 import android.widget.Button
-import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_my_info_change.*
+import kotlinx.android.synthetic.main.fragment_my.*
 
 class InfoChangeActivity:AppCompatActivity(){
+    var input_user_name:String = ""
+    var input_phone_num:String=""
+    var input_user_EngName:String =""
+    lateinit var input: EditText
 
     override fun onCreate(savedInstanceState:Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_info_change)
 
-        //기존 정보 서버에서 받아와서 표시
-        //usermodel 머지 후
-
-
         modify_ok_btn.setOnClickListener{
-            val intent = Intent(this, MyActivity::class.java) //마이메뉴 화면으로 넘어가기
+            //val intent = Intent(this, ) //마이메뉴 화면으로 넘어가기
             startActivity(intent)
         }
 
-        //나라 항목도 추가하기!!!!
-        if(user_name.isBlank()||mobile_num.isBlank()||user_EngName.isBlank()){
+        if(input_user_name.isBlank()||input_phone_num.isBlank()||input_user_EngName.isBlank()){
             modify_ok_btn.setBackgroundResource(R.drawable.rounded_square_dim)
         }
         //common title의 뒤로가기 누르면 SaveCheck() 호출하기
 
+        modify_ok_btn.setOnClickListener(){
+            input_user_name = my_info_name_et.text.toString()
+            input_phone_num = my_info_phone_et.text.toString()
+            input_user_EngName = my_info_english_name_et.text.toString()
+        }
+
     }
 
-
-    val user_name = my_info_name_et.text.toString()
-    val mobile_num = my_info_phone_et.text.toString()
-    val user_EngName = my_info_english_name_et.text.toString()
+//
+//    val user_name = my_info_name_et.text.toString()
+//    val mobile_num = my_info_phone_et.text.toString()
+//    val user_EngName = my_info_english_name_et.text.toString()
 //    val user_country =
 
 

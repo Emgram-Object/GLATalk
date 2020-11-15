@@ -54,7 +54,7 @@ interface networkInterface {
     /**
      * 내정보 조회
      */
-    @GET("api/v1/my/detail_info")
+    @GET("v1/my/detail_info")
     fun detail_info(loginToken: String): Call<BaseResponse>
 
 
@@ -63,7 +63,7 @@ interface networkInterface {
      * 내정보 변경
      */
     @Multipart
-    @POST("api/v1/my/modify_info")
+    @POST("v1/my/modify_info")
     fun info_modify(@Part profile_img: MultipartBody.Part?,
                     @Part("user_name") user_name: RequestBody,
                     @Part("user_phone_num") user_phone_num: RequestBody,
@@ -114,12 +114,12 @@ interface networkInterface {
     /**
      * 번역
      */
-    @POST("api/v1/chat/translation")
+    @POST("v1/chat/translation")
     fun translation(@Body chatData:ChatData): Call<PapagoResponse>
 
     /**
      * 대화내역리스트
      */
-    @GET("api/v1/common/chat_list")
+    @GET("v1/common/chat_list")
     fun chat_list(@Query("room_id") room_id: String):Call<ChatResponse>
 }
