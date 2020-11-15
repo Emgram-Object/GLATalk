@@ -4,5 +4,5 @@
 //import com.example.glatalk_project.network.BaseResponse
 //
 //class PapagoResponse: BaseResponse() {
-//    val body: ChatData?=null
+//    val Trans_body: ChatData?=null
 //}

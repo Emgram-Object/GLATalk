@@ -17,24 +17,19 @@ class ApiServer {
                 .build()
 
         var login: networkInterface = retrofit.create(networkInterface::class.java)
-    }
-}
-
-
-
-//    companion object{
+//
 //        private var _api: networkInterface?=null
 //
 //        val API: networkInterface
 //            get(){
-//                if(_api ==null){
-//                    val network = BaseNetwork()
-//                    _api = network.retrofit.create(
-//                            networkInterface::class.java
-//                    )
-//                    return _api!!
+//                if (_api == null) {
+//                    _api = retrofit.create(networkInterface::class.java)
+//
 //                }
+//                return _api!!
 //            }
-//    }
+    }
+}
+
 
 

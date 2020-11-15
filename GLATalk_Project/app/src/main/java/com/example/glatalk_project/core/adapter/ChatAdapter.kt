@@ -55,7 +55,7 @@
 //    override fun getItemCount(): Int =chatList.size
 //
 //    override fun getItemViewType(position: Int): Int {
-//        if(chatList[position].sender_type.equals("DR")){
+//        if(chatList[position].sender_user_type.equals("guide")){
 //            return CHAT_MINE
 //        }else{
 //            return CHAT_OTHER
@@ -115,7 +115,7 @@
 //    inner class ChatOtherViewHolder(v:View): RecyclerView.ViewHolder(v) {
 //        var view = v
 //        fun onBind(chat: ChatData) {
-//           // binding.chatData = chat
+//
 //
 //        }
 //
