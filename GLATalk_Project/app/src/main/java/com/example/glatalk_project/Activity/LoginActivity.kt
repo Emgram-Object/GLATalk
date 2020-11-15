@@ -24,7 +24,7 @@ class LoginActivity : AppCompatActivity() {
     var input_user_email: String = ""
     var input_user_pwd: String = ""
     var userData = UserData()
-    var tokenData = TokenData()
+    var tokenData = TokenData
 //    var loginResult: String = ""
     lateinit var input: EditText
 
@@ -82,6 +82,7 @@ class LoginActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     tokenData.loginToken = result.body.toString()
                     if (userData.resultCode == "0") {
+
                         goHome()
                     } else {
                         Log.d("result", "${userData.resultCode}")

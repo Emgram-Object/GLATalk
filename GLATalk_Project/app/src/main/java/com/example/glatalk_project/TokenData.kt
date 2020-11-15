@@ -1,9 +1,5 @@
 package com.example.glatalk_project
 
-data class TokenData (
-        var loginToken:String =""
-){
-    init {
-        this.loginToken = loginToken
-    }
+object TokenData{
+    var loginToken:String =""
 }

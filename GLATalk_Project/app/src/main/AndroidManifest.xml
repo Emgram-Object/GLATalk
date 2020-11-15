@@ -17,22 +17,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".Activity.MainActivity">
+        <activity android:name=".Activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.LoginActivity"></activity>
+        <activity android:name=".Activity.MainActivity"></activity>
         <activity android:name=".Activity.RegistActivity"></activity>
-
         <activity android:name=".Activity.PwdFindActivity"></activity>
         <activity android:name=".Activity.FirstLanguageActivity"></activity>
         <!--<activity android:name=".PwdChangeActivity"/>-->
         <!--패스워드 바꾸는 액티비티 넣어주기-->
         <!--<activity android:name=".Controller.InfoChangeActivity"/>-->
-        <activity android:name=".Controller.MyInfoActivity"/>
+        <activity android:name=".Activity.MyInfoActivity"/>
     </application>
 
 </manifest>
