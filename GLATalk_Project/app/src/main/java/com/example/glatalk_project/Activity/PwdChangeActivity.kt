@@ -37,19 +37,16 @@ class PwdChangeActivity : AppCompatActivity() {
         input_new_pwd = pwd_change_new_et.text.toString()
     }
 
-    fun changePwdNetworking(){
+    private fun changePwdNetworking(){
+        Log.d("login", "${TokenData.loginToken}")
         myDao.change_pwd(pwdRequest = PwdRequest(input_current_pwd,input_new_pwd), callback = object :Callback<BaseResponse> {
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
             }
-
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
-
-                Log.d("header", "${TokenData.loginToken}")
                 var result = response.body()!!
-                Log.d("header", "$input_current_pwd")
-                Log.d("header", "$input_new_pwd")
-                pwdData.resultCode = result.resultCode.toString()
+                pwdData.resultCode = result.resultCode()
                 pwdData.desc =result.desc.toString()
+
                 if (response.isSuccessful){
                     Log.d("result", "${pwdData.resultCode}")
                     Log.d("result", "${pwdData.desc}")

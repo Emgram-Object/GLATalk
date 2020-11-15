@@ -15,6 +15,6 @@ object MyDao{
         apiServer = ApiServer.retrofit.create(networkInterface::class.java)
     }
     fun change_pwd( pwdRequest: PwdRequest, callback: Callback<BaseResponse>){
-        apiServer.change_pwd(TokenData.loginToken,pwdRequest).enqueue(callback)
+        apiServer.change_pwd(pwdRequest).enqueue(callback)
     }
 }
