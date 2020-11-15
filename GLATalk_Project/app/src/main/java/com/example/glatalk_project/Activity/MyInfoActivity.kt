@@ -7,6 +7,7 @@ import com.example.glatalk_project.Model.UserDAO
 import com.example.glatalk_project.R
 import com.example.glatalk_project.TokenData
 import com.example.glatalk_project.network.BaseResponse
+import kotlinx.android.synthetic.main.activity_my_info.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,6 +22,7 @@ class MyInfoActivity : AppCompatActivity() {
 
 
         //기존 서버에서 받아와서 editText에 표시
+
 
         //비밀번호 변경
 //        my_info_pwd_change_btn.setOnClickListener{
@@ -43,6 +45,7 @@ class MyInfoActivity : AppCompatActivity() {
 
         Log.d("result", "ddddddd")
 
+        my_info_name_et.setText(UserD)
     }
 
 
