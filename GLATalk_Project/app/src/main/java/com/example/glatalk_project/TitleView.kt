@@ -5,6 +5,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
+
 import kotlinx.android.synthetic.main.activity_chat.view.*
 import kotlinx.android.synthetic.main.activity_find_pwd.view.*
 import kotlinx.android.synthetic.main.activity_find_pwd.view.*

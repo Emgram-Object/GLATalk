@@ -21,10 +21,10 @@ class PwdFindActivity:AppCompatActivity() {
 
         }
     }
-    fun goBack(){
+
+    fun goBack() {
         val intentAct = Intent(this, LoginActivity::class.java)
         startActivity(intentAct)
         finish()
     }
-
 }
