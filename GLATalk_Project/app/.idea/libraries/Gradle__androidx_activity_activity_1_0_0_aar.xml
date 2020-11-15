@@ -1,7 +1,10 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.activity:activity:1.0.0@aar">
     <CLASSES>
+<<<<<<< HEAD
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/dc1e4acff0a63e81dc1ee4e2c48df40c/jetified-activity-1.0.0/AndroidManifest.xml" />
+=======
+>>>>>>> feature/info_change
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/dc1e4acff0a63e81dc1ee4e2c48df40c/jetified-activity-1.0.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/dc1e4acff0a63e81dc1ee4e2c48df40c/jetified-activity-1.0.0/res" />
     </CLASSES>

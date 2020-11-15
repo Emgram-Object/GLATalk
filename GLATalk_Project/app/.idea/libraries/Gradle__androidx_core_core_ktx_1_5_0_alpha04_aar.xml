@@ -1,7 +1,10 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.core:core-ktx:1.5.0-alpha04@aar">
     <CLASSES>
+<<<<<<< HEAD
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6fa244b0381c86fef38f0d4e2cde74a6/jetified-core-ktx-1.5.0-alpha04/AndroidManifest.xml" />
+=======
+>>>>>>> feature/info_change
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6fa244b0381c86fef38f0d4e2cde74a6/jetified-core-ktx-1.5.0-alpha04/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6fa244b0381c86fef38f0d4e2cde74a6/jetified-core-ktx-1.5.0-alpha04/res" />
     </CLASSES>

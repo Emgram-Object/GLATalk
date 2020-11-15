@@ -14,6 +14,7 @@ data class UserVO(var user_email : String = "", var user_pwd: String = "", var p
         this.guide_time = guide_time
         this.ad_agree = ad_agree
 
+
     }
 
     override fun toString(): String {

@@ -1,7 +1,10 @@
 <component name="libraryTable">
   <library name="Gradle: io.reactivex.rxjava2:rxandroid:2.0.2@aar">
     <CLASSES>
+<<<<<<< HEAD
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5e999c74faf5699a0c01f865616e07d0/jetified-rxandroid-2.0.2/AndroidManifest.xml" />
+=======
+>>>>>>> feature/info_change
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5e999c74faf5699a0c01f865616e07d0/jetified-rxandroid-2.0.2/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5e999c74faf5699a0c01f865616e07d0/jetified-rxandroid-2.0.2/res" />
     </CLASSES>

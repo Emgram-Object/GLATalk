@@ -4,7 +4,10 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3e4f0b91ab89f7aed5d4f449ec1f921b/drawerlayout-1.0.0/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
+<<<<<<< HEAD
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3e4f0b91ab89f7aed5d4f449ec1f921b/drawerlayout-1.0.0/AndroidManifest.xml" />
+=======
+>>>>>>> feature/info_change
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3e4f0b91ab89f7aed5d4f449ec1f921b/drawerlayout-1.0.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3e4f0b91ab89f7aed5d4f449ec1f921b/drawerlayout-1.0.0/res" />
     </CLASSES>

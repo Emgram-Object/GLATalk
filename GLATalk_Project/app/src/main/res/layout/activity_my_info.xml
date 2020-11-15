@@ -12,20 +12,31 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <ImageView
+        android:id="@+id/my_info_profile_iv"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/icon_profile_l"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/common_title_my_info"/>
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/my_info_cl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/layout_margin"
         android:layout_marginRight="@dimen/layout_margin"
-        app:layout_constraintTop_toBottomOf="@+id/common_title_my_info">
+        app:layout_constraintTop_toBottomOf="@id/my_info_profile_iv">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/my_info_name_cl"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="30dp"
             android:paddingLeft="17dp"
             android:paddingRight="17dp"
             android:background="@drawable/edit_selector"
@@ -45,7 +56,7 @@
                 android:layout_width="0dp"
                 android:layout_height="22dp"
                 android:background="@null"
-                android:text="@{profileData.user_name}"
+                android:text="@{UserModel.user_name}"
                 android:textSize="15sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="2dp"
@@ -83,7 +94,7 @@
                 android:layout_height="22dp"
                 android:background="@null"
                 android:enabled="false"
-                android:text="@{profileData.user_phone_num}"
+                android:text="@{UserModel.user_phone_num}"
                 android:textSize="15sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="2dp"
@@ -121,7 +132,7 @@
                 android:layout_height="22dp"
                 android:background="@null"
                 android:enabled="false"
-                android:text="@{profileData.user_email}"
+                android:text="@{UserModel.user_email}"
                 android:textSize="15sp"
                 android:textColor="@color/black"
                 android:layout_marginTop="2dp"
@@ -205,15 +216,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <Button
-        android:id="@+id/modify_ok_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/primary_color"
-        android:text="@string/btn_modified"
-        android:textSize="16sp"
-        android:textColor="@color/white_text_color"
-        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

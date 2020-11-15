@@ -17,8 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".Activity.FirstLanguageActivity">
-
+        <activity android:name=".Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,8 +26,13 @@
         </activity>
         <activity android:name=".Activity.LoginActivity"></activity>
         <activity android:name=".Activity.RegistActivity"></activity>
-        <activity android:name=".Activity.MainActivity"></activity>
+
         <activity android:name=".Activity.PwdFindActivity"></activity>
+        <activity android:name=".Activity.FirstLanguageActivity"></activity>
+        <!--<activity android:name=".PwdChangeActivity"/>-->
+        <!--패스워드 바꾸는 액티비티 넣어주기-->
+        <!--<activity android:name=".Controller.InfoChangeActivity"/>-->
+        <activity android:name=".Controller.MyInfoActivity"/>
     </application>
 
 </manifest>
