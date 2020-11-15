@@ -3,11 +3,13 @@ package com.example.glatalk_project.network
 import android.app.DownloadManager
 import com.example.glatalk_project.network.data.request.LangRequest
 import com.example.glatalk_project.network.data.request.LoginRequest
+import com.example.glatalk_project.network.data.request.PwdFindRequest
 import com.example.glatalk_project.network.data.request.UserRequest
 import com.example.glatalk_project.network.data.response.LoginResponse
 import com.example.glatalk_project.network.error.AppError
 import okhttp3.Request
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Retrofit
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -48,7 +50,8 @@ interface networkInterface {
     /**
      * 비밀번호찾기
      */
-
+    @POST("v1/user/pwd_find")
+    fun pwd_find(@Body pwdFindRequest: PwdFindRequest):Call<BaseResponse>
 
 
 
