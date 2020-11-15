@@ -11,15 +11,6 @@ import com.example.glatalk_project.network.data.response.ProfileResponse
 import com.example.glatalk_project.network.networkInterface
 import retrofit2.Callback
 
-interface UserIntDAO {
-//    fun login(loginRequest: LoginRequest): Call<BaseResponse>
-//    fun findPwd(findRequest: PwdFindRequest): Call<BaseResponse>
-//    fun add(userRequest: UserRequest): Call<BaseResponse>
-//    fun userLanguage(request: LangRequest): Call<BaseResponse>
-//    fun userDetail(): Call<ProfileResponse>
-}
-
-
 object UserDAO {
     var userVO = UserVO()
     var apiServer: networkInterface
