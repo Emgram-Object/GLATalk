@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.glatalk_project.Activity.LoginActivity
+import com.example.glatalk_project.Activity.SettingActivity
 import com.example.glatalk_project.BuildConfig
 import com.example.glatalk_project.Activity.MyInfoActivity
 import com.example.glatalk_project.R
@@ -48,7 +49,7 @@ class MyFragment: Fragment(){
     }
 
     private fun goToSetting(){
-        val intent = Intent(context, LoginActivity::class.java)
+        val intent = Intent(context, SettingActivity::class.java)
         startActivity(intent)
     }
 
