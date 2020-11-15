@@ -3,16 +3,18 @@ package com.example.glatalk_project.Activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.R
+import com.example.glatalk_project.constant.C
+import com.example.glatalk_project.constant.languageCode
 import com.example.glatalk_project.core.helper.LocaleHelper
 import kotlinx.android.synthetic.main.activity_setting.*
 
 class SettingActivity: AppCompatActivity(){
 
     //얘좀 나중에 데이터 따로 모아주세요 ㅠㅠ
-    private val korLanguageCode: String = "ko"
-    private val engLanguageCode: String = "en"
-    private val jpnLanguageCode: String = "ja"
-    private val chLanguageCode: String = "zh"
+    private val korLanguageCode = languageCode.korLanguageCode
+    private val engLanguageCode = languageCode.engLanguageCode
+    private val jpnLanguageCode = languageCode.jpnLanguageCode
+    private val chLanguageCode = languageCode.chLanguageCode
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
