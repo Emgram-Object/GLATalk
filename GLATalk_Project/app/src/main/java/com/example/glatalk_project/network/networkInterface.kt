@@ -55,7 +55,7 @@ interface networkInterface {
      * 내정보 조회
      */
     @GET("api/v1/my/detail_info")
-    fun detail_info(): Call<ProfileResponse>
+    fun detail_info(loginToken: String): Call<ProfileResponse>
 
 
 
