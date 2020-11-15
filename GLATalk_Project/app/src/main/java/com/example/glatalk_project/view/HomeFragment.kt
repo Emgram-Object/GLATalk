@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.glatalk_project.Activity.LoginActivity
 import com.example.glatalk_project.R
 import com.example.glatalk_project.core.adapter.ChatRoomListAdapter
 import com.example.glatalk_project.core.data.ChatRoom
@@ -58,7 +59,7 @@ class HomeFragment: Fragment(){
     }
 
     private fun goToChat(){
-        val intent = Intent(getActivity(), LoginActivty::class.java)
+        val intent = Intent(getActivity(), LoginActivity::class.java)
         startActivity(intent)
     }
 }
