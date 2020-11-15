@@ -61,7 +61,7 @@ interface networkInterface {
      * 내정보 변경
      */
     @Multipart
-    @POST("api/v1/my/modify_info")
+    @POST("v1/my/modify_info")
     fun info_modify(@Part profile_img: MultipartBody.Part?,
                     @Part("user_name") user_name: RequestBody,
                     @Part("user_phone_num") user_phone_num: RequestBody,
@@ -76,8 +76,9 @@ interface networkInterface {
     /**
      * 비밀번호 변경
      */
-    @POST("v1/user/change_pwd")
-    fun change_pwd(@Body pwdFindRequest: PwdFindRequest):Call<BaseResponse>
+    @POST("v1/my/change_pwd")
+    fun change_pwd(@Header("Authorization")Authorization: String,
+            @Body pwdRequest: PwdRequest):Call<BaseResponse>
 
 
     /**
