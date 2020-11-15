@@ -1,6 +1,7 @@
 package com.example.glatalk_project.Activity
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -62,11 +63,13 @@ class RegistActivity : AppCompatActivity() {
                 getGuideData()
                 Log.d("log", userDAO.userVO.toString())
                 addNetworking()
+                finishRegister()
 
             } else if (reg_tour_radio_bnt.isChecked) {
                 getTouristData()
                 Log.d("log", userDAO.userVO.toString())
                 addNetworking()
+                finishRegister()
             }
         })
 
@@ -147,5 +150,11 @@ class RegistActivity : AppCompatActivity() {
 
     }
 
+    fun finishRegister(){
+        val intentAct = Intent(this, LoginActivity::class.java)
+        startActivity(intentAct)
+        finish()
+        //로그인으로 되돌아가는 부
+    }
 
 }
