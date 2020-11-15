@@ -1,17 +1,21 @@
 package com.example.glatalk_project.network
 
 import android.app.DownloadManager
+import com.example.glatalk_project.Model.ChatData
 import com.example.glatalk_project.network.data.request.LangRequest
 import com.example.glatalk_project.network.data.request.LoginRequest
 import com.example.glatalk_project.network.data.request.UserRequest
+import com.example.glatalk_project.network.data.response.ChatResponse
 import com.example.glatalk_project.network.data.response.LoginResponse
+import com.example.glatalk_project.network.data.response.PapagoResponse
+import com.example.glatalk_project.network.data.response.ProfileResponse
+import com.example.glatalk_project.network.error.AppError
+import okhttp3.MultipartBody
 import okhttp3.Request
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Retrofit
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.PUT
+import retrofit2.http.*
 
 interface networkInterface {
     /**
@@ -52,12 +56,24 @@ interface networkInterface {
     /**
      * 내정보 조회
      */
+    @GET("api/v1/my/detail_info")
+    fun detail_info(): Call<ProfileResponse>
 
 
 
     /**
      * 내정보 변경
      */
+    @Multipart
+    @POST("api/v1/my/modify_info")
+    fun info_modify(@Part profile_img: MultipartBody.Part?,
+                    @Part("user_name") user_name: RequestBody,
+                    @Part("user_phone_num") user_phone_num: RequestBody,
+                    @Part("country_cd") country_cd: RequestBody,
+                    @Part("country_phone_code") phone_country_num: RequestBody?): Call<BaseResponse>
+
+
+
 
 
 
@@ -100,5 +116,12 @@ interface networkInterface {
     /**
      * 번역
      */
+    @POST("api/v1/chat/translation")
+    fun translation(@Body chatData:ChatData): Call<PapagoResponse>
 
+    /**
+     * 대화내역리스트
+     */
+    @GET("api/v1/common/chat_list")
+    fun chat_list(@Query("room_id") room_id: String):Call<ChatResponse>
 }

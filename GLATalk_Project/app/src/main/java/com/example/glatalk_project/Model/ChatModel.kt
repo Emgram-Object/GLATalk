@@ -9,6 +9,7 @@ class ChatModel {
     fun translation(chatData:ChatData): Single<PapagoResponse>{
         return ApiServer.API.translation(chatData).toStirng()
     }
+    //여기 API부분 어떻게 수정해야할지 모르겠습니다 저는 빡대가리입니다
     fun chat_list(room_id: String): Single<ChatResponse> {
         return ApiServer.API.chat_list(room_id).toSingle()
     }
@@ -16,7 +17,7 @@ class ChatModel {
 
 
     fun chatList(room_id: String){
-
+        //채팅방 리스트 방id로 구분해서 정렬하는 거
     }
 }
 
