@@ -76,7 +76,8 @@ interface networkInterface {
     /**
      * 비밀번호 변경
      */
-
+    @POST("v1/user/change_pwd")
+    fun change_pwd(@Body pwdFindRequest: PwdFindRequest):Call<BaseResponse>
 
 
     /**
