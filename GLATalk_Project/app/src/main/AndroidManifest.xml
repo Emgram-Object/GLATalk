@@ -12,13 +12,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity android:name=".Activity.RegistActivity">
+=======
+        <activity android:name=".MainActivity">
+
+
+>>>>>>> feature/info_change
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--<activity android:name=".PwdChangeActivity"/>-->
+        <!--패스워드 바꾸는 액티비티 넣어주기-->
+        <!--<activity android:name=".Controller.InfoChangeActivity"/>-->
+        <activity android:name=".Controller.MyInfoActivity"/>
     </application>
 
 </manifest>

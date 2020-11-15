@@ -1,7 +1,10 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.test.ext:junit:1.1.2@aar">
     <CLASSES>
+<<<<<<< HEAD
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a83d54553f276b61e242d5503df58674/jetified-junit-1.1.2/AndroidManifest.xml" />
+=======
+>>>>>>> feature/info_change
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a83d54553f276b61e242d5503df58674/jetified-junit-1.1.2/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a83d54553f276b61e242d5503df58674/jetified-junit-1.1.2/res" />
     </CLASSES>

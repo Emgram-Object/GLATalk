@@ -4,7 +4,10 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/68adad71a4281c394dd992e3b83f300b/coordinatorlayout-1.1.0/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
+<<<<<<< HEAD
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/68adad71a4281c394dd992e3b83f300b/coordinatorlayout-1.1.0/AndroidManifest.xml" />
+=======
+>>>>>>> feature/info_change
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/68adad71a4281c394dd992e3b83f300b/coordinatorlayout-1.1.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/68adad71a4281c394dd992e3b83f300b/coordinatorlayout-1.1.0/res" />
     </CLASSES>

@@ -1,7 +1,10 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.lifecycle:lifecycle-service:2.1.0@aar">
     <CLASSES>
+<<<<<<< HEAD
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b5f7ef6e4605b30f332451f0a5e997e5/jetified-lifecycle-service-2.1.0/AndroidManifest.xml" />
+=======
+>>>>>>> feature/info_change
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b5f7ef6e4605b30f332451f0a5e997e5/jetified-lifecycle-service-2.1.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b5f7ef6e4605b30f332451f0a5e997e5/jetified-lifecycle-service-2.1.0/res" />
     </CLASSES>
