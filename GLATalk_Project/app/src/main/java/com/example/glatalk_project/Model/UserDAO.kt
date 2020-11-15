@@ -1,5 +1,6 @@
 package com.example.glatalk_project.Model
 
+import com.example.glatalk_project.TokenData
 import com.example.glatalk_project.network.ApiServer
 import com.example.glatalk_project.network.BaseResponse
 import com.example.glatalk_project.network.data.request.LoginRequest
@@ -41,9 +42,8 @@ object UserDAO {
 //    override fun userLanguage(request: LangRequest): Single<BaseResponse> {
 //        TODO("Not yet implemented")
 //    }
-//
-//    override fun userDetail(): Single<ProfileResponse> {
-//        TODO("Not yet implemented")
+    fun userDetail(callback: Callback<BaseResponse>) {
+       apiServer.detail_info(TokenData.loginToken).enqueue(callback)
 //    }
 //    fun setUserId(user_email: String) {
 //        PreferenceUtil.putString(C.Preference.KEY_USER_ID, user_email)
