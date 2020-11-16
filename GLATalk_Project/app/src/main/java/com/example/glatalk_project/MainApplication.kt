@@ -1,4 +1,5 @@
-package com.example.glatalk_project;
+package com.example.glatalk_project
+
 import android.content.Context
 import android.os.Process
 import androidx.multidex.MultiDexApplication

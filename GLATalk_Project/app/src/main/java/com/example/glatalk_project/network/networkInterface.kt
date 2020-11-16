@@ -6,6 +6,7 @@ package com.example.glatalk_project.network
 //import com.example.glatalk_project.network.data.response.PapagoResponse
 
 import com.example.glatalk_project.network.data.request.*
+import com.example.glatalk_project.network.error.AppError
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -29,8 +30,8 @@ interface networkInterface {
     /**
      * 로그아웃 ..로그아웃은 프로토콜이 없나..?
 //     */
-//    @GET("/v1/user/logout")
-//    fun logout(@Body request: LangRequest  )
+    @GET("v1/user/logout")
+    fun logout(): Call<BaseResponse>
 
 
     /**
