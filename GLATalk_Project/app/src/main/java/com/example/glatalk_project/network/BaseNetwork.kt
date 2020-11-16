@@ -1,15 +1,11 @@
 package com.example.glatalk_project.network
-import com.example.glatalk_project.network.error.AppError
-import io.reactivex.Single
-import io.reactivex.subjects.SingleSubject
-import okhttp3.ResponseBody
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+
+import okhttp3.OkHttpClient
+
 import retrofit2.Retrofit
 
 abstract class BaseNetwork {
-    private var retrofit: Retrofit
+    var retrofit: Retrofit
 
     init {
         retrofit = createRetrofit()

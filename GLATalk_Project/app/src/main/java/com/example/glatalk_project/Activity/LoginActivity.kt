@@ -70,7 +70,6 @@ class LoginActivity : AppCompatActivity() {
 
         userDAO.login(loginRequest = LoginRequest(input_user_email, input_user_pwd), callback = object : Callback<BaseResponse> {
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
-                TODO("Not yet implemented")
             }
 
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
