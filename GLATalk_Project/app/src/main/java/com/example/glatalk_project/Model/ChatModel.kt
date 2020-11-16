@@ -1,4 +1,4 @@
-//package com.example.glatalk_project.Model
+package com.example.glatalk_project.Model//package com.example.glatalk_project.Model
 //
 //import com.example.glatalk_project.network.ApiServer
 //import com.example.glatalk_project.network.data.response.ChatResponse
