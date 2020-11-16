@@ -8,6 +8,4 @@ class ProfileResponse (
     var phone_number: String = "",
     var country_cd: String = "",
     var user_email: String = ""
-):BaseResponse(){
-
-}
+)

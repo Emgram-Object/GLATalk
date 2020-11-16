@@ -3,36 +3,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.glatalk_project">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 
     <application
-        android:usesCleartextTraffic="true"
+        android:name=".MainApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:name=".MainApplication"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+
 
         <activity android:name=".Activity.LoginActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".Activity.MainActivity"></activity>
+
         <activity android:name=".Activity.RegistActivity"></activity>
         <activity android:name=".Activity.PwdFindActivity"></activity>
+
         <activity android:name=".Activity.PwdChangeActivity"></activity>
         <activity android:name=".Activity.FirstLanguageActivity"></activity>
         <!--<activity android:name=".PwdChangeActivity"/>-->
         <!--패스워드 바꾸는 액티비티 넣어주기-->
         <!--<activity android:name=".Controller.InfoChangeActivity"/>-->
-        <activity android:name=".Activity.MyInfoActivity"/>
+        <activity android:name=".Activity.MyInfoActivity" />
+
     </application>
 
 </manifest>

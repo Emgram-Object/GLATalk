@@ -1,12 +1,14 @@
-//package com.example.glatalk_project.Activity
+package com.example.glatalk_project.Activity//package com.example.glatalk_project.Activity
 //
 //import android.service.autofill.UserData
 //import androidx.appcompat.app.AppCompatActivity
+
 //import com.example.glatalk_project.Model.*
 ////import com.example.glatalk_project.Model.ChatData
 //import com.example.glatalk_project.R
 //import com.example.glatalk_project.core.adapter.ChatAdapter
 ////import com.example.glatalk_project.core.adapter.ChatAdapter
+
 //import kotlinx.android.synthetic.main.activity_chat.*
 //import java.text.SimpleDateFormat
 //import java.util.*
@@ -32,7 +34,9 @@
 //    fun initView(){
 //        roomName = intent.getStringExtra("reserve_id")?:""
 //        receiver_id = intent.getStringExtra("receiver_id")?:""
-//      //  user_type = toStringGson(intent.getStringExtra("user_type")) //?????모르갯음
+
+//        user_type = toStringGson(intent.getStringExtra("user_type")) //?????모르갯음
+
 //
 //        if(roomName.isEmpty()||receiver_id.isEmpty()){
 //            finish()
@@ -41,11 +45,19 @@
 //        chatAdapter = ChatAdapter()
 //        chat_rv.adapter = chatAdapter
 //
+
 //     //   Model.chatList(roomName)
 //
 //        //viewModel.chatList(roomname)
 //
 //       // ChatManager.instace.init(UserVO.user_name?: "", receiver_id, roomName)
+
+//        Model.chatList(roomName)
+//
+//        //viewModel.chatList(roomname)
+//
+//        ChatManager.instace.init(UserVO.user_name?: "", receiver_id, roomName)
+
 //
 //        fun initListener(){
 //            chat_send_iv.setOnClickListener{
@@ -75,6 +87,7 @@
 //
 //
 //    }
+
 //    private var chatListener = object: BaseChat.OnChatListener {
 //        override fun onConnected() {
 //            isConnected = true
@@ -103,6 +116,7 @@
 //        super.onDestroy()
 //    }
 //
+
 //
 //}
 ////

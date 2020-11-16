@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.glatalk_project.Activity.LoginActivity
+import com.example.glatalk_project.Activity.MyInfoActivity
 import com.example.glatalk_project.Activity.SettingActivity
 import com.example.glatalk_project.BuildConfig
-import com.example.glatalk_project.Activity.MyInfoActivity
 import com.example.glatalk_project.R
 import kotlinx.android.synthetic.main.fragment_my.view.*
 

@@ -1,4 +1,4 @@
-//package com.example.glatalk_project.core.adapter
+package com.example.glatalk_project.core.adapter//package com.example.glatalk_project.core.adapter
 //
 //import android.view.*
 //import androidx.recyclerview.widget.RecyclerView
@@ -55,7 +55,9 @@
 //    override fun getItemCount(): Int =chatList.size
 //
 //    override fun getItemViewType(position: Int): Int {
-//        if(chatList[position].sender_user_type.equals("guide")){
+
+//        if(chatList[position].sender_type.equals("DR")){
+
 //            return CHAT_MINE
 //        }else{
 //            return CHAT_OTHER
@@ -115,7 +117,9 @@
 //    inner class ChatOtherViewHolder(v:View): RecyclerView.ViewHolder(v) {
 //        var view = v
 //        fun onBind(chat: ChatData) {
-//
+
+//           // binding.chatData = chat
+
 //
 //        }
 //

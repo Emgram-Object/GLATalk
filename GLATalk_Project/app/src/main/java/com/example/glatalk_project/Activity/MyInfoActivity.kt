@@ -1,7 +1,6 @@
 package com.example.glatalk_project.Activity
 
 import android.content.Intent
-import android.icu.text.IDNA
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -23,13 +22,10 @@ class MyInfoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_my_info)
         var userDao = UserDAO
 
-        //common title 수정버튼 누르면 넘어감
-
-
-        //기존 서버에서 받아와서 editText에 표시
+        //var userVo = UserVO()
 
         //비밀번호 변경
-        my_info_pwd_change_btn.setOnClickListener{
+        my_info_pwd_change_btn.setOnClickListener {
             Pwd_Change()
         }
 
@@ -52,20 +48,34 @@ class MyInfoActivity : AppCompatActivity() {
 
         change_tv.visibility = View.VISIBLE
 
-        change_tv.setOnClickListener(){
+        change_tv.setOnClickListener() {
             InfoChange()
         }
 
     }
 
 
-    private fun Pwd_Change(){
+    private fun Pwd_Change() {
         val intent = Intent(this, PwdChangeActivity::class.java)
         startActivity(intent)
     }
 
-    private fun InfoChange(){
+    private fun InfoChange() {
         val intent = Intent(this, InfoChangeActivity::class.java)
         startActivity(intent)
     }
+
+//
+//        my_info_name_et.setText(userVo.user_name)
+//        my_info_phone_et.setText(userVo.phone_number)
+//        my_info_email_et.setText(userVo.user_email)
+//        my_info_country_select_tv.setText(userVo.country_cd)
+
+
+    private fun ChangeInfo() {
+        val intent = Intent(this, InfoChangeActivity::class.java)
+        startActivity(intent)
+    }
+
+
 }

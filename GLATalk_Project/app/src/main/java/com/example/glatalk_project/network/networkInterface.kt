@@ -1,15 +1,15 @@
 package com.example.glatalk_project.network
 
+
 //import com.example.glatalk_project.Model.ChatData
-import com.example.glatalk_project.TokenData
-import com.example.glatalk_project.network.data.request.*
 //import com.example.glatalk_project.network.data.response.ChatResponse
 //import com.example.glatalk_project.network.data.response.PapagoResponse
+
+import com.example.glatalk_project.network.data.request.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
-import retrofit2.http.Header as Header
 
 interface networkInterface {
     /**
@@ -54,7 +54,9 @@ interface networkInterface {
      * 내정보 조회
      */
     @GET("v1/my/detail_info")
+
     fun detail_info(@Header ("Authorization")Authorization:String): Call<BaseResponse>
+
 
 
 
@@ -110,10 +112,10 @@ interface networkInterface {
      */
 
 
-
     /**
      * 번역
      */
+
 //    @POST("v1/chat/translation")
 //    fun translation(@Body chatData:ChatData): Call<PapagoResponse>
 //

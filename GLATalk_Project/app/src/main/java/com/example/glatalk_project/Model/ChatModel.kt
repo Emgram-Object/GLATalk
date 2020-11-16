@@ -1,4 +1,4 @@
-//package com.example.glatalk_project.Model
+package com.example.glatalk_project.Model//package com.example.glatalk_project.Model
 //
 //import com.example.glatalk_project.network.ApiServer
 //import com.example.glatalk_project.network.data.response.ChatResponse
@@ -6,14 +6,21 @@
 //import io.reactivex.Single
 //
 //class ChatModel {
-////    fun translation(chatData:ChatData): Single<PapagoResponse>{
-////        return ApiServer.API.translation(chatData).
-////    }
-////    //여기 API부분 어떻게 수정해야할지 모르겠습니다 저는 빡대가리입니다
-////    fun chat_list(room_id: String): Single<ChatResponse> {
-////        return ApiServer.API.chat_list(room_id).toSingle()
-////    }
+
+//    fun translation(chatData:ChatData): Single<PapagoResponse>{
+//        return ApiServer.API.translation(chatData).toStirng()
+//    }
+//    //여기 API부분 어떻게 수정해야할지 모르겠습니다 저는 빡대가리입니다
+//    fun chat_list(room_id: String): Single<ChatResponse> {
+//        return ApiServer.API.chat_list(room_id).toSingle()
+//    }
 //
+//
+//
+//    fun chatList(room_id: String){
+//        //채팅방 리스트 방id로 구분해서 정렬하는 거
+//    }
+
 //}
 //
 //class ChatData {
@@ -47,17 +54,7 @@
 //        val target_lang: String,
 //        val target_text: String
 //)
+
+//fun translation(chatData: ChatData){
 //
-//
-//abstract class BaseChat {
-//    abstract fun init(sender: String, receiver: String, room_id: String)
-//    abstract fun sendMessage(chatData: ChatData?)
-//    abstract fun release()
-//
-//    interface OnChatListener {
-//        fun onConnected()
-//        fun onReceive(chat: ChatData)
-//        fun onConnectError()
-//        fun onDisconnect()
-//    }
 //}
