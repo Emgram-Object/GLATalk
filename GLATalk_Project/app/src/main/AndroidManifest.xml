@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".Activity.MainActivity">
+        <activity android:name=".Activity.FirstLanguageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +29,7 @@
         <activity android:name=".Activity.RegistActivity"></activity>
 
         <activity android:name=".Activity.PwdFindActivity"></activity>
-        <activity android:name=".Activity.FirstLanguageActivity"></activity>
+        <activity android:name=".Activity.MainActivity"></activity>
        <activity android:name=".Activity.InfoChangeActivity"></activity>
     </application>
 

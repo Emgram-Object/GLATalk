@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.galtalk_project.Controller.InfoChangeActivity
 import com.example.glatalk_project.Activity.LoginActivity
+import com.example.glatalk_project.Activity.MyInfoActivity
 import com.example.glatalk_project.BuildConfig
 import com.example.glatalk_project.R
 import kotlinx.android.synthetic.main.fragment_my.*
@@ -43,7 +45,7 @@ class MyFragment: Fragment(){
         startActivity(intent)
     }
     private fun goToMyInfo(){
-        val intent = Intent(context, LoginActivity::class.java)
+        val intent = Intent(context, MyInfoActivity::class.java)
         startActivity(intent)
     }
 

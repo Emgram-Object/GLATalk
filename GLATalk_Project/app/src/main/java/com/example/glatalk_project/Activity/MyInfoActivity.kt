@@ -22,7 +22,7 @@ class MyInfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_info)
         var userDao = UserDAO
-        var userVo = UserVO()
+        //var userVo = UserVO()
 
         //비밀번호 변경
 //        my_info_pwd_change_btn.setOnClickListener{
@@ -45,7 +45,7 @@ class MyInfoActivity : AppCompatActivity() {
 
         change_tv.visibility = View.VISIBLE
 
-        change_tv.setOnClickListener{
+        change_tv.setOnClickListener(){
             ChangeInfo()
         }
         Log.d("result", "ddddddd")
