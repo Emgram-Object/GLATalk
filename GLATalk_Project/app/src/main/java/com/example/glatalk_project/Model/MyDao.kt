@@ -1,6 +1,5 @@
 package com.example.glatalk_project.Model
 
-import com.example.glatalk_project.TokenData
 import com.example.glatalk_project.network.ApiServer
 import com.example.glatalk_project.network.BaseResponse
 import com.example.glatalk_project.network.data.request.PwdRequest
@@ -13,7 +12,7 @@ object MyDao{
     init {
         apiServer = ApiServer.retrofit.create(networkInterface::class.java)
     }
-    fun change_pwd(pwdRequest1: String, pwdRequest: PwdRequest, callback: Callback<BaseResponse>){
-        apiServer.change_pwd(TokenData.loginToken,pwdRequest).enqueue(callback)
+    fun change_pwd(pwdRequest: PwdRequest, callback: Callback<BaseResponse>){
+        apiServer.change_pwd(pwdRequest).enqueue(callback)
     }
 }
