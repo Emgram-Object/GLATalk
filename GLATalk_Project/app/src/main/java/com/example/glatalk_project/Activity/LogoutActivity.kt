@@ -26,12 +26,9 @@ class LogoutActivity:AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        Log.d("login", "${TokenData.loginToken}")
-
 //        logoutNetworking()
+//        Log.d("login", "${TokenData.loginToken}")
         logout()
-        Log.d("login", "${TokenData.loginToken}")
 
 
     }
@@ -40,8 +37,11 @@ class LogoutActivity:AppCompatActivity(){
     fun logout() {
         PreferenceUtil.putString(C.Preference.KEY_ACCESS_TOKEN, "")
         PreferenceUtil.putBoolean(C.Preference.KEY_IS_AUTO_LOGIN, false)
+//        Log.d("1", "${TokenData.loginToken}")
         tokenData.loginToken = ""
-       // goLogin()
+//        Log.d("login2", "${TokenData.loginToken}")
+
+         goLogin()
 
     }
 
