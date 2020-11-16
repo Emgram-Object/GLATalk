@@ -80,7 +80,7 @@ class LoginActivity : AppCompatActivity() {
                 userData.desc = result.desc.toString()
 //                Log.d("result", "$loginResult")
                 if (response.isSuccessful) {
-                    tokenData.loginToken = result.body.toString()
+//                    tokenData.loginToken = result.body.toString()
                     if (userData.resultCode == "0") {
                         goHome()
                     } else {

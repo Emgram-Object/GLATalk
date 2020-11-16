@@ -9,6 +9,7 @@ import com.example.glatalk_project.R
 import android.widget.EditText
 import android.widget.Button
 import android.widget.Toast
+import com.example.glatalk_project.view.MyFragment
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_my_info_change.*
 
@@ -23,7 +24,7 @@ class InfoChangeActivity:AppCompatActivity(){
 
 
         modify_ok_btn.setOnClickListener{
-            val intent = Intent(this, MyActivity::class.java) //마이메뉴 화면으로 넘어가기
+            val intent = Intent(this, MyFragment::class.java) //마이메뉴 화면으로 넘어가기
             startActivity(intent)
         }
 

@@ -1,5 +1,5 @@
 package com.example.glatalk_project.network
-import com.example.glatalk_project.Model.ChatData
+import com.example.glatalk_project.core.data.ChatData
 import com.example.glatalk_project.network.data.request.LangRequest
 import com.example.glatalk_project.network.data.request.LoginRequest
 import com.example.glatalk_project.network.data.request.PwdFindRequest
@@ -115,7 +115,7 @@ interface networkInterface {
      * 번역
      */
     @POST("api/v1/chat/translation")
-    fun translation(@Body chatData:ChatData): Call<PapagoResponse>
+    fun translation(@Body chatData: ChatData): Call<PapagoResponse>
 
     /**
      * 대화내역리스트

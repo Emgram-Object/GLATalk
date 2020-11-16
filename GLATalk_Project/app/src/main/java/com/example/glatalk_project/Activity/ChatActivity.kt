@@ -1,86 +1,67 @@
 package com.example.glatalk_project.Activity
 
-import android.service.autofill.UserData
+import android.icu.text.SimpleDateFormat
+import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.glatalk_project.Model.ChatData
-import com.example.glatalk_project.Model.ChatModel
-import com.example.glatalk_project.Model.UserDAO
-import com.example.glatalk_project.Model.UserVO
 import com.example.glatalk_project.R
 import com.example.glatalk_project.core.adapter.ChatAdapter
+import com.example.glatalk_project.core.data.ChatData
+import com.example.glatalk_project.core.data.ChatModel
+import com.example.glatalk_project.core.helper.LocaleHelper
+import com.example.glatalk_project.network.ApiServer
 import kotlinx.android.synthetic.main.activity_chat.*
-import java.text.SimpleDateFormat
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 
-class ChatActivity:AppCompatActivity(){
-     val layoutResourceId:Int
-        get()= R.layout.activity_chat
-     //var viewModel: ChatViewModel
-     private lateinit var chatAdapter: ChatAdapter
+class ChatActivity : AppCompatActivity() {
 
-    lateinit var Model: ChatModel
-    private var UserVO = UserVO()
-
-    private var roomName=""
+    //    val currentlang = LocaleHelper.getLanguage(this)
+    val currentlang = Locale.getDefault().getLanguage() //테스트용
+    private var roomName = ""
     private var receiver_id = ""
-    private var target = ""
-    private var user_type=""
-   // private var : GuideData? = null
+    var chatList = arrayListOf<ChatModel>()
+    val chatadapter = ChatAdapter(chatList)
 
-    private var isConnected = false
-    private var chatData: ChatData? = null
 
-    fun initView(){
-        roomName = intent.getStringExtra("reserve_id")?:""
-        receiver_id = intent.getStringExtra("receiver_id")?:""
-        user_type = toStringGson(intent.getStringExtra("user_type")) //?????모르갯음
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_chat)
 
-        if(roomName.isEmpty()||receiver_id.isEmpty()){
-            finish()
+        val adapter = ChatAdapter(chatList)
+        chat_rv.adapter = adapter
+
+        chat_send_iv.setOnClickListener {
+
+            sendMessage()
         }
 
-        chatAdapter = ChatAdapter()
-        chat_rv.adapter = chatAdapter
-
-        Model.chatList(roomName)
-
-        //viewModel.chatList(roomname)
-
-        ChatManager.instace.init(UserVO.user_name?: "", receiver_id, roomName)
-
-        fun initListener(){
-            chat_send_iv.setOnClickListener{
-                val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-                val chatData = ChatData()
-                chatData.source_lang = UserVO.country_cd //userinfomanager = 유저 정보 담고 있는 거
-                chatData.target_lang = ""//받아오기
-                chatData.source_text = chat_input_et.text.toString()
-                chatData.sender_id = UserVO.user_email
-                chatData.receiver_id = receiver_id
-                chatData.sender_user_type = ""
-                chatData.receiver_user_type = ""
-                chatData.room_id = roomName
-                chatData.msg_dt = df.format(Date(System.currentTimeMillis()))
-                this.chatData = chatData
-
-                //viewModel.translation(chatData)
-                runOnUiThread{
-                    chatAdapter.addChat(chatData)
-
-                    chat_input_et.setText("")
-                    chat_rv.scrollToPosition(chatAdapter.getChatSize()-1)
-                }
-            }
-        }
-//        ChatManager.instance.setChatListener(chatListener)
+//        val retrofit = Retrofit.Builder()
+//                .baseUrl("http://211.215.19.77:3333/")
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .build()
+//        val api = retrofit.create(ApiServer::class.java)
 
 
     }
 
-}
-//
-//class ChatViewModel(private val model: ChatModel){
-//
-//}
-//livedata를 써야 하나??
+    fun sendMessage() {
+        val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        val chatData = ChatData()
+        val item = ChatModel(currentlang, chat_input_et.text.toString(), "ko", "", "", receiver_id, "tourist", "guide", roomName, df.format(Date(System.currentTimeMillis())))
+//        chatData.source_lang = currentlang  //현재 앱 설정언어
+//        chatData.target_lang = "ko"    //번역 언어
+//        chatData.source_text = chat_input_et.text.toString()
+////            chatData.sender_id = //추가예정
+//        chatData.receiver_id = receiver_id
+//        chatData.sender_user_type = "tourist" //이거 하드코딩이야?
+//        chatData.receiver_user_type = "guide"
+//        chatData.room_id = roomName
+//        chatData.msg_dt = df.format(Date(System.currentTimeMillis()))
 
+//        chatadapter.addChat(chatData)
+        chat_input_et.setText("")
+//        chat_rv.scrollToPosition(chatadapter.getChatSize() - 1)
+
+    }
+}

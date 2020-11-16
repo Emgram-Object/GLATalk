@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.R
 import android.widget.EditText
 import android.widget.Button
+import com.example.glatalk_project.Activity.PwdFindActivity
 import kotlinx.android.synthetic.main.activity_my_info.*
 
 class MyInfoActivity:AppCompatActivity() {
@@ -26,7 +27,7 @@ class MyInfoActivity:AppCompatActivity() {
     }
 
     private fun Pwd_Change(){
-        val intent = Intent(this, PwdChangeActivity::class.java)
+        val intent = Intent(this, PwdFindActivity::class.java)
         startActivity(intent)
     }
 }

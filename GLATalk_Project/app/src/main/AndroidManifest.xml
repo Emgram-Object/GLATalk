@@ -29,6 +29,8 @@
 
         <activity android:name=".Activity.PwdFindActivity"></activity>
         <activity android:name=".Activity.FirstLanguageActivity"></activity>
+        <activity android:name=".Activity.ChatActivity"/>
+        <activity android:name=".Activity.SettingActivity"/>
         <!--<activity android:name=".PwdChangeActivity"/>-->
         <!--패스워드 바꾸는 액티비티 넣어주기-->
         <!--<activity android:name=".Controller.InfoChangeActivity"/>-->

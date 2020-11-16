@@ -2,24 +2,26 @@ package com.example.glatalk_project.core.adapter
 
 import android.view.*
 import androidx.recyclerview.widget.RecyclerView
-import com.example.glatalk_project.Model.ChatData
 import com.example.glatalk_project.R
+import com.example.glatalk_project.core.data.ChatModel
 import kotlinx.android.synthetic.main.ui_my_chat.view.*
 import java.lang.Exception
 import java.text.SimpleDateFormat
 
 
-class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ChatAdapter(val chatList: ArrayList<ChatModel>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val CHAT_MINE = 0
     private val CHAT_OTHER = 1
-    private val chatList = ArrayList<ChatData>()
+//    private val chatList = ArrayList<ChatData>()
+    //임시 테스트용
 
-    fun addChat(chat:ChatData){
+
+    fun addChat(chat: ChatModel){
         chatList.add(chat)
         notifyItemInserted(chatList.size)
     }
 
-    fun setChatList(chatList: ArrayList<ChatData>){
+    fun setChatList(chatList: ArrayList<ChatModel>){
         chatList?.let{
             this.chatList.clear()
             this.chatList.addAll(chatList)
@@ -55,7 +57,7 @@ class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun getItemCount(): Int =chatList.size
 
     override fun getItemViewType(position: Int): Int {
-        if(chatList[position].sender_type.equals("DR")){
+        if(chatList[position].sender_user_type.equals("tourist")){
             return CHAT_MINE
         }else{
             return CHAT_OTHER
@@ -78,7 +80,7 @@ class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 //날짜 받아오는 거 어떤 형식인지 확인해보기
 inner class ChatMineViewHolder(v: View): RecyclerView.ViewHolder(v) {
     var view = v
-    fun onBind(chat: ChatData) {
+    fun onBind(chat: ChatModel) {
         //파일 따로 만들기?
     }
 
@@ -114,7 +116,7 @@ inner class ChatMineViewHolder(v: View): RecyclerView.ViewHolder(v) {
 
     inner class ChatOtherViewHolder(v:View): RecyclerView.ViewHolder(v) {
         var view = v
-        fun onBind(chat: ChatData) {
+        fun onBind(chat: ChatModel) {
            // binding.chatData = chat
 
         }
