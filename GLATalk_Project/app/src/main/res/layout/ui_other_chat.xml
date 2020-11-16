@@ -26,8 +26,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/chat_other_cl"
-            android:layout_width="28dp"
-            android:layout_height="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@drawable/answer_rounded_square"
             android:maxWidth="235dp"
             android:paddingLeft="20dp"
@@ -54,7 +54,6 @@
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:background="#d1d1d1"
-                android:visibility="gone"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/message_other_tv" />
@@ -69,7 +68,6 @@
                 android:paddingBottom="8dp"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                android:visibility="gone"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/message_other_line" />
         </androidx.constraintlayout.widget.ConstraintLayout>

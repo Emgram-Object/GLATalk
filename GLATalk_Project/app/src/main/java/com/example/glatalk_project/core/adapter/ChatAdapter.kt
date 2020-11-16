@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.glatalk_project.R
 import com.example.glatalk_project.core.data.ChatModel
 import kotlinx.android.synthetic.main.ui_my_chat.view.*
+import kotlinx.android.synthetic.main.ui_other_chat.view.*
 import java.lang.Exception
 import java.text.SimpleDateFormat
 
@@ -13,12 +14,17 @@ class ChatAdapter(val chatList: ArrayList<ChatModel>): RecyclerView.Adapter<Recy
     private val CHAT_MINE = 0
     private val CHAT_OTHER = 1
 //    private val chatList = ArrayList<ChatData>()
-    //임시 테스트용
 
 
     fun addChat(chat: ChatModel){
         chatList.add(chat)
         notifyItemInserted(chatList.size)
+    }
+
+    fun addItem(item: ChatModel) {//아이템 추가
+        if (chatList != null) {
+            chatList.add(item)
+        }
     }
 
     fun setChatList(chatList: ArrayList<ChatModel>){
@@ -68,10 +74,12 @@ class ChatAdapter(val chatList: ArrayList<ChatModel>): RecyclerView.Adapter<Recy
         when(holder) {
             is ChatMineViewHolder -> {
                 holder.onBind(chatList[position])
+                //bind visible 추가해야됨
                 holder.dateVisible(position)
             }
             is ChatOtherViewHolder -> {
                 holder.onBind(chatList[position])
+                //bind visible 추가해야됨
                 holder.dateVisible(position)
             }
         }
@@ -81,7 +89,10 @@ class ChatAdapter(val chatList: ArrayList<ChatModel>): RecyclerView.Adapter<Recy
 inner class ChatMineViewHolder(v: View): RecyclerView.ViewHolder(v) {
     var view = v
     fun onBind(chat: ChatModel) {
-        //파일 따로 만들기?
+        view.chat_date.text = chat.msg_dt
+        view.message_mine_tv.text = chat.source_text
+        view.message_tran_tv.text = chat.target_text
+        view.chat_time.text = chat.msg_dt
     }
 
     fun dateVisible(position: Int) {
@@ -117,8 +128,10 @@ inner class ChatMineViewHolder(v: View): RecyclerView.ViewHolder(v) {
     inner class ChatOtherViewHolder(v:View): RecyclerView.ViewHolder(v) {
         var view = v
         fun onBind(chat: ChatModel) {
-           // binding.chatData = chat
-
+            view.chat_other_date.text = chat.msg_dt
+            view.message_other_tv.text = chat.source_text
+            view.message.text = chat.target_text
+            view.other_chat_time.text = chat.msg_dt
         }
 
         fun dateVisible(position: Int) {

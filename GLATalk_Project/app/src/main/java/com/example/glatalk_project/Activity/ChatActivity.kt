@@ -47,8 +47,23 @@ class ChatActivity : AppCompatActivity() {
 
     fun sendMessage() {
         val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-        val chatData = ChatData()
-        val item = ChatModel(currentlang, chat_input_et.text.toString(), "ko", "", "", receiver_id, "tourist", "guide", roomName, df.format(Date(System.currentTimeMillis())))
+//        val chatData = ChatModel
+        val item = ChatModel(
+                currentlang,
+                chat_input_et.text.toString(),
+                "ko",
+                "",
+                "",
+                receiver_id,
+                "tourist",
+                "guide",
+                roomName,
+                df.format(Date(System.currentTimeMillis())))
+
+        chatadapter.addItem(item)
+        chatadapter.notifyDataSetChanged()
+        chat_input_et.setText("")
+
 //        chatData.source_lang = currentlang  //현재 앱 설정언어
 //        chatData.target_lang = "ko"    //번역 언어
 //        chatData.source_text = chat_input_et.text.toString()
@@ -59,8 +74,7 @@ class ChatActivity : AppCompatActivity() {
 //        chatData.room_id = roomName
 //        chatData.msg_dt = df.format(Date(System.currentTimeMillis()))
 
-//        chatadapter.addChat(chatData)
-        chat_input_et.setText("")
+//        chatadapter.addChat(item)
 //        chat_rv.scrollToPosition(chatadapter.getChatSize() - 1)
 
     }
