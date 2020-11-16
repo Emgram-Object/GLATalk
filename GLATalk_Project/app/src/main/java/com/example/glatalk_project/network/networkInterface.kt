@@ -3,7 +3,6 @@ package com.example.glatalk_project.network
 import com.example.glatalk_project.network.data.request.*
 //import com.example.glatalk_project.network.data.response.ChatResponse
 //import com.example.glatalk_project.network.data.response.PapagoResponse
-import com.example.glatalk_project.network.data.response.ProfileResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -77,7 +76,8 @@ interface networkInterface {
      * 비밀번호 변경
      */
     @POST("v1/my/change_pwd")
-    fun change_pwd(@Body pwdRequest: PwdRequest):Call<BaseResponse>
+    fun change_pwd(@Header("Authorization") Authorization: String,
+                   @Body pwdRequest: PwdRequest):Call<BaseResponse>
 
 
     /**
