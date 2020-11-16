@@ -1,5 +1,6 @@
 package com.example.glatalk_project.network
 //import com.example.glatalk_project.Model.ChatData
+import com.example.glatalk_project.TokenData
 import com.example.glatalk_project.network.data.request.*
 //import com.example.glatalk_project.network.data.response.ChatResponse
 //import com.example.glatalk_project.network.data.response.PapagoResponse
