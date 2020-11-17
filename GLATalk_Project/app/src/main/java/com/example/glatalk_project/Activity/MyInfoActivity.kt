@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.galtalk_project.Controller.InfoChangeActivity
+import com.example.glatalk_project.Model.MyDao
 import com.example.glatalk_project.Model.UserDAO
 import com.example.glatalk_project.R
 import com.example.glatalk_project.TokenData
@@ -21,36 +22,29 @@ class MyInfoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_info)
-        var userDao = UserDAO
+        var myDao =MyDao
 
         //var userVo = UserVO()
 
         //비밀번호 변경
-        my_info_pwd_change_btn.setOnClickListener {
-            Pwd_Change()
-        }
 
-
-        Log.d("result", "${TokenData.loginToken}")
-
-        userDao.userDetail(callback = object : Callback<BaseResponse> {
+        myDao.detail_info(callback = object : Callback<BaseResponse> {
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
             }
-
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
-                if (response.isSuccessful) {
-                    var result = response.body()!!.toString()
-                    Log.d("result", "$result")
-                }
-
+                var resulta = response.body()!!
+                Log.d("TAG", "$resulta")
             }
         })
-        Log.d("result", "ddddddd")
 
         change_tv.visibility = View.VISIBLE
 
         change_tv.setOnClickListener() {
             InfoChange()
+        }
+
+        my_info_pwd_change_btn.setOnClickListener {
+            Pwd_Change()
         }
 
     }
