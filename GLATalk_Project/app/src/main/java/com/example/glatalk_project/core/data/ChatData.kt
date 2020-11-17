@@ -12,6 +12,7 @@ class ChatData() {
     var receiver_user_type: String? = "" //가이드/관광객 여부 -  DR
     var msg_dt: String = ""            //메세지 날짜
     var room_id: String = ""           //방 id
+    var room_member_cnt:String = ""   //방 인원수 체크
 }
 
 data class InitData(
@@ -21,14 +22,14 @@ data class InitData(
 )
 
 data class TransData(
-        val source: String,          //요청언어
-        val target: String,          //번역언어
+        val source_lang: String,          //요청언어
+        val target_lang: String,          //번역언어
         val target_text: String      //번역메시지
 )
 
 class Chat {
     val chat_active: Boolean = false
-    val chat_list: ArrayList<ChatData> = ArrayList()
+    val chat_list: ArrayList<ChatModel> = ArrayList()
 }
 
 class ChatModel(
@@ -38,8 +39,9 @@ class ChatModel(
         var target_text: String,             //번역 텍스트
         var sender_id: String?,              //보내는 사람 id
         var receiver_id: String?,            //받는 사람 id
-        var sender_user_type: String?,       //가이드/관광객 여부 -  NM
-        var receiver_user_type: String?,     //가이드/관광객 여부 -  DR
+        var sender_user_type: String?,       //가이드/관광객 여부 -
+        var receiver_user_type: String?,     //가이드/관광객 여부 -
         var msg_dt: String,                  //메세지 날짜
         var room_id: String,                 //방 id
+        var room_member_cnt:String = ""   //방 인원수 체크
 ){}

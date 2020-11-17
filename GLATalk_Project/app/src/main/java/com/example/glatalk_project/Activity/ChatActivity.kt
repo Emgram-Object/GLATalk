@@ -5,65 +5,72 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.R
 import com.example.glatalk_project.core.adapter.ChatAdapter
-import com.example.glatalk_project.core.data.ChatData
 import com.example.glatalk_project.core.data.ChatModel
 import com.example.glatalk_project.core.helper.LocaleHelper
+import com.example.glatalk_project.core.util.ChatManager
 import com.example.glatalk_project.network.ApiServer
+import io.socket.client.IO
 import kotlinx.android.synthetic.main.activity_chat.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.net.Socket
 import java.util.*
 
 class ChatActivity : AppCompatActivity() {
 
-    //    val currentlang = LocaleHelper.getLanguage(this)
-    val currentlang = Locale.getDefault().getLanguage() //테스트용
     private var roomName = ""
     private var receiver_id = ""
     var chatList = arrayListOf<ChatModel>()
     val chatadapter = ChatAdapter(chatList)
+
+    private var isConnected = false
+
+//    private var mSocket: Socket =  IO.socket("http://211.215.19.77:3333/")
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
-        val adapter = ChatAdapter(chatList)
-        chat_rv.adapter = adapter
+        chat_rv.adapter = chatadapter
 
         chat_send_iv.setOnClickListener {
-
             sendMessage()
         }
 
-//        val retrofit = Retrofit.Builder()
-//                .baseUrl("http://211.215.19.77:3333/")
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .build()
-//        val api = retrofit.create(ApiServer::class.java)
+        back_btn.setOnClickListener {
+            finish()
+        }
 
+        //소켓
+        ChatManager.instance.setChatListener(chatListener)
 
     }
 
     fun sendMessage() {
+        val currentlang = LocaleHelper.getLanguage(this) //실제로 쓸거
+//    val currentlang = Locale.getDefault().getLanguage() //테스트용
         val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-//        val chatData = ChatModel
         val item = ChatModel(
                 currentlang,
                 chat_input_et.text.toString(),
                 "ko",
-                "",
+                "translation",
                 "",
                 receiver_id,
                 "tourist",
                 "guide",
                 roomName,
-                df.format(Date(System.currentTimeMillis())))
+                df.format(Date(System.currentTimeMillis())),
+                "")
 
-        chatadapter.addItem(item)
-        chatadapter.notifyDataSetChanged()
-        chat_input_et.setText("")
+        if(item.source_text != "") {
+            chatadapter.addItem(item)
+            chat_input_et.setText("")
+        }
+        chat_rv.scrollToPosition(chatadapter.getChatSize() - 1)
 
+//        val chatData = ChatModel
 //        chatData.source_lang = currentlang  //현재 앱 설정언어
 //        chatData.target_lang = "ko"    //번역 언어
 //        chatData.source_text = chat_input_et.text.toString()
@@ -77,5 +84,31 @@ class ChatActivity : AppCompatActivity() {
 //        chatadapter.addChat(item)
 //        chat_rv.scrollToPosition(chatadapter.getChatSize() - 1)
 
+    }
+    private var chatListener = object: ChatManager.OnChatListener {
+        override fun onConnected() {
+            isConnected = true
+        }
+
+        override fun onReceive(chat: ChatModel) {
+            runOnUiThread {
+                //chat.type = C.MessageType.CHAT_OTHER.index
+                chatadapter.addChat(chat)
+                chat_rv.scrollToPosition(chatadapter.getChatSize() - 1)
+            }
+        }
+
+        override fun onConnectError() {
+            isConnected = false
+        }
+
+        override fun onDisconnect() {
+            isConnected = false
+        }
+    }
+
+    override fun onDestroy() {
+        ChatManager.instance.release()
+        super.onDestroy()
     }
 }

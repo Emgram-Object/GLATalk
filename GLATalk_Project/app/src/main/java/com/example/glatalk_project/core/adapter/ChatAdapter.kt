@@ -10,39 +10,42 @@ import java.lang.Exception
 import java.text.SimpleDateFormat
 
 
-class ChatAdapter(val chatList: ArrayList<ChatModel>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ChatAdapter(val chatList: ArrayList<ChatModel>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val CHAT_MINE = 0
     private val CHAT_OTHER = 1
 //    private val chatList = ArrayList<ChatData>()
 
 
-    fun addChat(chat: ChatModel){
+    fun addChat(chat: ChatModel) {
         chatList.add(chat)
         notifyItemInserted(chatList.size)
     }
 
     fun addItem(item: ChatModel) {//아이템 추가
-        if (chatList != null) {
-            chatList.add(item)
-        }
+        chatList.add(item)
+        println(item.source_text)
+//        println(chatList.size)
+//        println(chatList[chatList.size])
+//        println(chatList[chatList.size-1])
+        notifyItemChanged(chatList.size-1)
+//        notifyItemInserted(chatList.size-1)
     }
 
-    fun setChatList(chatList: ArrayList<ChatModel>){
-        chatList?.let{
+    fun setChatList(chatList: ArrayList<ChatModel>) {
+        chatList?.let {
             this.chatList.clear()
             this.chatList.addAll(chatList)
             notifyDataSetChanged()
         }
     }
 
-    fun getChatSize(): Int{
+    fun getChatSize(): Int {
         return chatList.size
     }
 
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return when(viewType) {
+        return when (viewType) {
             CHAT_MINE -> {
                 val binding =
                         LayoutInflater.from(parent.context).inflate(R.layout.ui_my_chat, parent, false)
@@ -50,9 +53,9 @@ class ChatAdapter(val chatList: ArrayList<ChatModel>): RecyclerView.Adapter<Recy
             }
             else -> {
                 val binding =
-                        LayoutInflater.from(parent.context).inflate(R.layout.ui_my_chat,
-                        parent,
-                        false)
+                        LayoutInflater.from(parent.context).inflate(R.layout.ui_other_chat,
+                                parent,
+                                false)
 
                 ChatOtherViewHolder(binding)
             }
@@ -60,18 +63,18 @@ class ChatAdapter(val chatList: ArrayList<ChatModel>): RecyclerView.Adapter<Recy
     }
 
 
-    override fun getItemCount(): Int =chatList.size
+    override fun getItemCount(): Int = chatList.size
 
     override fun getItemViewType(position: Int): Int {
-        if(chatList[position].sender_user_type.equals("tourist")){
+        if (chatList[position].sender_user_type.equals("tourist")) {
             return CHAT_MINE
-        }else{
+        } else {
             return CHAT_OTHER
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when(holder) {
+        when (holder) {
             is ChatMineViewHolder -> {
                 holder.onBind(chatList[position])
                 //bind visible 추가해야됨
@@ -85,47 +88,46 @@ class ChatAdapter(val chatList: ArrayList<ChatModel>): RecyclerView.Adapter<Recy
         }
     }
 
-//날짜 받아오는 거 어떤 형식인지 확인해보기
-inner class ChatMineViewHolder(v: View): RecyclerView.ViewHolder(v) {
-    var view = v
-    fun onBind(chat: ChatModel) {
-        view.chat_date.text = chat.msg_dt
-        view.message_mine_tv.text = chat.source_text
-        view.message_tran_tv.text = chat.target_text
-        view.chat_time.text = chat.msg_dt
-    }
+    inner class ChatMineViewHolder(v: View) : RecyclerView.ViewHolder(v) {
+        var view = v
+        fun onBind(chat: ChatModel) {
+            view.chat_date.text = chat.msg_dt
+            view.message_mine_tv.text = chat.source_text
+            view.message_tran_tv.text = chat.target_text
+            view.chat_time.text = chat.msg_dt
+        }
 
-    fun dateVisible(position: Int) {
-        if(position == 0) {
-            view.chat_time.visibility = View.VISIBLE
-        } else {
-            val prev = dateParser(chatList[position-1].msg_dt)
-            val current = dateParser(chatList[position].msg_dt)
-            if(prev.equals(current)) {
-                view.chat_time.visibility = View.GONE
-            } else {
+        fun dateVisible(position: Int) {
+            if (position == 0) {
                 view.chat_time.visibility = View.VISIBLE
+            } else {
+                val prev = dateParser(chatList[position - 1].msg_dt)
+                val current = dateParser(chatList[position].msg_dt)
+                if (prev.equals(current)) {
+                    view.chat_time.visibility = View.GONE
+                } else {
+                    view.chat_time.visibility = View.VISIBLE
+                }
             }
         }
-    }
 
-    private fun dateParser(dt: String): String {
-        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-        val sdf2 = SimpleDateFormat("yyyy.MM.dd (E)")
-        try {
-            val date = sdf.parse(dt)
-            val dt2 = sdf2.format(date)
+        private fun dateParser(dt: String): String {
+            val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+            val sdf2 = SimpleDateFormat("yyyy.MM.dd (E)")
+            try {
+                val date = sdf.parse(dt)
+                val dt2 = sdf2.format(date)
 
-            return dt2
-        } catch (e: Exception) {
-            e.printStackTrace()
+                return dt2
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+
+            return ""
         }
-
-        return ""
     }
-}
 
-    inner class ChatOtherViewHolder(v:View): RecyclerView.ViewHolder(v) {
+    inner class ChatOtherViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         var view = v
         fun onBind(chat: ChatModel) {
             view.chat_other_date.text = chat.msg_dt
@@ -135,15 +137,15 @@ inner class ChatMineViewHolder(v: View): RecyclerView.ViewHolder(v) {
         }
 
         fun dateVisible(position: Int) {
-            if(position == 0) {
+            if (position == 0) {
                 view.chat_time.visibility = View.VISIBLE
             } else {
-                val prev = dateParser(chatList[position-1].msg_dt)
+                val prev = dateParser(chatList[position - 1].msg_dt)
                 val current = dateParser(chatList[position].msg_dt)
-                if(prev.equals(current)) {
+                if (prev.equals(current)) {
                     view.chat_time.visibility = View.GONE
                 } else {
-                   view.chat_time.visibility = View.VISIBLE
+                    view.chat_time.visibility = View.VISIBLE
                 }
             }
         }
