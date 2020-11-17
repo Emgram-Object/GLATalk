@@ -1,4 +1,4 @@
-package com.example.glatalk_project.Model//package com.example.glatalk_project.Model
+package com.example.glatalk_project.Model
 //
 
 //import com.example.glatalk_project.network.ApiServer
@@ -7,7 +7,6 @@ package com.example.glatalk_project.Model//package com.example.glatalk_project.M
 //import com.example.glatalk_project.network.data.request.ProfileRequest
 //import com.example.glatalk_project.network.data.response.ProfileResponse
 //import com.example.glatalk_project.network.networkInterface
-
 //import io.reactivex.Single
 //
 //class MyModel {
@@ -19,9 +18,7 @@ package com.example.glatalk_project.Model//package com.example.glatalk_project.M
 //
 //class MyModelImpl: MyModel {
 //    override fun detail_info(): Single<ProfileResponse> {
-
 //        return ApiServer.API.detail_info().toSingle()
-
 //    }
 //
 //    override fun info_modify(profileRequest: ProfileRequest): Single<BaseResponse> {

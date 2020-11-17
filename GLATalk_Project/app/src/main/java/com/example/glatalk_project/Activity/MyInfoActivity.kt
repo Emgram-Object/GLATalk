@@ -54,7 +54,6 @@ class MyInfoActivity : AppCompatActivity() {
 
     }
 
-
     private fun Pwd_Change() {
         val intent = Intent(this, PwdChangeActivity::class.java)
         startActivity(intent)

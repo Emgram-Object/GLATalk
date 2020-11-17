@@ -1,11 +1,15 @@
 package com.example.glatalk_project.view
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import com.example.glatalk_project.Activity.ChatActivity
 import com.example.glatalk_project.Activity.LoginActivity
 import com.example.glatalk_project.R
 import com.example.glatalk_project.core.adapter.ChatRoomListAdapter
@@ -26,19 +30,21 @@ class HomeFragment: Fragment(){
             ChatRoom("중국어", "2020-05-08(금) 16:40","WWWWWWW"),
             ChatRoom("일본어", "2020-05-08(금) 12:30","gidkrkfkekdk"),
             ChatRoom("영어", "2020-05-08(금) 11:10","이형근")
-
     )
+    internal lateinit var preferences: SharedPreferences
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_home_guide, container, false)
+//        val context: Context? = getActivity()
+//        preferences = context!!.getSharedPreferences("USERSIGN", Context.MODE_PRIVATE)
+//        val editor = preferences!!.edit()
 
         val adapter = ChatRoomListAdapter(chatroomList)
         adapter.setItemClickListener(object: ChatRoomListAdapter.OnItemClickListener{
             override fun onClick(v: View, position: Int) {
-                val item = chatroomList[position]
                 goToChat()
                 adapter.notifyDataSetChanged()
             }
@@ -59,7 +65,7 @@ class HomeFragment: Fragment(){
     }
 
     private fun goToChat(){
-        val intent = Intent(getActivity(), LoginActivity::class.java)
+        val intent = Intent(getActivity(), ChatActivity::class.java)
         startActivity(intent)
     }
 }
