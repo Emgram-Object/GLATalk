@@ -13,6 +13,7 @@ import com.example.glatalk_project.TokenData
 import com.example.glatalk_project.network.BaseResponse
 import kotlinx.android.synthetic.main.activity_my_info.*
 import kotlinx.android.synthetic.main.ui_common_title.*
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,19 +23,32 @@ class MyInfoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_info)
-        var myDao =MyDao
 
-        //var userVo = UserVO()
+        var myDao = MyDao
 
-        //비밀번호 변경
 
         myDao.detail_info(callback = object : Callback<BaseResponse> {
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+             Log.d("qwert", "onFailure: fail")
             }
+
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
-                var resulta = response.body()!!
-                Log.d("TAG", "$resulta")
+             Log.d("qwert", "onResponse: success")
+                var result = response.body()!!
+                var resultCode = result.resultCode
+                var desc = result.desc
+                var bodys = result.body.toString()
+                Log.d("qwert", "$bodys")
+                Log.d("TAG", "onResponse: ")
+
             }
+//            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+//                Log.d("qwert", "onFailure: fail")
+//            }
+//            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
+
+////
+//            }
         })
 
         change_tv.visibility = View.VISIBLE
