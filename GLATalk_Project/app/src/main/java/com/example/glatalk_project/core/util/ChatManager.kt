@@ -1,5 +1,6 @@
 package com.example.glatalk_project.core.util
 
+import android.system.Os.socket
 import android.util.Log
 import com.example.glatalk_project.core.data.ChatData
 import com.example.glatalk_project.core.data.InitData
