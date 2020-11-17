@@ -105,8 +105,8 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/reg_tourist_country_select_tv"
+        <Spinner
+            android:id="@+id/reg_tourist_country_select_sp"
             android:layout_width="match_parent"
             android:layout_height="22dp"
             android:layout_marginTop="1dp"
