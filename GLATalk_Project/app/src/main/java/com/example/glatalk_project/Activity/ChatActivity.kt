@@ -2,18 +2,15 @@ package com.example.glatalk_project.Activity
 
 import android.icu.text.SimpleDateFormat
 import android.os.Bundle
+import android.system.Os.socket
 import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.R
 import com.example.glatalk_project.core.adapter.ChatAdapter
 import com.example.glatalk_project.core.data.ChatData
 import com.example.glatalk_project.core.helper.LocaleHelper
 import com.example.glatalk_project.core.util.ChatManager
-import com.example.glatalk_project.network.ApiServer
-import io.socket.client.IO
+//import io.socket.client.IO
 import kotlinx.android.synthetic.main.activity_chat.*
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import java.net.Socket
 import java.util.*
 
 class ChatActivity : AppCompatActivity() {

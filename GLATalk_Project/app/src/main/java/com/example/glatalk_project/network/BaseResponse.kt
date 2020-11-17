@@ -18,8 +18,5 @@ open class BaseResponse(
         return desc
     }
 
-//    override fun token(): String? {
-//        return body
-//    }
 }
   // BaseNetwork의 interface를 상속받은 클래스 -> 오버라이딩
