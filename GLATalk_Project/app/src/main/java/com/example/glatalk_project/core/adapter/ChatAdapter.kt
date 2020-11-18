@@ -126,11 +126,11 @@ class ChatAdapter(val chatList: ArrayList<ChatData>) : RecyclerView.Adapter<Recy
         var view = v
         fun onBind(chat: ChatData, user_type:String) {
             if(user_type.equals("guide")){
-                view.message_line.visibility = View.VISIBLE
-                view.message_tran_tv.visibility = View.VISIBLE
+                view.message_other_line.visibility = View.VISIBLE
+                view.message.visibility = View.VISIBLE
             } else{
-                view.message_line.visibility = View.GONE
-                view.message_tran_tv.visibility = View.GONE
+                view.message_other_line.visibility = View.GONE
+                view.message.visibility = View.GONE
             }
             view.chat_other_date.text = chat.msg_dt
             view.message_other_tv.text = chat.source_text
