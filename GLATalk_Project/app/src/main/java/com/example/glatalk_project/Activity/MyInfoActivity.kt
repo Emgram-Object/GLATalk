@@ -52,7 +52,7 @@ class MyInfoActivity : AppCompatActivity() {
                 var desc = result.desc
                 var body = result.body.toString()
 
-                var jsonObject:JSONObject = JSONObject(body);
+                var jsonObject:JSONObject = JSONObject(body)
                 profileData.user_name= jsonObject["user_name"].toString()
                 profileData.phone_number = jsonObject["phone_number"].toString()
                 profileData.country_cd = jsonObject["country_cd"].toString()
