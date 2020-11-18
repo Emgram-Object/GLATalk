@@ -1,6 +1,6 @@
 package com.example.glatalk_project
 
-class ProfileData {
+object ProfileData {
     var user_name:String =""
     var phone_number:String =""
     var country_cd:String =""

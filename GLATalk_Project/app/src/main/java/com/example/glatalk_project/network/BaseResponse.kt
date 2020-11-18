@@ -1,5 +1,7 @@
 package com.example.glatalk_project.network
 
+import org.json.JSONObject
+
 open class BaseResponse(
         var resultCode: Int = -1,
         var desc: String? = null,

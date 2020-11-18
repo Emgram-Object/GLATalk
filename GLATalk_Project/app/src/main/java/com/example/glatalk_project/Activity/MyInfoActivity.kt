@@ -8,9 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.galtalk_project.Controller.InfoChangeActivity
 import com.example.glatalk_project.Model.MyDao
 import com.example.glatalk_project.Model.UserDAO
+import com.example.glatalk_project.ProfileData
 import com.example.glatalk_project.R
 import com.example.glatalk_project.TokenData
 import com.example.glatalk_project.network.BaseResponse
+import com.google.gson.JsonElement
 import kotlinx.android.synthetic.main.activity_my_info.*
 import kotlinx.android.synthetic.main.ui_common_title.*
 import org.json.JSONObject
@@ -37,9 +39,14 @@ class MyInfoActivity : AppCompatActivity() {
                 var result = response.body()!!
                 var resultCode = result.resultCode
                 var desc = result.desc
-                var bodys = result.body.toString()
-                Log.d("qwert", "$bodys")
-                Log.d("TAG", "onResponse: ")
+                var body = result.body
+
+                Log.d("success", "$body")
+            
+
+
+
+                ProfileData.user_name
 
             }
 //            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
