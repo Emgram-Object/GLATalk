@@ -27,6 +27,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.MyInfoActivity" />
+        <activity android:name=".Activity.InfoChangeActivity"></activity>
         <activity android:name=".Activity.MainActivity"></activity>
 
         <activity android:name=".Activity.RegistActivity"></activity>

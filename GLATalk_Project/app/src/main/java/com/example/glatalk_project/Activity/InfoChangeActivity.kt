@@ -1,15 +1,10 @@
-package com.example.galtalk_project.Controller
+package com.example.glatalk_project.Activity
 
-import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
-import android.view.View
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.R
-import android.widget.EditText
-import android.widget.Button
 import kotlinx.android.synthetic.main.activity_my_info_change.*
-import kotlinx.android.synthetic.main.fragment_my.*
 
 class InfoChangeActivity:AppCompatActivity(){
 
