@@ -23,8 +23,8 @@ class ChatManager{
 
     fun init(sender: String, receiver: String, room_id: String) {
         try {
-            mSocket = IO.socket("http://211.215.19.76:1102/api")
-//            Log.d("success", mSocket.id())
+            mSocket = IO.socket("http://211.215.19.77:3333/")
+            Log.d("success",/* mSocket.id()*/"Success")
         } catch (e: Exception) {
             e.printStackTrace()
             Log.d("fail", "Failed to connect")

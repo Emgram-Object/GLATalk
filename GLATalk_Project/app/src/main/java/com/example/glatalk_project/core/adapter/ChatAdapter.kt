@@ -21,15 +21,15 @@ class ChatAdapter(val chatList: ArrayList<ChatData>) : RecyclerView.Adapter<Recy
         notifyItemInserted(chatList.size)
     }
 
-    fun addItem(item: ChatData) {//아이템 추가
-        chatList.add(item)
-        println(item.source_text)
-//        println(chatList.size)
-//        println(chatList[chatList.size])
-//        println(chatList[chatList.size-1])
-        notifyItemChanged(chatList.size-1)
-//        notifyItemInserted(chatList.size-1)
-    }
+//    fun addItem(item: ChatData) {//아이템 추가
+//        chatList.add(item)
+//        println(item.source_text)
+////        println(chatList.size)
+////        println(chatList[chatList.size])
+////        println(chatList[chatList.size-1])
+//        notifyItemChanged(chatList.size-1)
+////        notifyItemInserted(chatList.size-1)
+//    }
 
     fun setChatList(chatList: ArrayList<ChatData>) {
         chatList?.let {

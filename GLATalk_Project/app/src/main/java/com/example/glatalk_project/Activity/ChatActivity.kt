@@ -1,17 +1,26 @@
 package com.example.glatalk_project.Activity
 
 import android.icu.text.SimpleDateFormat
+import android.nfc.Tag
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.R
 import com.example.glatalk_project.core.adapter.ChatAdapter
 import com.example.glatalk_project.core.data.ChatData
 import com.example.glatalk_project.core.helper.LocaleHelper
 import com.example.glatalk_project.core.util.ChatManager
+import com.example.glatalk_project.network.ApiInterceptor
 import com.example.glatalk_project.network.ApiServer
-import io.socket.client.IO
+import com.example.glatalk_project.network.data.response.ChatResponse
+import com.example.glatalk_project.network.data.response.PapagoResponse
 import kotlinx.android.synthetic.main.activity_chat.*
+import okhttp3.OkHttpClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.net.Socket
 import java.util.*
@@ -20,13 +29,11 @@ class ChatActivity : AppCompatActivity() {
 
     private var roomName = ""
     private var receiver_id = ""
+    private var sender_id = ""
     var chatList = arrayListOf<ChatData>()
     val chatadapter = ChatAdapter(chatList)
 
     private var isConnected = false
-
-//    private var mSocket: Socket =  IO.socket("http://211.215.19.77:3333/")
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,16 +49,63 @@ class ChatActivity : AppCompatActivity() {
             finish()
         }
 
+        //레트로핏
+            val retrofit = Retrofit.Builder()
+                    .baseUrl("http://211.215.19.77:1102/api/")
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+        val callBack:CallBack
+        chat_list(roomName, , callBack)
+
         //소켓
         ChatManager.instance.setChatListener(chatListener)
+        ChatManager.instance.init(sender_id,receiver_id, roomName)
 
+
+
+    }
+    interface CallBack{
+        fun onSuccess(data: ChatData)
+        fun onFailure(t: Throwable)
+    }
+
+    fun translation(chatData: ChatData, callback: CallBack){
+        ApiServer.network.translation(chatData).enqueue(object: Callback<PapagoResponse>{
+            override fun onFailure(call: Call<PapagoResponse>, t: Throwable) {
+                callback.onFailure(t)
+                Log.d("Failure", "실패")
+
+            }
+
+            override fun onResponse(call: Call<PapagoResponse>, response: Response<PapagoResponse>) {
+                callback.onSuccess(chatData)
+                Log.d("Success", "성공")
+            }
+
+        })
+    }
+
+    fun chat_list(room_id: String, chatData:ChatData, callback: CallBack){
+        ApiServer.network.chat_list(room_id).enqueue(object: Callback<ChatResponse>{
+            override fun onFailure(call: Call<ChatResponse>, t: Throwable) {
+                callback.onFailure(t)
+                Log.d("Failure", "실패")
+
+            }
+
+            override fun onResponse(call: Call<ChatResponse>, response: Response<ChatResponse>) {
+                callback.onSuccess(chatData)
+                Log.d("Success", "성공")
+            }
+
+        })
     }
 
     fun sendMessage() {
-        val currentlang = LocaleHelper.getLanguage(this) //실제로 쓸거
-//    val currentlang = Locale.getDefault().getLanguage() //테스트용
+        val currentlang = LocaleHelper.getLanguage(this)
         val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-        val item = ChatData(
+        val chatData = ChatData(
                 currentlang,
                 chat_input_et.text.toString(),
                 "ko",
@@ -64,11 +118,11 @@ class ChatActivity : AppCompatActivity() {
                 df.format(Date(System.currentTimeMillis())),
                 "")
 
-        if(item.source_text != "") {
-            chatadapter.addItem(item)
-            chat_input_et.setText("")
+        if(chatData.source_text != "") {
+//            chatadapter.addItem(chatData)
+            ChatManager.instance.sendMessage(chatData)
         }
-        chat_rv.scrollToPosition(chatadapter.getChatSize() - 1)
+//        chat_rv.scrollToPosition(chatadapter.getChatSize() - 1)
 
 //        val chatData = ChatModel
 //        chatData.source_lang = currentlang  //현재 앱 설정언어
@@ -95,6 +149,7 @@ class ChatActivity : AppCompatActivity() {
                 //chat.type = C.MessageType.CHAT_OTHER.index
                 chatadapter.addChat(chat)
                 chat_rv.scrollToPosition(chatadapter.getChatSize() - 1)
+                chat_input_et.setText("")
             }
         }
 
