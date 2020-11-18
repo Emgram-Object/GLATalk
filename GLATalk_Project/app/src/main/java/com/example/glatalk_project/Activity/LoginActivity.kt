@@ -33,7 +33,6 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-
 //        if (login_email_et.text.toString().isNotBlank() && login_pwd_et.text.toString().isNotBlank()) {
 //            Btn_Enable()
 //           //addTextChangeListener 사용
@@ -79,9 +78,8 @@ class LoginActivity : AppCompatActivity() {
                 userData.desc = result.desc.toString()
 //                Log.d("result", "$loginResult")
                 if (response.isSuccessful) {
-//                    tokenData.loginToken = result.body.toString()
+                    tokenData.loginToken = result.body.toString()
                     if (userData.resultCode == "0") {
-
                         goHome()
                     } else {
                         Log.d("result", "${userData.resultCode}")

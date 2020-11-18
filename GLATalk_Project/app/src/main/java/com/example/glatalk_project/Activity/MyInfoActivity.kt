@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.Model.MyDao
 import com.example.glatalk_project.ProfileData
 import com.example.glatalk_project.R
+import com.example.glatalk_project.TokenData
 import com.example.glatalk_project.network.BaseResponse
 import kotlinx.android.synthetic.main.activity_my_info.*
 import kotlinx.android.synthetic.main.ui_common_title.*
@@ -24,6 +25,8 @@ class MyInfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_info)
 
+        Log.d("TAG", "$TokenData.loginToken")
+
         InfoNetworking()
 
 
@@ -39,6 +42,7 @@ class MyInfoActivity : AppCompatActivity() {
 
     }
 
+
     private fun InfoNetworking(){
         myDao.detail_info(callback = object : Callback<BaseResponse> {
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
@@ -51,6 +55,9 @@ class MyInfoActivity : AppCompatActivity() {
                 var resultCode = result.resultCode
                 var desc = result.desc
                 var body = result.body.toString()
+
+
+                Log.d("TAG", "$TokenData.loginToken")
 
                 var jsonObject:JSONObject = JSONObject(body);
                 profileData.user_name= jsonObject["user_name"].toString()
