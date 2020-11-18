@@ -20,7 +20,6 @@ import retrofit2.Response
 class MyInfoActivity : AppCompatActivity() {
 
     var myDao = MyDao
-    var profileData = ProfileData()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_info)
@@ -61,11 +60,11 @@ class MyInfoActivity : AppCompatActivity() {
 
                 var jsonObject:JSONObject = JSONObject(body);
 
-                profileData.user_name= jsonObject["user_name"].toString()
-                profileData.phone_number = jsonObject["phone_number"].toString()
-                profileData.country_cd = jsonObject["country_cd"].toString()
-                profileData.user_email= jsonObject["user_email"].toString()
-                profileData.user_type = jsonObject["user_type"].toString()
+                ProfileData.user_name= jsonObject["user_name"].toString()
+                ProfileData.phone_number = jsonObject["phone_number"].toString()
+                ProfileData.country_cd = jsonObject["country_cd"].toString()
+                ProfileData.user_email= jsonObject["user_email"].toString()
+                ProfileData.user_type = jsonObject["user_type"].toString()
 
                 setTexts()
             }
@@ -73,10 +72,10 @@ class MyInfoActivity : AppCompatActivity() {
     }
 
     private fun setTexts(){
-        my_info_name_et.setText(profileData.user_name)
-        my_info_phone_et.setText(profileData.phone_number)
-        my_info_email_et.setText(profileData.user_email)
-        my_info_country_select_tv.text = profileData.country_cd
+        my_info_name_et.setText(ProfileData.user_name)
+        my_info_phone_et.setText(ProfileData.phone_number)
+        my_info_email_et.setText(ProfileData.user_email)
+        my_info_country_select_tv.text = ProfileData.country_cd
     }
 
     private fun Pwd_Change() {

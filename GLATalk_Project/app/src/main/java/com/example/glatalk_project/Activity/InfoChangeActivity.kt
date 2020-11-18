@@ -14,7 +14,7 @@ class InfoChangeActivity:AppCompatActivity(){
     var input_phone_num:String=""
     var input_user_EngName:String =""
     lateinit var input: EditText
-    var profileData = ProfileData()
+
 
     override fun onCreate(savedInstanceState:Bundle?){
         super.onCreate(savedInstanceState)
@@ -40,20 +40,15 @@ class InfoChangeActivity:AppCompatActivity(){
         }
 
     }
+
     private fun setTexts(){
-        my_info_chg_name_et.setText(profileData.user_name)
-        my_info_chg_phone_et.setText(profileData.phone_number)
+        my_info_chg_name_et.setText(ProfileData.user_name)
+        my_info_chg_phone_et.setText(ProfileData.phone_number)
 //user english name은 뭘까?
-        my_info_country_select_tv.text = profileData.country_cd
+        my_info_chg_country_select_tv.text = ProfileData.country_cd
     }
 
 
-//
-//    val user_name = my_info_name_et.text.toString()
-//    val mobile_num = my_info_phone_et.text.toString()
-//    val user_EngName = my_info_english_name_et.text.toString()
-
-//    val user_country =
 
 
     private fun SaveCheck(){
