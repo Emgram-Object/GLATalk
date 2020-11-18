@@ -6,27 +6,63 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.glatalk_project.R
 import com.example.glatalk_project.core.data.ChatRoom
+//import com.example.glatalk_project.core.data.ChatRoom
 import kotlinx.android.synthetic.main.ui_room_custom.view.*
+import com.example.glatalk_project.ProfileData
 
-class ChatRoomListAdapter(private val itemList: MutableList<ChatRoom>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    private val GUIDE_ROOM = 0
+    private val TOUR_ROOM = 1
+    val profileData = ProfileData()
+
     override fun getItemCount(): Int {
-        return itemList.size
+        return roomList.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val inflatedView = LayoutInflater.from(parent.context).inflate(R.layout.ui_room_custom, parent, false)
-        return RoomVIewHolder(inflatedView)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.ui_room_custom, parent, false)
+        return when (viewType) {
+            GUIDE_ROOM -> {
+                GuideRoomViewHolder(view)
+            }
+            else -> {
+                TourRoomViewHolder(view)
+            }
+        }
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        if (profileData.user_type.equals("guide")) {
+            return GUIDE_ROOM
+        } else {
+            return TOUR_ROOM
+        }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val item = itemList[position]
-        val holder = RoomVIewHolder(holder.itemView)
-        holder.onBind(item)
-        holder.itemView.setOnLongClickListener {
-            itemLongClickListener.onLongClick(it, position)
-        }
-        holder.itemView.setOnClickListener {
-            itemClickListener.onClick(it, position)
+        when (holder) {
+            is GuideRoomViewHolder -> {
+                holder.onBind(roomList[position])
+                holder.itemView.setOnLongClickListener {
+                    itemLongClickListener.onLongClick(it, position)
+                }
+                holder.itemView.setOnClickListener {
+                    itemClickListener.onClick(it, position)
+                }
+                //bind visible 추가해야됨
+//                holder.dateVisible(position)
+            }
+            is TourRoomViewHolder -> {
+                holder.onBind(roomList[position])
+                holder.itemView.setOnLongClickListener {
+                    itemLongClickListener.onLongClick(it, position)
+                }
+                holder.itemView.setOnClickListener {
+                    itemClickListener.onClick(it, position)
+                }
+                //bind visible 추가해야됨
+//                holder.dateVisible(position)
+            }
         }
     }
 
@@ -49,12 +85,30 @@ class ChatRoomListAdapter(private val itemList: MutableList<ChatRoom>) : Recycle
         this.itemLongClickListener = itemLongClickListener
     }
 
-    inner class RoomVIewHolder(v: View) : RecyclerView.ViewHolder(v) {
+    inner class GuideRoomViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         var view = v
         fun onBind(item: ChatRoom) {
-            view.room_lang_tv.text = item.language
-            view.room_time_tv.text = item.time
-            view.room_name_tv.text = item.name
+            view.room_lang_title_tv.text = "관광객 언어"
+            view.room_lang_tv.text = item.tourist_info
+
+            view.room_time_tv.text = item.last_chat_time
+
+            view.room_name_tv.text = item.tourist_name
+        }
+    }
+
+    inner class TourRoomViewHolder(v: View) : RecyclerView.ViewHolder(v) {
+        var view = v
+        fun onBind(item: ChatRoom) {
+            view.room_lang_title_tv.text = "가이드 정보"
+            view.room_lang_tv.text = item.guide_info
+
+            view.room_time_tv.text = item.last_chat_time
+
+            view.room_name_tv.text = item.guide_name
+
+            view.room_able_ll.visibility = View.VISIBLE
+            view.room_able_tv.text = item.guide_time
         }
     }
 }
