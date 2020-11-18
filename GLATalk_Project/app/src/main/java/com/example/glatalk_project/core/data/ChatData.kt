@@ -32,7 +32,7 @@ class Chat {
     val chat_list: ArrayList<ChatData> = ArrayList()
 }
 
-class ChatData(
+data class ChatData(
         var source_lang: String,             //요청 언어
         var source_text: String,             //요청 텍스트
         var target_lang: String?,           //번역 언어

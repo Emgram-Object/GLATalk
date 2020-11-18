@@ -2,34 +2,49 @@ package com.example.glatalk_project.Activity
 
 import android.icu.text.SimpleDateFormat
 import android.os.Bundle
-import android.system.Os.socket
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.example.glatalk_project.Model.ChatDAO
 import com.example.glatalk_project.R
 import com.example.glatalk_project.core.adapter.ChatAdapter
 import com.example.glatalk_project.core.data.ChatData
 import com.example.glatalk_project.core.helper.LocaleHelper
 import com.example.glatalk_project.core.util.ChatManager
-//import io.socket.client.IO
+import com.example.glatalk_project.network.data.request.ChatRequset
+import com.example.glatalk_project.network.data.response.ChatResponse
 import kotlinx.android.synthetic.main.activity_chat.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.*
 
 class ChatActivity : AppCompatActivity() {
 
+    private var chatDAO = ChatDAO
     private var roomName = ""
     private var receiver_id = ""
+    private var sender_id = ""
     var chatList = arrayListOf<ChatData>()
     val chatadapter = ChatAdapter(chatList)
-
     private var isConnected = false
-
-//    private var mSocket: Socket =  IO.socket("http://211.215.19.77:3333/")
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
+        roomName = intent.getStringExtra("reserve_id") ?: ""
+        receiver_id = intent.getStringExtra("receiver_id") ?: ""
+
         chat_rv.adapter = chatadapter
+        chatDAO.chat_list(roomName, callback = object: Callback<ChatResponse>{
+            override fun onResponse(call: Call<ChatResponse>, response: Response<ChatResponse>) {
+                Log.d("ChatList", "성공")
+            }
+
+            override fun onFailure(call: Call<ChatResponse>, t: Throwable) {
+                Log.d("ChatList", "실패")
+            }
+        })
 
         chat_send_iv.setOnClickListener {
             sendMessage()
@@ -39,16 +54,22 @@ class ChatActivity : AppCompatActivity() {
             finish()
         }
 
+        //레트로핏
+
+
+
         //소켓
         ChatManager.instance.setChatListener(chatListener)
+        ChatManager.instance.init(sender_id,receiver_id, roomName)
+
+
 
     }
 
     fun sendMessage() {
-        val currentlang = LocaleHelper.getLanguage(this) //실제로 쓸거
-//    val currentlang = Locale.getDefault().getLanguage() //테스트용
+        val currentlang = LocaleHelper.getLanguage(this)
         val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-        val item = ChatData(
+        val chatData = ChatData(
                 currentlang,
                 chat_input_et.text.toString(),
                 "ko",
@@ -61,11 +82,11 @@ class ChatActivity : AppCompatActivity() {
                 df.format(Date(System.currentTimeMillis())),
                 "")
 
-        if(item.source_text != "") {
-            chatadapter.addItem(item)
-            chat_input_et.setText("")
+        if(chatData.source_text != "") {
+//            chatadapter.addItem(chatData)
+            ChatManager.instance.sendMessage(chatData)
         }
-        chat_rv.scrollToPosition(chatadapter.getChatSize() - 1)
+//        chat_rv.scrollToPosition(chatadapter.getChatSize() - 1)
 
 //        val chatData = ChatModel
 //        chatData.source_lang = currentlang  //현재 앱 설정언어
@@ -82,6 +103,11 @@ class ChatActivity : AppCompatActivity() {
 //        chat_rv.scrollToPosition(chatadapter.getChatSize() - 1)
 
     }
+
+//    fun Translation(){
+//        ChatDAO.translation(ChatData())
+//    }
+
     private var chatListener = object: ChatManager.OnChatListener {
         override fun onConnected() {
             isConnected = true
@@ -92,6 +118,7 @@ class ChatActivity : AppCompatActivity() {
                 //chat.type = C.MessageType.CHAT_OTHER.index
                 chatadapter.addChat(chat)
                 chat_rv.scrollToPosition(chatadapter.getChatSize() - 1)
+                chat_input_et.setText("")
             }
         }
 

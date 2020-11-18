@@ -1,10 +1,9 @@
 package com.example.glatalk_project.network
 
-//import com.example.glatalk_project.Model.ChatData
-//import com.example.glatalk_project.network.data.response.ChatResponse
-//import com.example.glatalk_project.network.data.response.PapagoResponse
-
+import com.example.glatalk_project.core.data.ChatData
 import com.example.glatalk_project.network.data.request.*
+import com.example.glatalk_project.network.data.response.ChatResponse
+import com.example.glatalk_project.network.data.response.PapagoResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -114,12 +113,12 @@ interface networkInterface {
     /**
      * 번역
      */
-//    @POST("v1/chat/translation")
-//    fun translation(@Body chatData:ChatData): Call<PapagoResponse>
-//
-//    /**
-//     * 대화내역리스트
-//     */
-//    @GET("v1/common/chat_list")
-//    fun chat_list(@Query("room_id") room_id: String):Call<ChatResponse>
+    @POST("v1/chat/translation")
+    fun translation(@Body chatData: ChatData): Call<PapagoResponse>
+
+    /**
+     * 대화내역리스트
+     */
+    @GET("v1/common/chat_list")
+    fun chat_list(@Query("room_id") room_id: String):Call<ChatResponse>
 }
