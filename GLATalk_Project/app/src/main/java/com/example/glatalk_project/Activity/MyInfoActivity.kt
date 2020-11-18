@@ -60,6 +60,7 @@ class MyInfoActivity : AppCompatActivity() {
                 Log.d("TAG", "$TokenData.loginToken")
 
                 var jsonObject:JSONObject = JSONObject(body);
+
                 profileData.user_name= jsonObject["user_name"].toString()
                 profileData.phone_number = jsonObject["phone_number"].toString()
                 profileData.country_cd = jsonObject["country_cd"].toString()
