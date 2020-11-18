@@ -30,10 +30,7 @@ object UserDAO {
 //        TODO("Not yet implemented")
 //    }
 //
-    fun userDetail(callback: Callback<BaseResponse>) {
-        ApiServer.network.detail_info(TokenData.loginToken).enqueue(callback)
 
-    }
 //    fun setUserId(user_email: String) {
 //        PreferenceUtil.putString(C.Preference.KEY_USER_ID, user_email)
 //    }

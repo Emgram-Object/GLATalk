@@ -54,7 +54,7 @@ interface networkInterface {
      */
     @GET("v1/my/detail_info")
 
-    fun detail_info(@Header ("Authorization")Authorization:String): Call<BaseResponse>
+    fun detail_info(): Call<BaseResponse>
 
 
 

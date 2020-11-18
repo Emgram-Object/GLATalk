@@ -19,7 +19,6 @@ interface ServerResult {
     fun isSuccess(): Boolean
     fun resultCode(): String
     fun errorMessage(): String?
-//    fun token(): String?
 } //interface를 선 (interface는 추상클래스와 달리 상태 저장 불가)
 
 
