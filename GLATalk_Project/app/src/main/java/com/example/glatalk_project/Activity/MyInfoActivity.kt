@@ -23,6 +23,9 @@ class MyInfoActivity : AppCompatActivity() {
 
         InfoNetworking()
 
+        common_title_my_info.setTitle("내 정보")
+        common_title_my_info.setModifyBtn()
+
         my_info_pwd_change_btn.setOnClickListener {
             Pwd_Change()
         }
@@ -65,9 +68,4 @@ class MyInfoActivity : AppCompatActivity() {
         val intent = Intent(this, PwdChangeActivity::class.java)
         startActivity(intent)
     }
-
-//    private fun InfoChange() {
-//        val intent = Intent(this, InfoChangeActivity::class.java)
-//        startActivity(intent)
-//    }
 }
