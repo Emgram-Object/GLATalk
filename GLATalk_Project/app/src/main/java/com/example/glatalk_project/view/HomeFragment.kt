@@ -14,25 +14,19 @@ import com.example.glatalk_project.R
 import com.example.glatalk_project.Adapter.ChatRoomListAdapter
 import com.example.glatalk_project.Data.ChatRoom
 import com.example.glatalk_project.network.data.response.BaseResponse
-//import com.example.glatalk_project.Data.ChatRoom
 import kotlinx.android.synthetic.main.fragment_home_guide.view.*
 import org.json.JSONArray
+import org.json.JSONException
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class HomeFragment: Fragment(){
+class HomeFragment : Fragment() {
     val roomList = arrayListOf<ChatRoom>()
     val profileData = ProfileData()
-    var chatRoom = ChatRoom()
-    //암시 테스트용
-//    val roomList: MutableList<ChatRoom> = mutableListOf(
-//            ChatRoom("횽근이", "한국", "rkskedk",true,"0","이형근","한라산","2020-05-08(금) 12:30",false,),
-//            ChatRoom("횽근이", "한국", "rkskedk",true,"0","이형근","한라산","2020-05-08(금) 12:30",false,),
-//            ChatRoom("횽근이", "한국", "rkskedk",true,"0","이형근","한라산","2020-05-08(금) 12:30",false,),
-//            ChatRoom("횽근이", "한국", "rkskedk",true,"0","이형근","한라산","2020-05-08(금) 12:30",false,)
-//    )
+    lateinit var chatRoom: ChatRoom
+    lateinit var adapter: ChatRoomListAdapter
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -41,20 +35,20 @@ class HomeFragment: Fragment(){
         val view = inflater.inflate(R.layout.fragment_home_guide, container, false)
 
         //타이틀,통신 분기점
-        if(profileData.user_type.equals("guide")) {
+        if (profileData.user_type.equals("guide")) {
             view.home_guide_tv.text = "관광객 대화 정보"
             guideHomeNetWorking()
-        } else{
+        } else {
             view.home_guide_tv.text = "대화 가능 가이드 정보"
             touristHomeNetWorking()
         }
 
         //리사이클러뷰
-        val adapter = ChatRoomListAdapter(roomList)
+        adapter = ChatRoomListAdapter(roomList)
         view.home_guide_rv.adapter = adapter
 
         //리사이클러뷰 클릭리스너
-        adapter.setItemClickListener(object: ChatRoomListAdapter.OnItemClickListener{
+        adapter.setItemClickListener(object : ChatRoomListAdapter.OnItemClickListener {
             override fun onClick(v: View, position: Int) {
                 goToChat()
                 adapter.notifyDataSetChanged()
@@ -62,7 +56,7 @@ class HomeFragment: Fragment(){
         })
 
         //리사이클러뷰 롱클릭리스너
-        adapter.setItemLongClickListener(object: ChatRoomListAdapter.OnItemLongClickListener {
+        adapter.setItemLongClickListener(object : ChatRoomListAdapter.OnItemLongClickListener {
             override fun onLongClick(v: View, position: Int): Boolean {
                 val result = roomList.remove(roomList[position])
                 adapter.notifyDataSetChanged()
@@ -70,34 +64,52 @@ class HomeFragment: Fragment(){
             }
         })
 
-        return  view
+        return view
     }
 
-    private fun goToChat(){
+    private fun goToChat() {
         val intent = Intent(getActivity(), ChatActivity::class.java)
         startActivity(intent)
     }
 
-    private fun touristHomeNetWorking(){
-        HomeDAO.tourist_home(callback = object: Callback<BaseResponse>{
+    private fun touristHomeNetWorking() {
+        HomeDAO.tourist_home(callback = object : Callback<BaseResponse> {
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
                 var result = response.body()!!
                 var resultCode = result.resultCode
                 var desc = result.desc
                 var body = result.body.toString()
-                var jsonArray: JSONArray = JSONArray(body)
 
-                for(i in 0 until jsonArray.length()){
-                    val room = jsonArray.getJSONObject(i)
+                val regex = "[^=,{}\\[\\] ]{1,}=[^=,{}\\[\\] ]{0,}".toRegex()
+                try {
+                    body = regex.replace(body) {
+                        var text = it.value.substring(it.value.indexOf('=') + 1)
+                        if (text.equals("null")) {
+                            "\"" + it.value.substring(0, it.value.indexOf('=')) + "\":null"
+                        } else {
+                            "\"" + it.value.substring(0, it.value.indexOf('=')) + "\":\"$text\""
+                        }
+                    }
+                    var jsonArray: JSONArray = JSONArray(body)
 
-                    chatRoom.guide_name = room["guide_name"] as String
-                    chatRoom.guide_info = room["guide_info"] as String
-                    chatRoom.guide_time = room["guide_time"] as String
-                    chatRoom.last_chat_time = room["last_chat_time"] as String
-                    chatRoom.chat_yn = room["chat_yn"] as Boolean
-                    chatRoom.room_id = room["room_id"] as String
+                    for (i in 0 until jsonArray.length()) {
+                        val room = jsonArray.getJSONObject(i)
+
+                        chatRoom = ChatRoom()
+                        chatRoom.guide_name = room["guide_name"] as String
+                        chatRoom.guide_info = room["guide_info"] as String
+                        chatRoom.guide_time = room["guide_time"] as String
+                        chatRoom.last_chat_time = room.getString("last_chat_time")
+                        chatRoom.chat_yn = room["chat_yn"] == null ?: false
+                        chatRoom.room_id = room.getString("room_id")
+                        roomList.add(chatRoom)
+                    }
+                    adapter.notifyDataSetChanged()
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
                 }
-                Log.d("Tour_Home", "성공"+resultCode+desc)
+                Log.d("Tour_Home", "성공" + resultCode + desc)
             }
 
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
@@ -106,24 +118,39 @@ class HomeFragment: Fragment(){
         })
     }
 
-    private fun guideHomeNetWorking(){
-        HomeDAO.guide_home(callback = object : Callback<BaseResponse>{
+    private fun guideHomeNetWorking() {
+        HomeDAO.guide_home(callback = object : Callback<BaseResponse> {
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
                 var result = response.body()!!
                 var resultCode = result.resultCode
                 var desc = result.desc
                 var body = result.body.toString()
-                var jsonArray: JSONArray = JSONArray(body)
 
-                for(i in 0 until jsonArray.length()) {
-                    val room = jsonArray.getJSONObject(i)
+                val regex = "[^=,{}\\[\\] ]{1,}=[^=,{}\\[\\] ]{0,}".toRegex()
+                try {
+                    body = regex.replace(body) {
+                        var text = it.value.substring(it.value.indexOf('=') + 1)
+                        if (text.equals("null")) {
+                            "\"" + it.value.substring(0, it.value.indexOf('=')) + "\":null"
+                        } else {
+                            "\"" + it.value.substring(0, it.value.indexOf('=')) + "\":\"$text\""
+                        }
+                    }
+                    var jsonArray: JSONArray = JSONArray(body)
 
-                    chatRoom.tourist_name = room["tourist_name"] as String
-                    chatRoom.tourist_info = room["tourist_info"] as String
-                    chatRoom.last_chat_time = room["last_chat_time"] as String
-                    chatRoom.new_msg = room["new_msg"] as Boolean
-                    chatRoom.room_id = room["room_id"] as String
+                    for (i in 0 until jsonArray.length()) {
+                        val room = jsonArray.getJSONObject(i)
+
+                        chatRoom.tourist_name = room["tourist_name"] as String
+                        chatRoom.tourist_info = room["tourist_info"] as String
+                        chatRoom.last_chat_time = room["last_chat_time"] as String
+                        chatRoom.new_msg = room["new_msg"] as Boolean
+                        chatRoom.room_id = room["room_id"] as String
+                    }
+                } catch (e: JSONException) {
+                    null
                 }
+
                 Log.d("Guide_Home", "성공")
             }
 
