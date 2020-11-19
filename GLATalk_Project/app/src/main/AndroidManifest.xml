@@ -29,14 +29,10 @@
         <activity android:name=".Activity.MyInfoActivity" />
         <activity android:name=".Activity.InfoChangeActivity"/>
         <activity android:name=".Activity.MainActivity"/>
-
         <activity android:name=".Activity.RegistActivity"/>
         <activity android:name=".Activity.PwdFindActivity"/>
-
-
         <activity android:name=".Activity.ChatActivity"/>
         <activity android:name=".Activity.SettingActivity"/>
-
         <activity android:name=".Activity.PwdChangeActivity"/>
         <activity android:name=".Activity.FirstLanguageActivity"/>
 
