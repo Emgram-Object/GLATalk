@@ -28,21 +28,10 @@ class MyInfoActivity : AppCompatActivity() {
 
         InfoNetworking()
 
-        change_tv.visibility = View.VISIBLE
-
-        change_tv.setOnClickListener() {
-            InfoChange()
-        }
-
         my_info_pwd_change_btn.setOnClickListener {
             Pwd_Change()
         }
-
-        my_logout_btn.setOnClickListener {
-            Logout()
-        }
     }
-
 
     private fun InfoNetworking(){
         myDao.detail_info(callback = object : Callback<BaseResponse> {
@@ -82,16 +71,8 @@ class MyInfoActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun InfoChange() {
-        val intent = Intent(this, InfoChangeActivity::class.java)
-        startActivity(intent)
-    }
-
-    private fun Logout(){
-        LogoutActivity.logout()
-        var intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
-        finish()
-    }
-
+//    private fun InfoChange() {
+//        val intent = Intent(this, InfoChangeActivity::class.java)
+//        startActivity(intent)
+//    }
 }

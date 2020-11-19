@@ -22,13 +22,11 @@ import retrofit2.Response
 
 
     fun logout() {
-        PreferenceUtil.putString(C.Preference.KEY_ACCESS_TOKEN, "")
-        PreferenceUtil.putBoolean(C.Preference.KEY_IS_AUTO_LOGIN, false)
-
+//        PreferenceUtil.putString(C.Preference.KEY_ACCESS_TOKEN, "")
+//        PreferenceUtil.putBoolean(C.Preference.KEY_IS_AUTO_LOGIN, false)
         logoutNetworking()
     }
-
-    private fun logoutNetworking() {
+     fun logoutNetworking() {
         userDAO.logout(callback = object : Callback<BaseResponse>{
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
             }

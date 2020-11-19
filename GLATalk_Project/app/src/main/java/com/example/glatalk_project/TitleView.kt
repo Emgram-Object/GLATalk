@@ -25,7 +25,11 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
     fun setTitle(str: String) {
         title_tv.text = str
     }
-
+//    change_tv.visibility = View.VISIBLE
+//
+//    change_tv.setOnClickListener {
+//        InfoChange()
+//    }
     fun setFinishListener() {
         common_back_btn.setOnClickListener {
             (context as? Activity)?.finish()

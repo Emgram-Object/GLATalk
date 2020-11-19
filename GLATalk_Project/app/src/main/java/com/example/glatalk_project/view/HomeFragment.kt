@@ -60,7 +60,8 @@ class HomeFragment: Fragment(){
 
         if(profileData.user_type.equals("guide")) {
             view.home_guide_tv.text = "관광객 대화 정보"
-        } else{
+        }
+        if(profileData.user_type.equals("tourist")){
             view.home_guide_tv.text = "대화 가능 가이드 정보"
         }
 
