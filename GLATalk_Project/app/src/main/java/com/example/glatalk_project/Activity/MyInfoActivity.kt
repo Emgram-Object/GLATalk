@@ -21,49 +21,31 @@ import retrofit2.Response
 class MyInfoActivity : AppCompatActivity() {
 
     var myDao = MyDao
-    var profileData = ProfileData()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_info)
 
-        InfoNetworking()
+
+        common_title_my_info.setTitle("내 정보")
+        common_title_my_info.setModifyBtn()
+
+        myDao.getInfo()
+
+        setTexts()
+
 
         my_info_pwd_change_btn.setOnClickListener {
             Pwd_Change()
         }
     }
 
-    private fun InfoNetworking(){
-        myDao.detail_info(callback = object : Callback<BaseResponse> {
-            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
-            }
 
-            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
-                var result = response.body()!!
-                var resultCode = result.resultCode
-                var desc = result.desc
-                var body = result.body.toString()
+    private fun setTexts() {
+        my_info_name_et.setText(ProfileData.user_name)
+        my_info_phone_et.setText(ProfileData.phone_number)
+        my_info_email_et.setText(ProfileData.user_email)
+        //      my_info_country_select_tv.text = ProfileData.country_cd
 
-
-                var jsonObject:JSONObject = JSONObject(body);
-
-                profileData.user_name= jsonObject["user_name"].toString()
-                profileData.phone_number = jsonObject["phone_number"].toString()
-                profileData.country_cd = jsonObject["country_cd"].toString()
-                profileData.user_email= jsonObject["user_email"].toString()
-                profileData.user_type = jsonObject["user_type"].toString()
-
-                setTexts()
-            }
-        })
-
-    }
-
-    private fun setTexts(){
-        my_info_name_et.setText(profileData.user_name)
-        my_info_phone_et.setText(profileData.phone_number)
-        my_info_email_et.setText(profileData.user_email)
-//        my_info_country_select_sp.text = profileData.country_cd
     }
 
     private fun Pwd_Change() {
@@ -71,8 +53,10 @@ class MyInfoActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+
 //    private fun InfoChange() {
 //        val intent = Intent(this, InfoChangeActivity::class.java)
 //        startActivity(intent)
 //    }
+
 }

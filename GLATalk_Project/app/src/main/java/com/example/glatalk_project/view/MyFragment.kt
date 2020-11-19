@@ -5,17 +5,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.library.BuildConfig
 import androidx.fragment.app.Fragment
 import com.example.glatalk_project.Activity.LoginActivity
 import com.example.glatalk_project.Activity.LogoutActivity
 import com.example.glatalk_project.Activity.MyInfoActivity
 import com.example.glatalk_project.Activity.SettingActivity
+
+import com.example.glatalk_project.BuildConfig
+import com.example.glatalk_project.Model.MyDao
+
 import com.example.glatalk_project.R
 import kotlinx.android.synthetic.main.fragment_my.*
 import kotlinx.android.synthetic.main.fragment_my.view.*
 
-class MyFragment: Fragment(){
+class MyFragment : Fragment() {
+    var myDao = MyDao
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -26,40 +30,47 @@ class MyFragment: Fragment(){
         //이후 코드 구현
 
         view.my_version_ver.text = version //앱 버전정보 출력
-        view.my_profile_cl.setOnClickListener { goToMyInfo() }
+        view.my_profile_cl.setOnClickListener {
+            myDao.getInfo()
+            Thread.sleep(100)
+            goToMyInfo()
+
+        }
         view.my_setting_cl.setOnClickListener { goToSetting() }
         view.my_term_cl.setOnClickListener { goToTerm() }
-        view.my_logout_btn.setOnClickListener{ goToLogin() }
+        view.my_logout_btn.setOnClickListener { goToLogin() }
 
-        return  view
+        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-       my_logout_btn.setOnClickListener{ Logout() }
+        my_logout_btn.setOnClickListener { Logout() }
 
     }
 
     //임시로 LoginActivity로 연결해놓음 다른 액티비티들 만들어지면 수정 ㄱㄱ
-    private fun goToLogin(){
+    private fun goToLogin() {
         val intent = Intent(context, LoginActivity::class.java)
         startActivity(intent)
     }
-    private fun goToMyInfo(){
+
+    private fun goToMyInfo() {
         val intent = Intent(context, MyInfoActivity::class.java)
         startActivity(intent)
     }
 
-    private fun goToSetting(){
+    private fun goToSetting() {
         val intent = Intent(context, SettingActivity::class.java)
         startActivity(intent)
     }
 
-    private fun goToTerm(){
+    private fun goToTerm() {
         val intent = Intent(context, LoginActivity::class.java)
         startActivity(intent)
     }
-    private fun Logout(){
+
+    private fun Logout() {
         LogoutActivity.logout()
         var intent = Intent(context, LoginActivity::class.java)
         startActivity(intent)

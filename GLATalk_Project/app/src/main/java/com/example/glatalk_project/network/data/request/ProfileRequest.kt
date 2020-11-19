@@ -1,6 +1,11 @@
 package com.example.glatalk_project.network.data.request
 
-import com.example.glatalk_project.TokenData
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 
-class ProfileRequest {
-}
+data class ProfileRequest (
+//        val profile_img:MultipartBody.Part?,
+        val user_name: RequestBody,
+        val phone_number: RequestBody,
+        val country_cd: RequestBody,
+)
