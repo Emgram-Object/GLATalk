@@ -21,7 +21,7 @@
         android:src="@drawable/icon_profile_l"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/common_title_info_change"/>
+        app:layout_constraintTop_toBottomOf="@+id/common_title_info_change"/>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout

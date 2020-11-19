@@ -21,7 +21,7 @@ import java.util.*
 class ChatActivity : AppCompatActivity() {
 
     private var chatDAO = ChatDAO
-    private var roomName = ""
+    private var room_id = ""
     private var receiver_id = ""
     private var sender_id = ""
     var chatList = arrayListOf<ChatData>()
@@ -32,11 +32,13 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
-        roomName = intent.getStringExtra("reserve_id") ?: ""
+        room_id = intent.getStringExtra("reserve_id") ?: ""
         receiver_id = intent.getStringExtra("receiver_id") ?: ""
 
+
+
         chat_rv.adapter = chatadapter
-        chatDAO.chat_list(roomName, callback = object: Callback<ChatResponse>{
+        chatDAO.chat_list(room_id, callback = object: Callback<ChatResponse>{
             override fun onResponse(call: Call<ChatResponse>, response: Response<ChatResponse>) {
                 Log.d("ChatList", "성공")
             }
@@ -60,7 +62,7 @@ class ChatActivity : AppCompatActivity() {
 
         //소켓
         ChatManager.instance.setChatListener(chatListener)
-        ChatManager.instance.init(sender_id,receiver_id, roomName)
+        ChatManager.instance.init(sender_id,receiver_id, room_id)
 
 
 
@@ -78,7 +80,7 @@ class ChatActivity : AppCompatActivity() {
                 receiver_id,
                 "tourist",
                 "guide",
-                roomName,
+                room_id,
                 df.format(Date(System.currentTimeMillis())),
                 "")
 

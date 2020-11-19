@@ -2,6 +2,7 @@ package com.example.glatalk_project.core.adapter
 
 import android.view.*
 import androidx.recyclerview.widget.RecyclerView
+import com.example.glatalk_project.ProfileData
 import com.example.glatalk_project.R
 import com.example.glatalk_project.core.data.ChatData
 import kotlinx.android.synthetic.main.ui_my_chat.view.*
@@ -13,6 +14,7 @@ import java.text.SimpleDateFormat
 class ChatAdapter(val chatList: ArrayList<ChatData>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val CHAT_MINE = 0
     private val CHAT_OTHER = 1
+    val profileData = ProfileData()
 //    private val chatList = ArrayList<ChatData>()
 
 
@@ -21,15 +23,6 @@ class ChatAdapter(val chatList: ArrayList<ChatData>) : RecyclerView.Adapter<Recy
         notifyItemInserted(chatList.size)
     }
 
-//    fun addItem(item: ChatData) {//아이템 추가
-//        chatList.add(item)
-//        println(item.source_text)
-////        println(chatList.size)
-////        println(chatList[chatList.size])
-////        println(chatList[chatList.size-1])
-//        notifyItemChanged(chatList.size-1)
-////        notifyItemInserted(chatList.size-1)
-//    }
 
     fun setChatList(chatList: ArrayList<ChatData>) {
         chatList?.let {
@@ -47,17 +40,12 @@ class ChatAdapter(val chatList: ArrayList<ChatData>) : RecyclerView.Adapter<Recy
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             CHAT_MINE -> {
-                val binding =
-                        LayoutInflater.from(parent.context).inflate(R.layout.ui_my_chat, parent, false)
-                ChatMineViewHolder(binding)
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.ui_my_chat, parent, false)
+                ChatMineViewHolder(view)
             }
             else -> {
-                val binding =
-                        LayoutInflater.from(parent.context).inflate(R.layout.ui_other_chat,
-                                parent,
-                                false)
-
-                ChatOtherViewHolder(binding)
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.ui_other_chat, parent, false)
+                ChatOtherViewHolder(view)
             }
         }
     }
@@ -76,12 +64,12 @@ class ChatAdapter(val chatList: ArrayList<ChatData>) : RecyclerView.Adapter<Recy
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is ChatMineViewHolder -> {
-                holder.onBind(chatList[position])
+                holder.onBind(chatList[position], profileData.user_type)
                 //bind visible 추가해야됨
                 holder.dateVisible(position)
             }
             is ChatOtherViewHolder -> {
-                holder.onBind(chatList[position])
+                holder.onBind(chatList[position], profileData.user_type)
                 //bind visible 추가해야됨
                 holder.dateVisible(position)
             }
@@ -90,7 +78,14 @@ class ChatAdapter(val chatList: ArrayList<ChatData>) : RecyclerView.Adapter<Recy
 
     inner class ChatMineViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         var view = v
-        fun onBind(chat: ChatData) {
+        fun onBind(chat: ChatData, user_type:String) {
+            if(user_type.equals("guide")){
+                view.message_line.visibility = View.VISIBLE
+                view.message_tran_tv.visibility = View.VISIBLE
+            } else{
+                view.message_line.visibility = View.GONE
+                view.message_tran_tv.visibility = View.GONE
+            }
             view.chat_date.text = chat.msg_dt
             view.message_mine_tv.text = chat.source_text
             view.message_tran_tv.text = chat.target_text
@@ -129,7 +124,14 @@ class ChatAdapter(val chatList: ArrayList<ChatData>) : RecyclerView.Adapter<Recy
 
     inner class ChatOtherViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         var view = v
-        fun onBind(chat: ChatData) {
+        fun onBind(chat: ChatData, user_type:String) {
+            if(user_type.equals("guide")){
+                view.message_other_line.visibility = View.VISIBLE
+                view.message.visibility = View.VISIBLE
+            } else{
+                view.message_other_line.visibility = View.GONE
+                view.message.visibility = View.GONE
+            }
             view.chat_other_date.text = chat.msg_dt
             view.message_other_tv.text = chat.source_text
             view.message.text = chat.target_text
