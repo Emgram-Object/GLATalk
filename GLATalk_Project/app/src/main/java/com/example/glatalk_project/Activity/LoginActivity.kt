@@ -25,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
     var input_user_pwd: String = ""
     var userData = UserData()
     var tokenData = TokenData
-//    var loginResult: String = ""
+    var loginResult: String = ""
     lateinit var input: EditText
 
 
@@ -73,10 +73,10 @@ class LoginActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
                 var result = response.body()!!
-//                loginResult = result.toString()
+                loginResult = result.toString()
                 userData.resultCode = result.resultCode.toString()
                 userData.desc = result.desc.toString()
-//                Log.d("result", "$loginResult")
+                Log.d("result", "$loginResult")
                 if (response.isSuccessful) {
                     tokenData.loginToken = result.body.toString()
                     if (userData.resultCode == "0") {

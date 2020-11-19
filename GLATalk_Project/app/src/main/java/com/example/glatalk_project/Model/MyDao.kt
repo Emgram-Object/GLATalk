@@ -9,6 +9,7 @@ object MyDao{
     fun change_pwd(pwdRequest: PwdRequest, callback: Callback<BaseResponse>){
         ApiServer.network.change_pwd(pwdRequest).enqueue(callback)
     }
+
     fun detail_info(callback: Callback<BaseResponse>) {
         ApiServer.network.detail_info().enqueue(callback)
     }

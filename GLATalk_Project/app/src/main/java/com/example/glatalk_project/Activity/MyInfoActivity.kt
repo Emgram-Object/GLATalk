@@ -11,6 +11,7 @@ import com.example.glatalk_project.R
 import com.example.glatalk_project.TokenData
 import com.example.glatalk_project.network.BaseResponse
 import kotlinx.android.synthetic.main.activity_my_info.*
+import kotlinx.android.synthetic.main.fragment_my.*
 import kotlinx.android.synthetic.main.ui_common_title.*
 import org.json.JSONObject
 import retrofit2.Call
@@ -25,10 +26,7 @@ class MyInfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_info)
 
-        Log.d("TAG", "$TokenData.loginToken")
-
         InfoNetworking()
-
 
         change_tv.visibility = View.VISIBLE
 
@@ -40,24 +38,23 @@ class MyInfoActivity : AppCompatActivity() {
             Pwd_Change()
         }
 
+        my_logout_btn.setOnClickListener {
+            Logout()
+        }
     }
 
 
     private fun InfoNetworking(){
         myDao.detail_info(callback = object : Callback<BaseResponse> {
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
-                Log.d("qwert", "onFailure: fail")
             }
 
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
-                Log.d("qwert", "onResponse: success")
                 var result = response.body()!!
                 var resultCode = result.resultCode
                 var desc = result.desc
                 var body = result.body.toString()
 
-
-                Log.d("TAG", "$TokenData.loginToken")
 
                 var jsonObject:JSONObject = JSONObject(body);
 
@@ -70,13 +67,14 @@ class MyInfoActivity : AppCompatActivity() {
                 setTexts()
             }
         })
+
     }
 
     private fun setTexts(){
         my_info_name_et.setText(profileData.user_name)
         my_info_phone_et.setText(profileData.phone_number)
         my_info_email_et.setText(profileData.user_email)
-        my_info_country_select_tv.text = profileData.country_cd
+//        my_info_country_select_sp.text = profileData.country_cd
     }
 
     private fun Pwd_Change() {
@@ -88,4 +86,12 @@ class MyInfoActivity : AppCompatActivity() {
         val intent = Intent(this, InfoChangeActivity::class.java)
         startActivity(intent)
     }
+
+    private fun Logout(){
+        LogoutActivity.logout()
+        var intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
 }

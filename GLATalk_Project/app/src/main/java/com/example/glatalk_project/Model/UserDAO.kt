@@ -6,6 +6,7 @@ import com.example.glatalk_project.network.BaseResponse
 import com.example.glatalk_project.network.data.request.LoginRequest
 import com.example.glatalk_project.network.data.request.PwdFindRequest
 import com.example.glatalk_project.network.data.request.UserRequest
+import io.reactivex.Single
 import retrofit2.Callback
 
 object UserDAO {
@@ -23,6 +24,9 @@ object UserDAO {
 
         ApiServer.network.add(userRequest).enqueue(callback)
 
+    }
+    fun logout(callback: Callback<BaseResponse>) {
+        ApiServer.network.logout().enqueue(callback)
     }
 
     //

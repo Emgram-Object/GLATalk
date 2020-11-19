@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.library.BuildConfig
 import androidx.fragment.app.Fragment
 import com.example.glatalk_project.Activity.LoginActivity
+import com.example.glatalk_project.Activity.LogoutActivity
 import com.example.glatalk_project.Activity.MyInfoActivity
 import com.example.glatalk_project.Activity.SettingActivity
-import com.example.glatalk_project.BuildConfig
 import com.example.glatalk_project.R
+import kotlinx.android.synthetic.main.fragment_my.*
 import kotlinx.android.synthetic.main.fragment_my.view.*
 
 class MyFragment: Fragment(){
@@ -32,11 +34,11 @@ class MyFragment: Fragment(){
         return  view
     }
 
-//    override fun onActivityCreated(savedInstanceState: Bundle?) {
-//        super.onActivityCreated(savedInstanceState)
-//        my_logout_btn.setOnClickListener{ goToLogin() }
-//
-//    }
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        my_logout_btn.setOnClickListener{ goToLogout() }
+
+    }
 
     //임시로 LoginActivity로 연결해놓음 다른 액티비티들 만들어지면 수정 ㄱㄱ
     private fun goToLogin(){
@@ -55,6 +57,10 @@ class MyFragment: Fragment(){
 
     private fun goToTerm(){
         val intent = Intent(context, LoginActivity::class.java)
+        startActivity(intent)
+    }
+    private fun goToLogout(){
+        val intent = Intent(context, LogoutActivity::class.java)
         startActivity(intent)
     }
 }

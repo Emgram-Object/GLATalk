@@ -40,10 +40,6 @@
         <activity android:name=".Activity.PwdChangeActivity"/>
         <activity android:name=".Activity.FirstLanguageActivity"/>
 
-        <!--<activity android:name=".PwdChangeActivity"/>-->
-        <!--패스워드 바꾸는 액티비티 넣어주기-->
-        <!--<activity android:name=".Controller.InfoChangeActivity"/>-->
-
     </application>
 
 </manifest>
