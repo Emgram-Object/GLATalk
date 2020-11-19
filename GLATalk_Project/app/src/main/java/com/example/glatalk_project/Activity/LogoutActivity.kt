@@ -19,15 +19,11 @@ import retrofit2.Response
  object LogoutActivity{
     private var userDAO = UserDAO
     var userData = UserData()
-    var tokenData = TokenData
 
 
     fun logout() {
         PreferenceUtil.putString(C.Preference.KEY_ACCESS_TOKEN, "")
         PreferenceUtil.putBoolean(C.Preference.KEY_IS_AUTO_LOGIN, false)
-//        Log.d("1", "${TokenData.loginToken}")
-        tokenData.loginToken = ""
-//        Log.d("login2", "${TokenData.loginToken}")
 
         logoutNetworking()
     }
