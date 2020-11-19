@@ -1,6 +1,5 @@
 package com.example.glatalk_project.core.util
 
-import android.system.Os.socket
 import android.util.Log
 import com.example.glatalk_project.core.data.ChatData
 import com.example.glatalk_project.core.data.InitData
@@ -10,8 +9,9 @@ import io.socket.client.Socket
 import io.socket.emitter.Emitter
 import java.lang.Exception
 
+
 class ChatManager{
-    private lateinit var mSocket: Socket
+    private lateinit var mSocket:Socket
     private lateinit var sender_id: String
     private lateinit var receiver_id: String
     private lateinit var room_id: String

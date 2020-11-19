@@ -19,10 +19,12 @@ class MainActivity : AppCompatActivity(){
 
         mContext = applicationContext
 
+        //뷰페이저
         val adapter = PageAdapter(supportFragmentManager)
         main_vp.adapter = adapter
         main_tab.setupWithViewPager(main_vp)
 
+        //커스텀 탭 생성
         main_tab.getTabAt(0)?.setCustomView(creatView("home"))
         main_tab.getTabAt(1)?.setCustomView(creatView("my"))
     }

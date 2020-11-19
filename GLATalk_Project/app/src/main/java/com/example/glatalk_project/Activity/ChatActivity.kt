@@ -3,15 +3,16 @@ package com.example.glatalk_project.Activity
 import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.Model.ChatDAO
+import com.example.glatalk_project.ProfileData
 import com.example.glatalk_project.R
 import com.example.glatalk_project.core.adapter.ChatAdapter
 import com.example.glatalk_project.core.data.ChatData
 import com.example.glatalk_project.core.helper.LocaleHelper
 import com.example.glatalk_project.core.util.ChatManager
-import com.example.glatalk_project.network.data.request.ChatRequset
-import com.example.glatalk_project.network.data.response.ChatResponse
+import com.example.glatalk_project.network.BaseResponse
 import kotlinx.android.synthetic.main.activity_chat.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,7 +26,9 @@ class ChatActivity : AppCompatActivity() {
     private var receiver_id = ""
     private var sender_id = ""
     var chatList = arrayListOf<ChatData>()
-    val chatadapter = ChatAdapter(chatList)
+    val chatAdapter = ChatAdapter(chatList)
+    var chatData = ChatData()
+    val profileData = ProfileData()
     private var isConnected = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,18 +38,37 @@ class ChatActivity : AppCompatActivity() {
         room_id = intent.getStringExtra("reserve_id") ?: ""
         receiver_id = intent.getStringExtra("receiver_id") ?: ""
 
+        chat_rv.adapter = chatAdapter
 
+        if(profileData.user_type.equals("guide")){
+            title_tv.text = "관광객 이름"
+            mobil_info.visibility = View.VISIBLE
+            mobil_info.text = "관광객 정보"
+        }else{
+            title_tv.text = "가이드 이름"
+            mobil_info.visibility = View.GONE
+        }
 
-        chat_rv.adapter = chatadapter
-        chatDAO.chat_list(room_id, callback = object: Callback<ChatResponse>{
-            override fun onResponse(call: Call<ChatResponse>, response: Response<ChatResponse>) {
+        chatDAO.chat_list("0", callback = object: Callback<BaseResponse>{
+            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
                 Log.d("ChatList", "성공")
             }
 
-            override fun onFailure(call: Call<ChatResponse>, t: Throwable) {
+            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
                 Log.d("ChatList", "실패")
             }
         })
+
+        chatDAO.translation(chatData, callback = object : Callback<BaseResponse>{
+            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
+                Log.d("translation", "성공")
+            }
+
+            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+                Log.d("translation", "실패")
+            }
+        })
+
 
         chat_send_iv.setOnClickListener {
             sendMessage()
@@ -86,6 +108,9 @@ class ChatActivity : AppCompatActivity() {
 
         if(chatData.source_text != "") {
 //            chatadapter.addItem(chatData)
+            chatAdapter.addChat(chatData)
+            chat_rv.scrollToPosition(chatAdapter.getChatSize() - 1)
+            chat_input_et.setText("")
             ChatManager.instance.sendMessage(chatData)
         }
 //        chat_rv.scrollToPosition(chatadapter.getChatSize() - 1)
@@ -118,8 +143,8 @@ class ChatActivity : AppCompatActivity() {
         override fun onReceive(chat: ChatData) {
             runOnUiThread {
                 //chat.type = C.MessageType.CHAT_OTHER.index
-                chatadapter.addChat(chat)
-                chat_rv.scrollToPosition(chatadapter.getChatSize() - 1)
+                chatAdapter.addChat(chat)
+                chat_rv.scrollToPosition(chatAdapter.getChatSize() - 1)
                 chat_input_et.setText("")
             }
         }

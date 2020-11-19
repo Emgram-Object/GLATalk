@@ -9,6 +9,7 @@ import com.example.glatalk_project.Model.MyDao
 import com.example.glatalk_project.ProfileData
 import com.example.glatalk_project.R
 import com.example.glatalk_project.TokenData
+import com.example.glatalk_project.core.data.ChatData
 import com.example.glatalk_project.network.BaseResponse
 import kotlinx.android.synthetic.main.activity_my_info.*
 import kotlinx.android.synthetic.main.fragment_my.*

@@ -44,7 +44,7 @@ class InfoChangeActivity:AppCompatActivity(){
         my_info_chg_name_et.setText(profileData.user_name)
         my_info_chg_phone_et.setText(profileData.phone_number)
 //user english name은 뭘까?
-        //my_info_country_select_tv.text = profileData.country_cd
+//        my_info_country_select_tv.text = profileData.country_cd
     }
 
 
