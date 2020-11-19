@@ -13,7 +13,6 @@ import com.example.glatalk_project.Data.ProfileData
 class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val GUIDE_ROOM = 0
     private val TOUR_ROOM = 1
-    val profileData = ProfileData()
 
     override fun getItemCount(): Int {
         return roomList.size
@@ -32,7 +31,7 @@ class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>) : Recycle
     }
 
     override fun getItemViewType(position: Int): Int {
-        if (profileData.user_type.equals("guide")) {
+        if (ProfileData.user_type.equals("guide")) {
             return GUIDE_ROOM
         } else {
             return TOUR_ROOM

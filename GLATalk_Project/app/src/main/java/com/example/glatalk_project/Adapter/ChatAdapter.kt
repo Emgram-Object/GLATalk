@@ -14,7 +14,6 @@ import java.text.SimpleDateFormat
 class ChatAdapter(val chatList: ArrayList<ChatData>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val CHAT_MINE = 0
     private val CHAT_OTHER = 1
-    val profileData = ProfileData()
 //    private val chatList = ArrayList<ChatData>()
 
 
@@ -64,12 +63,12 @@ class ChatAdapter(val chatList: ArrayList<ChatData>) : RecyclerView.Adapter<Recy
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is ChatMineViewHolder -> {
-                holder.onBind(chatList[position], profileData.user_type)
+                holder.onBind(chatList[position], ProfileData.user_type)
                 //bind visible 추가해야됨
                 holder.dateVisible(position)
             }
             is ChatOtherViewHolder -> {
-                holder.onBind(chatList[position], profileData.user_type)
+                holder.onBind(chatList[position], ProfileData.user_type)
                 //bind visible 추가해야됨
                 holder.dateVisible(position)
             }

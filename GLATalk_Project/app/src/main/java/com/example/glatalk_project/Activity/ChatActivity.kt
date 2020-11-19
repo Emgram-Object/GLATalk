@@ -28,7 +28,6 @@ class ChatActivity : AppCompatActivity() {
     var chatList = arrayListOf<ChatData>()
     val chatAdapter = ChatAdapter(chatList)
     var chatData = ChatData()
-    val profileData = ProfileData()
     private var isConnected = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +39,7 @@ class ChatActivity : AppCompatActivity() {
 
         chat_rv.adapter = chatAdapter
 
-        if(profileData.user_type.equals("guide")){
+        if(ProfileData.user_type.equals("guide")){
             title_tv.text = "관광객 이름"
             mobil_info.visibility = View.VISIBLE
             mobil_info.text = "관광객 정보"
