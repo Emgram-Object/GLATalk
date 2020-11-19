@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
 >
 
-    <com.example.glatalk_project.TitleView
+    <com.example.glatalk_project.view.TitleView
         android:id="@+id/common_title_regist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

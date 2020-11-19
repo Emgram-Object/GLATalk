@@ -10,16 +10,16 @@ import com.example.glatalk_project.Activity.LoginActivity
 import com.example.glatalk_project.Activity.LogoutActivity
 import com.example.glatalk_project.Activity.MyInfoActivity
 import com.example.glatalk_project.Activity.SettingActivity
-
 import com.example.glatalk_project.BuildConfig
+import com.example.glatalk_project.Data.ProfileData
 import com.example.glatalk_project.Model.MyDao
-
 import com.example.glatalk_project.R
 import kotlinx.android.synthetic.main.fragment_my.*
 import kotlinx.android.synthetic.main.fragment_my.view.*
 
 class MyFragment : Fragment() {
     var myDao = MyDao
+
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -28,6 +28,8 @@ class MyFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_my, container, false)
         val version: String = BuildConfig.VERSION_NAME
         //이후 코드 구현
+        view.my_profile_name_tv.text = ProfileData.user_name
+        view.my_profile_email_tv.text = ProfileData.user_email
 
         view.my_version_ver.text = version //앱 버전정보 출력
         view.my_profile_cl.setOnClickListener {

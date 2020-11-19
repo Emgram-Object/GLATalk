@@ -1,4 +1,4 @@
-package com.example.glatalk_project
+package com.example.glatalk_project.Data
 
 object ProfileData{
         var user_name: String = ""

@@ -1,11 +1,11 @@
 package com.example.glatalk_project.Model
 
 import android.util.Log
-import com.example.glatalk_project.ProfileData
+import com.example.glatalk_project.Data.ProfileData
 import com.example.glatalk_project.network.ApiServer
-import com.example.glatalk_project.network.BaseResponse
 import com.example.glatalk_project.network.data.request.ProfileRequest
 import com.example.glatalk_project.network.data.request.PwdRequest
+import com.example.glatalk_project.network.data.response.BaseResponse
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback

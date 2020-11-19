@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import com.example.glatalk_project.network.data.response.BaseResponse
 import com.example.glatalk_project.Model.MyDao
-import com.example.glatalk_project.ProfileData
+import com.example.glatalk_project.Data.ProfileData
 import com.example.glatalk_project.R
-import com.example.glatalk_project.network.BaseResponse
 import com.example.glatalk_project.network.data.request.ProfileRequest
 import kotlinx.android.synthetic.main.activity_my_info.*
 import kotlinx.android.synthetic.main.activity_my_info_change.*
@@ -32,6 +32,8 @@ class InfoChangeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_info_change)
+
+        common_title_info_change.setTitle("내 정보 변경")
 
         setTexts()
 

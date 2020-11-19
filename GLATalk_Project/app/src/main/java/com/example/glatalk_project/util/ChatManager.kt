@@ -1,17 +1,17 @@
-package com.example.glatalk_project.core.util
+package com.example.glatalk_project.util
 
-import android.system.Os.socket
 import android.util.Log
-import com.example.glatalk_project.core.data.ChatData
-import com.example.glatalk_project.core.data.InitData
+import com.example.glatalk_project.Data.ChatData
+import com.example.glatalk_project.Data.InitData
 import com.google.gson.Gson
 import io.socket.client.IO
 import io.socket.client.Socket
 import io.socket.emitter.Emitter
 import java.lang.Exception
 
+
 class ChatManager{
-    private lateinit var mSocket: Socket
+    private lateinit var mSocket:Socket
     private lateinit var sender_id: String
     private lateinit var receiver_id: String
     private lateinit var room_id: String

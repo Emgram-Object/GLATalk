@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater
 import android.view.View
 import com.example.glatalk_project.R
-import com.example.glatalk_project.core.adapter.PageAdapter
+import com.example.glatalk_project.Adapter.PageAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.ui_custom_tab.view.*
 
@@ -19,10 +19,12 @@ class MainActivity : AppCompatActivity(){
 
         mContext = applicationContext
 
+        //뷰페이저
         val adapter = PageAdapter(supportFragmentManager)
         main_vp.adapter = adapter
         main_tab.setupWithViewPager(main_vp)
 
+        //커스텀 탭 생성
         main_tab.getTabAt(0)?.setCustomView(creatView("home"))
         main_tab.getTabAt(1)?.setCustomView(creatView("my"))
     }

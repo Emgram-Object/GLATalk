@@ -1,14 +1,14 @@
-package com.example.glatalk_project.core.adapter
+package com.example.glatalk_project.Adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.glatalk_project.R
-import com.example.glatalk_project.core.data.ChatRoom
-//import com.example.glatalk_project.core.data.ChatRoom
+import com.example.glatalk_project.Data.ChatRoom
+//import com.example.glatalk_project.Data.ChatRoom
 import kotlinx.android.synthetic.main.ui_room_custom.view.*
-import com.example.glatalk_project.ProfileData
+import com.example.glatalk_project.Data.ProfileData
 
 class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val GUIDE_ROOM = 0

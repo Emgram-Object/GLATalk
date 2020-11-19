@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.R
-import com.example.glatalk_project.core.helper.LocaleHelper
+import com.example.glatalk_project.util.LocaleHelper
 import kotlinx.android.synthetic.main.activity_language.*
 import java.util.*
 

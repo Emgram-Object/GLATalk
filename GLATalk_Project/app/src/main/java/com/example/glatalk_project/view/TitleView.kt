@@ -1,4 +1,4 @@
-package com.example.glatalk_project
+package com.example.glatalk_project.view
 
 import android.app.Activity
 import android.content.Context
@@ -8,12 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.glatalk_project.Activity.InfoChangeActivity
-
-import kotlinx.android.synthetic.main.activity_chat.view.*
-import kotlinx.android.synthetic.main.activity_find_pwd.view.*
-import kotlinx.android.synthetic.main.activity_find_pwd.view.*
+import com.example.glatalk_project.R
 import kotlinx.android.synthetic.main.ui_common_title.view.*
-import kotlinx.android.synthetic.main.activity_chat.view.title_tv as title_tv1
 
 class TitleView
 @JvmOverloads

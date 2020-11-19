@@ -1,4 +1,4 @@
-package com.example.glatalk_project.core.helper
+package com.example.glatalk_project.util
 
 import android.annotation.TargetApi
 import android.content.Context

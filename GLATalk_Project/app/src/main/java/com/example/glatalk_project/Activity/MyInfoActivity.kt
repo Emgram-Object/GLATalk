@@ -2,17 +2,12 @@ package com.example.glatalk_project.Activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.Model.MyDao
-import com.example.glatalk_project.ProfileData
+import com.example.glatalk_project.Data.ProfileData
 import com.example.glatalk_project.R
-import com.example.glatalk_project.TokenData
-import com.example.glatalk_project.network.BaseResponse
+import com.example.glatalk_project.network.data.response.BaseResponse
 import kotlinx.android.synthetic.main.activity_my_info.*
-import kotlinx.android.synthetic.main.fragment_my.*
-import kotlinx.android.synthetic.main.ui_common_title.*
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -33,7 +28,6 @@ class MyInfoActivity : AppCompatActivity() {
 
         setTexts()
 
-
         my_info_pwd_change_btn.setOnClickListener {
             Pwd_Change()
         }
@@ -53,10 +47,8 @@ class MyInfoActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-
 //    private fun InfoChange() {
 //        val intent = Intent(this, InfoChangeActivity::class.java)
 //        startActivity(intent)
 //    }
-
 }
