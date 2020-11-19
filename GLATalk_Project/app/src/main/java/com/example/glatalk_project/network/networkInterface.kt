@@ -4,7 +4,6 @@ import com.example.glatalk_project.core.data.ChatData
 import com.example.glatalk_project.network.data.request.*
 import com.example.glatalk_project.network.data.response.ChatResponse
 import com.example.glatalk_project.network.data.response.PapagoResponse
-import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
@@ -63,11 +62,11 @@ interface networkInterface {
      */
     @Multipart
     @POST("v1/my/modify_info")
-    fun info_modify(@Part profile_img: MultipartBody.Part?,
-                    @Part("user_name") user_name: RequestBody,
-                    @Part("user_phone_num") user_phone_num: RequestBody,
-                    @Part("country_cd") country_cd: RequestBody,
-                    @Part("country_phone_code") phone_country_num: RequestBody?): Call<BaseResponse>
+    fun modify_info(
+            @Part("user_name") user_name: RequestBody,
+            @Part("phone_number") phone_number: RequestBody,
+            @Part("country_cd") country_cd: RequestBody,
+    ): Call<BaseResponse>
 
 
 

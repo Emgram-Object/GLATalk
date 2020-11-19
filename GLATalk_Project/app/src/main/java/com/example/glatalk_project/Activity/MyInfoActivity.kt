@@ -49,7 +49,6 @@ class MyInfoActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
-                Log.d("qwert", "onResponse: success")
                 var result = response.body()!!
                 var resultCode = result.resultCode
                 var desc = result.desc
@@ -86,5 +85,7 @@ class MyInfoActivity : AppCompatActivity() {
     private fun InfoChange() {
         val intent = Intent(this, InfoChangeActivity::class.java)
         startActivity(intent)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+        finish()
     }
 }

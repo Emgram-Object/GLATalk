@@ -6,5 +6,4 @@ object ProfileData{
         var country_cd: String = ""
         var user_email: String = ""
         var user_type: String = ""
-
 }
