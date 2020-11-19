@@ -10,10 +10,12 @@ import com.example.glatalk_project.Activity.LoginActivity
 import com.example.glatalk_project.Activity.MyInfoActivity
 import com.example.glatalk_project.Activity.SettingActivity
 import com.example.glatalk_project.BuildConfig
+import com.example.glatalk_project.Model.MyDao
 import com.example.glatalk_project.R
 import kotlinx.android.synthetic.main.fragment_my.view.*
 
 class MyFragment: Fragment(){
+    var myDao=MyDao
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -24,7 +26,12 @@ class MyFragment: Fragment(){
         //이후 코드 구현
 
         view.my_version_ver.text = version //앱 버전정보 출력
-        view.my_profile_cl.setOnClickListener { goToMyInfo() }
+        view.my_profile_cl.setOnClickListener {
+            myDao.getInfo()
+            Thread.sleep(100)
+            goToMyInfo()
+
+        }
         view.my_setting_cl.setOnClickListener { goToSetting() }
         view.my_term_cl.setOnClickListener { goToTerm() }
         view.my_logout_btn.setOnClickListener{ goToLogin() }

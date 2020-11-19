@@ -24,16 +24,12 @@ class MyInfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_info)
 
-        Log.d("TAG", "$TokenData.loginToken")
+        common_title_my_info.setTitle("내 정보")
+        common_title_my_info.setModifyBtn()
 
-        InfoNetworking()
+        myDao.getInfo()
 
-
-        change_tv.visibility = View.VISIBLE
-
-        change_tv.setOnClickListener() {
-            InfoChange()
-        }
+        setTexts()
 
         my_info_pwd_change_btn.setOnClickListener {
             Pwd_Change()
@@ -41,34 +37,6 @@ class MyInfoActivity : AppCompatActivity() {
 
     }
 
-
-    private fun InfoNetworking(){
-        myDao.detail_info(callback = object : Callback<BaseResponse> {
-            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
-                Log.d("qwert", "onFailure: fail")
-            }
-
-            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
-                var result = response.body()!!
-                var resultCode = result.resultCode
-                var desc = result.desc
-                var body = result.body.toString()
-
-
-                Log.d("TAG", "$TokenData.loginToken")
-
-                var jsonObject:JSONObject = JSONObject(body);
-
-                ProfileData.user_name= jsonObject["user_name"].toString()
-                ProfileData.phone_number = jsonObject["phone_number"].toString()
-                ProfileData.country_cd = jsonObject["country_cd"].toString()
-                ProfileData.user_email= jsonObject["user_email"].toString()
-                ProfileData.user_type = jsonObject["user_type"].toString()
-
-                setTexts()
-            }
-        })
-    }
 
     private fun setTexts(){
         my_info_name_et.setText(ProfileData.user_name)
