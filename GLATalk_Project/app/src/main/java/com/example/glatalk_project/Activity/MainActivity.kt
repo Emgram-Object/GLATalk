@@ -7,15 +7,21 @@ import android.view.LayoutInflater
 import android.view.View
 import com.example.glatalk_project.R
 import com.example.glatalk_project.Adapter.PageAdapter
+import com.example.glatalk_project.Model.MyDao
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.ui_custom_tab.view.*
 
 class MainActivity : AppCompatActivity(){
     private lateinit var mContext: Context
 
+    var myDao = MyDao
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        myDao.getInfo()
+
 
         mContext = applicationContext
 

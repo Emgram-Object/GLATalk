@@ -18,7 +18,6 @@ import kotlinx.android.synthetic.main.fragment_my.*
 import kotlinx.android.synthetic.main.fragment_my.view.*
 
 class MyFragment : Fragment() {
-    var myDao = MyDao
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -33,8 +32,6 @@ class MyFragment : Fragment() {
 
         view.my_version_ver.text = version //앱 버전정보 출력
         view.my_profile_cl.setOnClickListener {
-            myDao.getInfo()
-            Thread.sleep(100)
             goToMyInfo()
 
         }
