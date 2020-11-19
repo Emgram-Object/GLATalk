@@ -46,9 +46,7 @@ class MyInfoActivity : AppCompatActivity() {
         my_info_pwd_change_btn.setOnClickListener {
             Pwd_Change()
         }
-        my_logout_btn.setOnClickListener {
-            Logout()
-        }
+
 
     }
 
@@ -69,15 +67,5 @@ class MyInfoActivity : AppCompatActivity() {
         val intent = Intent(this, InfoChangeActivity::class.java)
         startActivity(intent)
     }
-
-
-    private fun Logout(){
-        LogoutActivity.logout()
-        var intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
-        finish()
-    }
-
-
 
 }
