@@ -1,8 +1,8 @@
-package com.example.glatalk_project.core.util
+package com.example.glatalk_project.util
 
 import android.util.Log
-import com.example.glatalk_project.core.data.ChatData
-import com.example.glatalk_project.core.data.InitData
+import com.example.glatalk_project.Data.ChatData
+import com.example.glatalk_project.Data.InitData
 import com.google.gson.Gson
 import io.socket.client.IO
 import io.socket.client.Socket

@@ -1,6 +1,6 @@
 package com.example.glatalk_project.Model
 import com.example.glatalk_project.network.ApiServer
-import com.example.glatalk_project.network.BaseResponse
+import com.example.glatalk_project.network.data.response.BaseResponse
 import com.example.glatalk_project.network.data.request.PwdRequest
 import retrofit2.Callback
 

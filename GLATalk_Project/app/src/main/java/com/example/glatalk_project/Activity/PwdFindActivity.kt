@@ -5,8 +5,8 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.Model.UserDAO
 import com.example.glatalk_project.R
-import com.example.glatalk_project.UserData
-import com.example.glatalk_project.network.BaseResponse
+import com.example.glatalk_project.Data.UserData
+import com.example.glatalk_project.network.data.response.BaseResponse
 import com.example.glatalk_project.network.data.request.PwdFindRequest
 import kotlinx.android.synthetic.main.activity_find_pwd.*
 import retrofit2.Call

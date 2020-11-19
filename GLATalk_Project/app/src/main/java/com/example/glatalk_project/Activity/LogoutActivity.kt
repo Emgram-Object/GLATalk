@@ -1,17 +1,9 @@
 package com.example.glatalk_project.Activity
 
-import android.content.Intent
-
-import android.os.Bundle
-
-import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.Model.UserDAO
-import com.example.glatalk_project.TokenData
-import com.example.glatalk_project.UserData
-import com.example.glatalk_project.constant.C
-import com.example.glatalk_project.network.BaseResponse
+import com.example.glatalk_project.Data.UserData
+import com.example.glatalk_project.network.data.response.BaseResponse
 import retrofit2.Callback
-import com.example.glatalk_project.util.PreferenceUtil
 import retrofit2.Call
 import retrofit2.Response
 

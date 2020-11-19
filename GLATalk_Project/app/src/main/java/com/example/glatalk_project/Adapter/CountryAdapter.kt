@@ -1,4 +1,4 @@
-package com.example.glatalk_project.core.adapter
+package com.example.glatalk_project.Adapter
 
 import com.example.glatalk_project.constant.C
 

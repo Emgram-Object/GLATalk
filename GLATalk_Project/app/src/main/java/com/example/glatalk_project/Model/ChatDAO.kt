@@ -1,8 +1,8 @@
 package com.example.glatalk_project.Model
 
-import com.example.glatalk_project.core.data.ChatData
+import com.example.glatalk_project.Data.ChatData
 import com.example.glatalk_project.network.ApiServer
-import com.example.glatalk_project.network.BaseResponse
+import com.example.glatalk_project.network.data.response.BaseResponse
 import retrofit2.Callback
 
 object ChatDAO{

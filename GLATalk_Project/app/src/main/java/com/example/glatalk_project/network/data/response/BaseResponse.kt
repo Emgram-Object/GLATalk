@@ -1,6 +1,6 @@
-package com.example.glatalk_project.network
+package com.example.glatalk_project.network.data.response
 
-import org.json.JSONObject
+import com.example.glatalk_project.network.ServerResult
 
 open class BaseResponse(
         var resultCode: Int = -1,

@@ -1,12 +1,10 @@
 package com.example.glatalk_project.Model
 
-import com.example.glatalk_project.TokenData
 import com.example.glatalk_project.network.ApiServer
-import com.example.glatalk_project.network.BaseResponse
+import com.example.glatalk_project.network.data.response.BaseResponse
 import com.example.glatalk_project.network.data.request.LoginRequest
 import com.example.glatalk_project.network.data.request.PwdFindRequest
 import com.example.glatalk_project.network.data.request.UserRequest
-import io.reactivex.Single
 import retrofit2.Callback
 
 object UserDAO {

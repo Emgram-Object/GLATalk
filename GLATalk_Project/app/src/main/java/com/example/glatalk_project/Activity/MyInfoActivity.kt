@@ -2,18 +2,12 @@ package com.example.glatalk_project.Activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.Model.MyDao
-import com.example.glatalk_project.ProfileData
+import com.example.glatalk_project.Data.ProfileData
 import com.example.glatalk_project.R
-import com.example.glatalk_project.TokenData
-import com.example.glatalk_project.core.data.ChatData
-import com.example.glatalk_project.network.BaseResponse
+import com.example.glatalk_project.network.data.response.BaseResponse
 import kotlinx.android.synthetic.main.activity_my_info.*
-import kotlinx.android.synthetic.main.fragment_my.*
-import kotlinx.android.synthetic.main.ui_common_title.*
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -34,7 +28,7 @@ class MyInfoActivity : AppCompatActivity() {
         }
     }
 
-    private fun InfoNetworking(){
+    private fun InfoNetworking() {
         myDao.detail_info(callback = object : Callback<BaseResponse> {
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
             }
@@ -46,12 +40,12 @@ class MyInfoActivity : AppCompatActivity() {
                 var body = result.body.toString()
 
 
-                var jsonObject:JSONObject = JSONObject(body);
+                var jsonObject: JSONObject = JSONObject(body)
 
-                profileData.user_name= jsonObject["user_name"].toString()
+                profileData.user_name = jsonObject["user_name"].toString()
                 profileData.phone_number = jsonObject["phone_number"].toString()
                 profileData.country_cd = jsonObject["country_cd"].toString()
-                profileData.user_email= jsonObject["user_email"].toString()
+                profileData.user_email = jsonObject["user_email"].toString()
                 profileData.user_type = jsonObject["user_type"].toString()
 
                 setTexts()
@@ -60,7 +54,7 @@ class MyInfoActivity : AppCompatActivity() {
 
     }
 
-    private fun setTexts(){
+    private fun setTexts() {
         my_info_name_et.setText(profileData.user_name)
         my_info_phone_et.setText(profileData.phone_number)
         my_info_email_et.setText(profileData.user_email)

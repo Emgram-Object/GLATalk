@@ -1,10 +1,10 @@
-package com.example.glatalk_project.core.adapter
+package com.example.glatalk_project.Adapter
 
 import android.view.*
 import androidx.recyclerview.widget.RecyclerView
-import com.example.glatalk_project.ProfileData
+import com.example.glatalk_project.Data.ProfileData
 import com.example.glatalk_project.R
-import com.example.glatalk_project.core.data.ChatData
+import com.example.glatalk_project.Data.ChatData
 import kotlinx.android.synthetic.main.ui_my_chat.view.*
 import kotlinx.android.synthetic.main.ui_other_chat.view.*
 import java.lang.Exception

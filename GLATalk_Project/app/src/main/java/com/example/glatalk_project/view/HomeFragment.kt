@@ -9,13 +9,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.glatalk_project.Activity.ChatActivity
 import com.example.glatalk_project.Model.HomeDAO
-import com.example.glatalk_project.ProfileData
+import com.example.glatalk_project.Data.ProfileData
 import com.example.glatalk_project.R
-import com.example.glatalk_project.core.adapter.ChatRoomListAdapter
-import com.example.glatalk_project.core.data.ChatRoom
-import com.example.glatalk_project.network.BaseResponse
-//import com.example.glatalk_project.core.data.ChatRoom
+import com.example.glatalk_project.Adapter.ChatRoomListAdapter
+import com.example.glatalk_project.Data.ChatRoom
+import com.example.glatalk_project.network.data.response.BaseResponse
+//import com.example.glatalk_project.Data.ChatRoom
 import kotlinx.android.synthetic.main.fragment_home_guide.view.*
+import org.json.JSONArray
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,6 +25,7 @@ import retrofit2.Response
 class HomeFragment: Fragment(){
     val roomList = arrayListOf<ChatRoom>()
     val profileData = ProfileData()
+    var chatRoom = ChatRoom()
     //암시 테스트용
 //    val roomList: MutableList<ChatRoom> = mutableListOf(
 //            ChatRoom("횽근이", "한국", "rkskedk",true,"0","이형근","한라산","2020-05-08(금) 12:30",false,),
@@ -79,7 +81,23 @@ class HomeFragment: Fragment(){
     private fun touristHomeNetWorking(){
         HomeDAO.tourist_home(callback = object: Callback<BaseResponse>{
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
-                Log.d("Tour_Home", "성공")
+                var result = response.body()!!
+                var resultCode = result.resultCode
+                var desc = result.desc
+                var body = result.body.toString()
+                var jsonArray: JSONArray = JSONArray(body)
+
+                for(i in 0 until jsonArray.length()){
+                    val room = jsonArray.getJSONObject(i)
+
+                    chatRoom.guide_name = room["guide_name"] as String
+                    chatRoom.guide_info = room["guide_info"] as String
+                    chatRoom.guide_time = room["guide_time"] as String
+                    chatRoom.last_chat_time = room["last_chat_time"] as String
+                    chatRoom.chat_yn = room["chat_yn"] as Boolean
+                    chatRoom.room_id = room["room_id"] as String
+                }
+                Log.d("Tour_Home", "성공"+resultCode+desc)
             }
 
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
@@ -91,6 +109,21 @@ class HomeFragment: Fragment(){
     private fun guideHomeNetWorking(){
         HomeDAO.guide_home(callback = object : Callback<BaseResponse>{
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
+                var result = response.body()!!
+                var resultCode = result.resultCode
+                var desc = result.desc
+                var body = result.body.toString()
+                var jsonArray: JSONArray = JSONArray(body)
+
+                for(i in 0 until jsonArray.length()) {
+                    val room = jsonArray.getJSONObject(i)
+
+                    chatRoom.tourist_name = room["tourist_name"] as String
+                    chatRoom.tourist_info = room["tourist_info"] as String
+                    chatRoom.last_chat_time = room["last_chat_time"] as String
+                    chatRoom.new_msg = room["new_msg"] as Boolean
+                    chatRoom.room_id = room["room_id"] as String
+                }
                 Log.d("Guide_Home", "성공")
             }
 

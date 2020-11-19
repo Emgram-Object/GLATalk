@@ -1,4 +1,4 @@
-package com.example.glatalk_project.core.data
+package com.example.glatalk_project.Data
 
 //class ChatData() {
 //    var source_lang: String = ""         //요청 언어

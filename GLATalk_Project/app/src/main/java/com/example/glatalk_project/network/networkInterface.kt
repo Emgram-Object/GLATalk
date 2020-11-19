@@ -1,7 +1,8 @@
 package com.example.glatalk_project.network
 
-import com.example.glatalk_project.core.data.ChatData
+import com.example.glatalk_project.Data.ChatData
 import com.example.glatalk_project.network.data.request.*
+import com.example.glatalk_project.network.data.response.BaseResponse
 
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -96,7 +97,7 @@ interface networkInterface {
      * 가이드 홈
      */
     @GET("v1/home/guide")
-    fun guide_home(): Call<BaseResponse>
+    fun guide_home() : Call<BaseResponse>
 
 
     /**

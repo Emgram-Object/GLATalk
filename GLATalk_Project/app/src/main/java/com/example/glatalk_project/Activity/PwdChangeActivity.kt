@@ -5,16 +5,15 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.Model.MyDao
-import com.example.glatalk_project.PwdData
+import com.example.glatalk_project.Data.PwdData
 import com.example.glatalk_project.R
-import com.example.glatalk_project.TokenData
-import com.example.glatalk_project.network.BaseResponse
+import com.example.glatalk_project.Data.TokenData
+import com.example.glatalk_project.network.data.response.BaseResponse
 import com.example.glatalk_project.network.data.request.PwdRequest
 import kotlinx.android.synthetic.main.activity_pwd_change.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.math.log
 
 class PwdChangeActivity : AppCompatActivity() {
 

@@ -1,22 +1,16 @@
 package com.example.glatalk_project.Activity
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import com.example.glatalk_project.Model.UserDAO
-import com.example.glatalk_project.Model.UserDAO.userVO
 import com.example.glatalk_project.R
-import com.example.glatalk_project.R.array.country_cd_list
 import com.example.glatalk_project.R.layout.activity_regist
-import com.example.glatalk_project.network.BaseResponse
+import com.example.glatalk_project.network.data.response.BaseResponse
 import com.example.glatalk_project.network.data.request.UserRequest
 import kotlinx.android.synthetic.main.activity_regist.*
 import kotlinx.android.synthetic.main.fragment_reg_guide.*
