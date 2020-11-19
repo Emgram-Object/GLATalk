@@ -17,7 +17,6 @@ import kotlinx.android.synthetic.main.fragment_home_guide.view.*
 
 class HomeFragment: Fragment(){
     val roomList = arrayListOf<ChatRoom>()
-    val profileData = ProfileData()
     //암시 테스트용
 //    val chatroomList: MutableList<ChatRoom> = mutableListOf(
 //            ChatRoom("중국어", "2020-05-08(금) 16:40", "rkskedk"),
@@ -58,10 +57,10 @@ class HomeFragment: Fragment(){
         view.home_guide_rv.adapter = adapter
         //이후 코드 구현
 
-        if(profileData.user_type.equals("guide")) {
+        if(ProfileData.user_type.equals("guide")) {
             view.home_guide_tv.text = "관광객 대화 정보"
         }
-        if(profileData.user_type.equals("tourist")){
+        if(ProfileData.user_type.equals("tourist")){
             view.home_guide_tv.text = "대화 가능 가이드 정보"
         }
 
