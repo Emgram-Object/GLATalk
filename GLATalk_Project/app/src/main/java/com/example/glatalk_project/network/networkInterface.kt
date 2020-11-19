@@ -28,7 +28,7 @@ interface networkInterface {
 
 
     /**
-     * 로그아웃 ..로그아웃은 프로토콜이 없나..?
+     * 로그아웃
 //     */
     @GET("v1/user/logout")
     fun logout(): Call<BaseResponse>

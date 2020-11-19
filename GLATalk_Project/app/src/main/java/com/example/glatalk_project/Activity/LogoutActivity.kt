@@ -1,37 +1,25 @@
 package com.example.glatalk_project.Activity
 
 import android.content.Intent
-import android.net.DnsResolver
+
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.telecom.Call
-import android.util.Log
+
 import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.Model.UserDAO
 import com.example.glatalk_project.TokenData
 import com.example.glatalk_project.UserData
 import com.example.glatalk_project.constant.C
 import com.example.glatalk_project.network.BaseResponse
-import com.example.glatalk_project.network.data.request.LoginRequest
-import com.example.glatalk_project.network.error.AppError
+import retrofit2.Callback
 import com.example.glatalk_project.util.PreferenceUtil
-import okhttp3.Response
-import javax.security.auth.callback.Callback
+import retrofit2.Call
+import retrofit2.Response
 
-class LogoutActivity:AppCompatActivity(){
+
+ object LogoutActivity{
     private var userDAO = UserDAO
     var userData = UserData()
     var tokenData = TokenData
-    var userDao = UserDAO
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-//        logoutNetworking()
-//        Log.d("login", "${TokenData.loginToken}")
-        logout()
-
-
-    }
 
 
     fun logout() {
@@ -41,13 +29,20 @@ class LogoutActivity:AppCompatActivity(){
         tokenData.loginToken = ""
 //        Log.d("login2", "${TokenData.loginToken}")
 
-         goLogin()
-
+        logoutNetworking()
     }
 
-    private fun goLogin(){
-        var intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
-    }
+    private fun logoutNetworking() {
+        userDAO.logout(callback = object : Callback<BaseResponse>{
+            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+            }
 
+            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
+                var result = response.body()!!
+                userData.resultCode = result.resultCode.toString()
+                userData.desc = result.desc.toString()
+            }
+
+        })
+    }
 }
