@@ -94,13 +94,15 @@ class ChatAdapter(val chatList: ArrayList<ChatData>) : RecyclerView.Adapter<Recy
         fun dateVisible(position: Int) {
             if (position == 0) {
                 view.chat_time.visibility = View.VISIBLE
+                view.chat_date.visibility = View.VISIBLE
             } else {
                 val prev = dateParser(chatList[position - 1].msg_dt)
                 val current = dateParser(chatList[position].msg_dt)
                 if (prev.equals(current)) {
-                    view.chat_time.visibility = View.GONE
+                    view.chat_date.visibility = View.GONE
                 } else {
                     view.chat_time.visibility = View.VISIBLE
+                    view.chat_date.visibility = View.VISIBLE
                 }
             }
         }
@@ -140,13 +142,15 @@ class ChatAdapter(val chatList: ArrayList<ChatData>) : RecyclerView.Adapter<Recy
         fun dateVisible(position: Int) {
             if (position == 0) {
                 view.chat_time.visibility = View.VISIBLE
+                view.chat_date.visibility = View.VISIBLE
             } else {
                 val prev = dateParser(chatList[position - 1].msg_dt)
                 val current = dateParser(chatList[position].msg_dt)
                 if (prev.equals(current)) {
-                    view.chat_time.visibility = View.GONE
+                    view.chat_date.visibility = View.GONE
                 } else {
                     view.chat_time.visibility = View.VISIBLE
+                    view.chat_date.visibility = View.VISIBLE
                 }
             }
         }

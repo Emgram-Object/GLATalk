@@ -49,7 +49,7 @@ class HomeFragment : Fragment() {
         //리사이클러뷰 클릭리스너
         adapter.setItemClickListener(object : ChatRoomListAdapter.OnItemClickListener {
             override fun onClick(v: View, position: Int) {
-                goToChat()
+                goToChat(position)
                 adapter.notifyDataSetChanged()
             }
         })
@@ -65,8 +65,9 @@ class HomeFragment : Fragment() {
         return view
     }
 
-    private fun goToChat() {
+    private fun goToChat(position: Int) {
         val intent = Intent(getActivity(), ChatActivity::class.java)
+        intent.putExtra("room_id", roomList[position].room_id)
         startActivity(intent)
     }
 
@@ -89,7 +90,6 @@ class HomeFragment : Fragment() {
                         }
                     }
                     var jsonArray: JSONArray = JSONArray(body)
-
                     for (i in 0 until jsonArray.length()) {
                         val room = jsonArray.getJSONObject(i)
 
@@ -134,8 +134,9 @@ class HomeFragment : Fragment() {
                             "\"" + it.value.substring(0, it.value.indexOf('=')) + "\":\"$text\""
                         }
                     }
-                    var jsonArray: JSONArray = JSONArray(body)
 
+
+                    var jsonArray: JSONArray = JSONArray(body)
                     for (i in 0 until jsonArray.length()) {
                         val room = jsonArray.getJSONObject(i)
 
@@ -144,11 +145,12 @@ class HomeFragment : Fragment() {
                         chatRoom.last_chat_time = room["last_chat_time"] as String
                         chatRoom.new_msg = room["new_msg"] as Boolean
                         chatRoom.room_id = room["room_id"] as String
+                        roomList.add(chatRoom)
                     }
                 } catch (e: JSONException) {
                     null
                 }
-
+                adapter.notifyDataSetChanged()
                 Log.d("Guide_Home", "성공")
             }
 

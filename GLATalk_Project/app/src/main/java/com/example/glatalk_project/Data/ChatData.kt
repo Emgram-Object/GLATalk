@@ -30,6 +30,8 @@ data class TransData(
 class Chat {
     val chat_active: Boolean = false
     val chat_list: ArrayList<ChatData> = ArrayList()
+    var room_id: String = ""                 //방 id
+
 }
 
 data class ChatData(
@@ -42,6 +44,6 @@ data class ChatData(
         var sender_user_type: String? = "",       //가이드/관광객 여부 -
         var receiver_user_type: String? = "",     //가이드/관광객 여부 -
         var msg_dt: String = "",                  //메세지 날짜
-        var room_id: String = "",                 //방 id
+//        var room_id: String = "",                 //방 id
         var room_member_cnt:String = ""   //방 인원수 체크
 ){}
