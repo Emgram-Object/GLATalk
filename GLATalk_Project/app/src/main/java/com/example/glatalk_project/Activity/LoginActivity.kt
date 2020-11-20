@@ -30,9 +30,11 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
     var loginResult: String = ""
     lateinit var input: EditText
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+
         setContentView(R.layout.activity_login)
 
 //        if (login_email_et.text.toString().isNotBlank() && login_pwd_et.text.toString().isNotBlank()) {
@@ -82,6 +84,12 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
                 if (response.isSuccessful) {
                     if (userData.resultCode == "0") {
                         tokenData.loginToken = result.body.toString()
+                        if (login_auto_cb.isChecked){
+                            //sharedPreference로 토큰 저장
+
+
+
+                        }
                         Log.d("Token", tokenData.loginToken.toString())
                         MyDao.getInfo(this@LoginActivity)
                     } else {
