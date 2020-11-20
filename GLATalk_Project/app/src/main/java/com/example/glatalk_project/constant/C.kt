@@ -10,11 +10,11 @@ object C {
         const val SELECTED_LANGUAGE = "Locale.Helper.Selected.Language"
     } //Preference를 위한 객체 (싱글톤) , 객체 접근 시점에 객체가 생성
 
-    enum class NationalCode(val country_cd: String, val country_nm: String, val pos: Int) {
-        ko("ko", MainApplication.getString(R.string.korea), 0),
-        en("en", MainApplication.getString(R.string.country_america), 1),
-        zh("zh", MainApplication.getString(R.string.country_china), 2),
-        ja("ja", MainApplication.getString(R.string.country_japan), 3);
+    enum class NationalCode(val country_cd: String, val country_nm: String) {
+        ko("ko", MainApplication.getString(R.string.korea)),
+        en("en", MainApplication.getString(R.string.country_america)),
+        zh("zh", MainApplication.getString(R.string.country_china)),
+        ja("ja", MainApplication.getString(R.string.country_japan));
     }
     fun getName(country_cd: String?): String {
         try {
