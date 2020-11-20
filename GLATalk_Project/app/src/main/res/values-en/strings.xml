@@ -4,8 +4,8 @@
     <string name="preference">GLA Talk</string>
 
     <string name="welcome_select_lang">Welcome!\nPlease select a language.</string>
-    <string name="find_pwd">비밀번호 찾기</string>
-    <string name="find_pwd_info">가입하신 Email 주소를 입력해주세요.\n입력하신 메일로 임시 비밀번호를 보내드립니다.</string>
+    <string name="find_pwd">Find Password</string>
+    <string name="find_pwd_info">Please enter your registered email address. We will send you a temporary password to the email you entered.</string>
 
     <string name="id">ID(E-mail)</string>
     <string name="pwd">Password</string>
@@ -17,92 +17,66 @@
     <string name="tmp_pwd_send">Send a temporary password</string>
     <string name="tmp_pwd_dialog_title">Temporary password</string>
     <string name="tmp_pwd_dialog_msg">가입하신 E-mail로 임시비밀번호가 발송되었습니다.\n임시비밀번호로 로그인 후,\n비밀번호 변경하시길 바랍니다.</string>
-    <string name="mail_cert">메일 인증을 완료해주세요!</string>
-    <string name="mail_cert_send">인증 메일을 보내드렸습니다.\n메일인증하고 GLA Talk을 시작해보세요!</string>
-    <string name="go_back_login">로그인화면으로 돌아가기</string>
     <string name="go_back">Go to previous screen</string>
-    <string name="country">국가</string>
+    <string name="country">Country</string>
     <string name="email_input">Insert E-mail.</string>
     <string name="pwd_input_more">Please enter the password again.</string>
     <string name="welcome_register">Welcome!</string>
     <string name="welcome_register_complete">You\'ve signed up.</string>
-    <string name="do_login">로그인 하기</string>
-    <string name="login_first">로그인 후 이용해주세요.</string>
-    <string name="regist_title">사용자 정보</string>
+    <string name="do_login">Log In</string>
+    <string name="regist_title">User Information</string>
 
     <string name="korea">한국</string>
     <string name="country_korea">대한민국</string>
     <string name="country_america">미국</string>
     <string name="country_china">중국</string>
     <string name="country_japan">일본</string>
-    <string name="country_select_title">국가를 선택해주세요.</string>
+    <string name="country_select_title">Select country</string>
 
     <string name="btn_ok">Ok</string>
     <string name="btn_cancel">Cancel</string>
-    <string name="btn_apply">허용</string>
-    <string name="btn_not_apply">허용안함</string>
-    <string name="btn_close">닫기</string>
-    <string name="btn_setting">설정</string>
-    <string name="btn_delete">삭제</string>
     <string name="btn_next">Next</string>
     <string name="btn_modify">수정하기</string>
-    <string name="btn_modified">변경하기</string>
-    <string name="btn_write">작성완료</string>
-    <string name="btn_send">보내기</string>
-    <string name="btn_regist">등록하기</string>
+    <string name="btn_modified">Modify</string>
     <string name="btn_pwd_change">Change password</string>
 
-    <string name="home">홈</string>
+    <string name="home">Home</string>
     <string name="my">MY</string>
 
-    <string name="home_welcome">안녕하세요.</string>
-    <string name="home_welcome_who">님, </string>
-
-    <string name="usage">이용안내</string>
-    <string name="detail_info">상세정보</string>
     <string name="go_back_page">Go to previous screen</string>
-
-    <string name="my_account_manage">계정관리</string>
     <string name="my_account_name">Name</string>
-    <string name="name_hint">홍길동</string>
-    <string name="phone_hint">휴대폰번호를 입력해주세요.</string>
-    <string name="guide_info_hint">한라산, 제주시 관광 정보 제공 가능</string>
+    <string name="name_hint">Name</string>
+    <string name="phone_hint">Please enter your mobile phone number.</string>
+    <string name="guide_info_hint">Mt. Halla, Jeju City Tourism Information can be provided</string>
     <string name="time_hint">12:00~1:00, 15:00~17:00</string>
     <string name="my_account_phone">Mobile phone number</string>
-    <string name="my_account_guide_info">가이드 정보 (주요 관광 제공 정보)</string>
-    <string name="my_account_time">대화 가능 시간</string>
-    <string name="my_account_invalidate">[%s] 항목이 잘못 입력 되었습니다.\n확인 후 다시 입력 바랍니다.</string>
-
-    <string name="my_review_title">나의 활동</string>
-    <string name="review_memo">내용을 입력해주세요.</string>
-    <string name="contact_message">메세지보내기</string>
-    <string name="leave_account">계정을 탈퇴하시겠습니까?\n삭제된 계정은 복구가 불가능합니다.</string>
+    <string name="my_account_guide_info">Guide Information</string>
+    <string name="my_account_time">Conversation possible time</string>
 
     <string name="app_version">App version</string>
     <string name="logout">Log out</string>
 
-    <string name="version_title">버전 정보</string>
-    <string name="version_latest">현재 최신 버전 사용중</string>
-    <string name="version_update_latest">최신 버전으로 업데이트 하세요.</string>
-
-    <string name="pwd_change">비밀번호 변경</string>
-    <string name="pwd_change_verify">영문, 숫자를 포함 8자 이상으로 입력해주세요.</string>
+    <string name="pwd_change">Change password</string>
+    <string name="pwd_change_verify">Please enter more than 8 characters including letters and numbers.</string>
     <string name="pwd_change_new_diff">새로운 비밀번호와 일치하지 않습니다.\n확인 후 다시 입력해주세요.</string>
     <string name="regist_pwd_new_diff">비밀번호가 서로 일치하지 않습니다.\n확인 후 다시 입력해주세요.</string>
     <string name="current_pwd">현재 비밀번호</string>
     <string name="new_pwd">New password</string>
-    <string name="pwd_check">비밀번호 확인</string>
-    <string name="change">변경하기</string>
+    <string name="pwd_check">Confirm Password</string>
+    <string name="change">Modify</string>
 
     <string name="my_setting_title">Environment setting</string>
     <string name="my_setting_lang">선택한 언어로 설정 변경하시겠습니까?\n언어 설정 적용을 위해 앱이 재실행됩니다.</string>
     <string name="my_setting_lang_title">Language setting</string>
-    <string name="version_update">업데이트</string>
-    <string name="my_setting_alarm">알림 설정</string>
+    <string name="country_select">Select country</string>
 
-    <string name="country_select">국가를 선택해주세요.</string>
+    <string name="enable_guide_info">List of the guides</string>
+    <string name="guide_info">Guide Information</string>
+    <string name="enable_time">Possible Time</string>
+    <string name="last_time">Last Chat Time</string>
+    <string name="chatting">대화중</string>
+    <string name="new_message">New message</string>
 
-    <string name="leave_complete">계정 탈퇴가 완료되었습니다.</string>
-    <string name="leave_complete_sub">그동안 GLA Talk을 이용해주셔서\n감사합니다.</string>
-    <string name="payment_push_alert">[GLA Talk]을\n이용해주셔서 감사합니다.</string>
+    <string name="enable_guide_chat">가이드 활성화</string>
+    <string name="activate_chat">채팅 받기 활성화</string>
 </resources>

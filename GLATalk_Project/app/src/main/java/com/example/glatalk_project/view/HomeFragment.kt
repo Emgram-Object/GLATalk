@@ -35,15 +35,16 @@ class HomeFragment : Fragment() {
 
         //타이틀,통신 분기점
         if (ProfileData.user_type.equals("guide")) {
-            view.home_guide_tv.text = "관광객 대화 정보"
+
+            view.home_guide_tv.text ="관광객 대화정보"
             guideHomeNetWorking()
         } else if (ProfileData.user_type.equals("tourist")) {
-            view.home_guide_tv.text = "대화 가능 가이드 정보"
+            view.home_guide_tv.text = getString(R.string.enable_guide_info)
             touristHomeNetWorking()
         }
 
         //리사이클러뷰
-        adapter = ChatRoomListAdapter(roomList)
+        adapter = ChatRoomListAdapter(roomList, context!!)
         view.home_guide_rv.adapter = adapter
 
         //리사이클러뷰 클릭리스너

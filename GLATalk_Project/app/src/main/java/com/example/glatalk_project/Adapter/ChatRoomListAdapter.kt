@@ -1,5 +1,6 @@
 package com.example.glatalk_project.Adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +11,7 @@ import com.example.glatalk_project.Data.ChatRoom
 import kotlinx.android.synthetic.main.ui_room_custom.view.*
 import com.example.glatalk_project.Data.ProfileData
 
-class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>, private val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val GUIDE_ROOM = 0
     private val TOUR_ROOM = 1
 
@@ -93,21 +94,27 @@ class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>) : Recycle
             view.room_time_tv.text = item.last_chat_time
 
             view.room_name_tv.text = item.tourist_name
+
+            view.room_state_tv.text = R.string.new_message.toString()
         }
     }
 
     inner class TourRoomViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         var view = v
         fun onBind(item: ChatRoom) {
-            view.room_lang_title_tv.text = "가이드 정보"
+            view.room_lang_title_tv.text = context.getString(R.string.guide_info)
             view.room_lang_tv.text = item.guide_info
 
+            view.room_time_title_tv.text = context.getString(R.string.last_time)
             view.room_time_tv.text = item.last_chat_time
 
             view.room_name_tv.text = item.guide_name
 
             view.room_able_ll.visibility = View.VISIBLE
+            view.room_able_title_tv.text = context.getString(R.string.enable_time)
             view.room_able_tv.text = item.guide_time
+
+            view.room_state_tv.text = context.getString(R.string.chatting)
         }
     }
 }
