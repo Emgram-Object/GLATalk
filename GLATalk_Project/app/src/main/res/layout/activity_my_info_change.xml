@@ -193,6 +193,7 @@
                 android:layout_height="7.8dp"
                 android:src="@drawable/dropdown_icon_down"
                 android:layout_marginTop="24.1dp"
+                android:visibility="gone"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintRight_toRightOf="parent"/>
             <Spinner
