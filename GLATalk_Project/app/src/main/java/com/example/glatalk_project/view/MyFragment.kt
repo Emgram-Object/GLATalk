@@ -49,10 +49,6 @@ class MyFragment : Fragment() {
 
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        TokenData.loginToken = ""
-    }
 
     private fun goToLogin() {
         val intent = Intent(context, LoginActivity::class.java)

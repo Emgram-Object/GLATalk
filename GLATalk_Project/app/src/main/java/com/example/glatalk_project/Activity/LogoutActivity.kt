@@ -1,5 +1,6 @@
 package com.example.glatalk_project.Activity
 
+import android.util.Log
 import com.example.glatalk_project.Data.TokenData
 import com.example.glatalk_project.Model.UserDAO
 import com.example.glatalk_project.Data.UserData
@@ -15,10 +16,12 @@ import retrofit2.Response
 
 
     fun logout() {
+
 //        PreferenceUtil.putString(C.Preference.KEY_ACCESS_TOKEN, "")
 //        PreferenceUtil.putBoolean(C.Preference.KEY_IS_AUTO_LOGIN, false)
         doLogout()
     }
+
      fun doLogout() {
         userDAO.logout(callback = object : Callback<BaseResponse>{
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
@@ -29,6 +32,11 @@ import retrofit2.Response
                 userData.resultCode = result.resultCode.toString()
                 userData.desc = result.desc.toString()
                 if (response.isSuccessful) {
+                    Log.d("logout", TokenData.loginToken.toString())
+
+                    TokenData.loginToken = null
+
+                    Log.d("after logout", TokenData.loginToken.toString())
                 }
             }
 

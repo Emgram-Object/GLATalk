@@ -24,7 +24,7 @@ class MyInfoActivity : AppCompatActivity() {
         common_title_my_info.setTitle("내 정보")
         common_title_my_info.setModifyBtn()
 
-        myDao.getInfo()
+        myDao.getInfo(null)
 
         setTexts()
 

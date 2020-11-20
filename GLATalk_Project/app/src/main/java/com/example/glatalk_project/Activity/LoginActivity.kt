@@ -10,6 +10,8 @@ import com.example.glatalk_project.Model.UserDAO
 import com.example.glatalk_project.R
 import com.example.glatalk_project.Data.TokenData
 import com.example.glatalk_project.Data.UserData
+import com.example.glatalk_project.Model.MyDao
+import com.example.glatalk_project.MoveActivity
 import com.example.glatalk_project.network.data.response.BaseResponse
 import com.example.glatalk_project.network.data.request.LoginRequest
 import kotlinx.android.synthetic.main.activity_login.*
@@ -18,7 +20,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import kotlin.system.exitProcess
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(), MoveActivity {
 
     private var userDAO = UserDAO
     var input_user_email: String = ""
@@ -78,10 +80,10 @@ class LoginActivity : AppCompatActivity() {
                 userData.desc = result.desc.toString()
                 Log.d("result", "$loginResult")
                 if (response.isSuccessful) {
-                    Log.d("Token", tokenData.loginToken)
                     if (userData.resultCode == "0") {
                         tokenData.loginToken = result.body.toString()
-                        goHome()
+                        Log.d("Token", tokenData.loginToken.toString())
+                        MyDao.getInfo(this@LoginActivity)
                     } else {
                         Log.d("result", "${userData.resultCode}")
                         Log.d("result", "${userData.desc}")
@@ -123,6 +125,10 @@ class LoginActivity : AppCompatActivity() {
     private fun AutoLogin() {
         //sharedPreferences 연결하기 //토큰 저장
 
+    }
+
+    override fun move() {
+        goHome()
     }
 }
 
