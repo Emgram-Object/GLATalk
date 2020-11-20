@@ -12,6 +12,7 @@ import com.example.glatalk_project.Activity.MyInfoActivity
 import com.example.glatalk_project.Activity.SettingActivity
 import com.example.glatalk_project.BuildConfig
 import com.example.glatalk_project.Data.ProfileData
+import com.example.glatalk_project.Data.TokenData
 import com.example.glatalk_project.Model.MyDao
 import com.example.glatalk_project.R
 import kotlinx.android.synthetic.main.fragment_my.*
@@ -48,7 +49,11 @@ class MyFragment : Fragment() {
 
     }
 
-    //임시로 LoginActivity로 연결해놓음 다른 액티비티들 만들어지면 수정 ㄱㄱ
+    override fun onDestroy() {
+        super.onDestroy()
+        TokenData.loginToken = ""
+    }
+
     private fun goToLogin() {
         val intent = Intent(context, LoginActivity::class.java)
         startActivity(intent)
@@ -70,7 +75,7 @@ class MyFragment : Fragment() {
     }
 
     private fun Logout() {
-        LogoutActivity.logout()
+        LogoutActivity.doLogout()
         var intent = Intent(context, LoginActivity::class.java)
         startActivity(intent)
 
