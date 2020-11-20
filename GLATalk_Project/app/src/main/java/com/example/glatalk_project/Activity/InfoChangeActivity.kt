@@ -11,10 +11,8 @@ import com.example.glatalk_project.Adapter.CountryAdapter
 import com.example.glatalk_project.network.data.response.BaseResponse
 import com.example.glatalk_project.Model.MyDao
 import com.example.glatalk_project.Data.ProfileData
-import com.example.glatalk_project.Data.ProfileData.country_cd
 import com.example.glatalk_project.R
 import com.example.glatalk_project.constant.C
-import com.example.glatalk_project.constant.C.getCode
 import com.example.glatalk_project.network.data.request.ProfileRequest
 import kotlinx.android.synthetic.main.activity_my_info.*
 import kotlinx.android.synthetic.main.activity_my_info_change.*
@@ -91,16 +89,19 @@ class InfoChangeActivity : AppCompatActivity() {
         val arrayAdapter = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, countryList)
         country_sp.adapter = arrayAdapter
 
+
         country_sp.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                TODO("Not yet implemented")
-            }
+                TODO("Not yet implemented")}
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                input_user_country = getCode(countryList[position])
+//                parent?.getItemAtPosition(position)
+//                Log.d("nm", "${countryList[position]}")
+                input_user_country = C.NationalCode.values()[position].country_cd
+                Log.d("코드", "$input_user_country")
+
+
             }
-
-
         }
     }
 
