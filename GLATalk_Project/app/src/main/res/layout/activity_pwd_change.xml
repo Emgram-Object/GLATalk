@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <com.example.glatalk_project.view.TitleView
-        android:id="@+id/common_title"
+        android:id="@+id/common_title_pwd_change"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -21,7 +21,7 @@
         android:paddingLeft="@dimen/layout_margin"
         android:paddingRight="@dimen/layout_margin"
         android:background="@drawable/edit_selector"
-        app:layout_constraintTop_toBottomOf="@id/common_title">
+        app:layout_constraintTop_toBottomOf="@id/common_title_pwd_change">
 
         <TextView
             android:id="@+id/pwd_change_current_tv"

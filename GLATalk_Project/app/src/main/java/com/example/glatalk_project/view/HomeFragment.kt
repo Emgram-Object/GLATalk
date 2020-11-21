@@ -69,6 +69,11 @@ class HomeFragment : Fragment() {
     private fun goToChat(position: Int) {
         val intent = Intent(getActivity(), ChatActivity::class.java)
         intent.putExtra("room_id", roomList[position].room_id)
+        if(ProfileData.user_type.equals("tourist")) {
+            intent.putExtra("receiver_id", roomList[position].guide_name)
+        } else{
+            intent.putExtra("receiver_id", roomList[position].tourist_name)
+        }
         startActivity(intent)
     }
 
@@ -91,6 +96,7 @@ class HomeFragment : Fragment() {
                         }
                     }
                     var jsonArray: JSONArray = JSONArray(body)
+                    println(body)
                     for (i in 0 until jsonArray.length()) {
                         val room = jsonArray.getJSONObject(i)
 

@@ -8,4 +8,9 @@ data class ChatRoom(var tourist_name: String = "",
                     var guide_name: String = "",
                     var guide_info: String = "",
                     var guide_time: String = "",
-                    var chat_yn: Boolean = false)
+                    var chat_yn: Boolean = false){
+    init {
+        new_msg = false
+        chat_yn = false
+    }
+}

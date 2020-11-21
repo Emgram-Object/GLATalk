@@ -19,8 +19,9 @@ class SettingActivity: AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
 
-        val lang = LocaleHelper.getLanguage(this)
+        common_title_setting.setTitle("앱 설정")
 
+        val lang = LocaleHelper.getLanguage(this)
         defaultSelection(lang)
 
         lang_korea_rb.setOnClickListener {

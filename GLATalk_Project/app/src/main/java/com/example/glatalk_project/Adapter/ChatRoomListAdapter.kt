@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.glatalk_project.Data.ChatData
 import com.example.glatalk_project.R
 import com.example.glatalk_project.Data.ChatRoom
 //import com.example.glatalk_project.Data.ChatRoom
@@ -40,9 +41,12 @@ class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>, private v
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        var new_msg = ChatRoom().new_msg
+        var chat_yn = ChatRoom().chat_yn
+
         when (holder) {
             is GuideRoomViewHolder -> {
-                holder.onBind(roomList[position])
+                holder.onBind(roomList[position], new_msg)
                 holder.itemView.setOnLongClickListener {
                     itemLongClickListener.onLongClick(it, position)
                 }
@@ -53,7 +57,7 @@ class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>, private v
 //                holder.dateVisible(position)
             }
             is TourRoomViewHolder -> {
-                holder.onBind(roomList[position])
+                holder.onBind(roomList[position], chat_yn)
                 holder.itemView.setOnLongClickListener {
                     itemLongClickListener.onLongClick(it, position)
                 }
@@ -87,7 +91,7 @@ class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>, private v
 
     inner class GuideRoomViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         var view = v
-        fun onBind(item: ChatRoom) {
+        fun onBind(item: ChatRoom, new_msg: Boolean) {
             view.room_lang_title_tv.text = "관광객 언어"
             view.room_lang_tv.text = item.tourist_info
 
@@ -96,12 +100,17 @@ class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>, private v
             view.room_name_tv.text = item.tourist_name
 
             view.room_state_tv.text = R.string.new_message.toString()
+            if(new_msg == true){
+                view.room_state_tv.visibility = View.VISIBLE
+            } else {
+                view.room_state_tv.visibility = View.GONE
+            }
         }
     }
 
     inner class TourRoomViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         var view = v
-        fun onBind(item: ChatRoom) {
+        fun onBind(item: ChatRoom, chat_yn: Boolean) {
             view.room_lang_title_tv.text = context.getString(R.string.guide_info)
             view.room_lang_tv.text = item.guide_info
 
@@ -115,6 +124,11 @@ class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>, private v
             view.room_able_tv.text = item.guide_time
 
             view.room_state_tv.text = context.getString(R.string.chatting)
+            if(chat_yn == true){
+                view.room_state_tv.visibility = View.VISIBLE
+            } else {
+                view.room_state_tv.visibility = View.GONE
+            }
         }
     }
 }

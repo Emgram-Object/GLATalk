@@ -31,8 +31,11 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
         change_tv.setOnClickListener {
             val intent = Intent(context, InfoChangeActivity::class.java)
             (context as? Activity)?.startActivity(intent)
-
         }
+    }
+
+    fun disableModifyBtn(){
+        change_tv.visibility = View.VISIBLE
     }
 
     fun setFinishListener() {

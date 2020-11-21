@@ -26,9 +26,9 @@ import java.util.*
 class ChatActivity : AppCompatActivity() {
 
     private var chatDAO = ChatDAO
-    private var room_id = "0"
+    private var room_id = ""
     private var receiver_id = ""
-    private var sender_id = ""
+    private var sender_id = ProfileData.user_name
     var chatList = arrayListOf<ChatData>()
     val chatAdapter = ChatAdapter(chatList)
     var chatData = ChatData()
@@ -148,13 +148,13 @@ class ChatActivity : AppCompatActivity() {
                 chat_input_et.text.toString(),
                 "ko",
                 "translation",
-                "",
+                sender_id,
                 receiver_id,
                 "tourist",
                 "guide",
                 df.format(Date(System.currentTimeMillis())),
                 "")
-
+        println(chatData.sender_id+", "+chatData.receiver_id)
         if(chatData.source_text != "") {
 //            chatadapter.addItem(chatData)
             chatAdapter.addChat(chatData)
