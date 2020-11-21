@@ -47,9 +47,11 @@ class InfoChangeActivity : AppCompatActivity() {
             gotoMy()
         }
 
-        if (input_user_name.isBlank() || input_phone_num.isBlank() || input_user_EngName.isBlank()) {
-            modify_ok_btn.setBackgroundResource(R.drawable.rounded_square_dim)
-        }
+//        if (input_user_name.isBlank() || input_phone_num.isBlank() || input_user_EngName.isBlank()) {
+//            modify_ok_btn.setBackgroundResource(R.drawable.rounded_square_dim)
+//        }else{
+//            modify_ok_btn.setBackgroundResource(R.drawable.rounded_square)
+//        }
         //common title의 뒤로가기 누르면 SaveCheck() 호출하기
 
 
@@ -67,7 +69,24 @@ class InfoChangeActivity : AppCompatActivity() {
     private fun getTexts() {
         input_user_name = my_info_chg_name_et.text.toString()
         input_phone_num = my_info_chg_phone_et.text.toString()
-  //      input_user_country = my_info_country_select_tv.text.toString() //스피너로 바꾸면 에러 해결될 듯
+    }
+
+    private fun Country_sp() {
+        val countryList = CountryAdapter().countryList
+        val country_sp = findViewById<Spinner>(R.id.my_info_country_select_sp)
+        val arrayAdapter = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, countryList)
+        country_sp.adapter = arrayAdapter
+
+        country_sp.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")}
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+//                parent?.getItemAtPosition(position)
+//                Log.d("nm", "${countryList[position]}")
+                input_user_country = C.NationalCode.values()[position].country_cd
+            }
+        }
     }
 
     private fun changeMyInfo() {
@@ -81,28 +100,6 @@ class InfoChangeActivity : AppCompatActivity() {
             }
         }
         )
-    }
-
-    private fun Country_sp() {
-        val countryList = CountryAdapter().countryList
-        val country_sp = findViewById<Spinner>(R.id.my_info_country_select_sp)
-        val arrayAdapter = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, countryList)
-        country_sp.adapter = arrayAdapter
-
-
-        country_sp.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                TODO("Not yet implemented")}
-
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-//                parent?.getItemAtPosition(position)
-//                Log.d("nm", "${countryList[position]}")
-                input_user_country = C.NationalCode.values()[position].country_cd
-                Log.d("코드", "$input_user_country")
-
-
-            }
-        }
     }
 
 

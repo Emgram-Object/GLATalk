@@ -23,13 +23,6 @@ object C {
             return ""
         }
     }
-//    fun getCode(country_nm: String?):String{
-//        try {
-//            return NationalCode.valueOf().country_cd
-//        }catch (e:Exception){
-//            return ""
-//        }
-//    }
 }
 
 object languageCode {

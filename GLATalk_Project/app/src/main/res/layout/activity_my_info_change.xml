@@ -193,7 +193,6 @@
                 android:layout_height="7.8dp"
                 android:src="@drawable/dropdown_icon_down"
                 android:layout_marginTop="24.1dp"
-                android:visibility="gone"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintRight_toRightOf="parent"/>
             <Spinner
@@ -202,6 +201,7 @@
                 android:layout_height="22dp"
                 android:textSize="15sp"
                 android:textColor="@color/black"
+                android:spinnerMode="dropdown"
                 android:layout_marginTop="1dp"
                 android:layout_marginBottom="8dp"
                 app:layout_constraintTop_toBottomOf="@id/my_info_country_tv"/>
