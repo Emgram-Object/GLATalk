@@ -3,10 +3,12 @@ package com.example.glatalk_project.Activity;
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import com.example.glatalk_project.R
 import com.example.glatalk_project.Adapter.PageAdapter
+import com.example.glatalk_project.Data.TokenData
 import com.example.glatalk_project.Model.MyDao
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.ui_custom_tab.view.*
@@ -21,8 +23,6 @@ class MainActivity : AppCompatActivity(){
         setContentView(R.layout.activity_main)
 
 //        myDao.getInfo()
-
-
         mContext = applicationContext
 
         //뷰페이저

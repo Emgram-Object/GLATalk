@@ -13,7 +13,7 @@ object SharedPreferenceUtil {
 
     //firstLanguage액티비티에서 저장한 언어코드를 따로 저장해줌. -> 언어 설정에서 변경시 거기 값으로 다시 putString 해줌 (type: string)
 
-    //putString
+    //putStrings
     fun putString(key: String,value: String?){
         MainApplication.application?.let {
             val preferences = it.getSharedPreferences(it.getString(R.string.preference),Context.MODE_PRIVATE)

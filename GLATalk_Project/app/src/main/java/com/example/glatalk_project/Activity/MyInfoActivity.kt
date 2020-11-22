@@ -5,13 +5,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.Model.MyDao
 import com.example.glatalk_project.Data.ProfileData
+import com.example.glatalk_project.MoveActivity
 import com.example.glatalk_project.R
-import com.example.glatalk_project.network.data.response.BaseResponse
 import kotlinx.android.synthetic.main.activity_my_info.*
-import org.json.JSONObject
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MyInfoActivity : AppCompatActivity() {
 
@@ -24,7 +20,7 @@ class MyInfoActivity : AppCompatActivity() {
         common_title_my_info.setTitle("내 정보")
         common_title_my_info.setModifyBtn()
 
-        myDao.getInfo(null)
+//        MyDao.getInfo()
 
         setTexts()
 

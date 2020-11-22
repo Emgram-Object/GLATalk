@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.Model.UserDAO
 import com.example.glatalk_project.R
@@ -12,10 +11,8 @@ import com.example.glatalk_project.Data.TokenData
 import com.example.glatalk_project.Data.UserData
 import com.example.glatalk_project.Model.MyDao
 import com.example.glatalk_project.MoveActivity
-import com.example.glatalk_project.constant.C
 import com.example.glatalk_project.network.data.response.BaseResponse
 import com.example.glatalk_project.network.data.request.LoginRequest
-import com.example.glatalk_project.util.SharedPreferenceUtil
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,7 +27,6 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
     var userData = UserData()
     var tokenData = TokenData
     var loginResult: String = ""
-    lateinit var input: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,11 +53,7 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
         login_btn.setOnClickListener(View.OnClickListener {
             input_user_email = login_email_et.text.toString()
             input_user_pwd = login_pwd_et.text.toString()
-            if (login_auto_cb.isChecked){
-                SharedPreferenceUtil.putBoolean(C.Preference.KEY_IS_AUTO_LOGIN,true)
-            }
             loginNetworking()
-
         })
     }
 
@@ -84,12 +76,17 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
                 if (response.isSuccessful) {
                     if (userData.resultCode == "0") {
                         tokenData.loginToken = result.body.toString()
-                        Log.d("Token", tokenData.loginToken.toString())
+                        if (login_auto_cb.isChecked){
+                            userDAO.setAutoLogin(true)
+                            userDAO.setLoginToken(TokenData.loginToken.toString())
+                            Log.d("loginToken3", "${TokenData.loginToken}")
+                        }
                         MyDao.getInfo(this@LoginActivity)
                     } else {
                         Log.d("result", "${userData.resultCode}")
                         Log.d("result", "${userData.desc}")
                     }
+                    MyDao.getInfo(inter = LoginActivity())
                 }
             }
         })

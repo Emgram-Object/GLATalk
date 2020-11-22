@@ -4,7 +4,9 @@ import android.util.Log
 import com.example.glatalk_project.Data.TokenData
 import com.example.glatalk_project.Model.UserDAO
 import com.example.glatalk_project.Data.UserData
+import com.example.glatalk_project.constant.C
 import com.example.glatalk_project.network.data.response.BaseResponse
+import com.example.glatalk_project.util.SharedPreferenceUtil
 import retrofit2.Callback
 import retrofit2.Call
 import retrofit2.Response
@@ -16,10 +18,9 @@ import retrofit2.Response
 
 
     fun logout() {
-
-//        PreferenceUtil.putString(C.Preference.KEY_ACCESS_TOKEN, "")
-//        PreferenceUtil.putBoolean(C.Preference.KEY_IS_AUTO_LOGIN, false)
         doLogout()
+        UserDAO.setAutoLogin(false)
+        UserDAO.setLoginToken("")
     }
 
      fun doLogout() {
@@ -32,12 +33,9 @@ import retrofit2.Response
                 userData.resultCode = result.resultCode.toString()
                 userData.desc = result.desc.toString()
                 if (response.isSuccessful) {
-                    Log.d("logout", TokenData.loginToken.toString())
 
-                    Log.d("after logout", TokenData.loginToken.toString())
                 }
             }
-
         })
     }
 }

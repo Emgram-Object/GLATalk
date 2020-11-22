@@ -1,9 +1,9 @@
 package com.example.glatalk_project.Model
 
 import android.util.Log
-import androidx.annotation.Nullable
+import com.example.glatalk_project.Activity.LoginActivity
 import com.example.glatalk_project.Data.ProfileData
-import com.example.glatalk_project.MoveActivity
+import com.example.glatalk_project.Data.TokenData
 import com.example.glatalk_project.network.ApiServer
 import com.example.glatalk_project.network.data.request.ProfileRequest
 import com.example.glatalk_project.network.data.request.PwdRequest
@@ -27,7 +27,9 @@ object MyDao {
         ApiServer.network.modify_info(profileRequest.user_name, profileRequest.phone_number, profileRequest.country_cd).enqueue(callback)
     }
 
-    fun getInfo(inter: MoveActivity?){
+    fun getInfo(inter: LoginActivity){
+        Log.d("tokenData", "${TokenData.loginToken}")
+
         detail_info(callback = object : Callback<BaseResponse> {
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
             }
@@ -47,7 +49,6 @@ object MyDao {
                 ProfileData.user_email = jsonObject["user_email"].toString()
                 ProfileData.user_type = jsonObject["user_type"].toString()
 
-                inter?.move()
             }
         })
     }

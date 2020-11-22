@@ -2,13 +2,15 @@ package com.example.glatalk_project.Activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.example.glatalk_project.Data.TokenData
+import com.example.glatalk_project.Model.MyDao
 import com.example.glatalk_project.Model.UserDAO
-import com.example.glatalk_project.constant.C
-import com.example.glatalk_project.util.SharedPreferenceUtil
+import com.example.glatalk_project.MoveActivity
 
-class FirstActivity:AppCompatActivity() {
+class FirstActivity:AppCompatActivity(),MoveActivity {
+    var userDao = UserDAO
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -16,8 +18,12 @@ class FirstActivity:AppCompatActivity() {
 
         //if, FirstSetLanguage 값 true -> go to Login Page
             //autoLogin의 유무를 boolean으로 저장 후(sharedPreference), 그 값으로 판단
-        if(UserDAO.isAuto()==true){
+        if(UserDAO.isAutoLogin()){
+            TokenData.loginToken = userDao.getLoginToken()
+            Log.d("autoLogin","${TokenData.loginToken}" )
+            MyDao.getInfo(LoginActivity())
             gotoMain()
+
         }else gotoLogin()
             //if, auto Login == true ,  go to Main
             //gotoMain
@@ -41,6 +47,10 @@ class FirstActivity:AppCompatActivity() {
     fun gotoFirstLang(){
         val intentAct = Intent(this,FirstLanguageActivity::class.java)
         startActivity(intentAct)
+    }
+
+    override fun move() {
+
     }
 
 }
