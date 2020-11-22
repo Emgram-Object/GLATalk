@@ -1,17 +1,13 @@
 package com.example.glatalk_project
-
-import android.content.Context
 import android.os.Process
 import androidx.multidex.MultiDexApplication
-import com.example.glatalk_project.util.SharedPreferencesUtil
+import com.example.glatalk_project.util.SharedPreferenceUtil
 import java.lang.ref.WeakReference
-import java.sql.RowId
 
 class MainApplication: MultiDexApplication() {
     companion object{
         private var _application:WeakReference<MainApplication>?=null
 
-        lateinit var prefs : SharedPreferencesUtil
 
         val application:MainApplication?
             get() {
@@ -25,7 +21,6 @@ class MainApplication: MultiDexApplication() {
     }
 
     override fun onCreate(){
-        prefs = SharedPreferencesUtil(applicationContext)
         super.onCreate()
         _application = WeakReference(this)
 
