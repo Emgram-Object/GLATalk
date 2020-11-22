@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -93,11 +94,11 @@
 
             <CheckBox
                 android:id="@+id/login_auto_cb"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="16dp"
+                android:layout_height="15dp"
                 android:layout_marginTop="40dp"
                 android:background="@null"
-                android:button="@drawable/check_off"
+                android:button="@drawable/checkbox_selector"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/login_auto_tv"
                 app:layout_constraintTop_toBottomOf="@id/login_pwd_et" />

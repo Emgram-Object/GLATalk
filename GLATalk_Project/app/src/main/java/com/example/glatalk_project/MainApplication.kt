@@ -16,9 +16,12 @@ class MainApplication: MultiDexApplication() {
                 }
                 return null
             }
-
-
+        fun getString(stringResId: Int): String {
+            return application?.getString(stringResId) ?: ""
+        }
     }
+
+
 
     override fun onCreate(){
         super.onCreate()

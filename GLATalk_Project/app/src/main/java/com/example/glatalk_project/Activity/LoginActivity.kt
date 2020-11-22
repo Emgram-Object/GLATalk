@@ -12,8 +12,10 @@ import com.example.glatalk_project.Data.TokenData
 import com.example.glatalk_project.Data.UserData
 import com.example.glatalk_project.Model.MyDao
 import com.example.glatalk_project.MoveActivity
+import com.example.glatalk_project.constant.C
 import com.example.glatalk_project.network.data.response.BaseResponse
 import com.example.glatalk_project.network.data.request.LoginRequest
+import com.example.glatalk_project.util.SharedPreferenceUtil
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -33,8 +35,6 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-
         setContentView(R.layout.activity_login)
 
 //        if (login_email_et.text.toString().isNotBlank() && login_pwd_et.text.toString().isNotBlank()) {
@@ -49,19 +49,19 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
             toPwdFind()
         }
         close_btn.setOnClickListener {
-            exitProcess(0)
+            exitProcess(0)//어떤 이유인지는 모르겠지만 안꺼짐..
         } // 누르면 팝업창 떠서 앱을 종료하겠냐고 물어본다음 확인 누르면 프로세스 종료하는 걸로 할 예정임
 
-//            EmptyCheck()
-//            if (login_auto_cb.isChecked) {
-//                AutoLogin()
-//            }
 
         Btn_Enable()
         login_btn.setOnClickListener(View.OnClickListener {
             input_user_email = login_email_et.text.toString()
             input_user_pwd = login_pwd_et.text.toString()
+            if (login_auto_cb.isChecked){
+                SharedPreferenceUtil.putBoolean(C.Preference.KEY_IS_AUTO_LOGIN,true)
+            }
             loginNetworking()
+
         })
     }
 
@@ -84,12 +84,6 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
                 if (response.isSuccessful) {
                     if (userData.resultCode == "0") {
                         tokenData.loginToken = result.body.toString()
-                        if (login_auto_cb.isChecked){
-                            //sharedPreference로 토큰 저장
-
-
-
-                        }
                         Log.d("Token", tokenData.loginToken.toString())
                         MyDao.getInfo(this@LoginActivity)
                     } else {
@@ -109,6 +103,7 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
     }
 
     private fun goHome() {
+
         val intentAct = Intent(this, MainActivity::class.java)
         startActivity(intentAct)
         finish()
@@ -125,15 +120,6 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
         startActivity(intentAct)
     }
 
-    //    fun EmptyCheck() {
-//        if (input_user_email.isBlank() || input_user_pwd.isBlank()) {
-//            //팝업창 띄우기
-//        }
-//      }
-    private fun AutoLogin() {
-        //sharedPreferences 연결하기 //토큰 저장
-
-    }
 
     override fun move() {
         goHome()

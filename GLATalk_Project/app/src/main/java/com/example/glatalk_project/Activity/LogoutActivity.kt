@@ -34,8 +34,6 @@ import retrofit2.Response
                 if (response.isSuccessful) {
                     Log.d("logout", TokenData.loginToken.toString())
 
-                    TokenData.loginToken = null
-
                     Log.d("after logout", TokenData.loginToken.toString())
                 }
             }
