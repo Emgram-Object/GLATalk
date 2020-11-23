@@ -108,7 +108,7 @@ class ChatAdapter(val chatList: ArrayList<ChatData>) : RecyclerView.Adapter<Recy
         }
 
         private fun dateParser(dt: String): String {
-            val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+            val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm")
             val sdf2 = SimpleDateFormat("yyyy.MM.dd (E)")
             try {
                 val date = sdf.parse(dt)
@@ -156,7 +156,7 @@ class ChatAdapter(val chatList: ArrayList<ChatData>) : RecyclerView.Adapter<Recy
         }
 
         private fun dateParser(dt: String): String {
-            val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+            val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm")
             val sdf2 = SimpleDateFormat("yyyy.MM.dd (E)")
             try {
                 val date = sdf.parse(dt)

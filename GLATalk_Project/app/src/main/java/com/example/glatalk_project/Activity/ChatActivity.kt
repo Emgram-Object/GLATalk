@@ -39,21 +39,21 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
-       room_id = intent.getStringExtra("room_id") ?: ""
+        room_id = intent.getStringExtra("room_id") ?: ""
         receiver_id = intent.getStringExtra("receiver_id") ?: ""
 
         chat_rv.adapter = chatAdapter
 
-        if(ProfileData.user_type.equals("guide")){
+        if (ProfileData.user_type.equals("guide")) {
             title_tv.text = chatRoom.tourist_name
             mobil_info.visibility = View.VISIBLE
             mobil_info.text = chatRoom.tourist_info
-        }else{
+        } else {
             title_tv.text = chatRoom.guide_name
             mobil_info.visibility = View.GONE
         }
 
-        chatDAO.chat_list(room_id, callback = object: Callback<BaseResponse>{
+        chatDAO.chat_list(room_id, callback = object : Callback<BaseResponse> {
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
                 var result = response.body()
                 var resultCode = result?.resultCode
@@ -72,7 +72,7 @@ class ChatActivity : AppCompatActivity() {
                     }
                     var jsonArray: JSONArray = JSONArray(body)
 
-                    for(i in 0..jsonArray.length()){
+                    for (i in 0..jsonArray.length()) {
                         val chat: JSONObject = jsonArray.getJSONObject(i)
 
                         chatData = ChatData()
@@ -91,34 +91,17 @@ class ChatActivity : AppCompatActivity() {
                     chatAdapter.notifyDataSetChanged()
 
 
-                } catch (e: JSONException){
+                } catch (e: JSONException) {
                     e.printStackTrace()
                 }
 
-                Log.d("ChatList", "성공"+resultCode+desc)
+                Log.d("ChatList", "성공" + resultCode + desc)
             }
 
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
                 Log.d("ChatList", "실패")
             }
         })
-
-        chatDAO.translation(chatData, callback = object : Callback<BaseResponse>{
-            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
-                var result = response.body()!!
-                var resultCode = result.resultCode
-                var desc = result.desc
-                var body = result.body.toString()
-
-
-                Log.d("translation", "성공")
-            }
-
-            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
-                Log.d("translation", "실패")
-            }
-        })
-
 
         chat_send_iv.setOnClickListener {
             sendMessage()
@@ -131,18 +114,16 @@ class ChatActivity : AppCompatActivity() {
         //레트로핏
 
 
-
         //소켓
         ChatManager.instance.setChatListener(chatListener)
-        ChatManager.instance.init(sender_id,receiver_id, room_id)
-
+        ChatManager.instance.init(sender_id, receiver_id, room_id)
 
 
     }
 
     fun sendMessage() {
         val currentlang = LocaleHelper.getLanguage(this)
-        val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        val df = SimpleDateFormat("yyyy-MM-dd HH:mm")
         val chatData = ChatData(
                 currentlang,
                 chat_input_et.text.toString(),
@@ -154,17 +135,44 @@ class ChatActivity : AppCompatActivity() {
                 "guide",
                 df.format(Date(System.currentTimeMillis())),
                 "")
-        println(chatData.sender_id+", "+chatData.receiver_id)
-        if(chatData.source_text != "") {
+
+        println(chatData.sender_id + ", " + chatData.receiver_id)
+
+        if (chatData.source_text != "") {
             chatAdapter.addChat(chatData)
             chat_rv.scrollToPosition(chatAdapter.getChatSize() - 1)
             chat_input_et.setText("")
             ChatManager.instance.sendMessage(chatData)
+            println(chatData).toString()
         }
     }
 
+    fun trasnlation() {
+        chatDAO.translation(chatData, callback = object : Callback<BaseResponse> {
+            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
+                var result = response.body()!!
+                var resultCode = result.resultCode
+                var desc = result.desc
+                var body = result.body.toString()
 
-    private var chatListener = object: ChatManager.OnChatListener {
+                try {
+                    var jsonObject = JSONObject(body)
+
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+                Log.d("translation", "성공")
+            }
+
+            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+                Log.d("translation", "실패")
+            }
+        })
+    }
+
+
+    private var chatListener = object : ChatManager.OnChatListener {
         override fun onConnected() {
             isConnected = true
         }

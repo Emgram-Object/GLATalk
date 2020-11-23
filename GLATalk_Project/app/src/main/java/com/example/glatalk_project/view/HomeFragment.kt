@@ -84,6 +84,7 @@ class HomeFragment : Fragment() {
                 var resultCode = result.resultCode
                 var desc = result.desc
                 var body = result.body.toString()
+                println(body)
 
                 val regex = "[^=,{}\\[\\] ]{1,}=[^=,{}\\[\\] ]{0,}".toRegex()
                 try {
@@ -95,6 +96,7 @@ class HomeFragment : Fragment() {
                             "\"" + it.value.substring(0, it.value.indexOf('=')) + "\":\"$text\""
                         }
                     }
+                    println(body)
                     var jsonArray: JSONArray = JSONArray(body)
                     println(body)
                     for (i in 0 until jsonArray.length()) {
@@ -104,7 +106,7 @@ class HomeFragment : Fragment() {
                         chatRoom.guide_name = room["guide_name"] as String
                         chatRoom.guide_info = room["guide_info"] as String
                         chatRoom.guide_time = room["guide_time"] as String
-                        chatRoom.last_chat_time = room.getString("last_chat_time")
+//                        chatRoom.last_chat_time = room.getString("last_chat_time")
                         chatRoom.chat_yn = room["chat_yn"] == null ?: false
                         chatRoom.room_id = room.getString("room_id")
                         roomList.add(chatRoom)
@@ -149,7 +151,7 @@ class HomeFragment : Fragment() {
 
                         chatRoom.tourist_name = room["tourist_name"] as String
                         chatRoom.tourist_info = room["tourist_info"] as String
-                        chatRoom.last_chat_time = room["last_chat_time"] as String
+//                        chatRoom.last_chat_time = room["last_chat_time"] as String
                         chatRoom.new_msg = room["new_msg"] as Boolean
                         chatRoom.room_id = room["room_id"] as String
                         roomList.add(chatRoom)
