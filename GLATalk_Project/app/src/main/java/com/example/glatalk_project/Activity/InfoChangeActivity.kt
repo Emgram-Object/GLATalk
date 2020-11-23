@@ -1,6 +1,5 @@
 package com.example.glatalk_project.Activity
 
-import android.bluetooth.le.AdvertiseData
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -14,7 +13,6 @@ import com.example.glatalk_project.Data.ProfileData
 import com.example.glatalk_project.R
 import com.example.glatalk_project.constant.C
 import com.example.glatalk_project.network.data.request.ProfileRequest
-import kotlinx.android.synthetic.main.activity_my_info.*
 import kotlinx.android.synthetic.main.activity_my_info_change.*
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -69,6 +67,7 @@ class InfoChangeActivity : AppCompatActivity() {
     private fun getTexts() {
         input_user_name = my_info_chg_name_et.text.toString()
         input_phone_num = my_info_chg_phone_et.text.toString()
+        input_user_country
     }
 
     private fun Country_sp() {
@@ -89,17 +88,24 @@ class InfoChangeActivity : AppCompatActivity() {
         }
     }
 
+    private fun profile_change(){
+
+    }
+
     private fun changeMyInfo() {
         getTexts()
-        myDao.modify_info(profileRequest = ProfileRequest(input_user_name as RequestBody, input_phone_num as RequestBody, input_user_country as RequestBody), callback = object : Callback<BaseResponse> {
-            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
-            }
+        Log.d("TAG", "changeMyInfo: ${input_user_name} ${input_phone_num} ${input_user_country}")
+        myDao.modify_info(profileRequest = ProfileRequest(input_user_name, input_phone_num, input_user_country), callback = object : Callback<BaseResponse> {
+                override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+                    Log.d("fail", "실패")
+                }
 
-            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
-                Log.d("tag", "success")
+                override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
+                    Log.d("tag", "success")
+                }
             }
-        }
         )
+        profile_change()
     }
 
 

@@ -2,9 +2,11 @@ package com.example.glatalk_project.Activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.Model.MyDao
 import com.example.glatalk_project.Data.ProfileData
+import com.example.glatalk_project.Data.TokenData
 import com.example.glatalk_project.R
 import com.example.glatalk_project.network.data.response.BaseResponse
 import kotlinx.android.synthetic.main.activity_my_info.*
@@ -20,7 +22,7 @@ class MyInfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_info)
 
-
+        Log.d("login", "${TokenData.loginToken}")
         common_title_my_info.setTitle("내 정보")
         common_title_my_info.setModifyBtn()
 
