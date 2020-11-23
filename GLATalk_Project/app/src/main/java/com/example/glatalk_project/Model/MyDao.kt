@@ -27,7 +27,7 @@ object MyDao {
         ApiServer.network.modify_info(profileRequest.user_name, profileRequest.phone_number, profileRequest.country_cd).enqueue(callback)
     }
 
-    fun getInfo(inter: LoginActivity){
+    fun getInfo(inter: LoginActivity?){
         Log.d("tokenData", "${TokenData.loginToken}")
 
         detail_info(callback = object : Callback<BaseResponse> {

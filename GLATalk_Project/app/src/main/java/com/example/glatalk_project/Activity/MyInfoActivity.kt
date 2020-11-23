@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.Model.MyDao
 import com.example.glatalk_project.Data.ProfileData
-import com.example.glatalk_project.MoveActivity
 import com.example.glatalk_project.R
 import kotlinx.android.synthetic.main.activity_my_info.*
 
@@ -20,7 +19,7 @@ class MyInfoActivity : AppCompatActivity() {
         common_title_my_info.setTitle("내 정보")
         common_title_my_info.setModifyBtn()
 
-//        MyDao.getInfo()
+        MyDao.getInfo(null)
 
         setTexts()
 
