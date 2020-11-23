@@ -21,7 +21,7 @@ class SettingActivity: AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
 
-        common_title_setting.setTitle("앱 설정")
+        common_title_setting.setTitle(getString(R.string.title_setting))
 
         if(ProfileData.user_type.equals("tourist")){
             setting_line.visibility = View.GONE

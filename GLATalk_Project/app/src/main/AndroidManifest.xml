@@ -18,7 +18,7 @@
         android:usesCleartextTraffic="true">
 
 
-        <activity android:name=".Activity.LoginActivity">
+        <activity android:name=".Activity.FirstLanguageActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,7 +34,7 @@
         <activity android:name=".Activity.ChatActivity"/>
         <activity android:name=".Activity.SettingActivity"/>
         <activity android:name=".Activity.PwdChangeActivity"/>
-        <activity android:name=".Activity.FirstLanguageActivity"/>
+        <activity android:name=".Activity.LoginActivity"/>
 
     </application>
 

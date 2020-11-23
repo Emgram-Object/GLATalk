@@ -156,7 +156,6 @@ class ChatActivity : AppCompatActivity() {
                 "")
         println(chatData.sender_id+", "+chatData.receiver_id)
         if(chatData.source_text != "") {
-//            chatadapter.addItem(chatData)
             chatAdapter.addChat(chatData)
             chat_rv.scrollToPosition(chatAdapter.getChatSize() - 1)
             chat_input_et.setText("")

@@ -84,4 +84,13 @@
 
     <string name="enable_guide_chat">가이드 활성화</string>
     <string name="activate_chat">채팅 받기 활성화</string>
+
+    <string name="title_regist">사용자 정보</string>
+    <string name="title_myinfo">내 정보</string>
+    <string name="title_modiy_myinfo">내 정보 변경</string>
+    <string name="title_pwdchange">비밀번호 변경</string>
+    <string name="title_setting">앱 설정</string>
+
+    <string name="guide">가이드</string>
+    <string name="tourist">관광객</string>
 </resources>

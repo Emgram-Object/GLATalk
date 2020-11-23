@@ -21,7 +21,7 @@ class MyInfoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_my_info)
 
 
-        common_title_my_info.setTitle("내 정보")
+        common_title_my_info.setTitle(getString(R.string.title_myinfo))
         common_title_my_info.setModifyBtn()
 
         myDao.getInfo(null)

@@ -26,7 +26,7 @@ class PwdChangeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pwd_change)
 
-        common_title_pwd_change.setTitle("비밀번호 변경")
+        common_title_pwd_change.setTitle(getString(R.string.title_pwdchange))
 
         pwd_change_ok.setOnClickListener {
             current = pwd_change_current_et.text.toString()

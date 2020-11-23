@@ -33,7 +33,7 @@ class InfoChangeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_info_change)
 
-        common_title_info_change.setTitle("내 정보 변경")
+        common_title_info_change.setTitle(getString(R.string.title_modiy_myinfo))
 
         setTexts()
 

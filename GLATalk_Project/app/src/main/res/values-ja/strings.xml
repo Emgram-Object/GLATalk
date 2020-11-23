@@ -5,7 +5,7 @@
 
     <string name="welcome_select_lang">ようこそ！表示する言語を選択してください。</string>
     <string name="find_pwd">パスワードを探す</string>
-    <string name="find_pwd_info">登録したメールアドレスを入力してください。入力したメールアドレスに仮パスワードをお送りします。</string>
+    <string name="find_pwd_info">登録したメールアドレスを入力してください。\n入力したメールアドレスに仮パスワードをお送りします。</string>
 
     <string name="id">ID(E-mail)</string>
     <string name="pwd">パスワード</string>
@@ -76,9 +76,18 @@
     <string name="guide_info">ガイド情報</string>
     <string name="enable_time">可能な時期</string>
     <string name="last_time">最後の対話時間</string>
-    <string name="chatting">대화중</string>
+    <string name="chatting">対話中</string>
     <string name="new_message">新規メッセージ</string>
 
     <string name="enable_guide_chat">가이드 활성화</string>
     <string name="activate_chat">채팅 받기 활성화</string>
+
+    <string name="title_regist">사용자 정보</string>
+    <string name="title_myinfo">私の情報</string>
+    <string name="title_modiy_myinfo">私の情報変更</string>
+    <string name="title_pwdchange">パスワード変更</string>
+    <string name="title_setting">環境設定</string>
+
+    <string name="guide">ガイド</string>
+    <string name="tourist">観光客</string>
 </resources>

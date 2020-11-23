@@ -5,7 +5,7 @@
 
     <string name="welcome_select_lang">欢迎使用！\n请选择使用的语言。</string>
     <string name="find_pwd">寻找密码</string>
-    <string name="find_pwd_info">请输入已登记的邮箱地址。向输入的邮箱地址发送临时密码。</string>
+    <string name="find_pwd_info">请输入已登记的邮箱地址。\n向输入的邮箱地址发送临时密码。</string>
 
     <string name="id">ID(E-mail)</string>
     <string name="pwd">密码</string>
@@ -76,9 +76,18 @@
     <string name="guide_info">导游信息</string>
     <string name="enable_time">可能的时间</string>
     <string name="last_time">最后地对话时间</string>
-    <string name="chatting">대화중</string>
+    <string name="chatting">对话中</string>
     <string name="new_message">新短信</string>
 
     <string name="enable_guide_chat">가이드 활성화</string>
     <string name="activate_chat">채팅 받기 활성화</string>
+
+    <string name="title_regist">사용자 정보</string>
+    <string name="title_myinfo">我的信息</string>
+    <string name="title_modiy_myinfo">我的信息变更</string>
+    <string name="title_pwdchange">修改密码</string>
+    <string name="title_setting">环境设置</string>
+
+    <string name="guide">导游</string>
+    <string name="tourist">游客</string>
 </resources>
