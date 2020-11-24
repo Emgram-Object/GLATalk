@@ -16,12 +16,9 @@ object C {
         zh("zh", MainApplication.getString(R.string.country_china)),
         ja("ja", MainApplication.getString(R.string.country_japan));
     }
-    fun getName(country_cd: String?): String {
-        try {
-            return NationalCode.valueOf(country_cd ?: "ko").country_nm
-        } catch (e: Exception) {
-            return ""
-        }
+    object TitleBackBtn{
+        var closeOR:Boolean = true
+        var poptext:String = ""
     }
 }
 

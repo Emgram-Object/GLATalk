@@ -1,23 +1,35 @@
 package com.example.glatalk_project.Activity
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.icu.text.CaseMap
+import android.media.Image
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.Model.MyDao
 import com.example.glatalk_project.Data.PwdData
 import com.example.glatalk_project.R
 import com.example.glatalk_project.Data.TokenData
+import com.example.glatalk_project.MainApplication
+import com.example.glatalk_project.constant.C
 import com.example.glatalk_project.network.data.response.BaseResponse
 import com.example.glatalk_project.network.data.request.PwdRequest
 import com.example.glatalk_project.view.Popup
+import com.example.glatalk_project.view.TitleView
 import kotlinx.android.synthetic.main.activity_pwd_change.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import com.example.glatalk_project.view.TitleView
+import com.example.glatalk_project.view.TitleView.*
+import kotlinx.android.synthetic.main.ui_common_title.*
+import kotlinx.android.synthetic.main.ui_common_title.view.*
 import kotlinx.android.synthetic.main.ui_popup_custom.*
+
 
 class PwdChangeActivity : AppCompatActivity() {
 
@@ -26,11 +38,10 @@ class PwdChangeActivity : AppCompatActivity() {
     var new:String = "rkdalsdk7981"
     var pwdData = PwdData()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pwd_change)
-
-
 
         pwd_change_ok.setOnClickListener {
             current = pwd_change_current_et.text.toString()
@@ -41,6 +52,8 @@ class PwdChangeActivity : AppCompatActivity() {
         //통신
 
         //
+//        C.TitleBackBtn.poptext = "${MainApplication.getString(R.string.)}"
+        C.TitleBackBtn.poptext = "변경사항이 저장되지 않습니다.\n이전화면으로 돌아가시겠습니까?"
          }
 
     private fun changePwdNetworking(){
@@ -66,25 +79,18 @@ class PwdChangeActivity : AppCompatActivity() {
         val intent = Intent(this, MyInfoActivity::class.java)
         startActivity(intent)
     }
-    val popUp = Popup(this)
-    val OKbtn = popUp.popup.fst_btn
-
-    fun back() {
-        popUp.start()
+    fun goback(){
+        val popUp = Popup(this)
+        popUp.start("취소하면 비밀번호가 저장되지 않습니다.")
+        val OKbtn = popUp.popup.fst_btn
         OKbtn.setOnClickListener {
-            finish()
+            finishPwdChange()
         }
     }
     override fun onBackPressed() {
-        back()
+       goback()
+        C.TitleBackBtn.closeOR = true
     }
-
-    override fun setFinishListener(){
-        back()
-        //??이거 왜 안됨
-   }
-
-
 
 }
 

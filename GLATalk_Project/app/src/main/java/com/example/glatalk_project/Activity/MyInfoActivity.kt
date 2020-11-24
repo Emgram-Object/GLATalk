@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.Model.MyDao
 import com.example.glatalk_project.Data.ProfileData
 import com.example.glatalk_project.R
+import com.example.glatalk_project.constant.C
 import com.example.glatalk_project.network.data.response.BaseResponse
 import kotlinx.android.synthetic.main.activity_my_info.*
 import org.json.JSONObject
@@ -19,7 +20,6 @@ class MyInfoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_info)
-
 
         common_title_my_info.setTitle("내 정보")
         common_title_my_info.setModifyBtn()
@@ -43,6 +43,7 @@ class MyInfoActivity : AppCompatActivity() {
     }
 
     private fun Pwd_Change() {
+        C.TitleBackBtn.closeOR = false
         val intent = Intent(this, PwdChangeActivity::class.java)
         startActivity(intent)
     }

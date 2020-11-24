@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity(){
 
     override fun onBackPressed() {
         val popUp = Popup(this)
-        popUp.start()
+        popUp.start("정말 종료하시겠습니까?") //string.xml에서 뽑아내는 걸로 변경 필요
         val OKbtn = popUp.popup.fst_btn
         OKbtn.setOnClickListener {
             finish()
