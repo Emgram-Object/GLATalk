@@ -9,9 +9,12 @@ import com.example.glatalk_project.network.data.response.BaseResponse
 import com.example.glatalk_project.Model.MyDao
 import com.example.glatalk_project.Data.ProfileData
 import com.example.glatalk_project.R
+import com.example.glatalk_project.constant.C
 import com.example.glatalk_project.network.data.request.ProfileRequest
+import com.example.glatalk_project.view.Popup
 import kotlinx.android.synthetic.main.activity_my_info.*
 import kotlinx.android.synthetic.main.activity_my_info_change.*
+import kotlinx.android.synthetic.main.ui_popup_custom.*
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -33,6 +36,7 @@ class InfoChangeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_info_change)
 
+        C.TitleBackBtn.poptext = "변경사항이 저장되지 않습니다.\n이전화면으로 돌아가시겠습니까?"
         common_title_info_change.setTitle("내 정보 변경")
 
         setTexts()
@@ -83,8 +87,18 @@ class InfoChangeActivity : AppCompatActivity() {
         finish()
     }
 
-
-    private fun SaveCheck() {
-        //팝업창 띄우기
+    fun goback(){
+        val popUp = Popup(this)
+        popUp.start("${C.TitleBackBtn.poptext}")
+        val OKbtn = popUp.popup.fst_btn
+        OKbtn.setOnClickListener {
+            finish()
+        }
     }
+
+    override fun onBackPressed() {
+        goback()
+        C.TitleBackBtn.closeOR = true
+    }
+
 }

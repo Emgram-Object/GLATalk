@@ -12,6 +12,7 @@ import com.example.glatalk_project.Activity.InfoChangeActivity
 import com.example.glatalk_project.R
 import com.example.glatalk_project.constant.C
 import kotlinx.android.synthetic.main.ui_common_title.view.*
+import kotlinx.android.synthetic.main.ui_popup_custom.*
 
 class TitleView
 @JvmOverloads
@@ -29,6 +30,7 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 
     fun setModifyBtn() {
         change_tv.visibility = View.VISIBLE
+        C.TitleBackBtn.closeOR = false
 
         change_tv.setOnClickListener {
             val intent = Intent(context, InfoChangeActivity::class.java)
@@ -50,7 +52,12 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
         else{
             common_back_btn.setOnClickListener {
                 Log.d("context확인: ", "${context as Activity}")
-                Popup(context as Activity).goback()
+                val popUp = Popup(context as Activity)
+                popUp.start("${C.TitleBackBtn.poptext}")
+                val OKbtn = popUp.popup.fst_btn
+                OKbtn.setOnClickListener {
+                    (context as? Activity)?.finish()
+                }
             }
         }
     }

@@ -79,14 +79,17 @@ class PwdChangeActivity : AppCompatActivity() {
         val intent = Intent(this, MyInfoActivity::class.java)
         startActivity(intent)
     }
+
     fun goback(){
         val popUp = Popup(this)
-        popUp.start("취소하면 비밀번호가 저장되지 않습니다.")
+        popUp.start("${C.TitleBackBtn.poptext}")
         val OKbtn = popUp.popup.fst_btn
         OKbtn.setOnClickListener {
-            finishPwdChange()
+            finish()
+            //이거 finishPwdChange()했더니 정보화면에서 뒤로가기 눌렀을 때 다시 변경화면 떠서 finish로 바꿈 전체적으로 이거 바꿔야 할듯
         }
     }
+
     override fun onBackPressed() {
        goback()
         C.TitleBackBtn.closeOR = true

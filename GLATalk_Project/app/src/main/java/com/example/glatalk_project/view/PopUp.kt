@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.app.Dialog
 import android.content.ContextWrapper
+import android.view.LayoutInflater
 import com.example.glatalk_project.R
 import com.example.glatalk_project.constant.C
 import kotlinx.android.synthetic.main.ui_popup_custom.*
@@ -15,7 +16,6 @@ import org.w3c.dom.Text
 class Popup(context: Context):Dialog(context){
 
     val popup = Dialog(context)
-
 
     fun start(content:String) {
         popup.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -34,13 +34,4 @@ class Popup(context: Context):Dialog(context){
 
 
     }
-    fun goback(){
-        val popUp = Popup(context)
-        popUp.start("${C.TitleBackBtn.poptext}")
-        val OKbtn = popUp.popup.fst_btn
-        OKbtn.setOnClickListener {
-            (context as? Activity)?.finish()
-        }
-    }
-
 }

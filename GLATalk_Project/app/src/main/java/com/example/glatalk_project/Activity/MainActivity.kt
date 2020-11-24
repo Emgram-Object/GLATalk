@@ -10,6 +10,7 @@ import android.widget.TextView
 import com.example.glatalk_project.R
 import com.example.glatalk_project.Adapter.PageAdapter
 import com.example.glatalk_project.Model.MyDao
+import com.example.glatalk_project.constant.C
 import com.example.glatalk_project.view.Popup
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.ui_custom_tab.view.*
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity(){
         //커스텀 탭 생성
         main_tab.getTabAt(0)?.setCustomView(creatView("home"))
         main_tab.getTabAt(1)?.setCustomView(creatView("my"))
+        C.TitleBackBtn.poptext = "앱을 종료하시겠습니까?"
     }
 
     private fun creatView(tabName: String): View {
@@ -59,7 +61,7 @@ class MainActivity : AppCompatActivity(){
 
     override fun onBackPressed() {
         val popUp = Popup(this)
-        popUp.start("정말 종료하시겠습니까?") //string.xml에서 뽑아내는 걸로 변경 필요
+        popUp.start("${C.TitleBackBtn.poptext}")
         val OKbtn = popUp.popup.fst_btn
         OKbtn.setOnClickListener {
             finish()
