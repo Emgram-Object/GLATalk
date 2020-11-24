@@ -64,7 +64,9 @@ class MainActivity : AppCompatActivity(){
         popUp.start("${C.TitleBackBtn.poptext}")
         val OKbtn = popUp.popup.fst_btn
         OKbtn.setOnClickListener {
-            finish()
+            moveTaskToBack(true);
+            finish();
+            android.os.Process.killProcess(android.os.Process.myPid());
         }
 
     }

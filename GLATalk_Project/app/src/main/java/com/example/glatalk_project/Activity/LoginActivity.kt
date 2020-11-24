@@ -95,7 +95,6 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
     }
 
     private fun showPop(){
-        Log.d("result123", "${userData.resultCode}")
         val popUp = Popup(this)
 
         if(userData.resultCode == "20001"||userData.resultCode =="20002") {
