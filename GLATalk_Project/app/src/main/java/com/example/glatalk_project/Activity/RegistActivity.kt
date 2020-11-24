@@ -52,39 +52,23 @@ class RegistActivity : AppCompatActivity() {
             changeGuideFragement()
         })
 
+
         reg_next_btn.setOnClickListener(View.OnClickListener {
             if (reg_guide_radio_bnt.isChecked) {
                 getGuideData()
                 Log.d("log", userDAO.userVO.toString())
                 addNetworking()
-                finishRegister()
+                gotoLogin()
 
             } else if (reg_tour_radio_bnt.isChecked) {
                 getTouristData()
                 Log.d("log", userDAO.userVO.toString())
                 addNetworking()
-                finishRegister()
+                gotoLogin()
             }
         })
 
     }
-
-//    fun country_guide(){
-//        country_guide_sp.adapter = sp_adapter
-//        country_guide_sp.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
-//            override fun onNothingSelected(parent: AdapterView<*>?) {
-//                Log.d("spinner", "onNothingSelected: ")
-//            }
-//
-//            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-//                when(position){
-//                    0 -> "힌국"
-//                }
-//            }
-//
-//        }스피너 만들다가 귀찮아서 일단 스탑
-//
-//    }
 
     fun changeTouristFragment() {
         supportFragmentManager.beginTransaction()
@@ -144,7 +128,7 @@ class RegistActivity : AppCompatActivity() {
 
     }
 
-    fun finishRegister(){
+    fun gotoLogin(){
         val intentAct = Intent(this, LoginActivity::class.java)
         startActivity(intentAct)
         finish()
