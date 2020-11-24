@@ -58,12 +58,13 @@ class MainActivity : AppCompatActivity(){
     }
 
     override fun onBackPressed() {
-        val popup = Popup(this)
-        popup.start()
-        val OKbtn = popup.popup.fst_btn
+        val popUp = Popup(this)
+        popUp.start()
+        val OKbtn = popUp.popup.fst_btn
         OKbtn.setOnClickListener {
             finish()
         }
+
     }
 
 

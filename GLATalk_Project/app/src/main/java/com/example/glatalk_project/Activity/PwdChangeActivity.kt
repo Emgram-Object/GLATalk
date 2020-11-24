@@ -1,6 +1,7 @@
 package com.example.glatalk_project.Activity
 
 import android.content.Intent
+import android.icu.text.CaseMap
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -10,10 +11,13 @@ import com.example.glatalk_project.R
 import com.example.glatalk_project.Data.TokenData
 import com.example.glatalk_project.network.data.response.BaseResponse
 import com.example.glatalk_project.network.data.request.PwdRequest
+import com.example.glatalk_project.view.Popup
 import kotlinx.android.synthetic.main.activity_pwd_change.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import com.example.glatalk_project.view.TitleView
+import kotlinx.android.synthetic.main.ui_popup_custom.*
 
 class PwdChangeActivity : AppCompatActivity() {
 
@@ -62,4 +66,25 @@ class PwdChangeActivity : AppCompatActivity() {
         val intent = Intent(this, MyInfoActivity::class.java)
         startActivity(intent)
     }
+    val popUp = Popup(this)
+    val OKbtn = popUp.popup.fst_btn
+
+    fun back() {
+        popUp.start()
+        OKbtn.setOnClickListener {
+            finish()
+        }
+    }
+    override fun onBackPressed() {
+        back()
+    }
+
+    override fun setFinishListener(){
+        back()
+        //??이거 왜 안됨
+   }
+
+
+
 }
+

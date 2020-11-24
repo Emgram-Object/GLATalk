@@ -6,11 +6,12 @@ import android.widget.Button
 import android.widget.TextView
 import android.app.Dialog
 import com.example.glatalk_project.R
+import kotlinx.android.synthetic.main.ui_popup_custom.*
 import org.w3c.dom.Text
 
 class Popup(context: Context):Dialog(context){
+
     val popup = Dialog(context)
-//    private lateinit var listener: MyDialogOKClickedListener
 
     fun start() {
         popup.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -18,7 +19,6 @@ class Popup(context: Context):Dialog(context){
         popup.setCancelable(false)
 
         val lbdesc = popup.findViewById(R.id.popup_message_tv) as TextView
-//        lbdesc.text = content
         val btnOk = popup.findViewById(R.id.fst_btn) as TextView
 
         val btnCancel = popup.findViewById(R.id.snd_btn) as TextView
@@ -26,8 +26,8 @@ class Popup(context: Context):Dialog(context){
             popup.dismiss()
         }
         popup.show()
-//        popup.create()
-
 
     }
+
+
 }
