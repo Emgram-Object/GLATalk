@@ -14,6 +14,7 @@ import com.example.glatalk_project.R
 import com.example.glatalk_project.constant.C
 import com.example.glatalk_project.network.data.request.ProfileRequest
 import kotlinx.android.synthetic.main.activity_my_info_change.*
+import okhttp3.MediaType
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -83,29 +84,41 @@ class InfoChangeActivity : AppCompatActivity() {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 //                parent?.getItemAtPosition(position)
 //                Log.d("nm", "${countryList[position]}")
-                input_user_country = C.NationalCode.values()[position].country_cd
+                input_user_country = C.NationalCode.values()[position].country_cd.toString()
             }
         }
     }
 
-    private fun profile_change(){
-
-    }
 
     private fun changeMyInfo() {
         getTexts()
         Log.d("TAG", "changeMyInfo: ${input_user_name} ${input_phone_num} ${input_user_country}")
-        myDao.modify_info(profileRequest = ProfileRequest(input_user_name, input_phone_num, input_user_country), callback = object : Callback<BaseResponse> {
-                override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+        val name = RequestBody.create(MediaType.parse("text/plain"), input_user_name)
+        val phone = RequestBody.create(MediaType.parse("text/plain"), input_phone_num)
+        var country = RequestBody.create(MediaType.parse("text/plain"), input_user_country)
+
+        myDao.modify_info(profileRequest = ProfileRequest(name, phone, country), callback = object : Callback<BaseResponse> {
+
+            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
                     Log.d("fail", "실패")
                 }
 
                 override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
                     Log.d("tag", "success")
+                    if(response.isSuccessful){
+                        var result = response.body()!!
+                        var resultCode = result.resultCode
+                        var body = result.body.toString()
+
+                        Log.d("TAG1", "onResponse: $resultCode")
+                        Log.d("TAG2", "Response: $body")
+                    }
+                    else{
+                        Log.d("Fail", "실패")
+                    }
                 }
             }
         )
-        profile_change()
     }
 
 

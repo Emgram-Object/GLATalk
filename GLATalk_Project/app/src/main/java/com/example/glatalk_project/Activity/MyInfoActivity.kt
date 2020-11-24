@@ -22,7 +22,6 @@ class MyInfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_info)
 
-        Log.d("login", "${TokenData.loginToken}")
         common_title_my_info.setTitle("내 정보")
         common_title_my_info.setModifyBtn()
 
