@@ -26,6 +26,7 @@ class MyInfoActivity : AppCompatActivity() {
         my_info_pwd_change_btn.setOnClickListener {
             Pwd_Change()
         }
+
     }
 
 
@@ -46,4 +47,10 @@ class MyInfoActivity : AppCompatActivity() {
 //        val intent = Intent(this, InfoChangeActivity::class.java)
 //        startActivity(intent)
 //    }
+//
+//    private fun ChangeInfo() {
+//        val intent = Intent(this, InfoChangeActivity::class.java)
+//        startActivity(intent)
+//    }
+
 }

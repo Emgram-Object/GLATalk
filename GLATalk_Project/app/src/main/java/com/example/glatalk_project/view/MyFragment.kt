@@ -45,6 +45,7 @@ class MyFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
         my_logout_btn.setOnClickListener { Logout() }
 
     }
@@ -70,10 +71,10 @@ class MyFragment : Fragment() {
         startActivity(intent)
     }
 
+
     private fun Logout() {
         LogoutActivity.doLogout()
-        var intent = Intent(context, LoginActivity::class.java)
+        val intent = Intent(context, LoginActivity::class.java)
         startActivity(intent)
-
     }
 }
