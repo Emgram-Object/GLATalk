@@ -6,32 +6,28 @@ import android.widget.Button
 import android.widget.TextView
 import android.app.Dialog
 import com.example.glatalk_project.R
+import org.w3c.dom.Text
 
-class Popup(context: Context) {
-    private val popup = Dialog(context)
-    private lateinit var lbdesc: TextView
-    private lateinit var btnOk: Button
-    private lateinit var btnCancel: Button
-    private lateinit var listener: MyDialogOKClickedListener
+class Popup(context: Context):Dialog(context){
+    val popup = Dialog(context)
+//    private lateinit var listener: MyDialogOKClickedListener
 
-    fun start(content: String){
+    fun start() {
         popup.requestWindowFeature(Window.FEATURE_NO_TITLE)
         popup.setContentView(R.layout.ui_popup_custom)
         popup.setCancelable(false)
 
-        lbdesc = popup.findViewById(R.id.popup_message_tv)
-        lbdesc.text = content
-        btnOk = popup.findViewById(R.id.fst_btn)
-        btnOk.setOnClickListener{
+        val lbdesc = popup.findViewById(R.id.popup_message_tv) as TextView
+//        lbdesc.text = content
+        val btnOk = popup.findViewById(R.id.fst_btn) as TextView
 
-        }
-
-        btnCancel = popup.findViewById(R.id.snd_btn)
+        val btnCancel = popup.findViewById(R.id.snd_btn) as TextView
         btnCancel.setOnClickListener {
             popup.dismiss()
         }
         popup.show()
+//        popup.create()
+
 
     }
-
 }

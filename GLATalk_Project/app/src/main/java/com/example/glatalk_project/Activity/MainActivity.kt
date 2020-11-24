@@ -1,15 +1,19 @@
 package com.example.glatalk_project.Activity;
 
+import android.app.ProgressDialog.show
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.TextView
 import com.example.glatalk_project.R
 import com.example.glatalk_project.Adapter.PageAdapter
 import com.example.glatalk_project.Model.MyDao
+import com.example.glatalk_project.view.Popup
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.ui_custom_tab.view.*
+import kotlinx.android.synthetic.main.ui_popup_custom.*
 
 class MainActivity : AppCompatActivity(){
     private lateinit var mContext: Context
@@ -52,5 +56,16 @@ class MainActivity : AppCompatActivity(){
             }
         }
     }
+
+    override fun onBackPressed() {
+        val popup = Popup(this)
+        popup.start()
+        val OKbtn = popup.popup.fst_btn
+        OKbtn.setOnClickListener {
+            finish()
+        }
+    }
+
+
 }
 
