@@ -12,6 +12,7 @@ import com.example.glatalk_project.Model.UserDAO
 import com.example.glatalk_project.R
 import com.example.glatalk_project.Data.TokenData
 import com.example.glatalk_project.Data.UserData
+import com.example.glatalk_project.MainApplication
 import com.example.glatalk_project.Model.MyDao
 import com.example.glatalk_project.MoveActivity
 import com.example.glatalk_project.constant.C
@@ -76,6 +77,7 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
                 userData.resultCode = result.resultCode.toString()
                 userData.desc = result.desc.toString()
                 Log.d("result", "$loginResult")
+                showPop()
                 if (response.isSuccessful) {
                     if (userData.resultCode == "0") {
                         tokenData.loginToken = result.body.toString()
@@ -98,18 +100,12 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
 
         if(userData.resultCode == "20001"||userData.resultCode =="20002") {
 
-            val vanishBtn = findViewById<TextView>(R.id.fst_btn)
-            vanishBtn.visibility = GONE
-            snd_btn.text = "@string/btn_ok"
-
-            if (userData.resultCode == "20001") {
-                C.TitleBackBtn.poptext = "등록된 E-mail이 아닙니다."
-            }
-            if (userData.resultCode == "20002") {
-                C.TitleBackBtn.poptext = "비밀번호 오류"
-            }
-
+            C.TitleBackBtn.poptext="${userData.desc}"
             popUp.start("${C.TitleBackBtn.poptext}")
+            val vanishBtn = popUp.popup.fst_btn
+            vanishBtn.visibility = GONE
+            val cancelBTN = popUp.popup.snd_btn
+            cancelBTN.text = MainApplication.getString(R.string.btn_ok)
         }
     }
 
