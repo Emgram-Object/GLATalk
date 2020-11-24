@@ -57,14 +57,22 @@ class RegistActivity : AppCompatActivity() {
             if (reg_guide_radio_bnt.isChecked) {
                 getGuideData()
                 Log.d("log", userDAO.userVO.toString())
-                addNetworking()
-                gotoLogin()
+                if (reg_pwd_et.text.toString() == reg_pwd_check_et.text.toString() && !userDAO.userVO.toString().isNullOrEmpty()){
+                    addNetworking()
+                    gotoLogin()
+                }
+                Log.d("wrong", "실패실패")
+
 
             } else if (reg_tour_radio_bnt.isChecked) {
                 getTouristData()
                 Log.d("log", userDAO.userVO.toString())
-                addNetworking()
-                gotoLogin()
+                if(reg_pwd_et.text.toString() == reg_pwd_check_et.text.toString() && !userDAO.userVO.toString().isNullOrEmpty()){
+                    addNetworking()
+                    gotoLogin()
+                }
+                Log.d("wrong", "실패실패")
+
             }
         })
 

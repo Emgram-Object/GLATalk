@@ -10,6 +10,7 @@ import com.example.glatalk_project.R
 import com.example.glatalk_project.Data.TokenData
 import com.example.glatalk_project.network.data.response.BaseResponse
 import com.example.glatalk_project.network.data.request.PwdRequest
+import com.example.glatalk_project.util.TextUtil
 import kotlinx.android.synthetic.main.activity_pwd_change.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -31,8 +32,12 @@ class PwdChangeActivity : AppCompatActivity() {
         pwd_change_ok.setOnClickListener {
             current = pwd_change_current_et.text.toString()
             new = pwd_change_new_et.text.toString()
-            changePwdNetworking()
-            finishPwdChange()
+            if (TextUtil.pwdVerify(pwd_change_new_et.text.toString())
+                    and (new == pwd_change_check_et.text.toString())){
+                changePwdNetworking()
+                gotoMyInfo()
+            }
+            Log.d("Wrong", "비밀번호 일치 안함")
         }
         //통신
 
@@ -58,8 +63,9 @@ class PwdChangeActivity : AppCompatActivity() {
         })
     }
 
-    fun finishPwdChange() {
+    fun gotoMyInfo() {
         val intent = Intent(this, MyInfoActivity::class.java)
         startActivity(intent)
+        finish()
     }
 }

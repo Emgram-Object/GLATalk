@@ -13,6 +13,7 @@ import com.example.glatalk_project.Model.MyDao
 import com.example.glatalk_project.MoveActivity
 import com.example.glatalk_project.network.data.response.BaseResponse
 import com.example.glatalk_project.network.data.request.LoginRequest
+import com.example.glatalk_project.util.TextUtil
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -51,9 +52,12 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
 
         Btn_Enable()
         login_btn.setOnClickListener(View.OnClickListener {
-            input_user_email = login_email_et.text.toString()
-            input_user_pwd = login_pwd_et.text.toString()
-            loginNetworking()
+            if(TextUtil.idVerify(login_email_et.text.toString())){
+                input_user_email = login_email_et.text.toString()
+                input_user_pwd = login_pwd_et.text.toString()
+                loginNetworking()
+            }
+
 
         })
     }
