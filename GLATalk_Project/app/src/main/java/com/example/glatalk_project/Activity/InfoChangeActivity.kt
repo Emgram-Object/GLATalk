@@ -93,12 +93,9 @@ class InfoChangeActivity : AppCompatActivity() {
     private fun changeMyInfo() {
         getTexts()
         Log.d("TAG", "changeMyInfo: ${input_user_name} ${input_phone_num} ${input_user_country}")
-        val name = RequestBody.create(MediaType.parse("text/plain"), input_user_name)
-        val phone = RequestBody.create(MediaType.parse("text/plain"), input_phone_num)
-        var country = RequestBody.create(MediaType.parse("text/plain"), input_user_country)
 
-        myDao.modify_info(profileRequest = ProfileRequest(name, phone, country), callback = object : Callback<BaseResponse> {
 
+        myDao.modify_info(profileRequest = ProfileRequest(input_user_name, input_phone_num, input_user_country), callback = object : Callback<BaseResponse> {
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
                     Log.d("fail", "실패")
                 }

@@ -62,10 +62,9 @@ interface networkInterface {
      */
     @Multipart
     @POST("v1/my/modify_info")
-    fun modify_info(@Part("user_name") user_name: RequestBody,
-                    @Part("phone_number") phone_number: RequestBody,
-                    @Part("country_cd") country_cd: RequestBody): Call<BaseResponse>
-
+    fun modify_info(@Part("user_name") user_name: String,
+                    @Part("phone_number") phone_number: String,
+                    @Part("country_cd") country_cd: String?): Call<BaseResponse>
 
 
 
