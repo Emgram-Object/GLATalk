@@ -1,5 +1,8 @@
 package com.example.glatalk_project.Data
 
+import com.example.glatalk_project.constant.C
+import com.example.glatalk_project.util.SharedPreferenceUtil
+
 object ProfileData{
         var user_name: String = ""
         var phone_number: String = ""

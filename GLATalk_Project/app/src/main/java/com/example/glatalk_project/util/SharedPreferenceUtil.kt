@@ -37,7 +37,6 @@ object SharedPreferenceUtil {
                 preference.getString(key, default)
             } ?: default
 
-
     //putBoolean -> 대이터를 기입
     fun putBoolean(key: String, value: Boolean) {
         MainApplication.application?.let {

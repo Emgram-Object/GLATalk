@@ -18,6 +18,13 @@ object UserDAO {
     fun findPwd(pwdFindRequest: PwdFindRequest, callback: Callback<BaseResponse>) {
         ApiServer.network.pwd_find(pwdFindRequest).enqueue(callback)
     }
+    fun add( userRequest: UserRequest, callback: Callback<BaseResponse>) {
+        ApiServer.network.add(userRequest).enqueue(callback)
+    }
+    fun logout(callback: Callback<BaseResponse>) {
+        SharedPreferenceUtil.putBoolean(C.Preference.KEY_IS_AUTO_LOGIN,false)
+        ApiServer.network.logout().enqueue(callback)
+    }
     fun setAutoLogin(isAuto:Boolean){
         SharedPreferenceUtil.putBoolean(C.Preference.KEY_IS_AUTO_LOGIN,isAuto)
     }
@@ -27,12 +34,6 @@ object UserDAO {
     }
     fun getLoginToken():String = SharedPreferenceUtil.getString(C.Preference.KEY_ACCESS_TOKEN)
 
-    fun add( userRequest: UserRequest, callback: Callback<BaseResponse>) {
-        ApiServer.network.add(userRequest).enqueue(callback)
-    }
-    fun logout(callback: Callback<BaseResponse>) {
-        SharedPreferenceUtil.putBoolean(C.Preference.KEY_IS_AUTO_LOGIN,false)
-        ApiServer.network.logout().enqueue(callback)
-    }
+
 }
 

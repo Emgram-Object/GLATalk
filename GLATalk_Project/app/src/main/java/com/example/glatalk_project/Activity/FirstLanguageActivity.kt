@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.R
 import com.example.glatalk_project.util.LocaleHelper
+import com.example.glatalk_project.util.SharedPreferenceUtil
 import kotlinx.android.synthetic.main.activity_language.*
 import java.util.*
 
@@ -29,6 +30,7 @@ class FirstLanguageActivity : AppCompatActivity() {
         next_btn.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             recreate()
+            LocaleHelper.setLangFlag(true)
             startActivity(intent)
             finish()
 
@@ -41,6 +43,7 @@ class FirstLanguageActivity : AppCompatActivity() {
             lang_japan.isSelected = false
 
             LocaleHelper.setLocale(this, korLanguageCode)
+
 //            recreate()
 
         }

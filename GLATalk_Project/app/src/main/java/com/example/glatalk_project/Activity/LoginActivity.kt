@@ -54,12 +54,9 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
             input_user_email = login_email_et.text.toString()
             input_user_pwd = login_pwd_et.text.toString()
             loginNetworking()
+
         })
     }
-
-
-
-
 
     private fun loginNetworking() {
 
@@ -82,11 +79,12 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
                             Log.d("loginToken3", "${TokenData.loginToken}")
                         }
                         MyDao.getInfo(this@LoginActivity)
+                        move()
                     } else {
                         Log.d("result", "${userData.resultCode}")
                         Log.d("result", "${userData.desc}")
                     }
-                    MyDao.getInfo(inter = LoginActivity())
+//                    MyDao.getInfo(this@LoginActivity)
                 }
             }
         })

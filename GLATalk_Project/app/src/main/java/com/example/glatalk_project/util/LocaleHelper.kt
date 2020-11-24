@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Build
 import android.preference.PreferenceManager
+import com.example.glatalk_project.constant.C
 import com.example.glatalk_project.constant.C.Preference.SELECTED_LANGUAGE
 import java.util.*
 
@@ -37,15 +38,15 @@ object LocaleHelper {
         return updateResourcesLegacy(context, language)
     }
 
-    private fun getPersistedData(context: Context, defaultLanguage: String): String {
+     fun getPersistedData(context: Context, defaultLanguage: String): String {
         var preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+
         return preferences.getString(SELECTED_LANGUAGE, defaultLanguage)!!
     }
 
     private fun persist(context: Context, language: String) {
         var preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
         var editor: SharedPreferences.Editor = preferences.edit()
-
         editor.putString(SELECTED_LANGUAGE, language)
         editor.apply()
     }
@@ -57,6 +58,12 @@ object LocaleHelper {
             return config.locale
         }
     }
+
+    fun setLangFlag(have:Boolean){
+        SharedPreferenceUtil.putBoolean(C.Preference.LANGUAGE_VALUE,have)
+    }
+    fun haveLangValue():Boolean = SharedPreferenceUtil.getBoolean(C.Preference.LANGUAGE_VALUE,false)
+
 
     @TargetApi(Build.VERSION_CODES.N)
     private fun updateResources(context: Context, language: String): Context {
