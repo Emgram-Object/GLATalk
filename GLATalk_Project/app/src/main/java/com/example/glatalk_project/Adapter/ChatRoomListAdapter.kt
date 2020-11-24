@@ -15,6 +15,7 @@ import com.example.glatalk_project.Data.ProfileData
 class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>, private val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val GUIDE_ROOM = 0
     private val TOUR_ROOM = 1
+//    var chatData = ChatData()
 
     override fun getItemCount(): Int {
         return roomList.size
@@ -95,7 +96,13 @@ class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>, private v
             view.room_lang_title_tv.text = "관광객 언어"
             view.room_lang_tv.text = item.tourist_info
 
+            view.room_time_title_tv.text = context.getString(R.string.last_time)
             view.room_time_tv.text = item.last_chat_time
+            if(item.last_chat_time == "null"){
+                view.room_time_ll.visibility = View.GONE
+            } else {
+                view.room_time_ll.visibility = View.VISIBLE
+            }
 
             view.room_name_tv.text = item.tourist_name
 
@@ -116,6 +123,13 @@ class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>, private v
 
             view.room_time_title_tv.text = context.getString(R.string.last_time)
             view.room_time_tv.text = item.last_chat_time
+            if(item.last_chat_time == "null"){
+                view.room_time_title_tv.visibility = View.GONE
+                view.room_time_tv.visibility = View.GONE
+            } else {
+                view.room_time_title_tv.visibility = View.VISIBLE
+                view.room_time_tv.visibility = View.VISIBLE
+            }
 
             view.room_name_tv.text = item.guide_name
 

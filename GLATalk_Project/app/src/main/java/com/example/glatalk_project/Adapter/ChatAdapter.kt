@@ -53,7 +53,7 @@ class ChatAdapter(val chatList: ArrayList<ChatData>) : RecyclerView.Adapter<Recy
     override fun getItemCount(): Int = chatList.size
 
     override fun getItemViewType(position: Int): Int {
-        if (chatList[position].sender_user_type.equals("tourist")) {
+        if (chatList[position].sender_type.equals("tourist")) {
             return CHAT_MINE
         } else {
             return CHAT_OTHER

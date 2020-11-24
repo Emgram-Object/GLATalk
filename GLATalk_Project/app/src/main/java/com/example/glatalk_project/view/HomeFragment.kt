@@ -73,6 +73,7 @@ class HomeFragment : Fragment() {
             intent.putExtra("receiver_id", roomList[position].guide_name)
         } else{
             intent.putExtra("receiver_id", roomList[position].tourist_name)
+            intent.putExtra("tourist_info", roomList[position].tourist_info)
         }
         startActivity(intent)
     }
@@ -106,7 +107,7 @@ class HomeFragment : Fragment() {
                         chatRoom.guide_name = room["guide_name"] as String
                         chatRoom.guide_info = room["guide_info"] as String
                         chatRoom.guide_time = room["guide_time"] as String
-//                        chatRoom.last_chat_time = room.getString("last_chat_time")
+                        chatRoom.last_chat_time = room.getString("last_chat_time")
                         chatRoom.chat_yn = room["chat_yn"] == null ?: false
                         chatRoom.room_id = room.getString("room_id")
                         roomList.add(chatRoom)
@@ -151,7 +152,7 @@ class HomeFragment : Fragment() {
 
                         chatRoom.tourist_name = room["tourist_name"] as String
                         chatRoom.tourist_info = room["tourist_info"] as String
-//                        chatRoom.last_chat_time = room["last_chat_time"] as String
+                        chatRoom.last_chat_time = room["last_chat_time"] as String
                         chatRoom.new_msg = room["new_msg"] as Boolean
                         chatRoom.room_id = room["room_id"] as String
                         roomList.add(chatRoom)
