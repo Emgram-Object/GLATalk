@@ -71,7 +71,7 @@ class InfoChangeActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
-                Log.d("tag", "success")
+
             }
         }
         )

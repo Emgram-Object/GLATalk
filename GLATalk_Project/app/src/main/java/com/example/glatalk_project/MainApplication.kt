@@ -1,14 +1,13 @@
 package com.example.glatalk_project
-
-import android.content.Context
 import android.os.Process
 import androidx.multidex.MultiDexApplication
+import com.example.glatalk_project.util.SharedPreferenceUtil
 import java.lang.ref.WeakReference
-import java.sql.RowId
 
 class MainApplication: MultiDexApplication() {
     companion object{
         private var _application:WeakReference<MainApplication>?=null
+
 
         val application:MainApplication?
             get() {
@@ -17,16 +16,17 @@ class MainApplication: MultiDexApplication() {
                 }
                 return null
             }
-
-        fun getString(stringResId: Int):String{
-            return application?.getString(stringResId)?:""
-
+        fun getString(stringResId: Int): String {
+            return application?.getString(stringResId) ?: ""
         }
     }
+
+
 
     override fun onCreate(){
         super.onCreate()
         _application = WeakReference(this)
+
     }
 
     fun setUncaughtExceptionHandler() {

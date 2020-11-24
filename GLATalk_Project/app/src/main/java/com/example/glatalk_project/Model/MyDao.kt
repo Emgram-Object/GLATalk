@@ -1,13 +1,16 @@
 package com.example.glatalk_project.Model
 
 import android.util.Log
-import androidx.annotation.Nullable
+import com.example.glatalk_project.Activity.LoginActivity
+import com.example.glatalk_project.Data.ChatRoom
 import com.example.glatalk_project.Data.ProfileData
-import com.example.glatalk_project.MoveActivity
+import com.example.glatalk_project.Data.TokenData
 import com.example.glatalk_project.network.ApiServer
 import com.example.glatalk_project.network.data.request.ProfileRequest
 import com.example.glatalk_project.network.data.request.PwdRequest
 import com.example.glatalk_project.network.data.response.BaseResponse
+import org.json.JSONArray
+import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -27,7 +30,9 @@ object MyDao {
         ApiServer.network.modify_info(profileRequest.user_name, profileRequest.phone_number, profileRequest.country_cd).enqueue(callback)
     }
 
-    fun getInfo(inter: MoveActivity?){
+    fun getInfo(inter: LoginActivity?){
+        Log.d("tokenData", "${TokenData.loginToken}")
+
         detail_info(callback = object : Callback<BaseResponse> {
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
             }
@@ -39,15 +44,26 @@ object MyDao {
                 var body = result.body.toString()
 
 
-                var jsonObject: JSONObject = JSONObject(body)
+                val regex = "[^=,{}\\[\\] ]{1,}=[^=,{}\\[\\] ]{0,}".toRegex()
+                try {
+                    body = regex.replace(body) {
+                        var text = it.value.substring(it.value.indexOf('=') + 1)
+                        if (text.equals("null")) {
+                            "\"" + it.value.substring(0, it.value.indexOf('=')) + "\":null"
+                        } else {
+                            "\"" + it.value.substring(0, it.value.indexOf('=')) + "\":\"$text\""
+                        }
+                    }
+                    var jsonObject: JSONObject = JSONObject(body)
 
-                ProfileData.user_name = jsonObject["user_name"].toString()
-                ProfileData.phone_number = jsonObject["phone_number"].toString()
-                ProfileData.country_cd = jsonObject["country_cd"].toString()
-                ProfileData.user_email = jsonObject["user_email"].toString()
-                ProfileData.user_type = jsonObject["user_type"].toString()
-
-                inter?.move()
+                    ProfileData.user_name = jsonObject["user_name"].toString()
+                    ProfileData.phone_number = jsonObject["phone_number"].toString()
+                    ProfileData.country_cd = jsonObject["country_cd"].toString()
+                    ProfileData.user_email = jsonObject["user_email"].toString()
+                    ProfileData.user_type = jsonObject["user_type"].toString()
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
             }
         })
     }
