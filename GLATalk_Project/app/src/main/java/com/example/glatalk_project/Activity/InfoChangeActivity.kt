@@ -50,8 +50,6 @@ class InfoChangeActivity : AppCompatActivity() {
         if (input_user_name.isBlank() || input_phone_num.isBlank() || input_user_EngName.isBlank()) {
             modify_ok_btn.setBackgroundResource(R.drawable.rounded_square_dim)
         }
-        //common title의 뒤로가기 누르면 SaveCheck() 호출하기
-
 
     }
 
@@ -59,13 +57,11 @@ class InfoChangeActivity : AppCompatActivity() {
         my_info_chg_name_et.setText(ProfileData.user_name)
         my_info_chg_phone_et.setText(ProfileData.phone_number)
 //user english name은 뭘까?
-     //   my_info_chg_country_select_tv.text = ProfileData.country_cd
     }
 
     private fun getTexts() {
         input_user_name = my_info_chg_name_et.text.toString()
         input_phone_num = my_info_chg_phone_et.text.toString()
-  //      input_user_country = my_info_country_select_tv.text.toString() //스피너로 바꾸면 에러 해결될 듯
     }
 
     private fun changeMyInfo() {

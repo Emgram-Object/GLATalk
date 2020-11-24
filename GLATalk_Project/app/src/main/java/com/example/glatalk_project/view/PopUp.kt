@@ -31,7 +31,5 @@ class Popup(context: Context):Dialog(context){
             popup.dismiss()
         }
         popup.show()
-
-
     }
 }

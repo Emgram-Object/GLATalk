@@ -40,18 +40,13 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
     }
 
     fun setFinishListener() {
-        Log.d("back1", "${C.TitleBackBtn.closeOR}")
-
         if(C.TitleBackBtn.closeOR==true) {
-            Log.d("context", "${context}")
-            Log.d("context as Activity", "${context as Activity}")
             common_back_btn.setOnClickListener {
                 (context as? Activity)?.finish()
             }
         }
         else{
             common_back_btn.setOnClickListener {
-                Log.d("context확인: ", "${context as Activity}")
                 val popUp = Popup(context as Activity)
                 popUp.start("${C.TitleBackBtn.poptext}")
                 val OKbtn = popUp.popup.fst_btn
