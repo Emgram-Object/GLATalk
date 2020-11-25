@@ -14,8 +14,11 @@ import com.example.glatalk_project.R
 import com.example.glatalk_project.constant.C
 import com.example.glatalk_project.network.data.request.ProfileRequest
 import kotlinx.android.synthetic.main.activity_my_info_change.*
+import kotlinx.android.synthetic.main.activity_regist.*
+import kotlinx.android.synthetic.main.fragment_reg_tour.*
 import okhttp3.MediaType
 import okhttp3.RequestBody
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -69,6 +72,14 @@ class InfoChangeActivity : AppCompatActivity() {
         input_user_name = my_info_chg_name_et.text.toString()
         input_phone_num = my_info_chg_phone_et.text.toString()
         input_user_country
+
+//        userDAO.userVO.user_email = reg_email_et.text.toString()
+//        userDAO.userVO.user_pwd = reg_pwd_et.text.toString()
+//        userDAO.userVO.pwd_check = reg_pwd_check_et.text.toString()
+//        userDAO.userVO.user_type = "tourist"
+//        userDAO.userVO.user_name = reg_tourist_name_et.text.toString()
+//        userDAO.userVO.country_cd
+//        userDAO.userVO.phone_number = reg_tourist_phone_et.text.toString()
     }
 
     private fun Country_sp() {
@@ -106,8 +117,10 @@ class InfoChangeActivity : AppCompatActivity() {
                         var result = response.body()!!
                         var resultCode = result.resultCode
                         var body = result.body.toString()
+                        var jsonObject: JSONObject = JSONObject(body)
 
                         Log.d("TAG1", "onResponse: $resultCode")
+                        Log.d("TAG1", "$resultCode, ${result.desc}")
                         Log.d("TAG2", "Response: $body")
                     }
                     else{

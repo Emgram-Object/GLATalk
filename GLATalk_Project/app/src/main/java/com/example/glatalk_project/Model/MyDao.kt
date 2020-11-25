@@ -24,8 +24,8 @@ object MyDao {
     }
 
     fun modify_info(profileRequest: ProfileRequest, callback: Callback<BaseResponse>) {
-        ApiServer.network.modify_info(profileRequest.user_name, profileRequest.phone_number, profileRequest.country_cd).enqueue(callback)
-//        ApiServer.network.modify_info(profileRequest.).enqueue(callback)
+//        ApiServer.network.modify_info(profileRequest.user_name, profileRequest.phone_number, profileRequest.country_cd).enqueue(callback)
+        ApiServer.network.modify_info(profileRequest).enqueue(callback)
     }
 
     fun getInfo(inter: MoveActivity?){
