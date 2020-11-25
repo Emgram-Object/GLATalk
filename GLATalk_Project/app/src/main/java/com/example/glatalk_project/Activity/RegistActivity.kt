@@ -60,8 +60,7 @@ class RegistActivity : AppCompatActivity() {
         reg_next_btn.setOnClickListener(View.OnClickListener {
             if (reg_guide_radio_bnt.isChecked) {
                 getGuideData()
-                Log.d("log", userDAO.userVO.toString())
-                if (reg_pwd_et.text.toString() == reg_pwd_check_et.text.toString() && !userDAO.userVO.toString().isNullOrEmpty()) {
+                if (reg_pwd_et.text.toString() == reg_pwd_check_et.text.toString()) {
                     addNetworking()
                     gotoRegComplete()
                 }
@@ -70,8 +69,7 @@ class RegistActivity : AppCompatActivity() {
 
             } else if (reg_tour_radio_bnt.isChecked) {
                 getTouristData()
-                Log.d("log", userDAO.userVO.toString())
-                if (reg_pwd_et.text.toString() == reg_pwd_check_et.text.toString() && !userDAO.userVO.toString().isNullOrEmpty()) {
+                if (reg_pwd_et.text.toString() == reg_pwd_check_et.text.toString()) {
                     addNetworking()
                     gotoRegComplete()
                 }

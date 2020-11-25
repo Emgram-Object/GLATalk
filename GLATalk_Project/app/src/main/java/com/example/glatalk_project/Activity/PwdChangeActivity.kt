@@ -61,7 +61,7 @@ class PwdChangeActivity : AppCompatActivity() {
             current = pwd_change_current_et.text.toString()
             new = pwd_change_new_et.text.toString()
             if (TextUtil.pwdVerify(pwd_change_new_et.text.toString())
-                    and (new == pwd_change_check_et.text.toString())){
+                    && (new == pwd_change_check_et.text.toString()) ){
                 changePwdNetworking()
                 gotoMyInfo()
             }
