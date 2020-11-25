@@ -219,7 +219,7 @@
         android:id="@+id/reg_next_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/primary_color"
+        android:background="@color/square_dim_color"
         android:text="@string/btn_next"
         android:textColor="@color/white_text_color"
         android:textSize="16sp"
