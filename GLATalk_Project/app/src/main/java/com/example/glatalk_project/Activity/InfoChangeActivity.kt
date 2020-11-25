@@ -36,6 +36,8 @@ class InfoChangeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_info_change)
 
+        Log.d("InfoChange", "${C.TitleBackBtn.CancelBack}")
+
         C.TitleBackBtn.poptext = "변경사항이 저장되지 않습니다.\n이전화면으로 돌아가시겠습니까?"
         common_title_info_change.setTitle("내 정보 변경")
 
@@ -87,8 +89,10 @@ class InfoChangeActivity : AppCompatActivity() {
     fun goback(){
         val popUp = Popup(this)
         popUp.start("${C.TitleBackBtn.poptext}")
-        val OKbtn = popUp.popup.fst_btn
+        val pop_up = popUp.popup
+        val OKbtn = pop_up.fst_btn
         OKbtn.setOnClickListener {
+            pop_up.dismiss()
             finish()
         }
     }

@@ -42,6 +42,7 @@ class PwdChangeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pwd_change)
+        Log.d("pwChange", "${C.TitleBackBtn.CancelBack}")
 
         pwd_change_ok.setOnClickListener {
             current = pwd_change_current_et.text.toString()
@@ -83,8 +84,10 @@ class PwdChangeActivity : AppCompatActivity() {
     fun goback(){
         val popUp = Popup(this)
         popUp.start("${C.TitleBackBtn.poptext}")
-        val OKbtn = popUp.popup.fst_btn
+        val pop_up = popUp.popup
+        val OKbtn = pop_up.fst_btn
         OKbtn.setOnClickListener {
+            pop_up.dismiss()
             finish()
             //이거 finishPwdChange()했더니 정보화면에서 뒤로가기 눌렀을 때 다시 변경화면 떠서 finish로 바꿈 전체적으로 이거 바꿔야 할듯
         }

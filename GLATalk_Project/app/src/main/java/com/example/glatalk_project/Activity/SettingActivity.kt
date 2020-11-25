@@ -18,14 +18,12 @@ class SettingActivity: AppCompatActivity(){
     private val engLanguageCode = languageCode.engLanguageCode
     private val jpnLanguageCode = languageCode.jpnLanguageCode
     private val chLanguageCode = languageCode.chLanguageCode
-    var CancelBack = true
-    var popUp = Popup(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
         C.TitleBackBtn.poptext = "바뀐 설정을 적용하려면 앱을 재시작 해야합니다.\n지금 재시작하겠습니까?"
-
+        C.TitleBackBtn.CancelBack = true
 
         val lang = LocaleHelper.getLanguage(this)
 
@@ -63,27 +61,29 @@ class SettingActivity: AppCompatActivity(){
             LocaleHelper.setLocale(this, jpnLanguageCode)
         }
     }
-    fun showPop(){
+
+    override fun onBackPressed() {
+        val popUp = Popup(this)
         popUp.start("${C.TitleBackBtn.poptext}")
-        val OKbtn = popUp.popup.fst_btn
+        val pop_up = popUp.popup
+        val OKbtn =pop_up.fst_btn
         OKbtn.setOnClickListener {
+            C.TitleBackBtn.CancelBack = false
+            C.TitleBackBtn.closeOR = false
+            pop_up.dismiss()
             finishAffinity()
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             System.exit(0)
         }
-        val CancelBtn = popUp.popup.snd_btn
-        CancelBtn.setOnClickListener {
+        val cancelBTN = pop_up.snd_btn
+        cancelBTN.setOnClickListener {
+            C.TitleBackBtn.CancelBack = false
+            C.TitleBackBtn.closeOR = false
+            pop_up.dismiss()
             finish()
-            CancelBack = false
         }
     }
-
-    override fun onBackPressed(){
-        showPop()
-    }
-
-
     fun defaultSelection(lang: String){
         when (lang){
             "ko" -> lang_korea_rb.isChecked = true

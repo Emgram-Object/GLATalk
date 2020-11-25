@@ -19,6 +19,7 @@ object C {
     object TitleBackBtn{
         var closeOR:Boolean = true
         var poptext:String = ""
+        var CancelBack = false
     }
 }
 
