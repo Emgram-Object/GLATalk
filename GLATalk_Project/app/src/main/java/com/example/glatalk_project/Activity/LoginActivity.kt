@@ -21,7 +21,6 @@ import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.system.exitProcess
 
 class LoginActivity : AppCompatActivity(), MoveActivity {
 
@@ -32,6 +31,7 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
     var tokenData = TokenData
     var loginResult: String = ""
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -39,10 +39,7 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
 
         var inputId: EditText = login_email_et
         var inputPwd: EditText = login_pwd_et
-//        if (login_email_et.text.toString().isNotBlank() && login_pwd_et.text.toString().isNotBlank()) {
-//            Btn_Enable()
-//           //addTextChangeListener 사용
-//        }
+
 
         var textWatcher = object : TextWatcher {
             override fun afterTextChanged(s: Editable) {

@@ -143,6 +143,6 @@
         android:text="@string/change"
         android:textSize="16sp"
         android:textColor="@color/white_text_color"
-        android:background="@color/primary_color"
+        android:background="@color/square_dim_color"
         app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
