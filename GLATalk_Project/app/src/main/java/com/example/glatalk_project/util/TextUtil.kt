@@ -17,5 +17,4 @@ object TextUtil {
         val matcher = pattern.matcher(pwd)
         return matcher.matches()
     }
-
 }

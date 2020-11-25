@@ -2,6 +2,8 @@ package com.example.glatalk_project.Activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
@@ -59,7 +61,7 @@ class RegistActivity : AppCompatActivity() {
                 Log.d("log", userDAO.userVO.toString())
                 if (reg_pwd_et.text.toString() == reg_pwd_check_et.text.toString() && !userDAO.userVO.toString().isNullOrEmpty()){
                     addNetworking()
-                    gotoLogin()
+                    gotoRegComplete()
                 }
                 Log.d("wrong", "실패실패")
 
@@ -69,7 +71,7 @@ class RegistActivity : AppCompatActivity() {
                 Log.d("log", userDAO.userVO.toString())
                 if(reg_pwd_et.text.toString() == reg_pwd_check_et.text.toString() && !userDAO.userVO.toString().isNullOrEmpty()){
                     addNetworking()
-                    gotoLogin()
+                    gotoRegComplete()
                 }
                 Log.d("wrong", "실패실패")
 
@@ -136,8 +138,21 @@ class RegistActivity : AppCompatActivity() {
 
     }
 
-    fun gotoLogin(){
-        val intentAct = Intent(this, LoginActivity::class.java)
+    fun textAvailable(){
+        val textWatcher = object : TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+        }
+    }
+
+    fun gotoRegComplete(){
+        val intentAct = Intent(this, RegistCompleteActivity::class.java)
         startActivity(intentAct)
         finish()
         //로그인으로 되돌아가는 부
