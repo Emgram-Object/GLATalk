@@ -80,6 +80,7 @@ class InfoChangeActivity : AppCompatActivity() {
     private fun gotoMy() {
         val intent = Intent(this, MyInfoActivity::class.java) //마이메뉴 화면으로 넘어가기
         startActivity(intent)
+        C.TitleBackBtn.closeOR = true
         finish()
     }
 

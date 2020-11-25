@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.app.Dialog
 import android.content.ContextWrapper
 import android.view.LayoutInflater
+import com.example.glatalk_project.Activity.SettingActivity
 import com.example.glatalk_project.R
 import com.example.glatalk_project.constant.C
 import kotlinx.android.synthetic.main.ui_popup_custom.*
@@ -27,8 +28,11 @@ class Popup(context: Context):Dialog(context){
         val btnOk = popup.findViewById(R.id.fst_btn) as TextView
 
         val btnCancel = popup.findViewById(R.id.snd_btn) as TextView
-        btnCancel.setOnClickListener {
-            popup.dismiss()
+        val setAct = SettingActivity()
+        if(setAct.CancelBack==false) {
+            btnCancel.setOnClickListener {
+                popup.dismiss()
+            }
         }
         popup.show()
     }
