@@ -15,7 +15,6 @@ import com.example.glatalk_project.Data.TransData
 import com.example.glatalk_project.util.LocaleHelper
 import com.example.glatalk_project.util.ChatManager
 import com.example.glatalk_project.network.data.response.BaseResponse
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_chat.*
 import org.json.JSONArray
 import org.json.JSONException
@@ -30,6 +29,7 @@ class ChatActivity : AppCompatActivity() {
     private var chatDAO = ChatDAO
     private var receiver = ""
     private var tourist_info = ""
+    private lateinit var room_id: String
     private var sender_id = ProfileData.user_name
     var chatList = arrayListOf<ChatData>()
     val chatAdapter = ChatAdapter(chatList)
@@ -48,7 +48,8 @@ class ChatActivity : AppCompatActivity() {
         //HomeFragment에서 intent로 값 받아오기
         receiver = intent.getStringExtra("receiver_id") ?: ""
         tourist_info = intent.getStringExtra("tourist_info") ?: ""
-        var room_id = intent.getStringExtra("room_id") ?: ""
+        room_id = intent.getStringExtra("room_id") ?: ""
+//        var room_id = ProfileData.user_name+receiver //테스트용
         if (room_id == "null") { //room_id가 null일때 새로 생성
             room_id = ProfileData.user_email + receiver
         }
@@ -69,6 +70,65 @@ class ChatActivity : AppCompatActivity() {
 
 
         //채팅내역 레트로핏 통신
+        chatList(room_id)
+
+        //소켓
+        ChatManager.instance.setChatListener(chatListener)
+        ChatManager.instance.init(sender, receiver, room_id)
+
+        //리스너
+        chat_send_iv.setOnClickListener {
+            setChatData()
+            translation_and_send()
+        }
+
+        back_btn.setOnClickListener {
+            finish()
+        }
+    }
+
+    fun setChatData(){
+        var receiver_type = ""
+        var targetlang = ""
+        val df = SimpleDateFormat("yyyy-MM-dd HH:mm")
+
+        if (user_type.equals("tourist")) { //sender타입에 따라 receiver타입 변경
+            receiver_type = "guide"
+            targetlang = "ko"
+        } else {
+            receiver_type = "tourist"
+            targetlang = tourist_info
+        }
+
+        chatData = ChatData(
+                LocaleHelper.getLanguage(this),
+                chat_input_et.text.toString(),
+                targetlang,
+               "",
+                sender,
+                receiver,
+                user_type,
+                receiver_type,
+                df.format(Date(System.currentTimeMillis())),
+                room_id,
+                "")
+
+        Log.d("SetChatData", chatData.toString())
+    }
+
+    fun sendMessage() {
+        if (chatData.source_text != "") { //채팅입력창에 빈칸입력안돼게 if문 처리
+            chatAdapter.addChat(chatData)
+            chat_rv.scrollToPosition(chatAdapter.getChatSize() - 1)
+            chat_input_et.setText("")
+            ChatManager.instance.sendMessage(chatData)
+            Log.d("SendMessage", chatData.toString())
+        } else {
+            null
+        }
+    }
+
+    fun chatList(room_id: String) {
         chatDAO.chat_list(room_id, callback = object : Callback<BaseResponse> {
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
                 var result = response.body()
@@ -115,72 +175,16 @@ class ChatActivity : AppCompatActivity() {
                 Log.d("ChatList", "실패")
             }
         })
-
-        //소켓
-        ChatManager.instance.setChatListener(chatListener)
-        ChatManager.instance.init(sender, receiver, room_id)
-
-        //리스너
-        chat_send_iv.setOnClickListener {
-            sendMessage(room_id)
-        }
-
-        back_btn.setOnClickListener {
-            finish()
-        }
-
-
     }
 
-    fun sendMessage(room_id: String) {
-        val currentlang = LocaleHelper.getLanguage(this) //현재 로케일 설정값
-        fun targetLang(user_type: String): String { //유저타입 분기에 따라 타겟 언어 설정
-            return when (user_type) {
-                "tourist" -> "ko"
-                else -> tourist_info
-            }
-        }
-
-        val df = SimpleDateFormat("yyyy-MM-dd HH:mm")
-
-        if (user_type.equals("tourist")) { //sender타입에 따라 receiver타입 변경
-            rcv_type = "guide"
-        } else {
-            rcv_type = "tourist"
-        }
-
-        val chatData = ChatData(
-                currentlang,
-                chat_input_et.text.toString(),
-                targetLang(user_type),
-                transData.target_text,
-                sender,
-                receiver,
-                user_type,
-                rcv_type,
-                df.format(Date(System.currentTimeMillis())),
-                room_id,
-                "")
-
-        if (chatData.source_text != "") { //채팅입력창에 빈칸입력안돼게 if문 처리
-            chatAdapter.addChat(chatData)
-            chat_rv.scrollToPosition(chatAdapter.getChatSize() - 1)
-            chat_input_et.setText("")
-            trasnlation(chatData)
-            ChatManager.instance.sendMessage(chatData)
-            println(chatData).toString()
-        }
-    }
-
-    fun trasnlation(chatData: ChatData) {
+    fun translation_and_send() {
         chatDAO.translation(chatData, callback = object : Callback<BaseResponse> {
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
                 var result = response.body()
                 var resultCode = result?.resultCode
                 var desc = result?.desc
                 var body = result?.body.toString()
-
-                println(body)
+                Log.d("translation Body", body)
 
                 try {
                     var jsonObject = JSONObject(body)
@@ -189,7 +193,10 @@ class ChatActivity : AppCompatActivity() {
                     transData.source = jsonObject["source"] as String
                     transData.target = jsonObject["target"] as String
                     transData.target_text = jsonObject["target_text"] as String
+                    chatData.target_text = jsonObject["target_text"] as String
+                    //send
 
+                    sendMessage()
                     Log.d("TransData", transData as String)
 
                 } catch (e: JSONException) {
