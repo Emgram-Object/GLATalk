@@ -32,6 +32,8 @@ class ChatActivity : AppCompatActivity() {
     private var chatDAO = ChatDAO
     private lateinit var receiver: String
     private lateinit var tourist_info: String
+    private lateinit var tourist_name: String
+    private lateinit var guide_name:String
     private lateinit var room_id: String
     private var isConnected = false
     private val sender = ProfileData.user_email
@@ -48,25 +50,28 @@ class ChatActivity : AppCompatActivity() {
 
         //HomeFragment에서 intent로 값 받아오기
         receiver = intent.getStringExtra("receiver") ?: ""
-        tourist_info = intent.getStringExtra("tourist_info") ?: ""
+        tourist_info = intent.getStringExtra("tourist_info")?: ""
+        tourist_name = intent.getStringExtra("tourist_name")?: ""
+        guide_name = intent.getStringExtra("guide_name")?: ""
         room_id = intent.getStringExtra("room_id").toString()
-        println("룸아이디이ㅣ이ㅣㅣㅣ : " + room_id)
-        Log.d("tourist_info", tourist_info)
-        if (room_id == "null") { //room_id가 null일때 새로 생성
+
+        //room_id가 null일때 새로 생성
+        if (room_id == "null") {
             room_id = ProfileData.user_email + receiver
         }
         Log.d("Room_id", room_id)
 
         //채팅내역 리사이클러뷰
         chat_rv.adapter = chatAdapter
+        chat_rv.scrollToPosition(chatAdapter.getChatSize() - 1)
 
         //ㅂ유저타입 분기에 따라 보여주는 뷰 정보 처리
         if (ProfileData.user_type.equals("guide")) {
-            title_tv.text = chatRoom.tourist_name
+            title_tv.text = tourist_name
             mobil_info.visibility = View.VISIBLE
-            mobil_info.text = chatRoom.tourist_info
+            mobil_info.text = tourist_info
         } else {
-            title_tv.text = chatRoom.guide_name
+            title_tv.text = guide_name
             mobil_info.visibility = View.GONE
         }
 
@@ -78,10 +83,13 @@ class ChatActivity : AppCompatActivity() {
         ChatManager.instance.setChatListener(chatListener)
         ChatManager.instance.init(sender, receiver, room_id)
 
+
         //리스너
         chat_send_iv.setOnClickListener {
+            ChatManager.instance.userCount()
             setChatData()
             translation_and_send()
+
         }
 
         back_btn.setOnClickListener {
@@ -114,8 +122,6 @@ class ChatActivity : AppCompatActivity() {
         chatData.msg_dt = df.format(Date(System.currentTimeMillis()))
         chatData.room_id = room_id
         chatData.room_member_cnt = "2"
-
-        Log.d("ChatData", chatData.sender_type!!)
     }
 
     fun sendMessage() {
@@ -170,8 +176,6 @@ class ChatActivity : AppCompatActivity() {
                     chatData.target_text = body.target_text
                     sendMessage()
                 }
-                Log.d("ChatData.target_text", chatData.target_text)
-
                 Log.d("translation", "성공")
             }
 

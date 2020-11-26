@@ -72,9 +72,11 @@ class HomeFragment : Fragment() {
         intent.putExtra("room_id", roomList[position].room_id)
         if(ProfileData.user_type.equals("tourist")) {
             intent.putExtra("receiver", roomList[position].guide_id)
+            intent.putExtra("guide_name", roomList[position].guide_name)
         } else{
-            intent.putExtra("receiver", roomList[position].tourist_name)
+            intent.putExtra("receiver", roomList[position].tourist_name)//tourist_id로 수정할예정
             intent.putExtra("tourist_info", roomList[position].tourist_info)
+            intent.putExtra("tourist_namer", roomList[position].tourist_name)
         }
         startActivity(intent)
     }
@@ -91,6 +93,7 @@ class HomeFragment : Fragment() {
                     try {
                         for (i:ChatRoom in body!!) {
                             roomList.add(i)
+                            println(roomList.toString())
                         }
                         adapter.notifyDataSetChanged()
 

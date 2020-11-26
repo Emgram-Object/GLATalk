@@ -47,7 +47,7 @@ class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>, private v
 
         when (holder) {
             is GuideRoomViewHolder -> {
-                holder.onBind(roomList[position], new_msg)
+                holder.onBind(roomList[position])
                 holder.itemView.setOnLongClickListener {
                     itemLongClickListener.onLongClick(it, position)
                 }
@@ -58,7 +58,7 @@ class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>, private v
 //                holder.dateVisible(position)
             }
             is TourRoomViewHolder -> {
-                holder.onBind(roomList[position], chat_yn)
+                holder.onBind(roomList[position])
                 holder.itemView.setOnLongClickListener {
                     itemLongClickListener.onLongClick(it, position)
                 }
@@ -92,7 +92,7 @@ class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>, private v
 
     inner class GuideRoomViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         var view = v
-        fun onBind(item: ChatRoom, new_msg: Boolean) {
+        fun onBind(item: ChatRoom) {
             view.room_lang_title_tv.text = "관광객 언어"
             view.room_lang_tv.text = item.tourist_info
 
@@ -107,7 +107,7 @@ class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>, private v
             view.room_name_tv.text = item.tourist_name
 
             view.room_state_tv.text = R.string.new_message.toString()
-            if(new_msg == true){
+            if(item.new_msg == true){
                 view.room_state_tv.visibility = View.VISIBLE
             } else {
                 view.room_state_tv.visibility = View.GONE
@@ -117,7 +117,7 @@ class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>, private v
 
     inner class TourRoomViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         var view = v
-        fun onBind(item: ChatRoom, chat_yn: Boolean) {
+        fun onBind(item: ChatRoom) {
             view.room_lang_title_tv.text = context.getString(R.string.guide_info)
             view.room_lang_tv.text = item.guide_info
 
@@ -138,7 +138,7 @@ class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>, private v
             view.room_able_tv.text = item.guide_time
 
             view.room_state_tv.text = context.getString(R.string.chatting)
-            if(chat_yn == true){
+            if(item.chat_yn == "1"){
                 view.room_state_tv.visibility = View.VISIBLE
             } else {
                 view.room_state_tv.visibility = View.GONE
