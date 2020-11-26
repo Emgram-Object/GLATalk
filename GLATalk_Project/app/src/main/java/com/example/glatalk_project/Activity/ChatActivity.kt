@@ -12,9 +12,11 @@ import com.example.glatalk_project.Adapter.ChatAdapter
 import com.example.glatalk_project.Data.ChatData
 import com.example.glatalk_project.Data.ChatRoom
 import com.example.glatalk_project.Data.TransData
+import com.example.glatalk_project.network.data.response.BaseResponse
 import com.example.glatalk_project.util.LocaleHelper
 import com.example.glatalk_project.util.ChatManager
-import com.example.glatalk_project.network.data.response.BaseResponse
+import com.example.glatalk_project.network.data.response.ChatResponse
+import com.example.glatalk_project.network.data.response.PapagoResonse
 import kotlinx.android.synthetic.main.activity_chat.*
 import org.json.JSONArray
 import org.json.JSONException
@@ -23,33 +25,33 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
+import kotlin.collections.ArrayList
 
 class ChatActivity : AppCompatActivity() {
     //변수 선언분
     private var chatDAO = ChatDAO
-    private var receiver = ""
-    private var tourist_info = ""
+    private lateinit var receiver: String
+    private lateinit var tourist_info: String
     private lateinit var room_id: String
-    private var sender_id = ProfileData.user_name
+    private var isConnected = false
+    private val sender = ProfileData.user_email
+    val user_type = ProfileData.user_type
+    var chatRoom = ChatRoom()
+    var chatData = ChatData()
+    var transData = TransData()
     var chatList = arrayListOf<ChatData>()
     val chatAdapter = ChatAdapter(chatList)
-    var chatData = ChatData()
-    private var isConnected = false
-    var chatRoom = ChatRoom()
-    val sender = ProfileData.user_name
-    val user_type = ProfileData.user_type
-    var transData = TransData()
-    var rcv_type = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
         //HomeFragment에서 intent로 값 받아오기
-        receiver = intent.getStringExtra("receiver_id") ?: ""
+        receiver = intent.getStringExtra("receiver") ?: ""
         tourist_info = intent.getStringExtra("tourist_info") ?: ""
-        room_id = intent.getStringExtra("room_id") ?: ""
-//        var room_id = ProfileData.user_name+receiver //테스트용
+        room_id = intent.getStringExtra("room_id").toString()
+        println("룸아이디이ㅣ이ㅣㅣㅣ : " + room_id)
+        Log.d("tourist_info", tourist_info)
         if (room_id == "null") { //room_id가 null일때 새로 생성
             room_id = ProfileData.user_email + receiver
         }
@@ -70,7 +72,7 @@ class ChatActivity : AppCompatActivity() {
 
 
         //채팅내역 레트로핏 통신
-        chatList(room_id)
+        chatList()
 
         //소켓
         ChatManager.instance.setChatListener(chatListener)
@@ -87,7 +89,7 @@ class ChatActivity : AppCompatActivity() {
         }
     }
 
-    fun setChatData(){
+    fun setChatData() {
         var receiver_type = ""
         var targetlang = ""
         val df = SimpleDateFormat("yyyy-MM-dd HH:mm")
@@ -100,20 +102,20 @@ class ChatActivity : AppCompatActivity() {
             targetlang = tourist_info
         }
 
-        chatData = ChatData(
-                LocaleHelper.getLanguage(this),
-                chat_input_et.text.toString(),
-                targetlang,
-               "",
-                sender,
-                receiver,
-                user_type,
-                receiver_type,
-                df.format(Date(System.currentTimeMillis())),
-                room_id,
-                "")
+        chatData
+        chatData.source = LocaleHelper.getLanguage(this)
+        chatData.source_text = chat_input_et.text.toString()
+        chatData.target = targetlang
+        chatData.target_text = ""
+        chatData.sender = sender
+        chatData.receiver = receiver
+        chatData.sender_type = user_type
+        chatData.receiver_type = receiver_type
+        chatData.msg_dt = df.format(Date(System.currentTimeMillis()))
+        chatData.room_id = room_id
+        chatData.room_member_cnt = "2"
 
-        Log.d("SetChatData", chatData.toString())
+        Log.d("ChatData", chatData.sender_type!!)
     }
 
     fun sendMessage() {
@@ -128,41 +130,19 @@ class ChatActivity : AppCompatActivity() {
         }
     }
 
-    fun chatList(room_id: String) {
-        chatDAO.chat_list(room_id, callback = object : Callback<BaseResponse> {
-            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
+    fun chatList() {
+        chatDAO.chat_list(room_id, callback = object : Callback<ChatResponse> {
+            override fun onResponse(call: Call<ChatResponse>, response: Response<ChatResponse>) {
                 var result = response.body()
                 var resultCode = result?.resultCode
                 var desc = result?.desc
-                var body = result?.body.toString()
+                var body: ArrayList<ChatData>? = result?.body
 
-                val regex = "[^=,{}\\[\\] ]{1,}=[^=,{}\\[\\] ]{0,}".toRegex()
                 try {
-                    body = regex.replace(body) {
-                        var text = it.value.substring(it.value.indexOf('=') + 1)
-                        if (text.equals("null")) {
-                            "\"" + it.value.substring(0, it.value.indexOf('=')) + "\":null"
-                        } else {
-                            "\"" + it.value.substring(0, it.value.indexOf('=')) + "\":\"$text\""
-                        }
-                    }
-                    var jsonArray: JSONArray = JSONArray(body)
-
-                    for (i in 0..jsonArray.length()) {
-                        val chat: JSONObject = jsonArray.getJSONObject(i)
-
-                        chatData = ChatData()
-                        chatData.source = chat["source_lang"] as String
-                        chatData.source_text = chat["source_text"] as String
-                        chatData.target = chat["target_lang"] as String
-                        chatData.target_text = chat["target_text"] as String
-                        chatData.sender = chat["sender_id"] as String
-                        chatData.receiver = chat["receiver_id"] as String
-                        chatData.sender_type = chat["sender_user_type"] as String
-                        chatData.receiver_type = chat["receiver_user_type"] as String
-                        chatData.msg_dt = chat["msg_dt"] as String
-                        chatAdapter.setChatList(chatList)
-                        chatList.add(chatData)
+                    chatAdapter.setChatList(chatList)
+                    for (temp:ChatData in body!!) {
+                        chatList.add(temp)
+                        println(temp.sender_type.toString())
                     }
                     chatAdapter.notifyDataSetChanged()
                 } catch (e: JSONException) {
@@ -171,41 +151,31 @@ class ChatActivity : AppCompatActivity() {
                 Log.d("ChatList", "성공")
             }
 
-            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+            override fun onFailure(call: Call<ChatResponse>, t: Throwable) {
                 Log.d("ChatList", "실패")
             }
         })
     }
 
     fun translation_and_send() {
-        chatDAO.translation(chatData, callback = object : Callback<BaseResponse> {
-            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
+        chatDAO.translation(chatData, callback = object : Callback<PapagoResonse> {
+            override fun onResponse(call: Call<PapagoResonse>, response: Response<PapagoResonse>) {
                 var result = response.body()
                 var resultCode = result?.resultCode
                 var desc = result?.desc
-                var body = result?.body.toString()
-                Log.d("translation Body", body)
+                var body = result?.body
+                Log.d("translation Body", body.toString())
 
-                try {
-                    var jsonObject = JSONObject(body)
-                    Log.d("body", body)
-
-                    transData.source = jsonObject["source"] as String
-                    transData.target = jsonObject["target"] as String
-                    transData.target_text = jsonObject["target_text"] as String
-                    chatData.target_text = jsonObject["target_text"] as String
-                    //send
-
+                if (body != null) {
+                    chatData.target_text = body.target_text
                     sendMessage()
-                    Log.d("TransData", transData as String)
-
-                } catch (e: JSONException) {
-                    e.printStackTrace()
                 }
+                Log.d("ChatData.target_text", chatData.target_text)
+
                 Log.d("translation", "성공")
             }
 
-            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+            override fun onFailure(call: Call<PapagoResonse>, t: Throwable) {
                 Log.d("translation", "실패")
             }
         })

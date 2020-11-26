@@ -2,6 +2,7 @@ package com.example.glatalk_project.Model
 
 import android.util.Log
 import androidx.annotation.Nullable
+import com.example.glatalk_project.Data.ChatData
 import com.example.glatalk_project.Data.ProfileData
 import com.example.glatalk_project.MoveActivity
 import com.example.glatalk_project.network.ApiServer
@@ -37,7 +38,6 @@ object MyDao {
                 var resultCode = result.resultCode
                 var desc = result.desc
                 var body = result.body.toString()
-
 
                 var jsonObject: JSONObject = JSONObject(body)
 
