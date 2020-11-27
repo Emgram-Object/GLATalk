@@ -46,14 +46,14 @@ class ChatData(
     var room_member_cnt: String = ""   //방 인원수 체크
 )
 
-//class ChatHistory(
-//        var source_lang: String = "",             //요청 언어
-//        var source_text: String = "",             //요청 텍스트
-//        var target_lang: String? = "",           //번역 언어
-//        var target_text: String = "",             //번역 텍스트
-//        var sender_id: String? = "",              //보내는 사람 id
-//        var receiver_id: String? = "",            //받는 사람 id
-//        var sender_user_type: String? = "",       //가이드/관광객 여부 -
-//        var receiver_user_type: String? = "",     //가이드/관광객 여부 -
-//        var msg_dt: String = "",                  //메세지 날짜
-//)
+class ChatHistory(
+        var source_lang: String = "",             //요청 언어
+        var source_text: String = "",             //요청 텍스트
+        var target_lang: String? = "",           //번역 언어
+        var target_text: String = "",             //번역 텍스트
+        var sender_id: String? = "",              //보내는 사람 id
+        var receiver_id: String? = "",            //받는 사람 id
+        var sender_user_type: String? = "",       //가이드/관광객 여부 -
+        var receiver_user_type: String? = "",     //가이드/관광객 여부 -
+        var msg_dt: String = "",                  //메세지 날짜
+)

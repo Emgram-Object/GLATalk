@@ -74,7 +74,7 @@ class HomeFragment : Fragment() {
             intent.putExtra("receiver", roomList[position].guide_id)
             intent.putExtra("guide_name", roomList[position].guide_name)
         } else{
-            intent.putExtra("receiver", roomList[position].tourist_name)//tourist_id로 수정할예정
+            intent.putExtra("receiver", roomList[position].tourist_id)//tourist_id로 수정할예정
             intent.putExtra("tourist_info", roomList[position].tourist_info)
             intent.putExtra("tourist_namer", roomList[position].tourist_name)
         }

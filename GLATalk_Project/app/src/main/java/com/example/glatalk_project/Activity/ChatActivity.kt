@@ -6,12 +6,9 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.Model.ChatDAO
-import com.example.glatalk_project.Data.ProfileData
 import com.example.glatalk_project.R
 import com.example.glatalk_project.Adapter.ChatAdapter
-import com.example.glatalk_project.Data.ChatData
-import com.example.glatalk_project.Data.ChatRoom
-import com.example.glatalk_project.Data.TransData
+import com.example.glatalk_project.Data.*
 import com.example.glatalk_project.network.data.response.BaseResponse
 import com.example.glatalk_project.util.LocaleHelper
 import com.example.glatalk_project.util.ChatManager
@@ -142,14 +139,29 @@ class ChatActivity : AppCompatActivity() {
                 var result = response.body()
                 var resultCode = result?.resultCode
                 var desc = result?.desc
-                var body: ArrayList<ChatData>? = result?.body
+                var body: ArrayList<ChatHistory>? = result?.body
 
                 try {
+
                     chatAdapter.setChatList(chatList)
-                    for (temp:ChatData in body!!) {
-                        chatList.add(temp)
-                        println(temp.sender_type.toString())
+                    for (i:Int in 0 until body!!.size) {
+                        var chat: ChatHistory = body[i]
+//                        Log.d("JsonObject", chat.toString())
+
+                        chatData = ChatData()
+                        chatData.source = chat.source_lang
+                        chatData.source_text = chat.source_text
+                        chatData.target = chat.target_lang
+                        chatData.target_text = chat.target_text
+                        chatData.sender = chat.sender_id
+                        chatData.receiver = chat.receiver_id
+                        chatData.sender_type = chat.sender_user_type
+                        chatData.receiver_type = chat.receiver_user_type
+                        chatData.msg_dt = chat.msg_dt
+                        chatList.add(chatData)
+                        println(chatData)
                     }
+
                     chatAdapter.notifyDataSetChanged()
                 } catch (e: JSONException) {
                     e.printStackTrace()
