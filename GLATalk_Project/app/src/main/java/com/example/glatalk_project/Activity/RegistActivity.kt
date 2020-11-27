@@ -208,7 +208,6 @@ class RegistActivity : AppCompatActivity() {
 
 
     fun gotoRegComplete() {
-//>>>>>>> feature/textWatcher
         val intentAct = Intent(this, RegistCompleteActivity::class.java)
         startActivity(intentAct)
         finish()

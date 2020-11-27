@@ -25,6 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.MyInfoActivity" />
+        <activity android:name=".Activity.RegistCompleteActivity"/>
         <activity android:name=".Activity.LoginActivity"/>
         <activity android:name=".Activity.InfoChangeActivity"/>
         <activity android:name=".Activity.MainActivity"/>
