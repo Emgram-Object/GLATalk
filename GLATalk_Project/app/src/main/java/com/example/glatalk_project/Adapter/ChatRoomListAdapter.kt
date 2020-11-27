@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.glatalk_project.Data.ChatData
 import com.example.glatalk_project.R
 import com.example.glatalk_project.Data.ChatRoom
 //import com.example.glatalk_project.Data.ChatRoom
@@ -14,6 +15,7 @@ import com.example.glatalk_project.Data.ProfileData
 class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>, private val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val GUIDE_ROOM = 0
     private val TOUR_ROOM = 1
+//    var chatData = ChatData()
 
     override fun getItemCount(): Int {
         return roomList.size
@@ -40,6 +42,9 @@ class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>, private v
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        var new_msg = ChatRoom().new_msg
+        var chat_yn = ChatRoom().chat_yn
+
         when (holder) {
             is GuideRoomViewHolder -> {
                 holder.onBind(roomList[position])
@@ -91,11 +96,22 @@ class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>, private v
             view.room_lang_title_tv.text = "관광객 언어"
             view.room_lang_tv.text = item.tourist_info
 
+            view.room_time_title_tv.text = context.getString(R.string.last_time)
             view.room_time_tv.text = item.last_chat_time
+            if(item.last_chat_time == "null"){
+                view.room_time_ll.visibility = View.GONE
+            } else {
+                view.room_time_ll.visibility = View.VISIBLE
+            }
 
             view.room_name_tv.text = item.tourist_name
 
             view.room_state_tv.text = R.string.new_message.toString()
+            if(item.new_msg == true){
+                view.room_state_tv.visibility = View.VISIBLE
+            } else {
+                view.room_state_tv.visibility = View.GONE
+            }
         }
     }
 
@@ -107,6 +123,13 @@ class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>, private v
 
             view.room_time_title_tv.text = context.getString(R.string.last_time)
             view.room_time_tv.text = item.last_chat_time
+            if(item.last_chat_time == "null"){
+                view.room_time_title_tv.visibility = View.GONE
+                view.room_time_tv.visibility = View.GONE
+            } else {
+                view.room_time_title_tv.visibility = View.VISIBLE
+                view.room_time_tv.visibility = View.VISIBLE
+            }
 
             view.room_name_tv.text = item.guide_name
 
@@ -115,6 +138,11 @@ class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>, private v
             view.room_able_tv.text = item.guide_time
 
             view.room_state_tv.text = context.getString(R.string.chatting)
+            if(item.chat_yn == "1"){
+                view.room_state_tv.visibility = View.VISIBLE
+            } else {
+                view.room_state_tv.visibility = View.GONE
+            }
         }
     }
 }

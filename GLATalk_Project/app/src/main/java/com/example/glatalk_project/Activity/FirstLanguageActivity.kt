@@ -5,6 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.R
+import com.example.glatalk_project.constant.languageCode.chLanguageCode
+import com.example.glatalk_project.constant.languageCode.engLanguageCode
+import com.example.glatalk_project.constant.languageCode.jpnLanguageCode
+import com.example.glatalk_project.constant.languageCode.korLanguageCode
 import com.example.glatalk_project.util.LocaleHelper
 import com.example.glatalk_project.util.SharedPreferenceUtil
 import kotlinx.android.synthetic.main.activity_language.*
@@ -12,12 +16,6 @@ import java.util.*
 
 
 class FirstLanguageActivity : AppCompatActivity() {
-
-    //나중에 data class에 넣어주세요
-    private val korLanguageCode: String = "ko"
-    private val engLanguageCode: String = "en"
-    private val jpnLanguageCode: String = "ja"
-    private val chLanguageCode: String = "zh"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

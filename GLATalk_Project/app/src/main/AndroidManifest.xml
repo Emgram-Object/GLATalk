@@ -17,9 +17,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
-
         <activity android:name=".Activity.SplashActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,8 +33,6 @@
         <activity android:name=".Activity.ChatActivity"/>
         <activity android:name=".Activity.SettingActivity"/>
         <activity android:name=".Activity.PwdChangeActivity"/>
-        <activity android:name=".Activity.FirstLanguageActivity"/>
-
     </application>
 
 </manifest>

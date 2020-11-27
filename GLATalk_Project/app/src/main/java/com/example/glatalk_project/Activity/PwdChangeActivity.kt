@@ -19,14 +19,14 @@ class PwdChangeActivity : AppCompatActivity() {
 
     private var myDao = MyDao
     var current:String = ""
-    var new:String = "rkdalsdk7981"
+    var new:String = ""
     var pwdData = PwdData()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pwd_change)
 
-
+        common_title_pwd_change.setTitle(getString(R.string.title_pwdchange))
 
         pwd_change_ok.setOnClickListener {
             current = pwd_change_current_et.text.toString()
@@ -34,9 +34,6 @@ class PwdChangeActivity : AppCompatActivity() {
             changePwdNetworking()
             finishPwdChange()
         }
-        //통신
-
-        //
          }
 
     private fun changePwdNetworking(){

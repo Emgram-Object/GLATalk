@@ -1,8 +1,13 @@
 package com.example.glatalk_project.Model
 
 import android.util.Log
+<<<<<<< HEAD
 import com.example.glatalk_project.Activity.LoginActivity
 import com.example.glatalk_project.Data.ChatRoom
+=======
+import androidx.annotation.Nullable
+import com.example.glatalk_project.Data.ChatData
+>>>>>>> feature/visible
 import com.example.glatalk_project.Data.ProfileData
 import com.example.glatalk_project.Data.TokenData
 import com.example.glatalk_project.network.ApiServer
@@ -42,8 +47,6 @@ object MyDao {
                 var resultCode = result.resultCode
                 var desc = result.desc
                 var body = result.body.toString()
-
-
                 val regex = "[^=,{}\\[\\] ]{1,}=[^=,{}\\[\\] ]{0,}".toRegex()
                 try {
                     body = regex.replace(body) {
@@ -55,7 +58,6 @@ object MyDao {
                         }
                     }
                     var jsonObject: JSONObject = JSONObject(body)
-
                     ProfileData.user_name = jsonObject["user_name"].toString()
                     ProfileData.phone_number = jsonObject["phone_number"].toString()
                     ProfileData.country_cd = jsonObject["country_cd"].toString()

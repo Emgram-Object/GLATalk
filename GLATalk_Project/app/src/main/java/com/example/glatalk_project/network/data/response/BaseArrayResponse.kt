@@ -2,22 +2,20 @@ package com.example.glatalk_project.network.data.response
 
 import com.example.glatalk_project.network.ServerResult
 
-open class BaseResponse(
+open class BaseArrayResponse(
         var resultCode: Int = -1,
-        var desc: String? = null,
-        var body: Any? = null
-) : ServerResult {
+        var desc: String? = null
+): ServerResult {
 
     override fun isSuccess(): Boolean {
         return resultCode == 0
     }
 
     override fun resultCode(): String {
-        return resultCode.toString()
+        return resultCode().toString()
     }
 
     override fun errorMessage(): String? {
         return desc
     }
 }
-// BaseNetwork의 interface를 상속받은 클래스 -> 오버라이딩

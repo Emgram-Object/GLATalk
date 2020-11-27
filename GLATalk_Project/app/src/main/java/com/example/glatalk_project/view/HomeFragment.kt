@@ -14,6 +14,7 @@ import com.example.glatalk_project.R
 import com.example.glatalk_project.Adapter.ChatRoomListAdapter
 import com.example.glatalk_project.Data.ChatRoom
 import com.example.glatalk_project.network.data.response.BaseResponse
+import com.example.glatalk_project.network.data.response.HomeResponse
 import kotlinx.android.synthetic.main.fragment_home_guide.view.*
 import org.json.JSONArray
 import org.json.JSONException
@@ -69,93 +70,66 @@ class HomeFragment : Fragment() {
     private fun goToChat(position: Int) {
         val intent = Intent(getActivity(), ChatActivity::class.java)
         intent.putExtra("room_id", roomList[position].room_id)
+        if(ProfileData.user_type.equals("tourist")) {
+            intent.putExtra("receiver", roomList[position].guide_id)
+            intent.putExtra("guide_name", roomList[position].guide_name)
+        } else{
+            intent.putExtra("receiver", roomList[position].tourist_id)//tourist_id로 수정할예정
+            intent.putExtra("tourist_info", roomList[position].tourist_info)
+            intent.putExtra("tourist_namer", roomList[position].tourist_name)
+        }
         startActivity(intent)
     }
 
     private fun touristHomeNetWorking() {
-        HomeDAO.tourist_home(callback = object : Callback<BaseResponse> {
-            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
-                var result = response.body()!!
-                var resultCode = result.resultCode
-                var desc = result.desc
-                var body = result.body.toString()
+        HomeDAO.tourist_home(callback = object : Callback<HomeResponse> {
+            override fun onResponse(call: Call<HomeResponse>, response: Response<HomeResponse>) {
+                if (response.isSuccessful) {
+                    var result = response.body()!!
+                    var resultCode = result.resultCode
+                    var desc = result.desc
+                    var body = result.body
 
-                val regex = "[^=,{}\\[\\] ]{1,}=[^=,{}\\[\\] ]{0,}".toRegex()
-                try {
-                    body = regex.replace(body) {
-                        var text = it.value.substring(it.value.indexOf('=') + 1)
-                        if (text.equals("null")) {
-                            "\"" + it.value.substring(0, it.value.indexOf('=')) + "\":null"
-                        } else {
-                            "\"" + it.value.substring(0, it.value.indexOf('=')) + "\":\"$text\""
+                    try {
+                        for (i:ChatRoom in body!!) {
+                            roomList.add(i)
+                            println(roomList.toString())
                         }
-                    }
-                    var jsonArray: JSONArray = JSONArray(body)
-                    for (i in 0 until jsonArray.length()) {
-                        val room = jsonArray.getJSONObject(i)
+                        adapter.notifyDataSetChanged()
 
-                        chatRoom = ChatRoom()
-                        chatRoom.guide_name = room["guide_name"] as String
-                        chatRoom.guide_info = room["guide_info"] as String
-                        chatRoom.guide_time = room["guide_time"] as String
-                        chatRoom.last_chat_time = room.getString("last_chat_time")
-                        chatRoom.chat_yn = room["chat_yn"] == null ?: false
-                        chatRoom.room_id = room.getString("room_id")
-                        roomList.add(chatRoom)
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
                     }
-                    adapter.notifyDataSetChanged()
-
-                } catch (e: JSONException) {
-                    e.printStackTrace()
+                    Log.d("Tour_Home", "성공" + resultCode + desc)
                 }
-                Log.d("Tour_Home", "성공" + resultCode + desc)
             }
-
-            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+            override fun onFailure(call: Call<HomeResponse>, t: Throwable) {
                 Log.d("Tour_Home", "실패")
             }
         })
     }
 
     private fun guideHomeNetWorking() {
-        HomeDAO.guide_home(callback = object : Callback<BaseResponse> {
-            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
+        HomeDAO.guide_home(callback = object : Callback<HomeResponse> {
+            override fun onResponse(call: Call<HomeResponse>, response: Response<HomeResponse>) {
                 var result = response.body()!!
                 var resultCode = result.resultCode
                 var desc = result.desc
-                var body = result.body.toString()
+                var body = result.body
 
-                val regex = "[^=,{}\\[\\] ]{1,}=[^=,{}\\[\\] ]{0,}".toRegex()
                 try {
-                    body = regex.replace(body) {
-                        var text = it.value.substring(it.value.indexOf('=') + 1)
-                        if (text.equals("null")) {
-                            "\"" + it.value.substring(0, it.value.indexOf('=')) + "\":null"
-                        } else {
-                            "\"" + it.value.substring(0, it.value.indexOf('=')) + "\":\"$text\""
-                        }
+                    for (i:ChatRoom in body!!) {
+                        roomList.add(i)
                     }
+                    adapter.notifyDataSetChanged()
 
-
-                    var jsonArray: JSONArray = JSONArray(body)
-                    for (i in 0 until jsonArray.length()) {
-                        val room = jsonArray.getJSONObject(i)
-
-                        chatRoom.tourist_name = room["tourist_name"] as String
-                        chatRoom.tourist_info = room["tourist_info"] as String
-                        chatRoom.last_chat_time = room["last_chat_time"] as String
-                        chatRoom.new_msg = room["new_msg"] as Boolean
-                        chatRoom.room_id = room["room_id"] as String
-                        roomList.add(chatRoom)
-                    }
                 } catch (e: JSONException) {
-                    null
+                    e.printStackTrace()
                 }
-                adapter.notifyDataSetChanged()
-                Log.d("Guide_Home", "성공")
+                Log.d("Tour_Home", "성공" + roomList)
             }
 
-            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+            override fun onFailure(call: Call<HomeResponse>, t: Throwable) {
                 Log.d("Guide_Home", "실패")
             }
         })

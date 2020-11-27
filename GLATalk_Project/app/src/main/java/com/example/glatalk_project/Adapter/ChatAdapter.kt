@@ -53,7 +53,7 @@ class ChatAdapter(val chatList: ArrayList<ChatData>) : RecyclerView.Adapter<Recy
     override fun getItemCount(): Int = chatList.size
 
     override fun getItemViewType(position: Int): Int {
-        if (chatList[position].sender_user_type.equals("tourist")) {
+        if (chatList[position].sender_type.equals(ProfileData.user_type)) {
             return CHAT_MINE
         } else {
             return CHAT_OTHER
@@ -85,10 +85,10 @@ class ChatAdapter(val chatList: ArrayList<ChatData>) : RecyclerView.Adapter<Recy
                 view.message_line.visibility = View.GONE
                 view.message_tran_tv.visibility = View.GONE
             }
-            view.chat_date.text = chat.msg_dt
+            view.chat_date.text = dateParser(chat.msg_dt)
             view.message_mine_tv.text = chat.source_text
             view.message_tran_tv.text = chat.target_text
-            view.chat_time.text = chat.msg_dt
+            view.chat_time.text = timeParser(chat.msg_dt)
         }
 
         fun dateVisible(position: Int) {
@@ -108,11 +108,26 @@ class ChatAdapter(val chatList: ArrayList<ChatData>) : RecyclerView.Adapter<Recy
         }
 
         private fun dateParser(dt: String): String {
-            val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-            val sdf2 = SimpleDateFormat("yyyy.MM.dd (E)")
+            val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm")
+            val sdf2 = SimpleDateFormat("yyyy.MM.dd")
             try {
                 val date = sdf.parse(dt)
                 val dt2 = sdf2.format(date)
+
+                return dt2
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+
+            return ""
+        }
+
+        private fun timeParser(dt: String): String {
+            val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm")
+            val sdf2 = SimpleDateFormat("h:mm a")
+            try {
+                val time = sdf.parse(dt)
+                val dt2 = sdf2.format(time)
 
                 return dt2
             } catch (e: Exception) {
@@ -133,34 +148,49 @@ class ChatAdapter(val chatList: ArrayList<ChatData>) : RecyclerView.Adapter<Recy
                 view.message_other_line.visibility = View.GONE
                 view.message.visibility = View.GONE
             }
-            view.chat_other_date.text = chat.msg_dt
+            view.chat_other_date.text = dateParser(chat.msg_dt)
             view.message_other_tv.text = chat.source_text
             view.message.text = chat.target_text
-            view.other_chat_time.text = chat.msg_dt
+            view.other_chat_time.text = timeParser(chat.msg_dt)
         }
 
         fun dateVisible(position: Int) {
             if (position == 0) {
-                view.chat_time.visibility = View.VISIBLE
-                view.chat_date.visibility = View.VISIBLE
+                view.other_chat_time.visibility = View.VISIBLE
+                view.chat_other_date.visibility = View.VISIBLE
             } else {
                 val prev = dateParser(chatList[position - 1].msg_dt)
                 val current = dateParser(chatList[position].msg_dt)
                 if (prev.equals(current)) {
-                    view.chat_date.visibility = View.GONE
+                    view.chat_other_date.visibility = View.GONE
                 } else {
-                    view.chat_time.visibility = View.VISIBLE
-                    view.chat_date.visibility = View.VISIBLE
+                    view.other_chat_time.visibility = View.VISIBLE
+                    view.chat_other_date.visibility = View.VISIBLE
                 }
             }
         }
 
         private fun dateParser(dt: String): String {
-            val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-            val sdf2 = SimpleDateFormat("yyyy.MM.dd (E)")
+            val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm")
+            val sdf2 = SimpleDateFormat("yyyy.MM.dd")
             try {
                 val date = sdf.parse(dt)
                 val dt2 = sdf2.format(date)
+
+                return dt2
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+
+            return ""
+        }
+
+        private fun timeParser(dt: String): String {
+            val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm")
+            val sdf2 = SimpleDateFormat("h:mm a")
+            try {
+                val time = sdf.parse(dt)
+                val dt2 = sdf2.format(time)
 
                 return dt2
             } catch (e: Exception) {

@@ -35,7 +35,7 @@ class RegistActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(activity_regist)
 
-        //common_title_regist.setTitle("사용자 정보")
+        common_title_regist.setTitle(getString(R.string.title_regist))
 
         touristFragment = registTouristFragment()
         guideFragment = registGuideFragment()
@@ -127,7 +127,7 @@ class RegistActivity : AppCompatActivity() {
     }
 
     fun gotoLogin(){
-        val intentAct = Intent(this, LoginActivity::class.java)
+        val intentAct = Intent(this, RegistCompleteActivity::class.java)
         startActivity(intentAct)
         finish()
         //로그인으로 되돌아가는 부

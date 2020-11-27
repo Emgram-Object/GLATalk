@@ -5,7 +5,7 @@
 
     <string name="welcome_select_lang">Welcome!\nPlease select a language.</string>
     <string name="find_pwd">Find Password</string>
-    <string name="find_pwd_info">Please enter your registered email address. We will send you a temporary password to the email you entered.</string>
+    <string name="find_pwd_info">Please enter your registered email address.\nWe will send you a temporary password to the email you entered.</string>
 
     <string name="id">ID(E-mail)</string>
     <string name="pwd">Password</string>
@@ -74,9 +74,18 @@
     <string name="guide_info">Guide Information</string>
     <string name="enable_time">Possible Time</string>
     <string name="last_time">Last Chat Time</string>
-    <string name="chatting">대화중</string>
+    <string name="chatting">in conversation</string>
     <string name="new_message">New message</string>
 
     <string name="enable_guide_chat">가이드 활성화</string>
     <string name="activate_chat">채팅 받기 활성화</string>
+
+    <string name="title_regist">사용자 정보</string>
+    <string name="title_myinfo">My Info</string>
+    <string name="title_modiy_myinfo">Change My Info</string>
+    <string name="title_pwdchange">Change password</string>
+    <string name="title_setting">Environment setting</string>
+
+    <string name="guide">Guide</string>
+    <string name="tourist">Tourist</string>
 </resources>

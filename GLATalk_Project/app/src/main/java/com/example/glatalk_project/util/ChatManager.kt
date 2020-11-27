@@ -4,6 +4,7 @@ import android.util.Log
 import com.example.glatalk_project.Data.ChatData
 import com.example.glatalk_project.Data.InitData
 import com.google.gson.Gson
+import io.socket.client.Ack
 import io.socket.client.IO
 import io.socket.client.Socket
 import io.socket.emitter.Emitter
@@ -12,8 +13,8 @@ import java.lang.Exception
 
 class ChatManager{
     private lateinit var mSocket:Socket
-    private lateinit var sender_id: String
-    private lateinit var receiver_id: String
+    private lateinit var sender: String
+    private lateinit var receiver: String
     private lateinit var room_id: String
     private val gson: Gson = Gson()
     private var onChatListener: OnChatListener? = null
@@ -31,8 +32,8 @@ class ChatManager{
             Log.d("Socket", "Failed to connect")
         }
 
-        this.sender_id = sender
-        this.receiver_id = receiver
+        this.sender = sender
+        this.receiver = receiver
         this.room_id = room_id
 
         mSocket.on(Socket.EVENT_CONNECT, onConnect)
@@ -45,18 +46,19 @@ class ChatManager{
     }
 
     fun userCount(){
-        val data = InitData(sender_id, receiver_id, room_id)
+        val data = InitData(sender, receiver, room_id)
         val jsonData = gson.toJson(data)
         mSocket.emit("userCount", jsonData)
     }
 
     fun sendMessage(chatData: ChatData?) {
         val jsonData = gson.toJson(chatData)
+        Log.d("sendMessage", jsonData.toString())
         mSocket.emit("newMessage", jsonData)
     }
 
     fun release() {
-        val data = InitData(sender_id, receiver_id, room_id)
+        val data = InitData(sender, receiver, room_id)
         val jsonData = gson.toJson(data)
         mSocket.emit("unsubscribe", jsonData)
         mSocket.disconnect()
@@ -66,7 +68,7 @@ class ChatManager{
         mSocket.off(Socket.EVENT_CONNECT_TIMEOUT, onConnectError)
         mSocket.off("updateChat", onUpdateChat)
         mSocket.off("userCountRcv", onUserCountRcv)
-
+        Log.d("Socket", "off")
         onChatListener = null
     }
 
@@ -77,7 +79,7 @@ class ChatManager{
 
     private var onConnect = Emitter.Listener {
         Log.d(TAG, "onConnect")
-        val data = InitData(sender_id, receiver_id, room_id)
+        val data = InitData(sender, receiver, room_id)
         val jsonData = gson.toJson(data)
         mSocket.emit("subscribe", jsonData)
         onChatListener?.onConnected()

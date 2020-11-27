@@ -1,7 +1,9 @@
 package com.example.glatalk_project.Activity
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.example.glatalk_project.Data.ProfileData
 import com.example.glatalk_project.R
 import com.example.glatalk_project.constant.languageCode
 import com.example.glatalk_project.util.LocaleHelper
@@ -19,8 +21,17 @@ class SettingActivity: AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
 
-        val lang = LocaleHelper.getLanguage(this)
+        common_title_setting.setTitle(getString(R.string.title_setting))
 
+        if(ProfileData.user_type.equals("tourist")){
+            setting_line.visibility = View.GONE
+            guide_chat_switch.visibility = View.GONE
+        } else {
+            setting_line.visibility = View.VISIBLE
+            guide_chat_switch.visibility = View.VISIBLE
+        }
+
+        val lang = LocaleHelper.getLanguage(this)
         defaultSelection(lang)
 
         lang_korea_rb.setOnClickListener {
