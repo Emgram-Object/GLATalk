@@ -7,6 +7,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.Model.MyDao
 import com.example.glatalk_project.Data.PwdData
@@ -24,8 +25,8 @@ import retrofit2.Response
 class PwdChangeActivity : AppCompatActivity() {
 
     private var myDao = MyDao
-    var current:String = ""
-    var new:String = ""
+    var current: String = ""
+    var new: String = ""
     var pwdData = PwdData()
 
 
@@ -33,14 +34,14 @@ class PwdChangeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pwd_change)
 
-        var currentPwd:EditText = pwd_change_current_et
-        var newPwd:EditText = pwd_change_new_et
-        var newPwdCheck:EditText = pwd_change_check_et
+        var currentPwd: EditText = pwd_change_current_et
+        var newPwd: EditText = pwd_change_new_et
+        var newPwdCheck: EditText = pwd_change_check_et
 
 
         var textWatcher = object : TextWatcher {
-               override fun afterTextChanged(s: Editable) {
-                if (newPwd.text.isNotEmpty() && currentPwd.text.isNotEmpty()&& newPwdCheck.text.isNotEmpty()) {
+            override fun afterTextChanged(s: Editable) {
+                if (newPwd.text.isNotEmpty() && currentPwd.text.isNotEmpty() && newPwdCheck.text.isNotEmpty()) {
                     Btn_On()
                 } else {
                     Btn_Off()
@@ -60,29 +61,35 @@ class PwdChangeActivity : AppCompatActivity() {
         pwd_change_ok.setOnClickListener {
             current = pwd_change_current_et.text.toString()
             new = pwd_change_new_et.text.toString()
-            if (TextUtil.pwdVerify(pwd_change_new_et.text.toString())
-                    && (new == pwd_change_check_et.text.toString()) ){
-                changePwdNetworking()
-                gotoMyInfo()
+            if (pwd_change_new_et.text.toString().length==8) {
+                if (TextUtil.pwdVerify(pwd_change_new_et.text.toString())
+                        && (new == pwd_change_check_et.text.toString())) {
+                    changePwdNetworking()
+                    gotoMyInfo()
+                }
+                Toast.makeText(this, "비밀번호와 비밀번호 확인이 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(this, "비밀번호는 8자리 이상이어야 합니다.", Toast.LENGTH_SHORT).show()
+
             }
-            Log.d("Wrong", "비밀번호 일치 안함")
         }
         //통신
 
         //
-         }
+    }
 
-    private fun changePwdNetworking(){
+    private fun changePwdNetworking() {
         Log.d("login", "${TokenData.loginToken}")
-        myDao.change_pwd(pwdRequest = PwdRequest(current,new), callback = object :Callback<BaseResponse> {
+        myDao.change_pwd(pwdRequest = PwdRequest(current, new), callback = object : Callback<BaseResponse> {
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
             }
+
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
                 var result = response.body()!!
                 pwdData.resultCode = result.resultCode.toString()
-                pwdData.desc =result.desc.toString()
+                pwdData.desc = result.desc.toString()
                 Log.d("TAG", "${response.headers().get("Authorization")}")
-                if (response.isSuccessful){
+                if (response.isSuccessful) {
                     Log.d("result", "${pwdData.resultCode}")
                     Log.d("result", "${pwdData.desc}")
                 }

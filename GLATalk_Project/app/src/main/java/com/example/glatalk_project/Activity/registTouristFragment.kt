@@ -14,19 +14,22 @@ import kotlinx.android.synthetic.main.activity_regist.*
 
 class registTouristFragment:Fragment() {
 
+    lateinit var reg_tourist_name_et:EditText
+    lateinit var reg_tourist_phone_et:EditText
+    lateinit var textWatcher:TextWatcher
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_reg_tour,null)
-        val textWatcher = object : TextWatcher {
+        textWatcher = object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
                 var temp = activity as RegistActivity
                 var inputId = (activity as RegistActivity).reg_email_et
                 var inputPwd = (activity as RegistActivity).reg_pwd_et
                 var inputPwdCheck = (activity as RegistActivity).reg_pwd_check_et
-                Log.d("TAG", "afterTextChanged: ${inputId.text} ${inputPwd.text} ${inputPwdCheck.text}")
                 if (inputId.text.isNotEmpty() && inputPwd.text.isNotEmpty() && inputPwdCheck.text.isNotEmpty()) {
                     if (view.findViewById<EditText>(R.id.reg_tourist_name_et).text.isNotEmpty()
                             //        && view.findViewById<Spinner>(R.id.country_guide_sp).isSelected
@@ -52,10 +55,19 @@ class registTouristFragment:Fragment() {
         inputPwd.addTextChangedListener(textWatcher)
         inputPwdCheck.addTextChangedListener(textWatcher)
 
-        view.findViewById<EditText>(R.id.reg_tourist_name_et).addTextChangedListener(textWatcher)
-        view.findViewById<EditText>(R.id.reg_tourist_phone_et).addTextChangedListener(textWatcher)
+        reg_tourist_name_et = view.findViewById<EditText>(R.id.reg_tourist_name_et)
+        reg_tourist_name_et.addTextChangedListener(textWatcher)
 
+        reg_tourist_phone_et = view.findViewById<EditText>(R.id.reg_tourist_phone_et)
+        reg_tourist_phone_et.addTextChangedListener(textWatcher)
 
         return view
+    }
+
+    override fun onPause() {
+        super.onPause()
+        reg_tourist_name_et.removeTextChangedListener(textWatcher)
+        reg_tourist_phone_et.removeTextChangedListener(textWatcher)
+
     }
 }
