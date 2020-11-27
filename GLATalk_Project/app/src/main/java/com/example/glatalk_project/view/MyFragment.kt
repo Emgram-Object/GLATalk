@@ -15,6 +15,7 @@ import com.example.glatalk_project.Data.ProfileData
 import com.example.glatalk_project.Data.TokenData
 import com.example.glatalk_project.Model.MyDao
 import com.example.glatalk_project.R
+import com.example.glatalk_project.constant.C
 import kotlinx.android.synthetic.main.fragment_my.*
 import kotlinx.android.synthetic.main.fragment_my.view.*
 
@@ -59,11 +60,13 @@ class MyFragment : Fragment() {
     private fun goToMyInfo() {
         val intent = Intent(context, MyInfoActivity::class.java)
         startActivity(intent)
+        C.TitleBackBtn.closeOR = true
     }
 
     private fun goToSetting() {
         val intent = Intent(context, SettingActivity::class.java)
         startActivity(intent)
+        C.TitleBackBtn.closeOR = false
     }
 
     private fun goToTerm() {

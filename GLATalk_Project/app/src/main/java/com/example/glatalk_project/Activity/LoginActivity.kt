@@ -6,10 +6,13 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.view.View.GONE
 import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.Data.TokenData
 import com.example.glatalk_project.Data.UserData
+import com.example.glatalk_project.MainApplication
 import com.example.glatalk_project.Model.MyDao
 import com.example.glatalk_project.Model.UserDAO
 import com.example.glatalk_project.MoveActivity
@@ -17,7 +20,10 @@ import com.example.glatalk_project.R
 import com.example.glatalk_project.network.data.request.LoginRequest
 import com.example.glatalk_project.network.data.response.BaseResponse
 import com.example.glatalk_project.util.TextUtil
+import com.example.glatalk_project.constant.C
+import com.example.glatalk_project.view.Popup
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.ui_popup_custom.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,7 +36,6 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
     var userData = UserData()
     var tokenData = TokenData
     var loginResult: String = ""
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,11 +84,9 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
 
 
         })
-
     }
 
     private fun loginNetworking() {
-
         userDAO.login(loginRequest = LoginRequest(input_user_email, input_user_pwd), callback = object : Callback<BaseResponse> {
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
             }
@@ -94,6 +97,7 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
                 userData.resultCode = result.resultCode.toString()
                 userData.desc = result.desc.toString()
                 Log.d("result", "$loginResult")
+                showPop()
                 if (response.isSuccessful) {
                     if (userData.resultCode == "0") {
                         tokenData.loginToken = result.body.toString()
@@ -107,19 +111,35 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
                     } else {
                         Log.d("result", "${userData.resultCode}")
                         Log.d("result", "${userData.desc}")
+                        showPop()
                     }
 //                    MyDao.getInfo(this@LoginActivity)
                 }
             }
         })
+
     }
 
     private fun Btn_On() {
         //색 바꾸기
         login_btn.isEnabled = true
         login_btn.setBackgroundResource(R.drawable.rounded_square)
-
     }
+
+    private fun showPop(){
+        val popUp = Popup(this)
+
+        if(userData.resultCode == "20001"||userData.resultCode =="20002") {
+
+            C.TitleBackBtn.poptext="${userData.desc}"
+            popUp.start("${C.TitleBackBtn.poptext}")
+            val vanishBtn = popUp.popup.fst_btn
+            vanishBtn.visibility = GONE
+            val cancelBTN = popUp.popup.snd_btn
+            cancelBTN.text = MainApplication.getString(R.string.btn_ok)
+        }
+    }
+
 
     private fun Btn_Off() {
         login_btn.isEnabled = false
@@ -149,6 +169,8 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
     override fun move() {
         goHome()
     }
+
+
 }
 
 
