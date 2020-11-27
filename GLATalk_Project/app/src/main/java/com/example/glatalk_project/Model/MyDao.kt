@@ -1,13 +1,7 @@
 package com.example.glatalk_project.Model
 
 import android.util.Log
-<<<<<<< HEAD
 import com.example.glatalk_project.Activity.LoginActivity
-import com.example.glatalk_project.Data.ChatRoom
-=======
-import androidx.annotation.Nullable
-import com.example.glatalk_project.Data.ChatData
->>>>>>> feature/visible
 import com.example.glatalk_project.Data.ProfileData
 import com.example.glatalk_project.Data.TokenData
 import com.example.glatalk_project.network.ApiServer
