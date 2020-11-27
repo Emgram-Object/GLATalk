@@ -9,6 +9,7 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.EditText
 import android.widget.RadioButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import com.example.glatalk_project.Model.UserDAO
@@ -56,10 +57,12 @@ class RegistActivity : AppCompatActivity() {
             changeGuideFragement()
         })
 
+        //프래그먼트 전환 반복하면 에러남.
 
         reg_next_btn.setOnClickListener(View.OnClickListener {
             if (reg_guide_radio_bnt.isChecked) {
                 getGuideData()
+
 //<<<<<<< HEAD
 //                addNetworking()
 //                gotoLogin()
@@ -69,22 +72,38 @@ class RegistActivity : AppCompatActivity() {
 //                addNetworking()
 //                gotoLogin()
 //=======
-                if (reg_pwd_et.text.toString() == reg_pwd_check_et.text.toString()) {
-                    addNetworking()
-                    gotoRegComplete()
+//                if (reg_pwd_et.text.toString() == reg_pwd_check_et.text.toString()) {
+//                    addNetworking()
+//                    gotoRegComplete()
+//=======
+                if (reg_pwd_et.text.toString().length == 8) {
+                    if (reg_pwd_et.text.toString() == reg_pwd_check_et.text.toString()) {
+                        addNetworking()
+                        gotoRegComplete()
+                    } else {
+                        Toast.makeText(this, "비밀번호와 비밀번호 확인이 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
+                    }
+                }else {
+                    Toast.makeText(this, "비밀번호는 8자리 이상이어야 합니다.", Toast.LENGTH_SHORT).show()
+
                 }
-                Log.d("wrong", "실패실패")
-
-
             } else if (reg_tour_radio_bnt.isChecked) {
                 getTouristData()
-                if (reg_pwd_et.text.toString() == reg_pwd_check_et.text.toString()) {
-                    addNetworking()
-                    gotoRegComplete()
+                if (reg_pwd_et.text.toString().length == 8) {
+                    if (reg_pwd_et.text.toString() == reg_pwd_check_et.text.toString()) {
+                        addNetworking()
+                        gotoRegComplete()
+                    } else {
+                        Toast.makeText(this, "비밀번호와 비밀번호 확인이 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
+                    }
+                }else {
+                    Toast.makeText(this, "비밀번호는 8자리 이상이어야 합니다.", Toast.LENGTH_SHORT).show()
                 }
+
                 Log.d("wrong", "실패실패")
 
-//>>>>>>> feature/textWatcher
+
+
             }
         })
 

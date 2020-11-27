@@ -19,6 +19,14 @@ import kotlinx.android.synthetic.main.fragment_reg_tour.*
 class registGuideFragment : Fragment() {
 
     lateinit var reg: EditText
+
+    lateinit var textWatcher:TextWatcher
+
+    lateinit var reg_guide_name_et : EditText
+    lateinit var reg_phone_et: EditText
+    lateinit var reg_guide_info_et: EditText
+    lateinit var reg_time_et: EditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -26,7 +34,7 @@ class registGuideFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_reg_guide, null)
-        val textWatcher = object : TextWatcher {
+        textWatcher = object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
                 var temp = activity as RegistActivity
                 var inputId = (activity as RegistActivity).reg_email_et
@@ -60,11 +68,26 @@ class registGuideFragment : Fragment() {
         inputPwd.addTextChangedListener(textWatcher)
         inputPwdCheck.addTextChangedListener(textWatcher)
 
-        view.findViewById<EditText>(R.id.reg_guide_name_et).addTextChangedListener(textWatcher)
-        view.findViewById<EditText>(R.id.reg_phone_et).addTextChangedListener(textWatcher)
-        view.findViewById<EditText>(R.id.reg_guide_info_et).addTextChangedListener(textWatcher)
-        view.findViewById<EditText>(R.id.reg_time_et).addTextChangedListener(textWatcher)
+        reg_guide_name_et = view.findViewById<EditText>(R.id.reg_guide_name_et)
+        reg_guide_name_et.addTextChangedListener(textWatcher)
+
+        reg_phone_et = view.findViewById<EditText>(R.id.reg_phone_et)
+        reg_phone_et.addTextChangedListener(textWatcher)
+
+        reg_guide_info_et = view.findViewById<EditText>(R.id.reg_guide_info_et)
+        reg_guide_info_et.addTextChangedListener(textWatcher)
+
+        reg_time_et = view.findViewById<EditText>(R.id.reg_time_et)
+        reg_time_et.addTextChangedListener(textWatcher)
 
         return view
+    }
+
+    override fun onPause()  {
+        super.onPause()
+        reg_guide_name_et.removeTextChangedListener(textWatcher)
+        reg_phone_et.removeTextChangedListener(textWatcher)
+        reg_guide_info_et.removeTextChangedListener(textWatcher)
+        reg_time_et.removeTextChangedListener(textWatcher)
     }
 }
