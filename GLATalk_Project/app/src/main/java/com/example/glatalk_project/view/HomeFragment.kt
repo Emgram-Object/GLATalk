@@ -13,6 +13,7 @@ import com.example.glatalk_project.Data.ProfileData
 import com.example.glatalk_project.R
 import com.example.glatalk_project.Adapter.ChatRoomListAdapter
 import com.example.glatalk_project.Data.ChatRoom
+import com.example.glatalk_project.Model.ChatDAO
 import com.example.glatalk_project.network.data.response.BaseResponse
 import com.example.glatalk_project.network.data.response.HomeResponse
 import kotlinx.android.synthetic.main.fragment_home_guide.view.*
@@ -59,9 +60,10 @@ class HomeFragment : Fragment() {
         //리사이클러뷰 롱클릭리스너
         adapter.setItemLongClickListener(object : ChatRoomListAdapter.OnItemLongClickListener {
             override fun onLongClick(v: View, position: Int): Boolean {
-                val result = roomList.remove(roomList[position])
-                adapter.notifyDataSetChanged()
-                return result
+//                val result = roomList.remove(roomList[position])
+//                adapter.notifyDataSetChanged()
+                ChatDAO.ChatDelete(roomList[position].room_id) //채팅내역삭제 api 호출(팝업띄워서 ok눌렀을때만 삭제되게 해주세용!)
+                return true
             }
         })
         return view

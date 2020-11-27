@@ -42,8 +42,6 @@ class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>, private v
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        var new_msg = ChatRoom().new_msg
-        var chat_yn = ChatRoom().chat_yn
 
         when (holder) {
             is GuideRoomViewHolder -> {
@@ -106,7 +104,7 @@ class ChatRoomListAdapter(private val roomList: MutableList<ChatRoom>, private v
 
             view.room_name_tv.text = item.tourist_name
 
-            view.room_state_tv.text = R.string.new_message.toString()
+            view.room_state_tv.text = context.getString(R.string.new_message)
             if(item.new_msg == true){
                 view.room_state_tv.visibility = View.VISIBLE
             } else {
