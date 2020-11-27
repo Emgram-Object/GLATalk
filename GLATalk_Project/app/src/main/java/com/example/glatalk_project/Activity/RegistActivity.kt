@@ -2,13 +2,10 @@ package com.example.glatalk_project.Activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
-import android.widget.EditText
-import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
@@ -30,7 +27,6 @@ class RegistActivity : AppCompatActivity() {
     lateinit var guideFragment: registGuideFragment
     lateinit var touristFragment: registTouristFragment
     private var userDAO = UserDAO
-
     lateinit var textWatcher: TextWatcher
 
 //    lateinit var country_guide_sp :Spinner
@@ -45,7 +41,6 @@ class RegistActivity : AppCompatActivity() {
 
         touristFragment = registTouristFragment()
         guideFragment = registGuideFragment()
-
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         reg_tour_radio_bnt.setOnClickListener(View.OnClickListener {
@@ -127,6 +122,29 @@ class RegistActivity : AppCompatActivity() {
                 .commit()
     }
 
+
+
+//    fun country_gd(){
+////        country_sp_g = reg_guide_country_select_sp
+//        val country_sp_g = country_guide_sp
+//        val countryList = CountryAdapter().countryList
+//        val arrayAdapter = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, countryList)
+//        country_sp_g.adapter = arrayAdapter
+//
+//        country_sp_g.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//            override fun onNothingSelected(parent: AdapterView<*>?) {
+//                TODO("Not yet implemented")}
+//
+//            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+////                parent?.getItemAtPosition(position)
+////                Log.d("nm", "${countryList[position]}")
+//                userDAO.userVO.country_cd = C.NationalCode.values()[position].country_cd
+//                Log.d("코드", "${UserDAO.userVO.country_cd}")
+//            }
+//        }
+
+//    }
+
     fun addNetworking() {
 
         UserDAO.add(userRequest = UserRequest(userDAO.userVO.user_name, userDAO.userVO.user_email, userDAO.userVO.user_type, userDAO.userVO.user_pwd,
@@ -149,11 +167,13 @@ class RegistActivity : AppCompatActivity() {
         userDAO.userVO.user_type = "guide"
         userDAO.userVO.user_name = reg_guide_name_et.text.toString()
         // userDAO.userVO.country_cd = reg_country_select_tv.text.toString()  -> 스피너 값 받는거 함수만들어서 따로 처리 해서 추가.
-        userDAO.userVO.country_cd = "ko"
+        userDAO.userVO.country_cd
         userDAO.userVO.phone_number = reg_phone_et.text.toString()
         userDAO.userVO.guide_info = reg_guide_info_et.text.toString()
         userDAO.userVO.guide_time = reg_time_et.text.toString()
         userDAO.userVO.ad_agree = true
+
+        Log.d("regist_guide", "${userDAO.userVO.country_cd}")
     }
 
     fun getTouristData() {
@@ -162,10 +182,12 @@ class RegistActivity : AppCompatActivity() {
         userDAO.userVO.pwd_check = reg_pwd_check_et.text.toString()
         userDAO.userVO.user_type = "tourist"
         userDAO.userVO.user_name = reg_tourist_name_et.text.toString()
-        userDAO.userVO.country_cd = "ko"
-        // userDAO.userVO.country_cd = reg_tourist_country_select_tv.text.toString()  -> 스피너 값 받는거 함수만들어서 따로 처리 해서 추가.
+//        userDAO.userVO.country_cd = "ko"
+        userDAO.userVO.country_cd
         userDAO.userVO.phone_number = reg_tourist_phone_et.text.toString()
         userDAO.userVO.ad_agree = true
+
+        Log.d("regist_tour", "${userDAO.userVO.country_cd}")
 
     }
 
