@@ -2,9 +2,13 @@ package com.example.glatalk_project.Activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
+import android.widget.EditText
+import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import com.example.glatalk_project.Model.UserDAO
@@ -26,10 +30,11 @@ class RegistActivity : AppCompatActivity() {
     lateinit var touristFragment: registTouristFragment
     private var userDAO = UserDAO
 
+    lateinit var textWatcher: TextWatcher
+
 //    lateinit var country_guide_sp :Spinner
 //    val country_cd = resources.getStringArray(R.array.country_cd_list)
 //    val sp_adapter = ArrayAdapter.createFromResource(this, country_cd_list, android.R.layout.simple_dropdown_item_1line)
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +46,6 @@ class RegistActivity : AppCompatActivity() {
         guideFragment = registGuideFragment()
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-
 
         reg_tour_radio_bnt.setOnClickListener(View.OnClickListener {
             reg_guide_radio_bnt.isChecked = false
@@ -56,13 +60,31 @@ class RegistActivity : AppCompatActivity() {
         reg_next_btn.setOnClickListener(View.OnClickListener {
             if (reg_guide_radio_bnt.isChecked) {
                 getGuideData()
-                addNetworking()
-                gotoLogin()
+//<<<<<<< HEAD
+//                addNetworking()
+//                gotoLogin()
+//
+//            } else if (reg_tour_radio_bnt.isChecked) {
+//                getTouristData()
+//                addNetworking()
+//                gotoLogin()
+//=======
+                if (reg_pwd_et.text.toString() == reg_pwd_check_et.text.toString()) {
+                    addNetworking()
+                    gotoRegComplete()
+                }
+                Log.d("wrong", "실패실패")
+
 
             } else if (reg_tour_radio_bnt.isChecked) {
                 getTouristData()
-                addNetworking()
-                gotoLogin()
+                if (reg_pwd_et.text.toString() == reg_pwd_check_et.text.toString()) {
+                    addNetworking()
+                    gotoRegComplete()
+                }
+                Log.d("wrong", "실패실패")
+
+//>>>>>>> feature/textWatcher
             }
         })
 
@@ -74,6 +96,9 @@ class RegistActivity : AppCompatActivity() {
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .commit()
 
+//        touristFragment.reg_tourist_name_et.addTextChangedListener(textWatcher)
+//        touristFragment.reg_tourist_phone_et.addTextChangedListener(textWatcher)
+//        guideFragmentManager.country_guide_sp.addOnAttachStateChangeListener()
     }
 
     fun changeGuideFragement() {
@@ -85,8 +110,8 @@ class RegistActivity : AppCompatActivity() {
 
     fun addNetworking() {
 
-        UserDAO.add(userRequest = UserRequest(userDAO.userVO.user_name,userDAO.userVO.user_email,userDAO.userVO.user_type,userDAO.userVO.user_pwd,
-        userDAO.userVO.phone_number,userDAO.userVO.country_cd,userDAO.userVO.guide_info,userDAO.userVO.guide_time,userDAO.userVO.ad_agree),callback = object : Callback<BaseResponse> {
+        UserDAO.add(userRequest = UserRequest(userDAO.userVO.user_name, userDAO.userVO.user_email, userDAO.userVO.user_type, userDAO.userVO.user_pwd,
+                userDAO.userVO.phone_number, userDAO.userVO.country_cd, userDAO.userVO.guide_info, userDAO.userVO.guide_time, userDAO.userVO.ad_agree), callback = object : Callback<BaseResponse> {
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
                 Log.d("add", "fail")
             }
@@ -96,7 +121,6 @@ class RegistActivity : AppCompatActivity() {
             }
         })
 
-
     }
 
     fun getGuideData() {
@@ -104,7 +128,7 @@ class RegistActivity : AppCompatActivity() {
         userDAO.userVO.user_pwd = reg_pwd_et.text.toString()
         userDAO.userVO.pwd_check = reg_pwd_check_et.text.toString()
         userDAO.userVO.user_type = "guide"
-        userDAO.userVO.user_name = reg_name_et.text.toString()
+        userDAO.userVO.user_name = reg_guide_name_et.text.toString()
         // userDAO.userVO.country_cd = reg_country_select_tv.text.toString()  -> 스피너 값 받는거 함수만들어서 따로 처리 해서 추가.
         userDAO.userVO.country_cd = "ko"
         userDAO.userVO.phone_number = reg_phone_et.text.toString()
@@ -126,7 +150,24 @@ class RegistActivity : AppCompatActivity() {
 
     }
 
-    fun gotoLogin(){
+//<<<<<<< HEAD
+//    fun gotoLogin(){
+//=======
+    internal fun Btn_On() {
+        //색 바꾸기
+        reg_next_btn.isEnabled = true
+        reg_next_btn.setBackgroundResource(R.color.primary_color)
+
+    }
+
+    internal fun Btn_Off() {
+        reg_next_btn.isEnabled = false
+        reg_next_btn.setBackgroundResource(R.color.square_dim_color)
+    }
+
+
+    fun gotoRegComplete() {
+//>>>>>>> feature/textWatcher
         val intentAct = Intent(this, RegistCompleteActivity::class.java)
         startActivity(intentAct)
         finish()

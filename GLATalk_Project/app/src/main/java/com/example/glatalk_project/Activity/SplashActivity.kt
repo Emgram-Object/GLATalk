@@ -21,9 +21,6 @@ class SplashActivity : AppCompatActivity(), MoveActivity {
         //FirstSetLanguage 값이 SharedPreference로 저장, 그 값의 유무를 판단
 
         //if, FirstSetLanguage 값 true -> go to Login Page
-
-        gotoFirstLang()
-
         if (LocaleHelper.haveLangValue()) {
             if (UserDAO.isAutoLogin()) {
                 TokenData.loginToken = userDao.getLoginToken()
@@ -34,11 +31,6 @@ class SplashActivity : AppCompatActivity(), MoveActivity {
         }else{
             gotoFirstLang()
         }
-
-        //Log.d("dsadd", "${C.Preference.SELECTED_LANGUAGE}")
-        //autoLogin의 유무를 boolean으로 저장 후(sharedPreference), 그 값으로 판단
-        //else, go to FirstSetLanguage
-        //gotoFirstLang()
     }
 
 

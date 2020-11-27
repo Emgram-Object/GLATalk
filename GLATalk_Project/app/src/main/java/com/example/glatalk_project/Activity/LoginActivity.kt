@@ -2,22 +2,25 @@ package com.example.glatalk_project.Activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import com.example.glatalk_project.Model.UserDAO
-import com.example.glatalk_project.R
 import com.example.glatalk_project.Data.TokenData
 import com.example.glatalk_project.Data.UserData
 import com.example.glatalk_project.Model.MyDao
+import com.example.glatalk_project.Model.UserDAO
 import com.example.glatalk_project.MoveActivity
-import com.example.glatalk_project.network.data.response.BaseResponse
+import com.example.glatalk_project.R
 import com.example.glatalk_project.network.data.request.LoginRequest
+import com.example.glatalk_project.network.data.response.BaseResponse
+import com.example.glatalk_project.util.TextUtil
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.system.exitProcess
 
 class LoginActivity : AppCompatActivity(), MoveActivity {
 
@@ -28,15 +31,32 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
     var tokenData = TokenData
     var loginResult: String = ""
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_login)
 
-//        if (login_email_et.text.toString().isNotBlank() && login_pwd_et.text.toString().isNotBlank()) {
-//            Btn_Enable()
-//           //addTextChangeListener 사용
-//        }
+        var inputId: EditText = login_email_et
+        var inputPwd: EditText = login_pwd_et
+
+
+        var textWatcher = object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {
+                if (inputId.text.isNotEmpty() && inputPwd.text.isNotEmpty()) {
+                    Btn_On()
+                } else {
+                    Btn_Off()
+                }
+            }
+
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+        }
+
+        inputId.addTextChangedListener(textWatcher)
+        inputPwd.addTextChangedListener(textWatcher)
 
         login_regist_tv.setOnClickListener {
             toRegist()
@@ -45,17 +65,21 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
             toPwdFind()
         }
         close_btn.setOnClickListener {
-            exitProcess(0)//어떤 이유인지는 모르겠지만 안꺼짐..
+            finish()
+            //어떤 이유인지는 모르겠지만 안꺼짐..
         } // 누르면 팝업창 떠서 앱을 종료하겠냐고 물어본다음 확인 누르면 프로세스 종료하는 걸로 할 예정임
 
 
-        Btn_Enable()
         login_btn.setOnClickListener(View.OnClickListener {
-            input_user_email = login_email_et.text.toString()
-            input_user_pwd = login_pwd_et.text.toString()
-            loginNetworking()
+            if (TextUtil.idVerify(login_email_et.text.toString())) {
+                input_user_email = login_email_et.text.toString()
+                input_user_pwd = login_pwd_et.text.toString()
+                loginNetworking()
+            }
+
 
         })
+
     }
 
     private fun loginNetworking() {
@@ -73,7 +97,7 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
                 if (response.isSuccessful) {
                     if (userData.resultCode == "0") {
                         tokenData.loginToken = result.body.toString()
-                        if (login_auto_cb.isChecked){
+                        if (login_auto_cb.isChecked) {
                             userDAO.setAutoLogin(true)
                             userDAO.setLoginToken(TokenData.loginToken.toString())
                             Log.d("loginToken3", "${TokenData.loginToken}")
@@ -90,12 +114,18 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
         })
     }
 
-    private fun Btn_Enable() {
-        if (login_btn.isEnabled) {
-            //색 바꾸기
-            login_btn.setBackgroundResource(R.drawable.rounded_square)
-        }
+    private fun Btn_On() {
+        //색 바꾸기
+        login_btn.isEnabled = true
+        login_btn.setBackgroundResource(R.drawable.rounded_square)
+
     }
+
+    private fun Btn_Off() {
+        login_btn.isEnabled = false
+        login_btn.setBackgroundResource(R.drawable.rounded_square_dim)
+    }
+
 
     private fun goHome() {
 
@@ -120,6 +150,8 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
         goHome()
     }
 }
+
+
 
 
 
