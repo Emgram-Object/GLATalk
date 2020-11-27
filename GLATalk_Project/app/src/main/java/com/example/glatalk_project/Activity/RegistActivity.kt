@@ -71,7 +71,7 @@ class RegistActivity : AppCompatActivity() {
 //                    addNetworking()
 //                    gotoRegComplete()
 //=======
-                if (reg_pwd_et.text.toString().length == 8) {
+                if (reg_pwd_et.text.toString().length >= 8) {
                     if (reg_pwd_et.text.toString() == reg_pwd_check_et.text.toString()) {
                         addNetworking()
                         gotoRegComplete()
@@ -84,7 +84,7 @@ class RegistActivity : AppCompatActivity() {
                 }
             } else if (reg_tour_radio_bnt.isChecked) {
                 getTouristData()
-                if (reg_pwd_et.text.toString().length == 8) {
+                if (reg_pwd_et.text.toString().length >= 8) {
                     if (reg_pwd_et.text.toString() == reg_pwd_check_et.text.toString()) {
                         addNetworking()
                         gotoRegComplete()
