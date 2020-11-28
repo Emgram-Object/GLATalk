@@ -38,9 +38,9 @@ class PwdChangeActivity : AppCompatActivity() {
 
         common_title_pwd_change.setTitle(getString(R.string.title_pwdchange))
 
-        var currentPwd:EditText = pwd_change_current_et
-        var newPwd:EditText = pwd_change_new_et
-        var newPwdCheck:EditText = pwd_change_check_et
+        var currentPwd: EditText = pwd_change_current_et
+        var newPwd: EditText = pwd_change_new_et
+        var newPwdCheck: EditText = pwd_change_check_et
 
         var textWatcher = object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
@@ -50,9 +50,7 @@ class PwdChangeActivity : AppCompatActivity() {
                     Btn_Off()
                 }
             }
-
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
         }
 
@@ -63,25 +61,23 @@ class PwdChangeActivity : AppCompatActivity() {
         pwd_change_ok.setOnClickListener {
             current = pwd_change_current_et.text.toString()
             new = pwd_change_new_et.text.toString()
-            if (pwd_change_new_et.text.toString().length==8) {
-                if (TextUtil.pwdVerify(pwd_change_new_et.text.toString())
-                        && (new == pwd_change_check_et.text.toString())) {
+            if (pwd_change_new_et.text.toString().length >= 8) {
+                if (new == pwd_change_check_et.text.toString()) {
                     changePwdNetworking()
                     gotoMyInfo()
+                } else {
+                    Toast.makeText(this, "비밀번호와 비밀번호 확인이 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
                 }
-                Toast.makeText(this, "비밀번호와 비밀번호 확인이 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
-            }else{
+            } else {
                 Toast.makeText(this, "비밀번호는 8자리 이상이어야 합니다.", Toast.LENGTH_SHORT).show()
-
             }
         }
 
         //통신
 
         //
-//        C.TitleBackBtn.poptext = "${MainApplication.getString(R.string.)}"
         C.TitleBackBtn.poptext = "변경사항이 저장되지 않습니다.\n이전화면으로 돌아가시겠습니까?"
-         }
+    }
 
     private fun changePwdNetworking() {
         Log.d("login", "${TokenData.loginToken}")
@@ -123,7 +119,7 @@ class PwdChangeActivity : AppCompatActivity() {
         finish()
     }
 
-    fun goback(){
+    fun goback() {
         val popUp = Popup(this)
         popUp.start("${C.TitleBackBtn.poptext}")
         val pop_up = popUp.popup
@@ -136,7 +132,7 @@ class PwdChangeActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-       goback()
+        goback()
         C.TitleBackBtn.closeOR = true
     }
 
