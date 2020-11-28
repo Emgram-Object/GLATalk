@@ -28,6 +28,7 @@
         <activity android:name=".Activity.RegistCompleteActivity"/>
         <activity android:name=".Activity.LoginActivity"/>
         <activity android:name=".Activity.InfoChangeActivity"/>
+        <activity android:name=".Activity.FirstLanguageActivity"/>
         <activity android:name=".Activity.MainActivity"/>
         <activity android:name=".Activity.RegistActivity"/>
         <activity android:name=".Activity.PwdFindActivity"/>
