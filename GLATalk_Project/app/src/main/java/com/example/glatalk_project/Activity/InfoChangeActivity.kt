@@ -44,6 +44,7 @@ class InfoChangeActivity : AppCompatActivity() {
         common_title_info_change.setTitle(getString(R.string.title_modiy_myinfo))
         C.TitleBackBtn.poptext = "변경사항이 저장되지 않습니다.\n이전화면으로 돌아가시겠습니까?"
         setTexts()
+        Country_sp()
 
         modify_ok_btn.setOnClickListener {
             changeMyInfo()

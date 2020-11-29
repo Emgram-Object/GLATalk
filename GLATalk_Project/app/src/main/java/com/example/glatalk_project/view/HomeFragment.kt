@@ -36,8 +36,8 @@ class HomeFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_home_guide, container, false)
-        Log.d("home_token", "${TokenData.loginToken}")
-        Log.d("home_type", ProfileData.user_type)
+//        Log.d("home_token", "${TokenData.loginToken}")
+//        Log.d("home_type", ProfileData.user_type)
 
         //타이틀,통신 분기점
         if (ProfileData.user_type == "guide") {
@@ -105,11 +105,11 @@ class HomeFragment : Fragment() {
                     } catch (e: JSONException) {
                         e.printStackTrace()
                     }
-                    Log.d("Tour_Home", "성공" + resultCode + desc)
+//                    Log.d("Tour_Home", "성공" + resultCode + desc)
                 }
             }
             override fun onFailure(call: Call<HomeResponse>, t: Throwable) {
-                Log.d("Tour_Home", "실패")
+//                Log.d("Tour_Home", "실패")
             }
         })
     }
@@ -131,11 +131,11 @@ class HomeFragment : Fragment() {
                 } catch (e: JSONException) {
                     e.printStackTrace()
                 }
-                Log.d("Tour_Home", "성공" + roomList)
+//                Log.d("Tour_Home", "성공" + roomList)
             }
 
             override fun onFailure(call: Call<HomeResponse>, t: Throwable) {
-                Log.d("Guide_Home", "실패")
+//                Log.d("Guide_Home", "실패")
             }
         })
     }
