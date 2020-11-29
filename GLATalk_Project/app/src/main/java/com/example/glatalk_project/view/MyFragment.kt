@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.ActionMode
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,12 +17,11 @@ import com.example.glatalk_project.Activity.SettingActivity
 import com.example.glatalk_project.BuildConfig
 import com.example.glatalk_project.Data.ProfileData
 import com.example.glatalk_project.Data.TokenData
-import com.example.glatalk_project.Model.MyDao
 import com.example.glatalk_project.R
 import com.example.glatalk_project.constant.C
-import kotlinx.android.synthetic.main.fragment_my.*
 import kotlinx.android.synthetic.main.fragment_my.view.*
 import kotlinx.android.synthetic.main.ui_popup_custom.*
+
 
 class MyFragment : Fragment() {
     private lateinit var callback: OnBackPressedCallback
@@ -49,7 +47,11 @@ class MyFragment : Fragment() {
         }
         view.my_setting_cl.setOnClickListener { goToSetting() }
         view.my_term_cl.setOnClickListener { goToTerm() }
-        view.my_logout_btn.setOnClickListener { goToLogin() }
+
+        view.my_logout_btn.setOnClickListener {
+            LogoutActivity.doLogout()
+            goToLogin()
+        }
         C.TitleBackBtn.poptext = "앱을 종료하시겠습니까?"
         return view
     }
@@ -70,24 +72,21 @@ class MyFragment : Fragment() {
     }
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-        my_logout_btn.setOnClickListener {
-            LogoutActivity.doLogout()
-            goToLogin()
-        }
-
     }
 
 
     private fun goToLogin() {
         val intent = Intent(context, LoginActivity::class.java)
         startActivity(intent)
+        Intent.FLAG_ACTIVITY_CLEAR_TOP
+        (context as? Activity)?.finish()
     }
 
     private fun goToMyInfo() {
         val intent = Intent(context, MyInfoActivity::class.java)
         startActivity(intent)
         C.TitleBackBtn.closeOR = true
+
     }
 
     private fun goToSetting() {

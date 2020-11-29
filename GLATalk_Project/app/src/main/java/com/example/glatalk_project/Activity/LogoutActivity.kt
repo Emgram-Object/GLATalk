@@ -1,6 +1,8 @@
 package com.example.glatalk_project.Activity
 
+import android.content.Intent
 import android.util.Log
+import androidx.core.content.ContextCompat.startActivity
 import com.example.glatalk_project.Data.TokenData
 import com.example.glatalk_project.Model.UserDAO
 import com.example.glatalk_project.Data.UserData
@@ -38,4 +40,5 @@ import retrofit2.Response
             }
         })
     }
+
 }

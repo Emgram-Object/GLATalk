@@ -17,6 +17,7 @@ import com.example.glatalk_project.view.Popup
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.ui_custom_tab.view.*
 import kotlinx.android.synthetic.main.ui_popup_custom.*
+import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity(){
     private lateinit var mContext: Context
@@ -59,13 +60,13 @@ class MainActivity : AppCompatActivity(){
     }
 
     override fun onBackPressed() {
-            val popUp = Popup(this)
-            popUp.start("${C.TitleBackBtn.poptext}")
-            val OKbtn = popUp.popup.fst_btn
-            OKbtn.setOnClickListener {
-                moveTaskToBack(true)
-                finish()
-                android.os.Process.killProcess(android.os.Process.myPid())
+        val popUp = Popup(this)
+        popUp.start("${C.TitleBackBtn.poptext}")
+        val OKbtn = popUp.popup.fst_btn
+        OKbtn.setOnClickListener {
+            moveTaskToBack(true)
+            finish()
+            exitProcess(0)
 
         }
     }

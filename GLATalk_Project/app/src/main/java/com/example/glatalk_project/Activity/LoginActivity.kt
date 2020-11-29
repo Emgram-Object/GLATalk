@@ -27,6 +27,7 @@ import kotlinx.android.synthetic.main.ui_popup_custom.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.system.exitProcess
 
 class LoginActivity : AppCompatActivity(), MoveActivity {
 
@@ -71,7 +72,8 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
             toPwdFind()
         }
         close_btn.setOnClickListener {
-            finish()
+            finishAffinity()
+            System.exit(1)
             //어떤 이유인지는 모르겠지만 안꺼짐..
         } // 누르면 팝업창 떠서 앱을 종료하겠냐고 물어본다음 확인 누르면 프로세스 종료하는 걸로 할 예정임
 
@@ -81,8 +83,7 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
                 input_user_email = login_email_et.text.toString()
                 input_user_pwd = login_pwd_et.text.toString()
                 loginNetworking()
-
-            }
+             }
 
 
         })
@@ -148,8 +149,8 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
 
 
     private fun goHome() {
-
         val intentAct = Intent(this, MainActivity::class.java)
+        Intent.FLAG_ACTIVITY_NO_HISTORY
         startActivity(intentAct)
         finish()
         //로그인한 계정 정보에 따라서 가이드 홈화면/관광객 홈화면 구분해서 넘어가기
@@ -157,19 +158,21 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
 
     private fun toRegist() {
         val intentAct = Intent(this, RegistActivity::class.java)
+        Intent.FLAG_ACTIVITY_NO_HISTORY
         startActivity(intentAct)
+        finish()
     }
 
     private fun toPwdFind() {
         val intentAct = Intent(this, PwdFindActivity::class.java)
+        Intent.FLAG_ACTIVITY_NO_HISTORY
         startActivity(intentAct)
+        finish()
     }
-
 
     override fun move() {
         goHome()
     }
-
 
 }
 

@@ -13,7 +13,9 @@ class RegistCompleteActivity :AppCompatActivity() {
 
         back_login_btn.setOnClickListener {
             val nextIntent = Intent(this, LoginActivity::class.java)
+            Intent.FLAG_ACTIVITY_NO_HISTORY
             startActivity(nextIntent)
+            finish()
         }
     }
 }

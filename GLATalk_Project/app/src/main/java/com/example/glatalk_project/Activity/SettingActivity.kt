@@ -84,7 +84,8 @@ class SettingActivity: AppCompatActivity(){
                 C.TitleBackBtn.closeOR = false
                 pop_up.dismiss()
                 finishAffinity()
-                val intent = Intent(this, LoginActivity::class.java)
+                val intent = Intent(this, SplashActivity::class.java)
+                Intent.FLAG_ACTIVITY_NO_HISTORY
                 startActivity(intent)
                 System.exit(0)
             }
