@@ -10,6 +10,7 @@ import com.example.glatalk_project.Data.TokenData
 import com.example.glatalk_project.R
 import com.example.glatalk_project.constant.C
 import kotlinx.android.synthetic.main.activity_my_info.*
+import kotlinx.android.synthetic.main.activity_my_info_change.*
 
 class MyInfoActivity : AppCompatActivity() {
 
@@ -37,13 +38,13 @@ class MyInfoActivity : AppCompatActivity() {
         my_info_name_et.setText(ProfileData.user_name)
         my_info_phone_et.setText(ProfileData.phone_number)
         my_info_email_et.setText(ProfileData.user_email)
-        //      my_info_country_select_tv.text = ProfileData.country_cd
-
+        my_info_country_select_tv.text = ProfileData.country_cd
     }
 
     private fun Pwd_Change() {
         C.TitleBackBtn.closeOR = false
         val intent = Intent(this, PwdChangeActivity::class.java)
+        Intent.FLAG_ACTIVITY_NO_HISTORY
         startActivity(intent)
     }
 

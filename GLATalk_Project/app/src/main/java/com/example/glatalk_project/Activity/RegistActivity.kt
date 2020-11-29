@@ -191,9 +191,6 @@ class RegistActivity : AppCompatActivity() {
 
     }
 
-//<<<<<<< HEAD
-//    fun gotoLogin(){
-//=======
     internal fun Btn_On() {
         //색 바꾸기
         reg_next_btn.isEnabled = true
@@ -210,8 +207,9 @@ class RegistActivity : AppCompatActivity() {
     fun gotoRegComplete() {
         val intentAct = Intent(this, RegistCompleteActivity::class.java)
         startActivity(intentAct)
+        Intent.FLAG_ACTIVITY_NO_HISTORY
         finish()
-        //로그인으로 되돌아가는 부
+        //로그인으로 되돌아가는 부분
     }
 
 }

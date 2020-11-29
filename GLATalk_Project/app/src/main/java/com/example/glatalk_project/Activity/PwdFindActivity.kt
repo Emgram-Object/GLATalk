@@ -99,6 +99,7 @@ class PwdFindActivity:AppCompatActivity() {
 
     fun finish_find_pwd(){
         val intentAct = Intent(this, LoginActivity::class.java)
+        Intent.FLAG_ACTIVITY_NO_HISTORY
         startActivity(intentAct)
         finish()
     }

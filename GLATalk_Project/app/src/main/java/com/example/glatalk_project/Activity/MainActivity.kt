@@ -17,6 +17,7 @@ import com.example.glatalk_project.view.Popup
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.ui_custom_tab.view.*
 import kotlinx.android.synthetic.main.ui_popup_custom.*
+import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity(){
     private lateinit var mContext: Context
@@ -65,7 +66,7 @@ class MainActivity : AppCompatActivity(){
         OKbtn.setOnClickListener {
             moveTaskToBack(true)
             finish()
-            android.os.Process.killProcess(android.os.Process.myPid())
+            exitProcess(0)
         }
     }
 }
