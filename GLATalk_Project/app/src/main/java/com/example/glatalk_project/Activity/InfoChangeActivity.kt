@@ -2,6 +2,7 @@ package com.example.glatalk_project.Activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -16,6 +17,7 @@ import com.example.glatalk_project.constant.C
 import com.example.glatalk_project.network.data.request.ProfileRequest
 import com.example.glatalk_project.network.data.request.User
 import com.example.glatalk_project.view.Popup
+import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_my_info_change.*
 import kotlinx.android.synthetic.main.ui_popup_custom.*
 import okhttp3.MediaType
@@ -64,6 +66,9 @@ class InfoChangeActivity : AppCompatActivity() {
         my_info_chg_phone_et.setText(ProfileData.phone_number)
 //user english name은 뭘까?
 //        my_info_chg_country_select_tv.text = ProfileData.country_cd
+//        val country_code = ProfileData.country_cd
+//        val c_index = CountryAdapter().countryList.indexOf(country_code)
+//        my_info_country_select_sp.setSelection(c_index)
     }
 
 
@@ -73,6 +78,7 @@ class InfoChangeActivity : AppCompatActivity() {
         val country_sp = findViewById<Spinner>(R.id.my_info_country_select_sp)
         val arrayAdapter = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, countryList)
         country_sp.adapter = arrayAdapter
+        country_sp.setSelection(countryList.indexOf(C.NationalCode.valueOf(ProfileData.country_cd).country_nm))
 
         country_sp.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -80,7 +86,8 @@ class InfoChangeActivity : AppCompatActivity() {
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 
-                input_user_country = C.NationalCode.values()[position].country_cd.toString()
+                input_user_country = C.NationalCode.values()[position].country_cd
+
             }
         }
     }

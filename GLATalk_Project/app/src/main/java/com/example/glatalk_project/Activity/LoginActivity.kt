@@ -42,7 +42,7 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        Log.d("login_oncreate_token", "${TokenData.loginToken}")
+//        Log.d("login_oncreate_token", "${TokenData.loginToken}")
 
         var inputId: EditText = login_email_et
         var inputPwd: EditText = login_pwd_et

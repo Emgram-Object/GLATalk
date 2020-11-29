@@ -34,7 +34,7 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
-        Log.d("chat_token", "${TokenData.loginToken}")
+//        Log.d("chat_token", "${TokenData.loginToken}")
 
 
         //HomeFragment에서 intent로 값 받아오기
@@ -48,7 +48,7 @@ class ChatActivity : AppCompatActivity() {
         if (room_id == "null") {
             room_id = ProfileData.user_email + receiver
         }
-        Log.d("Room_id", room_id)
+//        Log.d("Room_id", room_id)
 
         //채팅내역 리사이클러뷰
         chat_rv.adapter = chatAdapter
@@ -123,7 +123,7 @@ class ChatActivity : AppCompatActivity() {
             chat_rv.scrollToPosition(chatAdapter.getChatSize() - 1)
             chat_input_et.setText("")
             ChatManager.instance.sendMessage(chatData)
-            Log.d("SendMessage", chatData.toString())
+//            Log.d("SendMessage", chatData.toString())
         } else {
             null
         }

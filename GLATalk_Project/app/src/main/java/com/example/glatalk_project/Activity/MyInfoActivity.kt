@@ -26,7 +26,7 @@ class MyInfoActivity : AppCompatActivity() {
         MyDao.getInfo(null)
 
         setTexts()
-        Log.d("myInfo_token", "${TokenData.loginToken}")
+//        Log.d("myInfo_token", "${TokenData.loginToken}")
         my_info_pwd_change_btn.setOnClickListener {
             Pwd_Change()
         }
