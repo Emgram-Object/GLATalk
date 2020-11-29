@@ -14,9 +14,13 @@ import com.example.glatalk_project.Data.TokenData
 import com.example.glatalk_project.R
 import com.example.glatalk_project.constant.C
 import com.example.glatalk_project.network.data.request.ProfileRequest
+import com.example.glatalk_project.network.data.request.User
 import com.example.glatalk_project.view.Popup
 import kotlinx.android.synthetic.main.activity_my_info_change.*
 import kotlinx.android.synthetic.main.ui_popup_custom.*
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -52,9 +56,7 @@ class InfoChangeActivity : AppCompatActivity() {
             gotoMy()
         }
 
-        if (input_user_name.isBlank() || input_phone_num.isBlank() || input_user_EngName.isBlank()) {
-            modify_ok_btn.setBackgroundResource(R.drawable.rounded_square_dim)
-        }
+
     }
 
     private fun setTexts() {
@@ -64,19 +66,7 @@ class InfoChangeActivity : AppCompatActivity() {
 //        my_info_chg_country_select_tv.text = ProfileData.country_cd
     }
 
-    private fun getTexts() {
-        input_user_name = my_info_chg_name_et.text.toString()
-        input_phone_num = my_info_chg_phone_et.text.toString()
-        input_user_country
 
-//        userDAO.userVO.user_email = reg_email_et.text.toString()
-//        userDAO.userVO.user_pwd = reg_pwd_et.text.toString()
-//        userDAO.userVO.pwd_check = reg_pwd_check_et.text.toString()
-//        userDAO.userVO.user_type = "tourist"
-//        userDAO.userVO.user_name = reg_tourist_name_et.text.toString()
-//        userDAO.userVO.country_cd
-//        userDAO.userVO.phone_number = reg_tourist_phone_et.text.toString()
-    }
 
     private fun Country_sp() {
         val countryList = CountryAdapter().countryList
@@ -89,8 +79,7 @@ class InfoChangeActivity : AppCompatActivity() {
                 TODO("Not yet implemented")}
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-//                parent?.getItemAtPosition(position)
-//                Log.d("nm", "${countryList[position]}")
+
                 input_user_country = C.NationalCode.values()[position].country_cd.toString()
             }
         }
@@ -98,33 +87,31 @@ class InfoChangeActivity : AppCompatActivity() {
 
 
     private fun changeMyInfo() {
-        getTexts()
-        Log.d("TAG", "changeMyInfo: ${input_user_name} ${input_phone_num} ${input_user_country}")
-        myDao.modify_info(profileRequest = ProfileRequest(input_user_name, input_phone_num, input_user_country), callback = object : Callback<BaseResponse> {
+        var body: MultipartBody.Part? = null
+        val name = RequestBody.create(MediaType.parse("text/plain"),my_info_chg_name_et.text.toString())
+        val phone_num = RequestBody.create(MediaType.parse("text/plain"),my_info_chg_phone_et.text.toString())
+        val country = RequestBody.create(MediaType.parse("text/plain"),input_user_country)
+
+        val user = User(name,phone_num,country)
+            myDao.modify_info(profileRequest = ProfileRequest(body, user), callback = object : Callback<BaseResponse> {
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
-                    Log.d("fail", "실패")
+                Log.d("fail", "실패")
+            }
+
+            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
+                Log.d("tag", "success")
+                if(response.isSuccessful){
+                    var result = response.body()!!
+                    var resultCode = result.resultCode
+                    var body = result.body.toString()
                 }
-
-                override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
-                    Log.d("tag", "success")
-                    if(response.isSuccessful){
-                        var result = response.body()!!
-                        var resultCode = result.resultCode
-                        var body = result.body.toString()
-                        var jsonObject: JSONObject = JSONObject(body)
-
-                        Log.d("TAG1", "onResponse: $resultCode")
-                        Log.d("TAG1", "$resultCode, ${result.desc}")
-                        Log.d("TAG2", "Response: $body")
-                    }
-                    else{
-                        Log.d("Fail", "실패")
-                    }
+                else{
+                    Log.d("Fail", "실패")
                 }
             }
+        }
         )
     }
-
 
 
 
@@ -150,16 +137,8 @@ class InfoChangeActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-//        if(C.TitleBackBtn.backpress){
-//            super.onBackPressed()
-//            C.TitleBackBtn.backpress = true
-//        }
-//        else {
-            goback()
-            C.TitleBackBtn.closeOR = true
-//        C.TitleBackBtn.poptext = "앱을 종료하시겠습니까?"
-
-//        }
+        goback()
+        C.TitleBackBtn.closeOR = true
     }
 
 }
