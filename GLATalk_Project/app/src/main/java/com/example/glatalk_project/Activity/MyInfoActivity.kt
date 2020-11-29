@@ -2,6 +2,7 @@ package com.example.glatalk_project.Activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.Model.MyDao
@@ -41,7 +42,7 @@ class MyInfoActivity : AppCompatActivity() {
         my_info_name_et.setText(ProfileData.user_name)
         my_info_phone_et.setText(ProfileData.phone_number)
         my_info_email_et.setText(ProfileData.user_email)
-        val country_code = ProfileData.country_cd
+        my_info_country_select_tv.text = C.NationalCode.valueOf(ProfileData.country_cd).country_nm
         
     }
 
