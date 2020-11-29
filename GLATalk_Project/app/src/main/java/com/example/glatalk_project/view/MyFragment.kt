@@ -2,6 +2,7 @@ package com.example.glatalk_project.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,6 +29,9 @@ class MyFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_my, container, false)
         val version: String = BuildConfig.VERSION_NAME
+
+        Log.d("my_token", "${TokenData.loginToken}")
+
         //이후 코드 구현
         view.my_profile_name_tv.text = ProfileData.user_name
         view.my_profile_email_tv.text = ProfileData.user_email
@@ -47,7 +51,10 @@ class MyFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        my_logout_btn.setOnClickListener { Logout() }
+        my_logout_btn.setOnClickListener {
+            LogoutActivity.doLogout()
+            goToLogin()
+        }
 
     }
 
@@ -70,13 +77,6 @@ class MyFragment : Fragment() {
     }
 
     private fun goToTerm() {
-        val intent = Intent(context, LoginActivity::class.java)
-        startActivity(intent)
-    }
-
-
-    private fun Logout() {
-        LogoutActivity.doLogout()
         val intent = Intent(context, LoginActivity::class.java)
         startActivity(intent)
     }

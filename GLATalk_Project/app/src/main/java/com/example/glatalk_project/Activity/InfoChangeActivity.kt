@@ -10,6 +10,7 @@ import com.example.glatalk_project.Adapter.CountryAdapter
 import com.example.glatalk_project.network.data.response.BaseResponse
 import com.example.glatalk_project.Model.MyDao
 import com.example.glatalk_project.Data.ProfileData
+import com.example.glatalk_project.Data.TokenData
 import com.example.glatalk_project.R
 import com.example.glatalk_project.constant.C
 import com.example.glatalk_project.network.data.request.ProfileRequest
@@ -36,6 +37,9 @@ class InfoChangeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_info_change)
+
+        Log.d("infoChange_token", "${TokenData.loginToken}")
+
 
         common_title_info_change.setTitle(getString(R.string.title_modiy_myinfo))
         C.TitleBackBtn.poptext = "변경사항이 저장되지 않습니다.\n이전화면으로 돌아가시겠습니까?"

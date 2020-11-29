@@ -33,7 +33,8 @@ object UserDAO {
         SharedPreferenceUtil.putString(C.Preference.KEY_ACCESS_TOKEN,token)
     }
     fun getLoginToken():String = SharedPreferenceUtil.getString(C.Preference.KEY_ACCESS_TOKEN)
-
-
+    fun clearLoginToken(){
+        SharedPreferenceUtil.clearString(C.Preference.KEY_ACCESS_TOKEN)
+    }
 }
 

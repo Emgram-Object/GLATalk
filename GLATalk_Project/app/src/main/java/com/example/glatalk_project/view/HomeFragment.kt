@@ -13,6 +13,7 @@ import com.example.glatalk_project.Data.ProfileData
 import com.example.glatalk_project.R
 import com.example.glatalk_project.Adapter.ChatRoomListAdapter
 import com.example.glatalk_project.Data.ChatRoom
+import com.example.glatalk_project.Data.TokenData
 import com.example.glatalk_project.Model.ChatDAO
 import com.example.glatalk_project.network.data.response.BaseResponse
 import com.example.glatalk_project.network.data.response.HomeResponse
@@ -35,12 +36,14 @@ class HomeFragment : Fragment() {
             savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_home_guide, container, false)
 
-        //타이틀,통신 분기점
-        if (ProfileData.user_type.equals("guide")) {
+        Log.d("home_token", "${TokenData.loginToken}")
+        Log.d("home_type", ProfileData.user_type)
 
+        //타이틀,통신 분기점
+        if (ProfileData.user_type == "guide") {
             view.home_guide_tv.text ="관광객 대화정보"
             guideHomeNetWorking()
-        } else if (ProfileData.user_type.equals("tourist")) {
+        } else if (ProfileData.user_type == "tourist") {
             view.home_guide_tv.text = getString(R.string.enable_guide_info)
             touristHomeNetWorking()
         }

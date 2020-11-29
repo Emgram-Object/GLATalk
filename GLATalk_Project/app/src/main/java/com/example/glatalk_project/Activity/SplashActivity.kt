@@ -21,14 +21,19 @@ class SplashActivity : AppCompatActivity(), MoveActivity {
         //FirstSetLanguage 값이 SharedPreference로 저장, 그 값의 유무를 판단
 
         //if, FirstSetLanguage 값 true -> go to Login Page
+
+        Log.d("splash_token", "${TokenData.loginToken}")
+
+
         if (LocaleHelper.haveLangValue()) {
             if (UserDAO.isAutoLogin()) {
                 TokenData.loginToken = userDao.getLoginToken()
-                Log.d("autoLogin", "${TokenData.loginToken}")
-                MyDao.getInfo(LoginActivity())
-                gotoMain()
+                MyDao.getInfo(this)
+                Log.d("autoLogin_token", "${TokenData.loginToken}")
+
+
             } else gotoLogin()
-        }else{
+        } else {
             gotoFirstLang()
         }
     }
@@ -53,7 +58,7 @@ class SplashActivity : AppCompatActivity(), MoveActivity {
     }
 
     override fun move() {
-
+        gotoMain()
     }
 
 }

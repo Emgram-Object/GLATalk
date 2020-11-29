@@ -33,6 +33,8 @@ class PwdChangeActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d("pwdChange_token", "${TokenData.loginToken}")
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pwd_change)
 
@@ -80,7 +82,6 @@ class PwdChangeActivity : AppCompatActivity() {
     }
 
     private fun changePwdNetworking() {
-        Log.d("login", "${TokenData.loginToken}")
         myDao.change_pwd(pwdRequest = PwdRequest(current, new), callback = object : Callback<BaseResponse> {
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
             }

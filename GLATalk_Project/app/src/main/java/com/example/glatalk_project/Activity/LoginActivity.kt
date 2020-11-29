@@ -38,9 +38,10 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
     var loginResult: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        Log.d("login_oncreate_token", "${TokenData.loginToken}")
 
         var inputId: EditText = login_email_et
         var inputPwd: EditText = login_pwd_et
@@ -80,6 +81,7 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
                 input_user_email = login_email_et.text.toString()
                 input_user_pwd = login_pwd_et.text.toString()
                 loginNetworking()
+
             }
 
 
@@ -96,7 +98,6 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
                 loginResult = result.toString()
                 userData.resultCode = result.resultCode.toString()
                 userData.desc = result.desc.toString()
-                Log.d("result", "$loginResult")
                 showPop()
                 if (response.isSuccessful) {
                     if (userData.resultCode == "0") {
@@ -104,7 +105,6 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
                         if (login_auto_cb.isChecked) {
                             userDAO.setAutoLogin(true)
                             userDAO.setLoginToken(TokenData.loginToken.toString())
-                            Log.d("loginToken3", "${TokenData.loginToken}")
                         }
                         MyDao.getInfo(this@LoginActivity)
                         move()

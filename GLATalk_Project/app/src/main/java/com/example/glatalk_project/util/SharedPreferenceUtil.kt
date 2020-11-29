@@ -22,7 +22,14 @@ object SharedPreferenceUtil {
             edit.apply()
         }
     }
-
+    fun clearString(key:String){
+        MainApplication.application?.let {
+            val preferences = it.getSharedPreferences(it.getString(R.string.preference),Context.MODE_PRIVATE)
+            val edit = preferences.edit()
+            edit.remove(key)
+            edit.commit()
+        }
+    }
 
     //getString
     fun getString(key: String):String =

@@ -27,8 +27,6 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        myDao.getInfo()
-
         mContext = applicationContext
 
         //뷰페이저
@@ -37,8 +35,8 @@ class MainActivity : AppCompatActivity(){
         main_tab.setupWithViewPager(main_vp)
 
         //커스텀 탭 생성
-        main_tab.getTabAt(0)?.setCustomView(creatView("home"))
-        main_tab.getTabAt(1)?.setCustomView(creatView("my"))
+        main_tab.getTabAt(0)?.customView = creatView("home")
+        main_tab.getTabAt(1)?.customView = creatView("my")
         C.TitleBackBtn.poptext = "앱을 종료하시겠습니까?"
     }
 

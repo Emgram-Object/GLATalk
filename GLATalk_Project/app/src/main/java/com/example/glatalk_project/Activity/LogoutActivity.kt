@@ -11,17 +11,12 @@ import retrofit2.Callback
 import retrofit2.Call
 import retrofit2.Response
 
+//로그아웃 시 토큰 초기화하기
 
  object LogoutActivity{
     private var userDAO = UserDAO
     var userData = UserData()
 
-
-    fun logout() {
-        doLogout()
-        UserDAO.setAutoLogin(false)
-        UserDAO.setLoginToken("")
-    }
 
      fun doLogout() {
         userDAO.logout(callback = object : Callback<BaseResponse>{
@@ -33,6 +28,11 @@ import retrofit2.Response
                 userData.resultCode = result.resultCode.toString()
                 userData.desc = result.desc.toString()
                 if (response.isSuccessful) {
+                    TokenData.loginToken = ""
+                    userDAO.clearLoginToken()
+                    userDAO.setAutoLogin(false)
+                    Log.d("logout_TokenData", "${TokenData.loginToken}")
+                    Log.d("logout_token", "${{SharedPreferenceUtil.getString(C.Preference.KEY_ACCESS_TOKEN)}}")
 
                 }
             }

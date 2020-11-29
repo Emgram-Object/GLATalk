@@ -34,6 +34,9 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
+        Log.d("chat_token", "${TokenData.loginToken}")
+
+
         //HomeFragment에서 intent로 값 받아오기
         receiver = intent.getStringExtra("receiver") ?: ""
         tourist_info = intent.getStringExtra("tourist_info") ?: ""

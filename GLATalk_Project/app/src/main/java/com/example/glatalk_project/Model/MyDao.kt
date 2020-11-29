@@ -2,8 +2,10 @@ package com.example.glatalk_project.Model
 
 import android.util.Log
 import com.example.glatalk_project.Activity.LoginActivity
+import com.example.glatalk_project.Activity.MainActivity
 import com.example.glatalk_project.Data.ProfileData
 import com.example.glatalk_project.Data.TokenData
+import com.example.glatalk_project.MoveActivity
 import com.example.glatalk_project.network.ApiServer
 import com.example.glatalk_project.network.data.request.ProfileRequest
 import com.example.glatalk_project.network.data.request.PwdRequest
@@ -30,7 +32,7 @@ object MyDao {
         ApiServer.network.modify_info(profileRequest).enqueue(callback)
     }
 
-    fun getInfo(inter: LoginActivity?){
+    fun getInfo(inter: MoveActivity?){
         Log.d("tokenData", "${TokenData.loginToken}")
 
         detail_info(callback = object : Callback<BaseResponse> {
@@ -61,6 +63,8 @@ object MyDao {
                 } catch (e: JSONException) {
                     e.printStackTrace()
                 }
+
+                inter?.move()
             }
         })
     }
