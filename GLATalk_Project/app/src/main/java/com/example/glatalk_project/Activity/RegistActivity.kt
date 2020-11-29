@@ -29,10 +29,6 @@ class RegistActivity : AppCompatActivity() {
     private var userDAO = UserDAO
     lateinit var textWatcher: TextWatcher
 
-//    lateinit var country_guide_sp :Spinner
-//    val country_cd = resources.getStringArray(R.array.country_cd_list)
-//    val sp_adapter = ArrayAdapter.createFromResource(this, country_cd_list, android.R.layout.simple_dropdown_item_1line)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(activity_regist)
@@ -57,20 +53,6 @@ class RegistActivity : AppCompatActivity() {
         reg_next_btn.setOnClickListener(View.OnClickListener {
             if (reg_guide_radio_bnt.isChecked) {
                 getGuideData()
-
-//<<<<<<< HEAD
-//                addNetworking()
-//                gotoLogin()
-//
-//            } else if (reg_tour_radio_bnt.isChecked) {
-//                getTouristData()
-//                addNetworking()
-//                gotoLogin()
-//=======
-//                if (reg_pwd_et.text.toString() == reg_pwd_check_et.text.toString()) {
-//                    addNetworking()
-//                    gotoRegComplete()
-//=======
                 if (reg_pwd_et.text.toString().length >= 8) {
                     if (reg_pwd_et.text.toString() == reg_pwd_check_et.text.toString()) {
                         addNetworking()
@@ -109,10 +91,6 @@ class RegistActivity : AppCompatActivity() {
                 .replace(R.id.reg_info_fl, touristFragment)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .commit()
-
-//        touristFragment.reg_tourist_name_et.addTextChangedListener(textWatcher)
-//        touristFragment.reg_tourist_phone_et.addTextChangedListener(textWatcher)
-//        guideFragmentManager.country_guide_sp.addOnAttachStateChangeListener()
     }
 
     fun changeGuideFragement() {
@@ -123,27 +101,6 @@ class RegistActivity : AppCompatActivity() {
     }
 
 
-
-//    fun country_gd(){
-////        country_sp_g = reg_guide_country_select_sp
-//        val country_sp_g = country_guide_sp
-//        val countryList = CountryAdapter().countryList
-//        val arrayAdapter = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, countryList)
-//        country_sp_g.adapter = arrayAdapter
-//
-//        country_sp_g.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-//            override fun onNothingSelected(parent: AdapterView<*>?) {
-//                TODO("Not yet implemented")}
-//
-//            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-////                parent?.getItemAtPosition(position)
-////                Log.d("nm", "${countryList[position]}")
-//                userDAO.userVO.country_cd = C.NationalCode.values()[position].country_cd
-//                Log.d("코드", "${UserDAO.userVO.country_cd}")
-//            }
-//        }
-
-//    }
 
     fun addNetworking() {
 
@@ -166,8 +123,7 @@ class RegistActivity : AppCompatActivity() {
         userDAO.userVO.pwd_check = reg_pwd_check_et.text.toString()
         userDAO.userVO.user_type = "guide"
         userDAO.userVO.user_name = reg_guide_name_et.text.toString()
-        // userDAO.userVO.country_cd = reg_country_select_tv.text.toString()  -> 스피너 값 받는거 함수만들어서 따로 처리 해서 추가.
-        userDAO.userVO.country_cd
+        userDAO.userVO.country_cd = reg_guide_country_select_sp.toString()
         userDAO.userVO.phone_number = reg_phone_et.text.toString()
         userDAO.userVO.guide_info = reg_guide_info_et.text.toString()
         userDAO.userVO.guide_time = reg_time_et.text.toString()
@@ -182,8 +138,7 @@ class RegistActivity : AppCompatActivity() {
         userDAO.userVO.pwd_check = reg_pwd_check_et.text.toString()
         userDAO.userVO.user_type = "tourist"
         userDAO.userVO.user_name = reg_tourist_name_et.text.toString()
-//        userDAO.userVO.country_cd = "ko"
-        userDAO.userVO.country_cd
+        userDAO.userVO.country_cd = reg_tourist_country_select_sp.toString()
         userDAO.userVO.phone_number = reg_tourist_phone_et.text.toString()
         userDAO.userVO.ad_agree = true
 
