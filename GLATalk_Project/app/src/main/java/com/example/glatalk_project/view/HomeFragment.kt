@@ -15,6 +15,7 @@ import com.example.glatalk_project.Adapter.ChatRoomListAdapter
 import com.example.glatalk_project.Data.ChatRoom
 import com.example.glatalk_project.Data.TokenData
 import com.example.glatalk_project.Model.ChatDAO
+import com.example.glatalk_project.constant.C
 import com.example.glatalk_project.network.data.response.BaseResponse
 import com.example.glatalk_project.network.data.response.HomeResponse
 import kotlinx.android.synthetic.main.fragment_home_guide.view.*
@@ -35,7 +36,6 @@ class HomeFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_home_guide, container, false)
-
         Log.d("home_token", "${TokenData.loginToken}")
         Log.d("home_type", ProfileData.user_type)
 

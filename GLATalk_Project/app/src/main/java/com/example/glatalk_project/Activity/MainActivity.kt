@@ -67,6 +67,7 @@ class MainActivity : AppCompatActivity(){
             moveTaskToBack(true)
             finish()
             exitProcess(0)
+
         }
     }
 }
