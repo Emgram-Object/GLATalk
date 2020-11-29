@@ -142,12 +142,22 @@ class InfoChangeActivity : AppCompatActivity() {
         OKbtn.setOnClickListener {
             pop_up.dismiss()
             finish()
+            C.TitleBackBtn.poptext = "앱을 종료하시겠습니까?"
+
         }
     }
 
     override fun onBackPressed() {
-        goback()
-        C.TitleBackBtn.closeOR = true
+//        if(C.TitleBackBtn.backpress){
+//            super.onBackPressed()
+//            C.TitleBackBtn.backpress = true
+//        }
+//        else {
+            goback()
+            C.TitleBackBtn.closeOR = true
+//        C.TitleBackBtn.poptext = "앱을 종료하시겠습니까?"
+
+//        }
     }
 
 }

@@ -59,13 +59,14 @@ class MainActivity : AppCompatActivity(){
     }
 
     override fun onBackPressed() {
-        val popUp = Popup(this)
-        popUp.start("${C.TitleBackBtn.poptext}")
-        val OKbtn = popUp.popup.fst_btn
-        OKbtn.setOnClickListener {
-            moveTaskToBack(true)
-            finish()
-            android.os.Process.killProcess(android.os.Process.myPid())
+            val popUp = Popup(this)
+            popUp.start("${C.TitleBackBtn.poptext}")
+            val OKbtn = popUp.popup.fst_btn
+            OKbtn.setOnClickListener {
+                moveTaskToBack(true)
+                finish()
+                android.os.Process.killProcess(android.os.Process.myPid())
+
         }
     }
 }

@@ -74,25 +74,27 @@ class SettingActivity: AppCompatActivity(){
     }
 
     override fun onBackPressed() {
-        val popUp = Popup(this)
-        popUp.start("${C.TitleBackBtn.poptext}")
-        val pop_up = popUp.popup
-        val OKbtn =pop_up.fst_btn
-        OKbtn.setOnClickListener {
-            C.TitleBackBtn.CancelBack = false
-            C.TitleBackBtn.closeOR = false
-            pop_up.dismiss()
-            finishAffinity()
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-            System.exit(0)
-        }
-        val cancelBTN = pop_up.snd_btn
-        cancelBTN.setOnClickListener {
-            C.TitleBackBtn.CancelBack = false
-            C.TitleBackBtn.closeOR = false
-            pop_up.dismiss()
-            finish()
+
+            val popUp = Popup(this)
+            popUp.start("${C.TitleBackBtn.poptext}")
+            val pop_up = popUp.popup
+            val OKbtn = pop_up.fst_btn
+            OKbtn.setOnClickListener {
+                C.TitleBackBtn.CancelBack = false
+                C.TitleBackBtn.closeOR = false
+                pop_up.dismiss()
+                finishAffinity()
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                System.exit(0)
+            }
+            val cancelBTN = pop_up.snd_btn
+            cancelBTN.setOnClickListener {
+                C.TitleBackBtn.CancelBack = false
+                C.TitleBackBtn.closeOR = false
+                pop_up.dismiss()
+                finish()
+                C.TitleBackBtn.poptext = "앱을 종료하시겠습니까?"
         }
     }
     fun defaultSelection(lang: String){

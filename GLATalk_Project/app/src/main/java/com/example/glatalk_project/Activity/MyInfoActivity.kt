@@ -25,12 +25,16 @@ class MyInfoActivity : AppCompatActivity() {
 
         setTexts()
         Log.d("myInfo_token", "${TokenData.loginToken}")
-
         my_info_pwd_change_btn.setOnClickListener {
             Pwd_Change()
         }
 
     }
+
+//    override fun onBackPressed() {
+//        super.onBackPressed()
+//        C.TitleBackBtn.backpress = true
+//    }
 
 
     private fun setTexts() {
