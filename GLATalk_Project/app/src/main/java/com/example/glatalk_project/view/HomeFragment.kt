@@ -1,5 +1,6 @@
 package com.example.glatalk_project.view
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.glatalk_project.Activity.ChatActivity
+import com.example.glatalk_project.Activity.MainActivity
 import com.example.glatalk_project.Model.HomeDAO
 import com.example.glatalk_project.Data.ProfileData
 import com.example.glatalk_project.R
@@ -19,11 +21,13 @@ import com.example.glatalk_project.constant.C
 import com.example.glatalk_project.network.data.response.BaseResponse
 import com.example.glatalk_project.network.data.response.HomeResponse
 import kotlinx.android.synthetic.main.fragment_home_guide.view.*
+import kotlinx.android.synthetic.main.ui_popup_custom.*
 import org.json.JSONArray
 import org.json.JSONException
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.nio.file.Files.move
 
 
 class HomeFragment : Fragment() {
@@ -65,7 +69,14 @@ class HomeFragment : Fragment() {
             override fun onLongClick(v: View, position: Int): Boolean {
 //                val result = roomList.remove(roomList[position])
 //                adapter.notifyDataSetChanged()
-                ChatDAO.ChatDelete(roomList[position].room_id) //채팅내역삭제 api 호출(팝업띄워서 ok눌렀을때만 삭제되게 해주세용!)
+                val popUp = Popup(context as Activity)
+                popUp.start("채팅방을 삭제하시겠습니까?")
+                val pop_up = popUp.popup
+                val oKbtn = pop_up.fst_btn
+                oKbtn.setOnClickListener {
+                    ChatDAO.ChatDelete(roomList[position].room_id) //채팅내역삭제 api 호출(팝업띄워서 ok눌렀을때만 삭제되게 해주세용!)
+                    pop_up.dismiss()
+                }
                 return true
             }
         })
