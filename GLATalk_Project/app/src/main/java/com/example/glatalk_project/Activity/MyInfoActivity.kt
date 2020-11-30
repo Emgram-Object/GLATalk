@@ -32,10 +32,6 @@ class MyInfoActivity : AppCompatActivity() {
 
     }
 
-//    override fun onBackPressed() {
-//        super.onBackPressed()
-//        C.TitleBackBtn.backpress = true
-//    }
 
 
     private fun setTexts() {

@@ -3,6 +3,8 @@ package com.example.glatalk_project.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.provider.ContactsContract
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -19,7 +21,9 @@ import com.example.glatalk_project.network.data.request.ProfileRequest
 import com.example.glatalk_project.network.data.request.User
 import com.example.glatalk_project.view.Popup
 import com.google.gson.JsonObject
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_my_info_change.*
+import kotlinx.android.synthetic.main.activity_regist.*
 import kotlinx.android.synthetic.main.ui_popup_custom.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -40,22 +44,43 @@ class InfoChangeActivity : AppCompatActivity(), MoveActivity {
     var myDao = MyDao
     lateinit var input: EditText
 
+//액티비티 이전꺼 지워주기 (다시 불러오기) 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_info_change)
 
-        Log.d("infoChange_token", "${TokenData.loginToken}")
+        setTexts()
 
+        var inputName: EditText = my_info_chg_name_et
+        var inputPhone: EditText = my_info_chg_phone_et
+
+
+        var textWatcher =                          object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {
+                if ((inputName.text.isNotBlank() or inputName.text.isNotBlank() )&& (inputPhone.text .isNotBlank()or inputPhone.text.isNotBlank())) {
+                    Btn_On()
+                } else {
+                    Btn_Off()
+                }
+            }
+
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+        }
+
+        inputName.addTextChangedListener(textWatcher)
+        inputPhone.addTextChangedListener(textWatcher)
 
         common_title_info_change.setTitle(getString(R.string.title_modiy_myinfo))
         C.TitleBackBtn.poptext = "변경사항이 저장되지 않습니다.\n이전화면으로 돌아가시겠습니까?"
-        setTexts()
+
         Country_sp()
 
         modify_ok_btn.setOnClickListener {
             changeMyInfo()
-            Thread.sleep(100)
+            Thread.sleep(100) //수정 필요 콜백 필요
             gotoMy()
             MyDao.getInfo(this)
         }
@@ -121,7 +146,17 @@ class InfoChangeActivity : AppCompatActivity(), MoveActivity {
         }
         )
     }
+    private fun Btn_On() {
+        //색 바꾸기
+        modify_ok_btn.isEnabled = true
+        modify_ok_btn.setBackgroundResource(R.color.primary_color)
 
+    }
+
+    private fun Btn_Off() {
+        modify_ok_btn.isEnabled = false
+        modify_ok_btn.setBackgroundResource(R.color.square_dim_color)
+    }
 
 
     private fun gotoMy() {
