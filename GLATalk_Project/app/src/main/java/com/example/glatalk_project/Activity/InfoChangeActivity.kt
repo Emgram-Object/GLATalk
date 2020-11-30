@@ -43,7 +43,7 @@ class InfoChangeActivity : AppCompatActivity() {
     var myDao = MyDao
     lateinit var input: EditText
 
-
+//액티비티 이전꺼 지워주기 (다시 불러오기)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,8 +56,6 @@ class InfoChangeActivity : AppCompatActivity() {
 
 
         //텍스트와쳐 이전 텍스트랑 어케 되는지 고민해서 넣어야함..도륵...됴르륵...
-
-
 
         var textWatcher =                          object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
@@ -83,7 +81,7 @@ class InfoChangeActivity : AppCompatActivity() {
 
         modify_ok_btn.setOnClickListener {
             changeMyInfo()
-            Thread.sleep(100)
+            Thread.sleep(100) //수정 필요 콜백 필요
             gotoMy()
         }
 
