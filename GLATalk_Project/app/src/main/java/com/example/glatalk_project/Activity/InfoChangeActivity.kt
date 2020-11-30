@@ -49,22 +49,22 @@ class InfoChangeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_info_change)
 
+        setTexts()
 
         var inputName: EditText = my_info_chg_name_et
         var inputPhone: EditText = my_info_chg_phone_et
 
 
         //텍스트와쳐 이전 텍스트랑 어케 되는지 고민해서 넣어야함..도륵...됴르륵...
-        
+
 
 
         var textWatcher =                          object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
-                if (inputName.text == my_info_chg_name_et&& inputPhone.text == my_info_chg_phone_et) {
-                    Btn_Off()
-                } else {
-
+                if (inputName.text != my_info_name || inputPhone.text != my_info_phone) {
                     Btn_On()
+                } else {
+                    Btn_Off()
                 }
             }
 
@@ -78,7 +78,7 @@ class InfoChangeActivity : AppCompatActivity() {
 
         common_title_info_change.setTitle(getString(R.string.title_modiy_myinfo))
         C.TitleBackBtn.poptext = "변경사항이 저장되지 않습니다.\n이전화면으로 돌아가시겠습니까?"
-        setTexts()
+
         Country_sp()
 
         modify_ok_btn.setOnClickListener {
