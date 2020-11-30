@@ -12,6 +12,7 @@ import com.example.glatalk_project.network.data.response.BaseResponse
 import com.example.glatalk_project.Model.MyDao
 import com.example.glatalk_project.Data.ProfileData
 import com.example.glatalk_project.Data.TokenData
+import com.example.glatalk_project.MoveActivity
 import com.example.glatalk_project.R
 import com.example.glatalk_project.constant.C
 import com.example.glatalk_project.network.data.request.ProfileRequest
@@ -29,7 +30,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class InfoChangeActivity : AppCompatActivity() {
+class InfoChangeActivity : AppCompatActivity(), MoveActivity {
 
     var input_user_name: String = ""
     var input_phone_num: String = ""
@@ -56,6 +57,7 @@ class InfoChangeActivity : AppCompatActivity() {
             changeMyInfo()
             Thread.sleep(100)
             gotoMy()
+            MyDao.getInfo(this)
         }
 
 
@@ -137,8 +139,8 @@ class InfoChangeActivity : AppCompatActivity() {
         val OKbtn = pop_up.fst_btn
         OKbtn.setOnClickListener {
             pop_up.dismiss()
-            finish()
             C.TitleBackBtn.poptext = "앱을 종료하시겠습니까?"
+            gotoMy()
 
         }
     }
@@ -146,6 +148,11 @@ class InfoChangeActivity : AppCompatActivity() {
     override fun onBackPressed() {
         goback()
         C.TitleBackBtn.closeOR = true
+
+
+    }
+    override fun move(){
+        gotoMy()
     }
 
 }

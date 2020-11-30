@@ -52,7 +52,9 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
     fun setFinishListener() {
         if(C.TitleBackBtn.closeOR) {
             common_back_btn.setOnClickListener {
+                Intent.FLAG_ACTIVITY_NO_HISTORY
                 (context as? Activity)?.finish()
+
             }
         }
         else{
@@ -67,8 +69,9 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
                         C.TitleBackBtn.CancelBack = false
                         pop_up.dismiss()
                         finishAffinity(context as Activity)
-                        val intent = Intent(context as Activity, SplashActivity::class.java)
                         Intent.FLAG_ACTIVITY_NO_HISTORY
+
+                        val intent = Intent(context as Activity, SplashActivity::class.java)
                         (context as? Activity)?.startActivity(intent)
                         System.exit(0)      //종료 후 재시작
                     }
@@ -83,6 +86,7 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
                     else{
                         OKbtn.setOnClickListener {
                             pop_up.dismiss()
+                            Intent.FLAG_ACTIVITY_NO_HISTORY
                             (context as? Activity)?.finish()
                         }
                     }
