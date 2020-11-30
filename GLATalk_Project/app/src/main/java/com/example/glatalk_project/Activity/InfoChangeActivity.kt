@@ -43,7 +43,7 @@ class InfoChangeActivity : AppCompatActivity() {
     var myDao = MyDao
     lateinit var input: EditText
 
-//액티비티 이전꺼 지워주기 (다시 불러오기)
+//액티비티 이전꺼 지워주기 (다시 불러오기) 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,11 +55,9 @@ class InfoChangeActivity : AppCompatActivity() {
         var inputPhone: EditText = my_info_chg_phone_et
 
 
-        //텍스트와쳐 이전 텍스트랑 어케 되는지 고민해서 넣어야함..도륵...됴르륵...
-
         var textWatcher =                          object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
-                if (inputName.text != my_info_name || inputPhone.text != my_info_phone) {
+                if ((inputName.text.isNotBlank() or inputName.text.isNotBlank() )&& (inputPhone.text .isNotBlank()or inputPhone.text.isNotBlank())) {
                     Btn_On()
                 } else {
                     Btn_Off()

@@ -50,7 +50,7 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
 
         var textWatcher = object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
-                if (inputId.text.isNotEmpty() && inputPwd.text.isNotEmpty()) {
+                if ((inputId.text.isNotEmpty()or inputId.text.isNotBlank()) && (inputPwd.text.isNotEmpty() or inputPwd.text.isNotBlank())) {
                     Btn_On()
                 } else {
                     Btn_Off()
