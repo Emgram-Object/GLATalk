@@ -160,6 +160,8 @@ class InfoChangeActivity : AppCompatActivity(), MoveActivity {
 
 
     private fun gotoMy() {
+        C.TitleBackBtn.poptext = "앱을 종료하시겠습니까?"
+
         val intent = Intent(this, MyInfoActivity::class.java) //마이메뉴 화면으로 넘어가기
         Intent.FLAG_ACTIVITY_NO_HISTORY
         startActivity(intent)
@@ -174,7 +176,6 @@ class InfoChangeActivity : AppCompatActivity(), MoveActivity {
         val OKbtn = pop_up.fst_btn
         OKbtn.setOnClickListener {
             pop_up.dismiss()
-            C.TitleBackBtn.poptext = "앱을 종료하시겠습니까?"
             gotoMy()
 
         }
