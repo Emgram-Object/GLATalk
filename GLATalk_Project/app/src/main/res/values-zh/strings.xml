@@ -36,7 +36,6 @@
     <string name="btn_ok">确定</string>
     <string name="btn_cancel">取消</string>
     <string name="btn_next">下一步</string>
-    <string name="btn_modify">수정하기</string>
     <string name="btn_modified">变更</string>
     <string name="btn_pwd_change">修改密码</string>
 

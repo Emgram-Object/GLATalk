@@ -140,7 +140,6 @@ class ChatActivity : AppCompatActivity() {
                 //chat.type = C.MessageType.CHAT_OTHER.index
                 chatAdapter.addChat(chat)
                 chat_rv.scrollToPosition(chatAdapter.getChatSize() - 1)
-                chat_input_et.setText("")
             }
         }
 

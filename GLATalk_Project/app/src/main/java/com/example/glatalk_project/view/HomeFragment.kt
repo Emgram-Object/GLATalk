@@ -32,7 +32,6 @@ import java.nio.file.Files.move
 
 class HomeFragment : Fragment() {
     val roomList = arrayListOf<ChatRoom>()
-    lateinit var chatRoom: ChatRoom
     lateinit var adapter: ChatRoomListAdapter
 
     override fun onCreateView(
@@ -92,7 +91,7 @@ class HomeFragment : Fragment() {
         } else{
             intent.putExtra("receiver", roomList[position].tourist_id)//tourist_id로 수정할예정
             intent.putExtra("tourist_info", roomList[position].tourist_info)
-            intent.putExtra("tourist_namer", roomList[position].tourist_name)
+            intent.putExtra("tourist_name", roomList[position].tourist_name)
         }
         startActivity(intent)
     }

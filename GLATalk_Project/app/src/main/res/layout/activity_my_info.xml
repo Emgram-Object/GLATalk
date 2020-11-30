@@ -83,7 +83,7 @@
                 android:id="@+id/my_info_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="휴대폰번호"
+                android:text="@string/my_account_phone"
                 android:textSize="10sp"
                 android:textColor="@color/black5050"
                 android:layout_marginTop="8dp"
