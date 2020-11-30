@@ -77,11 +77,13 @@ class InfoChangeActivity : AppCompatActivity(), MoveActivity {
         C.TitleBackBtn.poptext = "변경사항이 저장되지 않습니다.\n이전화면으로 돌아가시겠습니까?"
 
         Country_sp()
+        MyInfoActivity().finish()
 
         modify_ok_btn.setOnClickListener {
+            C.TitleBackBtn.poptext = "앱을 종료하시겠습니까?"
             changeMyInfo()
             Thread.sleep(100) //수정 필요 콜백 필요
-            gotoMy()
+//            gotoMy()
             MyDao.getInfo(this)
         }
 
@@ -160,10 +162,9 @@ class InfoChangeActivity : AppCompatActivity(), MoveActivity {
 
 
     private fun gotoMy() {
-        C.TitleBackBtn.poptext = "앱을 종료하시겠습니까?"
-
         val intent = Intent(this, MyInfoActivity::class.java) //마이메뉴 화면으로 넘어가기
-        Intent.FLAG_ACTIVITY_NO_HISTORY
+//        Intent.FLAG_ACTIVITY_NO_HISTORY
+//        Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
         C.TitleBackBtn.closeOR = true
         finish()
@@ -176,7 +177,7 @@ class InfoChangeActivity : AppCompatActivity(), MoveActivity {
         val OKbtn = pop_up.fst_btn
         OKbtn.setOnClickListener {
             pop_up.dismiss()
-            gotoMy()
+            finish()
 
         }
     }

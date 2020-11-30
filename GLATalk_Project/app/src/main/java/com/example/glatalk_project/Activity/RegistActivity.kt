@@ -162,7 +162,7 @@ class RegistActivity : AppCompatActivity() {
     fun gotoRegComplete() {
         val intentAct = Intent(this, RegistCompleteActivity::class.java)
         startActivity(intentAct)
-        Intent.FLAG_ACTIVITY_NO_HISTORY
+//        Intent.FLAG_ACTIVITY_NO_HISTORY
         finish()
         //로그인으로 되돌아가는 부분
     }

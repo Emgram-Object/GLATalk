@@ -85,6 +85,7 @@ class MyFragment : Fragment() {
     private fun goToMyInfo() {
         val intent = Intent(context, MyInfoActivity::class.java)
         startActivity(intent)
+//        Intent.FLAG_ACTIVITY_SINGLE_TOP
         C.TitleBackBtn.closeOR = true
 
     }

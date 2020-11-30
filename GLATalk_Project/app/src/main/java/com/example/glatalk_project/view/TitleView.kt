@@ -11,10 +11,7 @@ import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.core.content.ContextCompat.startActivity
-import com.example.glatalk_project.Activity.InfoChangeActivity
-import com.example.glatalk_project.Activity.LoginActivity
-import com.example.glatalk_project.Activity.SettingActivity
-import com.example.glatalk_project.Activity.SplashActivity
+import com.example.glatalk_project.Activity.*
 import com.example.glatalk_project.R
 import com.example.glatalk_project.constant.C
 import kotlinx.android.synthetic.main.ui_common_title.view.*
@@ -40,7 +37,8 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
         change_tv.setOnClickListener {
             C.TitleBackBtn.closeOR = false
             val intent = Intent(context, InfoChangeActivity::class.java)
-            Intent.FLAG_ACTIVITY_NO_HISTORY
+//            Intent.FLAG_ACTIVITY_NO_HISTORY
+            (context as Activity).finish()
             (context as? Activity)?.startActivity(intent)
         }
     }

@@ -45,8 +45,11 @@ class MyInfoActivity : AppCompatActivity() {
     private fun Pwd_Change() {
         C.TitleBackBtn.closeOR = false
         val intent = Intent(this, PwdChangeActivity::class.java)
-        Intent.FLAG_ACTIVITY_NO_HISTORY
+//        Intent.FLAG_ACTIVITY_NO_HISTORY
+        Intent.FLAG_ACTIVITY_CLEAR_TOP
+
         startActivity(intent)
+
     }
 
 }
