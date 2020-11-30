@@ -50,7 +50,7 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
 
         var textWatcher = object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
-                if (inputId.text.isNotEmpty() && inputPwd.text.isNotEmpty()) {
+                if ((inputId.text.isNotEmpty()or inputId.text.isNotBlank()) && (inputPwd.text.isNotEmpty() or inputPwd.text.isNotBlank())) {
                     Btn_On()
                 } else {
                     Btn_Off()
@@ -127,6 +127,12 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
         login_btn.setBackgroundResource(R.drawable.rounded_square)
     }
 
+    private fun Btn_Off() {
+        login_btn.isEnabled = false
+        login_btn.setBackgroundResource(R.drawable.rounded_square_dim)
+    }
+
+
     private fun showPop(){
         val popUp = Popup(this)
 
@@ -139,12 +145,6 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
             val cancelBTN = popUp.popup.snd_btn
             cancelBTN.text = MainApplication.getString(R.string.btn_ok)
         }
-    }
-
-
-    private fun Btn_Off() {
-        login_btn.isEnabled = false
-        login_btn.setBackgroundResource(R.drawable.rounded_square_dim)
     }
 
 
