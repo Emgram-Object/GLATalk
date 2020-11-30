@@ -33,8 +33,6 @@ object ChatDAO{
         chat_list(room_id, callback = object : Callback<ChatResponse> {
             override fun onResponse(call: Call<ChatResponse>, response: Response<ChatResponse>) {
                 var result = response.body()
-                var resultCode = result?.resultCode
-                var desc = result?.desc
                 var body: ArrayList<ChatHistory>? = result?.body
 
                 try {
@@ -86,8 +84,6 @@ object ChatDAO{
         translation(chatData, callback = object : Callback<PapagoResonse> {
             override fun onResponse(call: Call<PapagoResonse>, response: Response<PapagoResonse>) {
                 var result = response.body()
-                var resultCode = result?.resultCode
-                var desc = result?.desc
                 var body = result?.body
 
                 Log.d("translation Body", body.toString())

@@ -38,8 +38,7 @@
     <string name="btn_ok">확인</string>
     <string name="btn_cancel">취소</string>
     <string name="btn_next">다음</string>
-    <string name="btn_modify">수정하기</string>
-    <string name="btn_modified">변경완료</string>
+    <string name="btn_modified">수정</string>
     <string name="btn_pwd_change">비밀번호 변경하기</string>
 
     <string name="home">홈</string>

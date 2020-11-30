@@ -1,5 +1,6 @@
 package com.example.glatalk_project.Activity
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -8,18 +9,16 @@ import com.example.glatalk_project.Data.ProfileData
 import com.example.glatalk_project.R
 import com.example.glatalk_project.constant.C
 import com.example.glatalk_project.constant.languageCode
+import com.example.glatalk_project.constant.languageCode.chLanguageCode
+import com.example.glatalk_project.constant.languageCode.engLanguageCode
+import com.example.glatalk_project.constant.languageCode.jpnLanguageCode
+import com.example.glatalk_project.constant.languageCode.korLanguageCode
 import com.example.glatalk_project.util.LocaleHelper
 import com.example.glatalk_project.view.Popup
 import kotlinx.android.synthetic.main.activity_setting.*
 import kotlinx.android.synthetic.main.ui_popup_custom.*
 
 class SettingActivity: AppCompatActivity(){
-
-    //얘좀 나중에 데이터 따로 모아주세요 ㅠㅠ
-    private val korLanguageCode = languageCode.korLanguageCode
-    private val engLanguageCode = languageCode.engLanguageCode
-    private val jpnLanguageCode = languageCode.jpnLanguageCode
-    private val chLanguageCode = languageCode.chLanguageCode
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,12 +79,13 @@ class SettingActivity: AppCompatActivity(){
             val pop_up = popUp.popup
             val OKbtn = pop_up.fst_btn
             OKbtn.setOnClickListener {
+                recreate()
                 C.TitleBackBtn.CancelBack = false
                 C.TitleBackBtn.closeOR = false
                 pop_up.dismiss()
                 finishAffinity()
                 val intent = Intent(this, SplashActivity::class.java)
-                Intent.FLAG_ACTIVITY_NO_HISTORY
+//                Intent.FLAG_ACTIVITY_NO_HISTORY
                 startActivity(intent)
                 System.exit(0)
             }
@@ -98,6 +98,11 @@ class SettingActivity: AppCompatActivity(){
                 C.TitleBackBtn.poptext = "앱을 종료하시겠습니까?"
         }
     }
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase!!))
+    }
+
     fun defaultSelection(lang: String){
         when (lang){
             "ko" -> lang_korea_rb.isChecked = true

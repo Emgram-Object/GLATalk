@@ -36,7 +36,6 @@
     <string name="btn_ok">確認</string>
     <string name="btn_cancel">キャンセル</string>
     <string name="btn_next">つぎへ</string>
-    <string name="btn_modify">수정하기</string>
     <string name="btn_modified">変更する</string>
     <string name="btn_pwd_change">パスワード変更</string>
 

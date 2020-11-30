@@ -74,6 +74,12 @@ class InfoChangeActivity : AppCompatActivity(), MoveActivity {
         inputPhone.addTextChangedListener(textWatcher)
 
         common_title_info_change.setTitle(getString(R.string.title_modiy_myinfo))
+
+        if(ProfileData.user_type.equals("tourist")) {
+            my_info_english_name_cl.visibility = View.GONE
+            warning_tv.visibility = View.GONE
+        }
+
         C.TitleBackBtn.poptext = "변경사항이 저장되지 않습니다.\n이전화면으로 돌아가시겠습니까?"
 
         Country_sp()
