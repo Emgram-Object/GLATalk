@@ -3,6 +3,8 @@ package com.example.glatalk_project.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.provider.ContactsContract
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -18,7 +20,9 @@ import com.example.glatalk_project.network.data.request.ProfileRequest
 import com.example.glatalk_project.network.data.request.User
 import com.example.glatalk_project.view.Popup
 import com.google.gson.JsonObject
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_my_info_change.*
+import kotlinx.android.synthetic.main.activity_regist.*
 import kotlinx.android.synthetic.main.ui_popup_custom.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -40,12 +44,37 @@ class InfoChangeActivity : AppCompatActivity() {
     lateinit var input: EditText
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_info_change)
 
-        Log.d("infoChange_token", "${TokenData.loginToken}")
 
+        var inputName: EditText = my_info_chg_name_et
+        var inputPhone: EditText = my_info_chg_phone_et
+
+
+        //텍스트와쳐 이전 텍스트랑 어케 되는지 고민해서 넣어야함..도륵...됴르륵...
+        
+
+
+        var textWatcher =                          object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {
+                if (inputName.text == my_info_chg_name_et&& inputPhone.text == my_info_chg_phone_et) {
+                    Btn_Off()
+                } else {
+
+                    Btn_On()
+                }
+            }
+
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+        }
+
+        inputName.addTextChangedListener(textWatcher)
+        inputPhone.addTextChangedListener(textWatcher)
 
         common_title_info_change.setTitle(getString(R.string.title_modiy_myinfo))
         C.TitleBackBtn.poptext = "변경사항이 저장되지 않습니다.\n이전화면으로 돌아가시겠습니까?"
@@ -119,7 +148,17 @@ class InfoChangeActivity : AppCompatActivity() {
         }
         )
     }
+    private fun Btn_On() {
+        //색 바꾸기
+        modify_ok_btn.isEnabled = true
+        modify_ok_btn.setBackgroundResource(R.color.primary_color)
 
+    }
+
+    private fun Btn_Off() {
+        modify_ok_btn.isEnabled = false
+        modify_ok_btn.setBackgroundResource(R.color.square_dim_color)
+    }
 
 
     private fun gotoMy() {

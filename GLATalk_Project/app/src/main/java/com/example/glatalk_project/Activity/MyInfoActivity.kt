@@ -33,10 +33,6 @@ class MyInfoActivity : AppCompatActivity() {
 
     }
 
-//    override fun onBackPressed() {
-//        super.onBackPressed()
-//        C.TitleBackBtn.backpress = true
-//    }
 
 
     private fun setTexts() {
@@ -53,15 +49,5 @@ class MyInfoActivity : AppCompatActivity() {
         Intent.FLAG_ACTIVITY_NO_HISTORY
         startActivity(intent)
     }
-
-//    private fun InfoChange() {
-//        val intent = Intent(this, InfoChangeActivity::class.java)
-//        startActivity(intent)
-//    }
-//
-//    private fun ChangeInfo() {
-//        val intent = Intent(this, InfoChangeActivity::class.java)
-//        startActivity(intent)
-//    }
 
 }
