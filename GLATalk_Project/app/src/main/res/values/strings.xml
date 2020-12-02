@@ -92,4 +92,6 @@
 
     <string name="guide">가이드</string>
     <string name="tourist">관광객</string>
+
+    <string name="popup_setting">바뀐 설정을 적용하려면 맵을 재시작 해야합니다.\n지금 재시작하겠습니까?</string>
 </resources>

@@ -24,7 +24,8 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 
     init {
         LayoutInflater.from(context).inflate(R.layout.ui_common_title, this)
-        setFinishListener()
+//        setFinishListener()
+        common_back_btn.setOnClickListener { (context as Activity).onBackPressed() } //지멘이 코드 최적화시켜줌 갓 지-멘
     }
 
     fun setTitle(str: String) {
@@ -43,53 +44,53 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
         }
     }
 
-    fun disableModifyBtn(){
-        change_tv.visibility = View.VISIBLE
-    }
-
-    fun setFinishListener() {
-        if(C.TitleBackBtn.closeOR) {
-            common_back_btn.setOnClickListener {
-                Intent.FLAG_ACTIVITY_NO_HISTORY
-                (context as? Activity)?.finish()
-
-            }
-        }
-        else{
-            common_back_btn.setOnClickListener {
-                val popUp = Popup(context as Activity)
-                popUp.start("${C.TitleBackBtn.poptext}")
-                val pop_up = popUp.popup
-                val OKbtn = pop_up.fst_btn
-
-                if(C.TitleBackBtn.CancelBack) {
-                    OKbtn.setOnClickListener {
-                        C.TitleBackBtn.CancelBack = false
-                        pop_up.dismiss()
-                        finishAffinity(context as Activity)
-                        Intent.FLAG_ACTIVITY_NO_HISTORY
-
-                        val intent = Intent(context as Activity, SplashActivity::class.java)
-                        (context as? Activity)?.startActivity(intent)
-                        System.exit(0)      //종료 후 재시작
-                    }
-
-                    val cancelBT = pop_up.snd_btn
-                    cancelBT.setOnClickListener {
-                        C.TitleBackBtn.CancelBack = false
-                        pop_up.dismiss()
-                        (context as? Activity)?.finish()
-                    }
-                }
-                    else{
-                        OKbtn.setOnClickListener {
-                            pop_up.dismiss()
-                            Intent.FLAG_ACTIVITY_NO_HISTORY
-                            (context as? Activity)?.finish()
-                        }
-                    }
-
-            }
-        }
-    }
+//    fun disableModifyBtn(){
+//        change_tv.visibility = View.VISIBLE
+//    }
+//
+//    fun setFinishListener() {
+//        if(C.TitleBackBtn.closeOR) {
+//            common_back_btn.setOnClickListener {
+//                Intent.FLAG_ACTIVITY_NO_HISTORY
+//                (context as? Activity)?.finish()
+//
+//            }
+//        }
+//        else{
+//            common_back_btn.setOnClickListener {
+//                val popUp = Popup(context as Activity)
+//                popUp.start("${C.TitleBackBtn.poptext}")
+//                val pop_up = popUp.popup
+//                val OKbtn = pop_up.fst_btn
+//
+//                if(C.TitleBackBtn.CancelBack) {
+//                    OKbtn.setOnClickListener {
+//                        C.TitleBackBtn.CancelBack = false
+//                        pop_up.dismiss()
+//                        finishAffinity(context as Activity)
+//                        Intent.FLAG_ACTIVITY_NO_HISTORY
+//
+//                        val intent = Intent(context as Activity, SplashActivity::class.java)
+//                        (context as? Activity)?.startActivity(intent)
+//                        System.exit(0)      //종료 후 재시작
+//                    }
+//
+//                    val cancelBT = pop_up.snd_btn
+//                    cancelBT.setOnClickListener {
+//                        C.TitleBackBtn.CancelBack = false
+//                        pop_up.dismiss()
+//                        (context as? Activity)?.finish()
+//                    }
+//                }
+//                    else{
+//                        OKbtn.setOnClickListener {
+//                            pop_up.dismiss()
+//                            Intent.FLAG_ACTIVITY_NO_HISTORY
+//                            (context as? Activity)?.finish()
+//                        }
+//                    }
+//
+//            }
+//        }
+//    }
 }

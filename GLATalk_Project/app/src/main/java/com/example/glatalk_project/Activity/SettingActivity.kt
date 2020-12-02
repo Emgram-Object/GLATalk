@@ -8,17 +8,20 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.Data.ProfileData
 import com.example.glatalk_project.R
 import com.example.glatalk_project.constant.C
+import com.example.glatalk_project.constant.C.Preference.SELECTED_LANGUAGE
 import com.example.glatalk_project.constant.languageCode
 import com.example.glatalk_project.constant.languageCode.chLanguageCode
 import com.example.glatalk_project.constant.languageCode.engLanguageCode
 import com.example.glatalk_project.constant.languageCode.jpnLanguageCode
 import com.example.glatalk_project.constant.languageCode.korLanguageCode
 import com.example.glatalk_project.util.LocaleHelper
+import com.example.glatalk_project.util.SharedPreferenceUtil
 import com.example.glatalk_project.view.Popup
 import kotlinx.android.synthetic.main.activity_setting.*
 import kotlinx.android.synthetic.main.ui_popup_custom.*
 
 class SettingActivity: AppCompatActivity(){
+    private lateinit var newlang:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,15 +39,15 @@ class SettingActivity: AppCompatActivity(){
             guide_chat_switch.visibility = View.VISIBLE
         }
 
-        val lang = LocaleHelper.getLanguage(this)
-        defaultSelection(lang)
+        val currentlang = LocaleHelper.getLanguage(this)
+        defaultSelection(currentlang)
 
         lang_korea_rb.setOnClickListener {
             lang_english_rb.isChecked = false
             lang_china_rb.isChecked = false
             lang_japan_rb.isChecked = false
 
-            LocaleHelper.setLocale(this, korLanguageCode)
+            newlang = korLanguageCode
         }
 
         lang_english_rb.setOnClickListener {
@@ -52,7 +55,7 @@ class SettingActivity: AppCompatActivity(){
             lang_china_rb.isChecked = false
             lang_japan_rb.isChecked = false
 
-            LocaleHelper.setLocale(this, engLanguageCode)
+            newlang = engLanguageCode
         }
 
         lang_china_rb.setOnClickListener {
@@ -60,7 +63,7 @@ class SettingActivity: AppCompatActivity(){
             lang_korea_rb.isChecked = false
             lang_japan_rb.isChecked = false
 
-            LocaleHelper.setLocale(this, chLanguageCode)
+            newlang= chLanguageCode
         }
 
         lang_japan_rb.setOnClickListener {
@@ -68,7 +71,7 @@ class SettingActivity: AppCompatActivity(){
             lang_china_rb.isChecked = false
             lang_korea_rb.isChecked = false
 
-            LocaleHelper.setLocale(this, jpnLanguageCode)
+            newlang= jpnLanguageCode
         }
     }
 
@@ -79,7 +82,10 @@ class SettingActivity: AppCompatActivity(){
             val pop_up = popUp.popup
             val OKbtn = pop_up.fst_btn
             OKbtn.setOnClickListener {
-                recreate()
+                LocaleHelper.setLocale(this, newlang)
+
+                Thread.sleep(500)// Locale적용되기전에 꺼버려서 시간벌려고 넣었어요 ㅋㅋㄹㅃㅃ
+
                 C.TitleBackBtn.CancelBack = false
                 C.TitleBackBtn.closeOR = false
                 pop_up.dismiss()
@@ -97,10 +103,6 @@ class SettingActivity: AppCompatActivity(){
                 finish()
                 C.TitleBackBtn.poptext = "앱을 종료하시겠습니까?"
         }
-    }
-
-    override fun attachBaseContext(newBase: Context?) {
-        super.attachBaseContext(LocaleHelper.onAttach(newBase!!))
     }
 
     fun defaultSelection(lang: String){

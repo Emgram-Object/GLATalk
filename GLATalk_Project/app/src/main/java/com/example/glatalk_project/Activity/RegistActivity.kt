@@ -76,11 +76,6 @@ class RegistActivity : AppCompatActivity() {
                 }else {
                     Toast.makeText(this, "비밀번호는 8자리 이상이어야 합니다.", Toast.LENGTH_SHORT).show()
                 }
-
-                Log.d("wrong", "실패실패")
-
-
-
             }
         })
 

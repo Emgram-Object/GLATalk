@@ -13,6 +13,7 @@ import com.example.glatalk_project.Adapter.PageAdapter
 import com.example.glatalk_project.Data.TokenData
 import com.example.glatalk_project.Model.MyDao
 import com.example.glatalk_project.constant.C
+import com.example.glatalk_project.util.LocaleHelper
 import com.example.glatalk_project.view.Popup
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.ui_custom_tab.view.*
@@ -70,5 +71,10 @@ class MainActivity : AppCompatActivity(){
 
         }
     }
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase!!))
+    }
+
 }
 

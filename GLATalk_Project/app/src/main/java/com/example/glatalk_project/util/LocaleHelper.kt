@@ -39,16 +39,16 @@ object LocaleHelper {
     }
 
      fun getPersistedData(context: Context, defaultLanguage: String): String {
-        var preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+//        var preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
 
-        return preferences.getString(SELECTED_LANGUAGE, defaultLanguage)!!
+        return SharedPreferenceUtil.getString(SELECTED_LANGUAGE, defaultLanguage)!!
     }
 
     private fun persist(context: Context, language: String) {
-        var preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
-        var editor: SharedPreferences.Editor = preferences.edit()
-        editor.putString(SELECTED_LANGUAGE, language)
-        editor.apply()
+//        var preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+//        var editor: SharedPreferences.Editor = preferences.edit()
+        SharedPreferenceUtil.putString(SELECTED_LANGUAGE, language)
+//        editor.apply()
     }
 
     private fun getLocale(config: Configuration): Locale {
