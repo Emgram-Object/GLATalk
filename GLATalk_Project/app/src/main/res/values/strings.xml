@@ -38,8 +38,7 @@
     <string name="btn_ok">확인</string>
     <string name="btn_cancel">취소</string>
     <string name="btn_next">다음</string>
-    <string name="btn_modify">수정하기</string>
-    <string name="btn_modified">변경완료</string>
+    <string name="btn_modified">수정</string>
     <string name="btn_pwd_change">비밀번호 변경하기</string>
 
     <string name="home">홈</string>
@@ -93,4 +92,6 @@
 
     <string name="guide">가이드</string>
     <string name="tourist">관광객</string>
+
+    <string name="popup_setting">바뀐 설정을 적용하려면 맵을 재시작 해야합니다.\n지금 재시작하겠습니까?</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.example.glatalk_project.Activity
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -21,6 +22,7 @@ import com.example.glatalk_project.network.data.request.LoginRequest
 import com.example.glatalk_project.network.data.response.BaseResponse
 import com.example.glatalk_project.util.TextUtil
 import com.example.glatalk_project.constant.C
+import com.example.glatalk_project.util.LocaleHelper
 import com.example.glatalk_project.view.Popup
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.ui_popup_custom.*
@@ -173,6 +175,11 @@ class LoginActivity : AppCompatActivity(), MoveActivity {
     override fun move() {
         goHome()
     }
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase!!))
+    }
+
 
 }
 

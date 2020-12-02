@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.Model.MyDao
 import com.example.glatalk_project.Data.ProfileData
 import com.example.glatalk_project.Data.TokenData
+import com.example.glatalk_project.MoveActivity
 import com.example.glatalk_project.R
 import com.example.glatalk_project.constant.C
 import kotlinx.android.synthetic.main.activity_my_info.*
@@ -22,8 +23,6 @@ class MyInfoActivity : AppCompatActivity() {
 
         common_title_my_info.setTitle(getString(R.string.title_myinfo))
         common_title_my_info.setModifyBtn()
-
-        MyDao.getInfo(null)
 
         setTexts()
 //        Log.d("myInfo_token", "${TokenData.loginToken}")
@@ -46,8 +45,11 @@ class MyInfoActivity : AppCompatActivity() {
     private fun Pwd_Change() {
         C.TitleBackBtn.closeOR = false
         val intent = Intent(this, PwdChangeActivity::class.java)
-        Intent.FLAG_ACTIVITY_NO_HISTORY
+//        Intent.FLAG_ACTIVITY_NO_HISTORY
+        Intent.FLAG_ACTIVITY_CLEAR_TOP
+
         startActivity(intent)
+
     }
 
 }

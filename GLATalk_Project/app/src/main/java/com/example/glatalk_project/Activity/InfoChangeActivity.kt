@@ -14,6 +14,7 @@ import com.example.glatalk_project.network.data.response.BaseResponse
 import com.example.glatalk_project.Model.MyDao
 import com.example.glatalk_project.Data.ProfileData
 import com.example.glatalk_project.Data.TokenData
+import com.example.glatalk_project.MoveActivity
 import com.example.glatalk_project.R
 import com.example.glatalk_project.constant.C
 import com.example.glatalk_project.network.data.request.ProfileRequest
@@ -33,7 +34,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class InfoChangeActivity : AppCompatActivity() {
+class InfoChangeActivity : AppCompatActivity(), MoveActivity {
 
     var input_user_name: String = ""
     var input_phone_num: String = ""
@@ -73,14 +74,23 @@ class InfoChangeActivity : AppCompatActivity() {
         inputPhone.addTextChangedListener(textWatcher)
 
         common_title_info_change.setTitle(getString(R.string.title_modiy_myinfo))
+
+        if(ProfileData.user_type.equals("tourist")) {
+            my_info_english_name_cl.visibility = View.GONE
+            warning_tv.visibility = View.GONE
+        }
+
         C.TitleBackBtn.poptext = "변경사항이 저장되지 않습니다.\n이전화면으로 돌아가시겠습니까?"
 
         Country_sp()
+        MyInfoActivity().finish()
 
         modify_ok_btn.setOnClickListener {
+            C.TitleBackBtn.poptext = "앱을 종료하시겠습니까?"
             changeMyInfo()
             Thread.sleep(100) //수정 필요 콜백 필요
-            gotoMy()
+//            gotoMy()
+            MyDao.getInfo(this)
         }
 
 
@@ -159,7 +169,8 @@ class InfoChangeActivity : AppCompatActivity() {
 
     private fun gotoMy() {
         val intent = Intent(this, MyInfoActivity::class.java) //마이메뉴 화면으로 넘어가기
-        Intent.FLAG_ACTIVITY_NO_HISTORY
+//        Intent.FLAG_ACTIVITY_NO_HISTORY
+//        Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)
         C.TitleBackBtn.closeOR = true
         finish()
@@ -173,7 +184,6 @@ class InfoChangeActivity : AppCompatActivity() {
         OKbtn.setOnClickListener {
             pop_up.dismiss()
             finish()
-            C.TitleBackBtn.poptext = "앱을 종료하시겠습니까?"
 
         }
     }
@@ -181,6 +191,11 @@ class InfoChangeActivity : AppCompatActivity() {
     override fun onBackPressed() {
         goback()
         C.TitleBackBtn.closeOR = true
+
+
+    }
+    override fun move(){
+        gotoMy()
     }
 
 }
