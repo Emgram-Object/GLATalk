@@ -76,11 +76,6 @@ class RegistActivity : AppCompatActivity() {
                 }else {
                     Toast.makeText(this, "비밀번호는 8자리 이상이어야 합니다.", Toast.LENGTH_SHORT).show()
                 }
-
-                Log.d("wrong", "실패실패")
-
-
-
             }
         })
 
@@ -103,7 +98,6 @@ class RegistActivity : AppCompatActivity() {
 
 
     fun addNetworking() {
-
         UserDAO.add(userRequest = UserRequest(userDAO.userVO.user_name, userDAO.userVO.user_email, userDAO.userVO.user_type, userDAO.userVO.user_pwd,
                 userDAO.userVO.phone_number, userDAO.userVO.country_cd, userDAO.userVO.guide_info, userDAO.userVO.guide_time, userDAO.userVO.ad_agree), callback = object : Callback<BaseResponse> {
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
@@ -123,13 +117,12 @@ class RegistActivity : AppCompatActivity() {
         userDAO.userVO.pwd_check = reg_pwd_check_et.text.toString()
         userDAO.userVO.user_type = "guide"
         userDAO.userVO.user_name = reg_guide_name_et.text.toString()
-        userDAO.userVO.country_cd = reg_guide_country_select_sp.toString()
         userDAO.userVO.phone_number = reg_phone_et.text.toString()
         userDAO.userVO.guide_info = reg_guide_info_et.text.toString()
         userDAO.userVO.guide_time = reg_time_et.text.toString()
         userDAO.userVO.ad_agree = true
 
-        Log.d("regist_guide", "${userDAO.userVO.country_cd}")
+        Log.d("regist_guide", userDAO.userVO.country_cd)
     }
 
     fun getTouristData() {
@@ -138,11 +131,9 @@ class RegistActivity : AppCompatActivity() {
         userDAO.userVO.pwd_check = reg_pwd_check_et.text.toString()
         userDAO.userVO.user_type = "tourist"
         userDAO.userVO.user_name = reg_tourist_name_et.text.toString()
-        userDAO.userVO.country_cd = reg_tourist_country_select_sp.toString()
         userDAO.userVO.phone_number = reg_tourist_phone_et.text.toString()
         userDAO.userVO.ad_agree = true
 
-        Log.d("regist_tour", "${userDAO.userVO.country_cd}")
 
     }
 
@@ -162,7 +153,6 @@ class RegistActivity : AppCompatActivity() {
     fun gotoRegComplete() {
         val intentAct = Intent(this, RegistCompleteActivity::class.java)
         startActivity(intentAct)
-        Intent.FLAG_ACTIVITY_NO_HISTORY
         finish()
         //로그인으로 되돌아가는 부분
     }
