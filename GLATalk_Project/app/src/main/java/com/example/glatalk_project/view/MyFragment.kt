@@ -46,7 +46,7 @@ class MyFragment : Fragment() {
 
         }
         view.my_setting_cl.setOnClickListener { goToSetting() }
-        view.my_term_cl.setOnClickListener { goToTerm() }
+//        view.my_term_cl.setOnClickListener { goToTerm() }
 
         view.my_logout_btn.setOnClickListener {
             LogoutActivity.doLogout()

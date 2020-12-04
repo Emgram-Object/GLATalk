@@ -136,54 +136,54 @@
             app:layout_constraintTop_toBottomOf="@id/china_line" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <View
-        android:id="@+id/setting_line"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="14dp"
-        android:background="@color/line_gray_color"
-        app:layout_constraintTop_toBottomOf="@id/lang_cl" />
+<!--    <View-->
+<!--        android:id="@+id/setting_line"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:layout_marginTop="14dp"-->
+<!--        android:background="@color/line_gray_color"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/lang_cl" />-->
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/guide_chat_switch"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/layout_margin"
-        android:layout_marginRight="@dimen/layout_margin"
-        app:layout_constraintTop_toBottomOf="@id/setting_line">
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:id="@+id/guide_chat_switch"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="@dimen/layout_margin"-->
+<!--        android:layout_marginRight="@dimen/layout_margin"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/setting_line">-->
 
-        <TextView
-            android:id="@+id/chat_switch_title_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/layout_margin"
-            android:text="가이드 활성화"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <TextView-->
+<!--            android:id="@+id/chat_switch_title_tv"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="@dimen/layout_margin"-->
+<!--            android:text="가이드 활성화"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="15sp"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <TextView
-            android:id="@+id/chat_switch_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="23dp"
-            android:text="채팅 받기 활성화"
-            android:textColor="@color/black2222"
-            android:textSize="15sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/chat_switch_title_tv" />
+<!--        <TextView-->
+<!--            android:id="@+id/chat_switch_tv"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="23dp"-->
+<!--            android:text="채팅 받기 활성화"-->
+<!--            android:textColor="@color/black2222"-->
+<!--            android:textSize="15sp"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/chat_switch_title_tv" />-->
 
-        <CheckBox
-            android:id="@+id/chat_switch_cb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="19dp"
-            android:button="@drawable/switch_selector"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/chat_switch_title_tv" />
+<!--        <CheckBox-->
+<!--            android:id="@+id/chat_switch_cb"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="19dp"-->
+<!--            android:button="@drawable/switch_selector"-->
+<!--            app:layout_constraintRight_toRightOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/chat_switch_title_tv" />-->
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

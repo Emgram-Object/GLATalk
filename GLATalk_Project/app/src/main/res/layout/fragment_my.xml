@@ -70,7 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="51dp"
         android:layout_marginHorizontal="@dimen/layout_margin"
-        app:layout_constraintBottom_toTopOf="@id/my_term_cl"
+        app:layout_constraintBottom_toTopOf="@id/my_version_cl"
         app:layout_constraintTop_toBottomOf="@id/my_profile_cl">
 
         <TextView
@@ -104,49 +104,11 @@
         app:layout_constraintTop_toBottomOf="@+id/my_setting_cl" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/my_term_cl"
-        android:layout_width="match_parent"
-        android:layout_height="51dp"
-        android:layout_marginHorizontal="@dimen/layout_margin"
-        app:layout_constraintBottom_toTopOf="@id/my_version_cl"
-        app:layout_constraintTop_toBottomOf="@id/line_2">
-
-        <TextView
-            android:id="@+id/my_term_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="이용약관"
-            android:textColor="@color/black2222"
-            android:textSize="15sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
-        <ImageView
-            android:id="@+id/my_term_btn"
-            android:layout_width="7.8dp"
-            android:layout_height="13.8dp"
-            android:layout_marginRight="11dp"
-            android:src="@drawable/icon_arrow"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <View
-        android:id="@+id/line_3"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/line_gray_color"
-        android:layout_marginHorizontal="@dimen/layout_margin"
-        app:layout_constraintTop_toBottomOf="@+id/my_term_cl" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/my_version_cl"
         android:layout_width="match_parent"
         android:layout_height="51dp"
         android:layout_marginHorizontal="@dimen/layout_margin"
-        app:layout_constraintTop_toBottomOf="@id/line_3">
+        app:layout_constraintTop_toBottomOf="@id/line_2">
 
         <TextView
             android:id="@+id/my_version_tv"

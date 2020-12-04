@@ -31,13 +31,13 @@ class SettingActivity: AppCompatActivity(){
 
         common_title_setting.setTitle(getString(R.string.title_setting))
 
-        if(ProfileData.user_type.equals("tourist")){
-            setting_line.visibility = View.GONE
-            guide_chat_switch.visibility = View.GONE
-        } else {
-            setting_line.visibility = View.VISIBLE
-            guide_chat_switch.visibility = View.VISIBLE
-        }
+//        if(ProfileData.user_type.equals("tourist")){
+//            setting_line.visibility = View.GONE
+//            guide_chat_switch.visibility = View.GONE
+//        } else {
+//            setting_line.visibility = View.VISIBLE
+//            guide_chat_switch.visibility = View.VISIBLE
+//        }
 
         val currentlang = LocaleHelper.getLanguage(this)
         defaultSelection(currentlang)
