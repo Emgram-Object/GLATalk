@@ -80,19 +80,5 @@ object ChatDAO{
 
     }
 
-    fun getTranslation(chatData: ChatData) {
-        translation(chatData, callback = object : Callback<PapagoResonse> {
-            override fun onResponse(call: Call<PapagoResonse>, response: Response<PapagoResonse>) {
-                var result = response.body()
-                var body = result?.body
 
-                Log.d("translation Body", body.toString())
-                Log.d("translation", "성공")
-            }
-
-            override fun onFailure(call: Call<PapagoResonse>, t: Throwable) {
-                Log.d("translation", "실패")
-            }
-        })
-    }
 }

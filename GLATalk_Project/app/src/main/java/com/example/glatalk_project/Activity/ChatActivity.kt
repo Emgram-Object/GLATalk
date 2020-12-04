@@ -8,11 +8,15 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.glatalk_project.R
 import com.example.glatalk_project.Adapter.ChatAdapter
 import com.example.glatalk_project.Data.*
+import com.example.glatalk_project.Model.ChatDAO
 import com.example.glatalk_project.Model.ChatDAO.getchatList
-import com.example.glatalk_project.Model.ChatDAO.getTranslation
+import com.example.glatalk_project.network.data.response.PapagoResonse
 import com.example.glatalk_project.util.LocaleHelper
 import com.example.glatalk_project.util.ChatManager
 import kotlinx.android.synthetic.main.activity_chat.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.*
 
 class ChatActivity : AppCompatActivity() {
@@ -78,9 +82,6 @@ class ChatActivity : AppCompatActivity() {
             ChatManager.instance.userCount()
             setChatData() //채팅데이터 설정
             getTranslation(chatData)  //설정된 채팅데이터로 번역API 호출 및 소켓통신
-            chatData.target_text = TransData().target_text
-            sendMessage()
-
         }
 
         back_btn.setOnClickListener {
@@ -91,18 +92,21 @@ class ChatActivity : AppCompatActivity() {
     fun setChatData(): ChatData {
         var receiver_type = ""
         var targetlang = ""
+        var sourcelang = ""
         val df = SimpleDateFormat("yyyy-MM-dd HH:mm")
 
         if (ProfileData.user_type.equals("tourist")) { //sender타입에 따라 receiver타입 변경
             receiver_type = "guide"
             targetlang = "ko"
+            sourcelang = ProfileData.country_cd
         } else {
             receiver_type = "tourist"
             targetlang = tourist_info
+            sourcelang = "ko"
         }
 
         chatData = ChatData()
-        chatData.source = LocaleHelper.getLanguage(this)
+        chatData.source = sourcelang /*LocaleHelper.getLanguage(this)*/
         chatData.source_text = chat_input_et.text.toString()
         chatData.target = targetlang
         chatData.target_text = ""
@@ -127,6 +131,25 @@ class ChatActivity : AppCompatActivity() {
         } else {
             null
         }
+    }
+
+    fun getTranslation(chatData: ChatData) {
+        ChatDAO.translation(chatData, callback = object : Callback<PapagoResonse> {
+            override fun onResponse(call: Call<PapagoResonse>, response: Response<PapagoResonse>) {
+                var result = response.body()
+                var body = result?.body
+
+                chatData.target_text = body!!.target_text
+                sendMessage()
+
+                Log.d("translation Body", body.toString())
+                Log.d("translation", "성공")
+            }
+
+            override fun onFailure(call: Call<PapagoResonse>, t: Throwable) {
+                Log.d("translation", "실패")
+            }
+        })
     }
 
 
