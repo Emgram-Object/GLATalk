@@ -58,10 +58,10 @@ class RegistActivity : AppCompatActivity() {
                         addNetworking()
                         gotoRegComplete()
                     } else {
-                        Toast.makeText(this, "비밀번호와 비밀번호 확인이 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, getString(R.string.toast_not_sync), Toast.LENGTH_SHORT).show()
                     }
                 }else {
-                    Toast.makeText(this, "비밀번호는 8자리 이상이어야 합니다.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.toast_password), Toast.LENGTH_SHORT).show()
 
                 }
             } else if (reg_tour_radio_bnt.isChecked) {
@@ -71,10 +71,10 @@ class RegistActivity : AppCompatActivity() {
                         addNetworking()
                         gotoRegComplete()
                     } else {
-                        Toast.makeText(this, "비밀번호와 비밀번호 확인이 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, getString(R.string.toast_not_sync), Toast.LENGTH_SHORT).show()
                     }
                 }else {
-                    Toast.makeText(this, "비밀번호는 8자리 이상이어야 합니다.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.toast_password), Toast.LENGTH_SHORT).show()
                 }
             }
         })

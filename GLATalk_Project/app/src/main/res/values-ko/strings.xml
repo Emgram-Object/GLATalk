@@ -59,9 +59,6 @@
 
     <string name="pwd_change">비밀번호 변경</string>
     <string name="pwd_change_verify">영문, 숫자를 포함 8자 이상으로 입력해주세요.</string>
-    <string name="pwd_change_new_diff">새로운 비밀번호와 일치하지 않습니다.\n확인 후 다시 입력해주세요.</string>
-    <string name="regist_pwd_new_diff">비밀번호가 서로 일치하지 않습니다.\n확인 후 다시 입력해주세요.</string>
-
     <string name="current_pwd">현재 비밀번호</string>
     <string name="new_pwd">새 비밀번호</string>
     <string name="pwd_check">비밀번호 확인</string>
@@ -94,4 +91,9 @@
     <string name="tourist">관광객</string>
 
     <string name="popup_setting">바뀐 설정을 적용하려면 맵을 재시작 해야합니다.\n지금 재시작하겠습니까?</string>
+    <string name="popup_infochange">변경사항이 저장되지 않습니다.\n이전화면으로 돌아가시겠습니까?</string>
+    <string name="popup_quit">앱을 종료하시겠습니까?</string>
+
+    <string name="toast_not_sync">비밀번호와 비밀번호 확인이 일치하지 않습니다.</string>
+    <string name="toast_password">비밀번호는 8자리 이상이어야 합니다.</string>
 </resources>

@@ -68,17 +68,17 @@ class PwdChangeActivity : AppCompatActivity() {
                     changePwdNetworking()
                     gotoMyInfo()
                 } else {
-                    Toast.makeText(this, "비밀번호와 비밀번호 확인이 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.toast_not_sync), Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(this, "비밀번호는 8자리 이상이어야 합니다.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.toast_password), Toast.LENGTH_SHORT).show()
             }
         }
 
         //통신
 
         //
-        C.TitleBackBtn.poptext = "변경사항이 저장되지 않습니다.\n이전화면으로 돌아가시겠습니까?"
+        C.TitleBackBtn.poptext = getString(R.string.popup_infochange)
     }
 
     private fun changePwdNetworking() {

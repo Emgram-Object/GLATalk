@@ -26,7 +26,7 @@ class SettingActivity: AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
-        C.TitleBackBtn.poptext = "바뀐 설정을 적용하려면 앱을 재시작 해야합니다.\n지금 재시작하겠습니까?"
+        C.TitleBackBtn.poptext = getString(R.string.popup_setting)
         C.TitleBackBtn.CancelBack = true
 
         common_title_setting.setTitle(getString(R.string.title_setting))
@@ -101,7 +101,7 @@ class SettingActivity: AppCompatActivity(){
                 C.TitleBackBtn.closeOR = false
                 pop_up.dismiss()
                 finish()
-                C.TitleBackBtn.poptext = "앱을 종료하시겠습니까?"
+                C.TitleBackBtn.poptext = getString(R.string.popup_quit)
         }
     }
 

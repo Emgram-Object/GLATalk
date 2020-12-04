@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(){
         //커스텀 탭 생성
         main_tab.getTabAt(0)?.customView = creatView("home")
         main_tab.getTabAt(1)?.customView = creatView("my")
-        C.TitleBackBtn.poptext = "앱을 종료하시겠습니까?"
+        C.TitleBackBtn.poptext = getString(R.string.popup_quit)
     }
 
     private fun creatView(tabName: String): View {

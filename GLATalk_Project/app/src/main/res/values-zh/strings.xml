@@ -28,9 +28,9 @@
 
     <string name="korea">한국</string>
     <string name="country_korea">대한민국</string>
-    <string name="country_america">미국</string>
-    <string name="country_china">중국</string>
-    <string name="country_japan">일본</string>
+    <string name="country_america">English</string>
+    <string name="country_china">中国</string>
+    <string name="country_japan">日本</string>
     <string name="country_select_title">选择国家</string>
 
     <string name="btn_ok">确定</string>
@@ -58,8 +58,6 @@
 
     <string name="pwd_change">修改密码</string>
     <string name="pwd_change_verify">请输入8位以上含英文和数字的密码。</string>
-    <string name="pwd_change_new_diff">새로운 비밀번호와 일치하지 않습니다.\n확인 후 다시 입력해주세요.</string>
-    <string name="regist_pwd_new_diff">비밀번호가 서로 일치하지 않습니다.\n확인 후 다시 입력해주세요.</string>
     <string name="current_pwd">현재 비밀번호</string>
     <string name="new_pwd">新密码</string>
     <string name="pwd_check">确认密码</string>
@@ -81,7 +79,7 @@
     <string name="enable_guide_chat">가이드 활성화</string>
     <string name="activate_chat">채팅 받기 활성화</string>
 
-    <string name="title_regist">사용자 정보</string>
+    <string name="title_regist">用户信息</string>
     <string name="title_myinfo">我的信息</string>
     <string name="title_modiy_myinfo">我的信息变更</string>
     <string name="title_pwdchange">修改密码</string>
@@ -90,5 +88,10 @@
     <string name="guide">导游</string>
     <string name="tourist">游客</string>
 
-    <string name="popup_setting">바뀐 설정을 적용하려면 맵을 재시작 해야합니다.\n지금 재시작하겠습니까?</string>
+    <string name="popup_setting">如果要使用新的设定，需要重新开始应用程序。\n现在能重新开始吗？</string>
+    <string name="popup_infochange">输入的内容不保存。\n您要转到上一个屏幕吗？</string>
+    <string name="popup_quit">确定要结束应用程序吗？</string>
+
+    <string name="toast_not_sync">密码和密码确认不一致。</string>
+    <string name="toast_password">密码必须在8位以上。</string>
 </resources>

@@ -28,9 +28,9 @@
 
     <string name="korea">한국</string>
     <string name="country_korea">대한민국</string>
-    <string name="country_america">미국</string>
-    <string name="country_china">중국</string>
-    <string name="country_japan">일본</string>
+    <string name="country_america">English</string>
+    <string name="country_china">中国</string>
+    <string name="country_japan">日本</string>
     <string name="country_select_title">Select country</string>
 
     <string name="btn_ok">Ok</string>
@@ -57,8 +57,6 @@
 
     <string name="pwd_change">Change password</string>
     <string name="pwd_change_verify">Please enter more than 8 characters including letters and numbers.</string>
-    <string name="pwd_change_new_diff">새로운 비밀번호와 일치하지 않습니다.\n확인 후 다시 입력해주세요.</string>
-    <string name="regist_pwd_new_diff">비밀번호가 서로 일치하지 않습니다.\n확인 후 다시 입력해주세요.</string>
     <string name="current_pwd">현재 비밀번호</string>
     <string name="new_pwd">New password</string>
     <string name="pwd_check">Confirm Password</string>
@@ -79,7 +77,7 @@
     <string name="enable_guide_chat">가이드 활성화</string>
     <string name="activate_chat">채팅 받기 활성화</string>
 
-    <string name="title_regist">사용자 정보</string>
+    <string name="title_regist">User Information</string>
     <string name="title_myinfo">My Info</string>
     <string name="title_modiy_myinfo">Change My Info</string>
     <string name="title_pwdchange">Change password</string>
@@ -88,5 +86,10 @@
     <string name="guide">Guide</string>
     <string name="tourist">Tourist</string>
 
-    <string name="popup_setting">바뀐 설정을 적용하려면 맵을 재시작 해야합니다.\n지금 재시작하겠습니까?</string>
+    <string name="popup_setting">You must restart the app for the changed settings to take effect.\nWould you like to restart now?</string>
+    <string name="popup_infochange">Your input will not be saved.\nDo you want to go to the previous view?</string>
+    <string name="popup_quit">Are you sure you want to close the app?</string>
+
+    <string name="toast_not_sync">Password and password confirmation do not match</string>
+    <string name="toast_password">Password must be at least 8 digits.</string>
 </resources>

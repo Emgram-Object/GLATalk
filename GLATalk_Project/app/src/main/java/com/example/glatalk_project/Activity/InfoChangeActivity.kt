@@ -80,13 +80,13 @@ class InfoChangeActivity : AppCompatActivity(), MoveActivity {
             warning_tv.visibility = View.GONE
         }
 
-        C.TitleBackBtn.poptext = "변경사항이 저장되지 않습니다.\n이전화면으로 돌아가시겠습니까?"
+        C.TitleBackBtn.poptext = getString(R.string.popup_infochange)
 
         Country_sp()
         MyInfoActivity().finish()
 
         modify_ok_btn.setOnClickListener {
-            C.TitleBackBtn.poptext = "앱을 종료하시겠습니까?"
+            C.TitleBackBtn.poptext = getString(R.string.popup_quit)
             changeMyInfo()
             Thread.sleep(100) //수정 필요 콜백 필요
 //            gotoMy()
