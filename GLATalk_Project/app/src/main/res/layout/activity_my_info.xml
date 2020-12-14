@@ -188,7 +188,7 @@
                 app:layout_constraintTop_toBottomOf="@id/my_info_country_tv"/>
 
             <TextView
-                android:id="@+id/my_info_country_select_tv"
+                android:id="@+id/my_info_country_select_tv2"
                 android:layout_width="0dp"
                 android:layout_height="22dp"
                 android:lineSpacingExtra="-9sp"
